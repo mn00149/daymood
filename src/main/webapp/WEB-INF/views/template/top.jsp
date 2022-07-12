@@ -23,7 +23,7 @@ body {
 }
 .container {
   width: 1400px;
-
+  margin: 0 auto;
 }
 
 header {
