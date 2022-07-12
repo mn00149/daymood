@@ -1,8 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
- <style>
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 body {
   margin: 0;
@@ -16,12 +23,7 @@ body {
 }
 .container {
   width: 1400px;
-  height: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1160px 240px;
-  grid-template-rows: 80px auto;
-  gap: 20px;
+
 }
 
 header {
@@ -70,21 +72,7 @@ ul>li {
   padding-right: 15px;
   margin-right: 5px;
 }
-
-.footer {
-  width: 100vw;
-  height: 100px;
-  background-color: #838383;
-}
-</style>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
+  </style>
 </head>
 <body>
   <div class="container">
@@ -106,6 +94,6 @@ ul>li {
     </header>
   </div>
 </div>
-<div class="footer"></div>
+
 </body>
 </html>
