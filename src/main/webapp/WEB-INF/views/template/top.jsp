@@ -9,25 +9,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@media (max-width: 1400px) {
+	body {
+    font-size: 1rem;
+	}
+
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
 
 body {
   margin: 0;
   padding: 0;
   font-size: 14px;
-  height: 1000px;
+  height: 100%;
   color:#28313b;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: 'Noto Sans KR', sans-serif;
 }
+
 .container {
   width: 1400px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 20px;
 }
 
 header {
-  width: 100%;
+  
   height: 80px;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -72,6 +87,17 @@ ul>li {
   padding-right: 15px;
   margin-right: 5px;
 }
+
+.footer {
+  width: 100vw;
+  height: 100px;
+  background-color: #838383;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 25px;
+  line-height: 60px;
+}
   </style>
 </head>
 <body>
@@ -93,7 +119,6 @@ ul>li {
       </div>
     </header>
   </div>
-</div>
 
 </body>
 </html>
