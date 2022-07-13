@@ -10,35 +10,7 @@
 </head>
 <body>
 <div id="content" class="ink_content" role="main">
-    <div class="ink_member">
-      <h1>
-        회원페이지
-      </h1>
-      <div class="bubble_wrap">
-        <a href="header.html" class="bubble">
-          <i class="fa-solid fa-backward" style="color: black;"></i>
-        </a>
-        <div class="ink_bubble">
-          <div class="arrow"></div>
-          돌아가기
-        </div>
-      </div>
-    </div>
-    <div class="profile1">
-      <div class="aa">
-        <div class="imgprofile">이미지</div>
-        <div class="nickname">
-          <a href="#">kafla</a>
-        </div>
-      </div>
-      <div class="menu">
-        <ul>
-          <li>비밀번호 변경</li>
-          <li>회원정보 변경</li>
-          <li>탈퇴</li>
-        </ul>
-      </div>
-    </div>
+    <%@ include file="profile1.jsp" %>
     <div class="profile2">
       <div class="myinfo">
         <ul>
