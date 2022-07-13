@@ -38,7 +38,7 @@ body {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr auto;
-  gap: 20px;
+  gap: 10px;
 }
 
 header {
@@ -60,14 +60,14 @@ header {
 }
 
 
-ul {
+#menu {
   list-style: none;
   display: flex;
   font-size: 16px;
-  gap: 20px;
-
+  gap: 100px;
 }
-ul>li {
+
+#menu>ul>li {
   padding-left: 5em;
 }
 
@@ -75,7 +75,6 @@ ul>li {
   text-decoration: none;
   width: auto;
   color: rgb(0, 0, 0);
-  
 }
 
 #menu>li>a:hover {
@@ -98,14 +97,22 @@ ul>li {
   padding: 0 25px;
   line-height: 60px;
 }
+
+.logo {
+	display:inline-block;
+	vertical-align: middle;
+}
+.logo > img {
+	max-width : 150px;
+}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-    
-      <h1>로고</h1>
-
+    <div class="logo">
+      <img src="/images/daymood.png" alt="logo">
+	</div>
         <ul id="menu">
           <li><a href="#">게시판1</a></li>
           <li><a href="#">게시판2</a></li>
@@ -114,7 +121,7 @@ ul>li {
         </ul>
 
       <div id="login">
-        <a href="#">로그인</a>
+        <a href="/mypage/member">로그인</a>
         <a href="#">회원가입</a>
       </div>
     </header>

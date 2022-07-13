@@ -14,5 +14,30 @@
     <put-attribute name="body" value="/WEB-INF/views/index.jsp" />
   </definition>
   
+   <definition name="/mypage/member" extends="main">
+    <put-attribute name="title" value="회원정보"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/member.jsp" />
+  </definition>
+  
+   <definition name="/mypage/my_posted" extends="main">
+    <put-attribute name="title" value="작성글"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/my_posted.jsp" />
+  </definition>
+  
+   <definition name="/mypage/my_comment" extends="main">
+    <put-attribute name="title" value="작성댓글"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/my_comment.jsp" />
+  </definition>
+  
+   <definition name="/mypage/my_scrap" extends="main">
+    <put-attribute name="title" value="스크랩"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/my_scrap.jsp" />
+  </definition>
+  
+   <definition name="/mypage/my_letter" extends="main">
+    <put-attribute name="title" value="쪽지함"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/my_letter.jsp" />
+  </definition>
+  
   
 </tiles-definitions>
