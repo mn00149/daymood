@@ -25,7 +25,7 @@
       <div class="aa">
         <div class="imgprofile">이미지</div>
         <div class="nickname">
-          <a href="#">kafla</a>
+          <a href="#">데이무드</a>
         </div>
       </div>
       <div class="menu">
