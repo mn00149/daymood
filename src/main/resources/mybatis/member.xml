@@ -4,9 +4,58 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.study.member.MemberMapper">
+
 	<select id="read" parameterType="String"
-		resultType="com.study.member.MemberDTO">
+		resultType="com.study.member.MemberDTO$member">
 		select * from User
 		where username = #{username}
 	</select>
+
+	<select id="total" parameterType="Map" resultType="int">
+		select count(*) from Friend
+		<where>
+			<choose>
+				<when test="col=='username'">
+					username like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='nation'">
+					nation like concat('%', #{word} ,'%')
+				</when>
+			</choose>
+		</where>
+		where username = #{username}
+		ORDER BY username DESC
+		limit #{sno}, #{eno}
+	</select>
+
+
+	<resultMap type="com.study.member.MemberDTO$member" id="member">
+		<result property="username" column="username" />
+		<result property="nation" column="nation" />
+		<result property="email" column="email" />
+		<result property="createDate" column="createDate" />
+		<collection property="Flist" ofType="com.study.member.MemberDTO$my_friends" javaType="List" column="Flist">
+			<result property="friendname" column="friendname" />
+			<result property="username" column="username" />
+		</collection>
+	</resultMap>
+	<select id="list" parameterType="Map"
+		resultMap="member">
+		select u.nation, u.email, u.createDate, f.friendname, f.username
+		from User u inner join Friend f
+		on f.username = #{username} and u.username = f.friendname
+		<where>
+			<choose>
+				<when test="col=='username'">
+					f.friendname like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='nation'">
+					u.nation like concat('%', #{word} ,'%')
+				</when>
+			</choose>
+		</where>
+		ORDER BY f.friendname DESC
+		limit #{sno}, #{eno}
+	</select>
+
 </mapper>

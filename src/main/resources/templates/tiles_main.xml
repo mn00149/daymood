@@ -39,5 +39,15 @@
     <put-attribute name="body" value="/WEB-INF/views/mypage/my_letter.jsp" />
   </definition>
   
+   <definition name="/mypage/my_friends" extends="main">
+    <put-attribute name="title" value="친구목록"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/my_friends.jsp" />
+  </definition>
+  
+   <definition name="/mypage/request_friends" extends="main">
+    <put-attribute name="title" value="친구요청"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/request_friends.jsp" />
+  </definition>
+  
   
 </tiles-definitions>

@@ -114,10 +114,10 @@ header {
       <img src="/images/daymood.png" alt="logo">
 	</div>
         <ul id="menu">
-          <li><a href="#">게시판1</a></li>
-          <li><a href="#">게시판2</a></li>
-          <li><a href="#">게시판3</a></li>
-          <li><a href="#">게시판4</a></li>
+          <li><a href="#">Mood</a></li>
+          <li><a href="#">Info</a></li>
+          <li><a href="#">Recommend</a></li>
+          <li><a href="#">Live Chat</a></li>
         </ul>
 
       <div id="login">
