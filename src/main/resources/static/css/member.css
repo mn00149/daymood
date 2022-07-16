@@ -348,7 +348,7 @@ td img {
 .tmenu{
   position: relative;
   width: 300px;
-  height: 100px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -380,7 +380,7 @@ td img {
   position: absolute;
   list-style: none;
   left: 10px;
-  transform: rotate(calc(360deg / 7 * var(--i)))
+  transform: rotate(calc(360deg / 6 * var(--i)))
   translateX(40px);
   transform-origin: 140px;
   visibility: hidden;
@@ -402,19 +402,19 @@ td img {
   height: 55px;
   font-size: 1.75em;
   columns: #222327;
-  transform: rotate(calc(360deg / -7 * var(--i)));
+  transform: rotate(calc(360deg / -6 * var(--i)));
   border-radius: 50%;
 }
 
-.menu.active li.active {
-  transform: rotate(calc(360deg / 7 * var(--i)))
+.tmenu.active li.active {
+  transform: rotate(calc(360deg / 6 * var(--i)))
   translateX(12px);
 }
 
 .indicator {
   position: absolute;
   left: calc(50% + 2.5px);
-  transform-origin: 80%;
+  transform-origin: right;
   width: 100px;
   height: 1px;
   background: transparent;
@@ -445,28 +445,24 @@ td img {
 }
 
 .tmenu li:nth-child(2).active ~ .indicator {
-  transform: translateX(-75.5px) rotate(0deg);
+  transform: translateX(-103px) rotate(0deg);
 }
 .tmenu li:nth-child(3).active ~ .indicator {
-  transform: translateX(-75.5px) rotate(51.428deg);
+  transform: translateX(-103px) rotate(60deg);
 }
 .tmenu li:nth-child(4).active ~ .indicator {
-  transform: translateX(-75.5px) rotate(102.856deg);
+  transform: translateX(-103px) rotate(120deg);
 }
 .tmenu li:nth-child(5).active ~ .indicator {
-  transform: translateX(-75.5px) rotate(154.284deg);
+  transform: translateX(-103px) rotate(180deg);
 }
 .tmenu li:nth-child(6).active ~ .indicator {
-  transform: translateX(-75.5px) rotate(205.712deg);
+  transform: translateX(-103px) rotate(240deg);
 }
 .tmenu li:nth-child(7).active ~ .indicator {
-  transform: translateX(-75.5px) rotate(257.14deg);
+  transform: translateX(-103px) rotate(300deg);
 }
 
 .tmenu li:nth-child(8).active ~ .indicator {
-  transform: translateX(-75.5px) rotate(308.568deg);
-}
-
-.tmenu li:nth-child(9).active ~ .indicator {
-  transform: translateX(-75.5px) rotate(359.996deg);
+  transform: translateX(-103px) rotate(360deg);
 }

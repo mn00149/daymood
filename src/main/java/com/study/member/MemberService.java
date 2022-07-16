@@ -11,4 +11,6 @@ public interface MemberService {
 	int total(Map map);
 
 	List<MemberDTO> list(Map map);
+
+	int delete(int friend_no);
 }

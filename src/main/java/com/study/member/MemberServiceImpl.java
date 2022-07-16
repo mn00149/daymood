@@ -30,4 +30,10 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mapper.list(map);
 	}
+
+	@Override
+	public int delete(int friend_no) {
+		// TODO Auto-generated method stub
+		return mapper.delete(friend_no);
+	}
 }

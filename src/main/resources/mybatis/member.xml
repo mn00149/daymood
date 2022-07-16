@@ -28,20 +28,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		limit #{sno}, #{eno}
 	</select>
 
-
 	<resultMap type="com.study.member.MemberDTO$member" id="member">
 		<result property="username" column="username" />
 		<result property="nation" column="nation" />
 		<result property="email" column="email" />
 		<result property="createDate" column="createDate" />
-		<collection property="Flist" ofType="com.study.member.MemberDTO$my_friends" javaType="List" column="Flist">
+		<result property="friendname" column="friendname" />
+		<result property="friend_no" column="friend_no" />
+		<!-- <collection property="Flist" ofType="com.study.member.MemberDTO$my_friends" javaType="List" column="Flist">
 			<result property="friendname" column="friendname" />
 			<result property="username" column="username" />
-		</collection>
+		</collection> -->
 	</resultMap>
 	<select id="list" parameterType="Map"
 		resultMap="member">
-		select u.nation, u.email, u.createDate, f.friendname, f.username
+		select u.nation, u.email, u.createDate, f.friendname, f.username, f.friend_no
 		from User u inner join Friend f
 		on f.username = #{username} and u.username = f.friendname
 		<where>
@@ -55,7 +56,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		</where>
 		ORDER BY f.friendname DESC
-		limit #{sno}, #{eno}
+
 	</select>
+
+	<delete id="delete" parameterType="int">
+		delete from Friend
+		where friend_no = #{friend_no}
+	</delete>
 
 </mapper>

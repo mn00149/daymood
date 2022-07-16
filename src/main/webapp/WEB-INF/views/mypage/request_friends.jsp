@@ -38,7 +38,7 @@
                                 <th>수락여부</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="requestlist">
                             <tr>
                                 <td>HGD1996</td>
                                 <td><img src="/images/daymood.png" /></td>
@@ -80,4 +80,6 @@
 		</div>
 	</div>
 </body>
+<script src="/js/Fproducer.js" defer></script>
+<script src="/js/Fconsumer.js" defer></script>
 </html>

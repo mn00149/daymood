@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Friends</title>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/member.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
 </head>
 <body>
 	<div id="content" class="ink_content" role="main">
@@ -38,21 +38,8 @@
 								<th>관리</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td><img src="/images/daymood.png" /></td>
-								<td>HGD1996</td>
-								<td>대한민국</td>
-								<td>hgd1996@naver.com</td>
-								<td>2022-07-13</td>
-								<td>
-									<button>
-										<i class="fa-solid fa-trash"></i>
-									</button>
-								</td>
-							</tr>
-							<c:choose>
-
+						<tbody class="friendlist">
+							<%-- <c:choose>
 								<c:when test="${not empty list}">
 									<c:forEach var="dto" items="${list}">
 										<tr>
@@ -69,8 +56,7 @@
 										</tr>
 									</c:forEach>
 								</c:when>
-
-							</c:choose>
+							</c:choose> --%>
 						</tbody>
 					</table>
 				</div>
@@ -110,4 +96,6 @@
 		
 	</div>
 </body>
+<script src="/js/Fproducer.js" defer></script>
+<script src="/js/Fconsumer.js" defer></script>
 </html>

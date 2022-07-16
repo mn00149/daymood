@@ -16,7 +16,7 @@ public class MemberDTO {
 		private String role;
 		private List<my_friends> Flist;
 		private String friendname;
-		
+		private int friend_no;
 	}
 	
 	@Data

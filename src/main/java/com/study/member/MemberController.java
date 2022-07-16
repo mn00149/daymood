@@ -10,9 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.study.member.MemberDTO.*;
@@ -103,6 +107,24 @@ public class MemberController {
 	    
 		return "/mypage/my_friends";
 	}
+	
+	@GetMapping("/mypage/my_friends/{username}")
+	  public ResponseEntity<List<MemberDTO>> getList(@PathVariable("username") String username) {
+
+	    Map map = new HashMap();
+	    map.put("username", username);
+	    
+	    return new ResponseEntity<List<MemberDTO>>(service.list(map), HttpStatus.OK);
+	  }
+	
+	@DeleteMapping("/mypage/my_friends/{friend_no}")
+	  public ResponseEntity<String> remove(@PathVariable("friend_no") int friend_no) {
+		
+	 
+	    return service.delete(friend_no) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
+	        : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	 
+	  }
 	
 	@GetMapping("/mypage/request_friends")
 	public String request_friends() {
