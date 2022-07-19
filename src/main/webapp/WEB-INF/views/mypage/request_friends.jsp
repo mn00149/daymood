@@ -29,28 +29,25 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>아이디</th>
                                 <th>프로필 사진</th>
                                 <th>이름</th>
+                                <th>국가</th>
                                 <th>이메일</th>
-                                <th>성별</th>
                                 <th>가입일</th>
                                 <th>수락여부</th>
                             </tr>
                         </thead>
                         <tbody class="requestlist">
-                            <tr>
-                                <td>HGD1996</td>
+                            <!-- <tr>
                                 <td><img src="/images/daymood.png" /></td>
                                 <td>홍길동</td>
                                 <td>hgd1996@naver.com</td>
-                                <td>남</td>
                                 <td>2022-07-13</td>
                                 <td>
                                     <button><i class="fa-solid fa-check"></i></button>
                                     <button><i class="fa-solid fa-x"></i></button>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
@@ -80,6 +77,6 @@
 		</div>
 	</div>
 </body>
-<script src="/js/Fproducer.js" defer></script>
-<script src="/js/Fconsumer.js" defer></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="/js/reqFriends.js" defer></script>
 </html>

@@ -1,22 +1,22 @@
 function getList() {
-	let username = '홍길동';
+	let user_no = 1;
 	/*         let sno = param.sno;
 			 let eno = param.eno;*/
-	return fetch(`/mypage/my_friends/${username}`, { method: 'get' })
+	return fetch(`/mypage/my_friends/${user_no}`, { method: 'get' })
 		.then(response => response.json())
 		.catch(console.log)
 }
 
-function remove(friend_no) {
-        return fetch(`/mypage/my_friends/${friend_no}`,{method: 'delete'})
+function remove(f_no) {
+        return fetch(`/mypage/my_friends/${f_no}`,{method: 'delete'})
                .then(response => response.text())
                .catch(console.log);
 }
 
 function getrequest() {
-	let username = '홍길동';
+	let t_id = 1;
 	
-	return fetch(`/mypage/request_friends/${username}`, {method : 'get'} )
+	return fetch(`/mypage/request_friends/${t_id}`, {method : 'get'} )
 		.then(response => response.json())
 		.catch(console.log)
 }

@@ -15,6 +15,7 @@ public class MemberDTO {
 		private String createDate; 			
 		private String role;
 		private List<my_friends> Flist;
+		private List<requestDTO> list;
 		private String friendname;
 		private int friend_no;
 	}

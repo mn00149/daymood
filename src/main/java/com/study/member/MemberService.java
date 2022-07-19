@@ -10,7 +10,13 @@ public interface MemberService {
 
 	int total(Map map);
 
-	List<MemberDTO> list(Map map);
+	int delete(int f_no);
 
-	int delete(int friend_no);
+	List<userDTO> rlist(Map map);
+
+	int rdelete(int request_no);
+
+	int add(Map map);
+
+	List<userDTO> list(Map map);
 }

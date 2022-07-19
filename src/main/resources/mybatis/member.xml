@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where username = #{username}
 	</select>
 
-	<select id="total" parameterType="Map" resultType="int">
+	<!-- <select id="total" parameterType="Map" resultType="int">
 		select count(*) from Friend
 		<where>
 			<choose>
@@ -26,42 +26,70 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where username = #{username}
 		ORDER BY username DESC
 		limit #{sno}, #{eno}
-	</select>
+	</select> -->
 
-	<resultMap type="com.study.member.MemberDTO$member" id="member">
-		<result property="username" column="username" />
-		<result property="nation" column="nation" />
-		<result property="email" column="email" />
-		<result property="createDate" column="createDate" />
-		<result property="friendname" column="friendname" />
-		<result property="friend_no" column="friend_no" />
-		<!-- <collection property="Flist" ofType="com.study.member.MemberDTO$my_friends" javaType="List" column="Flist">
-			<result property="friendname" column="friendname" />
-			<result property="username" column="username" />
-		</collection> -->
+
+	<resultMap type="com.study.member.friendDTO" id="friend">
+			<result property="f_no" column="f_no" />
+			<result property="user_no" column="user_no" />
+			<result property="friends_no" column="friends_no" />
+			<collection property="list" ofType="com.study.member.userDTO" javaType="List" column="list" resultMap="user" />
 	</resultMap>
-	<select id="list" parameterType="Map"
-		resultMap="member">
-		select u.nation, u.email, u.createDate, f.friendname, f.username, f.friend_no
-		from User u inner join Friend f
-		on f.username = #{username} and u.username = f.friendname
-		<where>
-			<choose>
-				<when test="col=='username'">
-					f.friendname like concat('%', #{word} ,'%')
-				</when>
-				<when test="col=='nation'">
-					u.nation like concat('%', #{word} ,'%')
-				</when>
-			</choose>
-		</where>
-		ORDER BY f.friendname DESC
-
+	<resultMap type="com.study.member.userDTO" id="user">
+			<result property="username" column="username" />
+			<result property="email" column="email" />
+			<result property="createDate" column="createDate" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+	</resultMap>
+	<select id="list" parameterType="int" resultMap="friend">
+	
+		select u.user_no, u.username, u.nation, u.email ,u.createDate, f_no, f.friends_no from f f
+		 inner join user u
+		 on u.user_no = f.friends_no
+		 where f.user_no = #{user_no};
+		 
 	</select>
 
 	<delete id="delete" parameterType="int">
-		delete from Friend
-		where friend_no = #{friend_no}
+		delete from f
+		where f_no = #{f_no}
 	</delete>
 
+
+	<resultMap type="com.study.member.userDTO" id="req">
+		<result property="username" column="username" />
+			<result property="email" column="email" />
+			<result property="createDate" column="createDate" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+		<collection property="rlist" ofType="com.study.member.requestDTO" javaType="List" column="rlist" resultMap="requestlist" />
+	</resultMap>
+	<resultMap type="com.study.member.requestDTO" id="requestlist">
+			<result property="request_no" column="request_no" />
+			<result property="f_id" column="f_id" />
+			<result property="t_id" column="t_id" />
+	</resultMap>
+	<select id="rlist" parameterType="Map" resultMap="req">
+		select * from rf r
+		 inner join user u
+		 on u.user_no = r.f_id
+		 where r.t_id = #{t_id}
+		order by u.username ASC
+	</select>
+	
+	<delete id="rdelete" parameterType="int">
+		delete from rf
+		where request_no = #{request_no}
+	</delete>
+	
+	<insert id="add" parameterType="map">
+	
+		insert into f(user_no, friends_no)
+		values (#{t_id}, #{f_id}), (#{f_id}, #{t_id})
+
+		
+	</insert>
+	
+	
 </mapper>
