@@ -52,21 +52,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int add(Map map) {
-//		Map map = new HashMap();
-//		map.put("f_id", f_id);
-//		map.put("t_id", t_id);
-//		mapper.add(map);
-//		
-//		map.put("t_id", f_id);
-//		map.put("f_id", t_id);
-//		mapper.add(map);
-		
+
 		return mapper.add(map);
 	}
 
 	@Override
-	public List<userDTO> plist(Map map) {
-		// TODO Auto-generated method stub
+	public List<boardDTO> plist(Map map) {
 		return mapper.plist(map);
+	}
+
+	@Override
+	public List<replyDTO> replylist(Map map) {
+		return mapper.replylist(map);
 	}
 }

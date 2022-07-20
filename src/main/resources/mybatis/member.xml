@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<resultMap type="com.study.member.userDTO" id="req">
-		<result property="username" column="username" />
+			<result property="username" column="username" />
 			<result property="email" column="email" />
 			<result property="createDate" column="createDate" />
 			<result property="user_no" column="user_no" />
@@ -107,5 +107,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY board_no DESC
 		limit #{sno}, #{eno}
 	</select>
+	
+	<resultMap type="com.study.member.boardDTO" id="boardDTO">
+		<result property="author" column="author" />
+		<result property="nation" column="nation" />
+		<result property="weather_category" column="weather_category" />
+		<result property="board_no" column="board_no" />
+	</resultMap>
+	<select id="replylist" parameterType="Map" resultMap="boardDTO">
+		select b.author, b.nation, b.weather_category, b.board_no, r.reply_no, r.content, r.create_date 
+		from Reply r join Board b 
+		where r.user_no = #{user_no}
+		<where>
+			<choose>
+				<when test="col=='category'">
+					category like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='content'">
+					content like concat('%', #{word} ,'%')
+				</when>
+				
+			</choose>
+		</where>
+		ORDER BY r.reply_no DESC
+		limit #{sno}, #{eno}
+	</select>
+	
 	
 </mapper>

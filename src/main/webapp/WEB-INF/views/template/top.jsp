@@ -52,7 +52,7 @@ header {
   justify-content: space-between;
   align-items: center;
   margin: 20px 20px;
-  background-color: #c14c3d;
+  background:linear-gradient(#e66465, #9198e5);
   border-bottom: 1px solid #c1c4c7;
   border-radius: 10px;
   box-sizing: border-box;
@@ -102,8 +102,12 @@ header {
 	display:inline-block;
 	vertical-align: middle;
 }
-.logo > img {
+.logo > a > img {
 	max-width : 150px;
+}
+a {
+	text-decoration:none;
+	color: none;
 }
   </style>
 </head>
@@ -111,7 +115,7 @@ header {
   <div class="container">
     <header>
     <div class="logo">
-      <img src="/images/daymood.png" alt="logo">
+      <a href="/main"><img src="/images/daymood.png" alt="logo"></a>
 	</div>
         <ul id="menu">
           <li><a href="#">Mood</a></li>

@@ -42,7 +42,7 @@
             -webkit-text-stroke: 0.3vw #383d52;
             border-right: 2px solid #01fe87;
             overflow: hidden;
-            animation: animate 6s linear infinite;
+            animation: animate 4s linear infinite;
         }
 
         @keyframes animate {

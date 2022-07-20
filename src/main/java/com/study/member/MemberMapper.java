@@ -12,7 +12,9 @@ public interface MemberMapper {
 
 	List<userDTO> list(Map map);
 	
-	List<userDTO> plist(Map map);
+	List<boardDTO> plist(Map map);
+	
+	List<replyDTO> replylist(Map map);
 
 	int delete(int f_no);
 

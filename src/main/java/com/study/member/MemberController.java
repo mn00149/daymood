@@ -44,11 +44,6 @@ public class MemberController {
 		return "/mypage/member";
 	}
 	
-//	@GetMapping("/mypage/my_posted")
-//	public String my_post() {
-//		
-//		return "/mypage/my_posted";
-//	}
 	
 	@GetMapping("/home")
 	public String intro() {
@@ -60,11 +55,11 @@ public class MemberController {
 		return "/main";
 	}
 	
-	@GetMapping("/mypage/my_comment")
-	public String my_comment() {
-		
-		return "/mypage/my_comment";
-	}
+//	@GetMapping("/mypage/my_comment")
+//	public String my_comment() {
+//		
+//		return "/mypage/my_comment";
+//	}
 	
 	@GetMapping("/mypage/my_scrap")
 	public String my_scrap() {
@@ -218,7 +213,7 @@ public class MemberController {
 
 	    int ptotal = service.ptotal(map);
 
-	    List<userDTO> plist = service.plist(map);
+	    List<boardDTO> plist = service.plist(map);
 
 	    String paging = Utility.paging(ptotal, nowPage, recordPerPage, col, word);
 	    log.info("pList : " + plist);
@@ -230,6 +225,49 @@ public class MemberController {
 	    request.setAttribute("paging", paging);
 	    
 		return "/mypage/my_posted";
+	}
+	
+	@RequestMapping("/mypage/my_comment")
+	public String my_comment(HttpServletRequest request) {
+		// 검색관련------------------------
+		String col = Utility.checkNull(request.getParameter("col"));
+		String word = Utility.checkNull(request.getParameter("word"));
+		
+		if (col.equals("total")) {
+			word = "";
+		}
+		
+		// 페이지관련-----------------------
+		int nowPage = 1;// 현재 보고있는 페이지
+		if (request.getParameter("nowPage") != null) {
+			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+		}
+		int recordPerPage = 10;// 한페이지당 보여줄 레코드갯수
+		
+		int sno = (nowPage - 1) * recordPerPage;
+		int eno = recordPerPage;
+		
+		Map map = new HashMap();
+		map.put("col", col);
+		map.put("word", word);
+		map.put("sno", sno);
+		map.put("eno", eno);
+		map.put("user_no", 1);
+		
+		int ptotal = service.ptotal(map);
+		
+		List<replyDTO> replylist = service.replylist(map);
+		
+		String paging = Utility.paging(ptotal, nowPage, recordPerPage, col, word);
+		log.info("replyList : " + replylist);
+		//request에 Model사용 결과 담는다
+		request.setAttribute("replylist", replylist);
+		request.setAttribute("nowPage", nowPage);
+		request.setAttribute("col", col);
+		request.setAttribute("word", word);
+		request.setAttribute("paging", paging);
+		
+		return "/mypage/my_comment";
 	}
 	
 }
