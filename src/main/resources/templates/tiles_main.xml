@@ -9,9 +9,14 @@
     <put-attribute name="header" value="/WEB-INF/views/template/top.jsp" />
   </definition>
   
-  <definition name="/home" extends="main">
+  <definition name="/main" extends="main">
     <put-attribute name="title" value="기본페이지"></put-attribute>
-    <put-attribute name="body" value="/WEB-INF/views/index.jsp" />
+    <put-attribute name="body" value="/WEB-INF/views/main.jsp" />
+  </definition>
+  
+  <definition name="/home" extends="main">
+    <put-attribute name="title" value="Intro"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/intro.jsp" />
   </definition>
   
    <definition name="/mypage/member" extends="main">

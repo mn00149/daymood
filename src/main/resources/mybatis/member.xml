@@ -11,8 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where username = #{username}
 	</select>
 
-	<!-- <select id="total" parameterType="Map" resultType="int">
-		select count(*) from Friend
+	<select id="ptotal" parameterType="Map" resultType="int">
+		select count(*) from Board
 		<where>
 			<choose>
 				<when test="col=='username'">
@@ -23,10 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</when>
 			</choose>
 		</where>
-		where username = #{username}
-		ORDER BY username DESC
-		limit #{sno}, #{eno}
-	</select> -->
+		where user_no = #{user_no}
+	</select>
 
 
 	<resultMap type="com.study.member.friendDTO" id="friend">
@@ -42,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<result property="user_no" column="user_no" />
 			<result property="nation" column="nation" />
 	</resultMap>
-	<select id="list" parameterType="int" resultMap="friend">
+	<select id="list" parameterType="Map" resultMap="friend">
 	
 		select u.user_no, u.username, u.nation, u.email ,u.createDate, f_no, f.friends_no from f f
 		 inner join user u
@@ -84,12 +82,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<insert id="add" parameterType="map">
-	
 		insert into f(user_no, friends_no)
 		values (#{t_id}, #{f_id}), (#{f_id}, #{t_id})
-
-		
 	</insert>
 	
+	<select id="plist" parameterType="Map" resultType="com.study.member.boardDTO">
+		select * from Board
+		where user_no = #{user_no}
+		<where>
+			<choose>
+				<when test="col=='title'">
+					title like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='content'">
+					content like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='title_content'">
+					title like CONCAT('%',#{word},'%')
+					or
+					content like CONCAT('%',#{word},'%')
+				</when>
+			</choose>
+		</where>
+		ORDER BY board_no DESC
+		limit #{sno}, #{eno}
+	</select>
 	
 </mapper>

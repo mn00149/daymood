@@ -6,17 +6,9 @@
 <head>
   <title>기본페이지</title>
   <meta charset="utf-8">
-<style type="text/css">
-    
-
- 
-</style>
 </head>
-<body> 
- 
-<div class="container">
-    <p><a href="/contents/mainlist" >SHOP NOW</a></p>
+
+<body>
     
-</div>
-</body> 
+</body>
 </html>

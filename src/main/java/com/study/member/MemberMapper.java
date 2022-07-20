@@ -7,10 +7,18 @@ import com.study.member.MemberDTO.*;
 
 public interface MemberMapper {
 	member read(String username);
-	int total(Map map);
+
+	int ptotal(Map map);
+
 	List<userDTO> list(Map map);
+	
+	List<userDTO> plist(Map map);
+
 	int delete(int f_no);
+
 	List<userDTO> rlist(Map map);
+
 	int rdelete(int request_no);
+
 	int add(Map map);
 }

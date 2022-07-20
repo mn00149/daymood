@@ -21,9 +21,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int total(Map map) {
+	public int ptotal(Map map) {
 		// TODO Auto-generated method stub
-		return mapper.total(map);
+		return mapper.ptotal(map);
 	}
 
 	@Override
@@ -62,5 +62,11 @@ public class MemberServiceImpl implements MemberService {
 //		mapper.add(map);
 		
 		return mapper.add(map);
+	}
+
+	@Override
+	public List<userDTO> plist(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.plist(map);
 	}
 }

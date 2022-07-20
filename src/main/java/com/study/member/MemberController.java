@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.study.member.MemberDTO.member;
+import com.study.utility.Utility;
 
 @Controller
 public class MemberController {
@@ -42,10 +44,20 @@ public class MemberController {
 		return "/mypage/member";
 	}
 	
-	@GetMapping("/mypage/my_posted")
-	public String my_post() {
-		
-		return "/mypage/my_posted";
+//	@GetMapping("/mypage/my_posted")
+//	public String my_post() {
+//		
+//		return "/mypage/my_posted";
+//	}
+	
+	@GetMapping("/home")
+	public String intro() {
+		return "/intro";
+	}
+	
+	@GetMapping("/main")
+	public String main() {
+		return "/main";
 	}
 	
 	@GetMapping("/mypage/my_comment")
@@ -177,6 +189,47 @@ public class MemberController {
 	        : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	  }
 	
-	
+	@RequestMapping("/mypage/my_posted")
+	public String my_posted(HttpServletRequest request) {
+	    // 검색관련------------------------
+	    String col = Utility.checkNull(request.getParameter("col"));
+	    String word = Utility.checkNull(request.getParameter("word"));
+
+	    if (col.equals("total")) {
+	      word = "";
+	    }
+
+	    // 페이지관련-----------------------
+	    int nowPage = 1;// 현재 보고있는 페이지
+	    if (request.getParameter("nowPage") != null) {
+	      nowPage = Integer.parseInt(request.getParameter("nowPage"));
+	    }
+	    int recordPerPage = 10;// 한페이지당 보여줄 레코드갯수
+
+	    int sno = (nowPage - 1) * recordPerPage;
+	    int eno = recordPerPage;
+
+	    Map map = new HashMap();
+	    map.put("col", col);
+	    map.put("word", word);
+	    map.put("sno", sno);
+	    map.put("eno", eno);
+	    map.put("user_no", 1);
+
+	    int ptotal = service.ptotal(map);
+
+	    List<userDTO> plist = service.plist(map);
+
+	    String paging = Utility.paging(ptotal, nowPage, recordPerPage, col, word);
+	    log.info("pList : " + plist);
+	     //request에 Model사용 결과 담는다
+	    request.setAttribute("plist", plist);
+	    request.setAttribute("nowPage", nowPage);
+	    request.setAttribute("col", col);
+	    request.setAttribute("word", word);
+	    request.setAttribute("paging", paging);
+	    
+		return "/mypage/my_posted";
+	}
 	
 }
