@@ -30,6 +30,7 @@
             </div>
             
             <button>Login</button>
+            <a href="/oauth2/authorization/google">구글로그인</a>
             <!-- <a href="#"><img src="../image/kakao_login_large_wide.png" alt=""></a> -->
         </form>
     </div>

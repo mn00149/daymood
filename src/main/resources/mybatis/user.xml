@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.study.user.UserMapper">
 	<insert id="create" parameterType="com.study.user.UserDTO">
-		INSERT INTO User(password, email, role, nation, createDate, username)
-		VALUES( #{password}, #{email}, #{role}, #{nation}, NOW(),#{username})
+		INSERT INTO User(password, email, role, nation, createDate, username, provider, user_image)
+		VALUES( #{password}, #{email}, #{role}, #{nation}, NOW(),#{username}, #{provider}, #{user_image})
 	</insert>
 	<select id="findByUsername" parameterType="String" resultType="com.study.user.UserDTO">
 		SELECT * FROM User

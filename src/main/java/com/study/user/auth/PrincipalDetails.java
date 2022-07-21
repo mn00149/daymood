@@ -2,11 +2,15 @@ package com.study.user.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.study.user.UserDTO;
+
+import lombok.Data;
 
 
 
@@ -15,13 +19,23 @@ import com.study.user.UserDTO;
 //오브젝트 타입 => Authentication 타입 객체
 //User 오브젝트 타입 => UserDetails 타입객체
 
-//Security Session => Authentication => UserDetails(PrincipalDetails) 
-public class PrincipalDetails implements UserDetails{
+//Security Session => Authentication => UserDetails(PrincipalDetails)
+@Data
+public class PrincipalDetails implements UserDetails, OAuth2User{
   
   private UserDTO user;//콤포지션
-  
+  private Map<String, Object> attributes;
+  //일반 로그인
   public PrincipalDetails(UserDTO user) {
     this.user = user;
+  }
+  
+  //Oauth 로그인
+  public PrincipalDetails(UserDTO user, Map<String, Object> attributes) {
+    
+    this.user = user;
+    this.attributes = attributes;
+    
   }
   //해당유저의 권한을 리턴
   @Override
@@ -73,6 +87,16 @@ public class PrincipalDetails implements UserDetails{
     // 우리사이트에서 회원이 1년동안 로그인이 안되었다면 휴면계정으로 쓸때
     //현제시간 - 로그인시간 > 1년 => false반환 
     return true;
+  }
+  @Override
+  public Map<String, Object> getAttributes() {
+    // TODO Auto-generated method stub
+    return attributes;
+  }
+  @Override
+  public String getName() {
+    // TODO Auto-generated method stub
+    return null;
   }
  
 }
