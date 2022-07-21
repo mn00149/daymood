@@ -65,4 +65,26 @@ public class MemberServiceImpl implements MemberService {
 	public List<replyDTO> replylist(Map map) {
 		return mapper.replylist(map);
 	}
+
+	@Override
+	public int stotal(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.stotal(map);
+	}
+
+	@Override
+	public List<scrapDTO> scraplist(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.scraplist(map);
+	}
+
+	@Override
+	public int ScrapDelete(int scrapno) {
+		// TODO Auto-generated method stub
+		return mapper.ScrapDelete(scrapno);
+	}
+
+
+
+
 }

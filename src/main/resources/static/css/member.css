@@ -272,8 +272,10 @@ input {
 
 .friends_section {
   height: 500px;
-  overflow: auto;
+  overflow : auto;
 }
+
+
 
 table {
   width: 100%;
@@ -328,12 +330,18 @@ td img {
   display: flex;
   padding: 10px 20px;
   margin-left : 10px;
+  justify-content: center;
 }
-.page div {
+
+.page ul {
+	display: flex;
+	list-style: none;
+}
+.page a , .page li, page div {
   padding: 10px;
   border: 2px solid #d5d0d0;
   height: 40px;
-  width: 40px;
+  width: 35px;
   border-radius: 100%;
   display: flex;
   justify-content: center;

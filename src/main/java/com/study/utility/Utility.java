@@ -120,30 +120,31 @@ public class Utility {
     int endPage = (nowGrp * pagePerBlock); // 특정 그룹의 페이지 목록 종료
 
     StringBuffer str = new StringBuffer();
-    str.append("<div style='text-align:center'>");
-    str.append("<ul class='pagination'> ");
-    int _nowPage = (nowGrp - 1) * pagePerBlock; // 10개 이전 페이지로 이동
+    str.append("<div class='page'>");
+    
+    int _nowPage = (nowGrp - 1) * pagePerBlock; // 5개 이전 페이지로 이동
     if (nowGrp >= 2) {
-      str.append("<li><a href='./list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'>이전</A></li>");
+      str.append("<div><a href='./my_scrap?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'><i class=\"fa-solid fa-angles-left\"></i></A></div>");
     }
-
+    
+str.append("<ul>");
     for (int i = startPage; i <= endPage; i++) {
       if (i > totalPage) {
         break;
       }
 
       if (nowPage == i) {
-        str.append("<li class='active'><a href=#>" + i + "</a></li>");// 선택한페이지 색깔입히는거?
+        str.append("<li><a href=#>" + i + "</a></li>");// 선택한페이지 색깔입히는거?
       } else {
-        str.append("<li><a href='./list?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i + "</A></li>");
+        str.append("<li><a href='./my_scrap?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i + "</A></li>");
       }
     }
 
+    str.append("</ul>");
     _nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
     if (nowGrp < totalGrp) {
-      str.append("<li><A href='./list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'>다음</A></li>");
+      str.append("<div><A href='./my_scrap?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'><i class=\"fa-solid fa-angles-right\"></i></A></div>");
     }
-    str.append("</ul>");
     str.append("</div>");
 
     return str.toString();

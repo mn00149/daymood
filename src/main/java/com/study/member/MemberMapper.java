@@ -23,4 +23,10 @@ public interface MemberMapper {
 	int rdelete(int request_no);
 
 	int add(Map map);
+	
+	int stotal(Map map);
+
+	List<scrapDTO> scraplist(Map map);
+	
+	int ScrapDelete(int scrapno);
 }

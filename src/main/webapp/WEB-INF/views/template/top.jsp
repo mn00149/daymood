@@ -52,7 +52,8 @@ header {
   justify-content: space-between;
   align-items: center;
   margin: 20px 20px;
-  background:linear-gradient(#e66465, #9198e5);
+  backgorund-color:rgba(255, 55, 59, 0.7);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
   border-bottom: 1px solid #c1c4c7;
   border-radius: 10px;
   box-sizing: border-box;

@@ -23,4 +23,11 @@ public interface MemberService {
 	List<boardDTO> plist(Map map);
 
 	List<replyDTO> replylist(Map map);
+
+	int stotal(Map map);
+
+	List<scrapDTO> scraplist(Map map);
+
+	int ScrapDelete(int scrapno);
+
 }

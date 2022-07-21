@@ -21,4 +21,7 @@ public class boardDTO {
 	private String recommend_category;
 	private String info_category;
 	private List<member> list;
+	private List<scrapDTO> slist;
+	
+	private int scrapno;
 }

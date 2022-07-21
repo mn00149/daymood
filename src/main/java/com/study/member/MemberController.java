@@ -61,11 +61,76 @@ public class MemberController {
 //		return "/mypage/my_comment";
 //	}
 	
+	//스크랩 시작
 	@GetMapping("/mypage/my_scrap")
-	public String my_scrap() {
+	public String my_scrap(HttpServletRequest request) {
+		// 검색관련------------------------
+		String col = Utility.checkNull(request.getParameter("col"));
+		String word = Utility.checkNull(request.getParameter("word"));
+		
+		if (col.equals("total")) {
+			word = "";
+		}
+		
+		// 페이지관련-----------------------
+		int nowPage = 1;// 현재 보고있는 페이지
+		if (request.getParameter("nowPage") != null) {
+			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+		}
+		int recordPerPage = 5;// 한페이지당 보여줄 레코드갯수
+		
+		int sno = (nowPage - 1) * recordPerPage;
+		int eno = recordPerPage;
+		
+		Map map = new HashMap();
+		map.put("col", col);
+		map.put("word", word);
+		map.put("sno", sno);
+		map.put("eno", eno);
+		map.put("user_no", 1);
+		
+		int stotal = service.stotal(map);
+		
+		List<scrapDTO> scraplist = service.scraplist(map);
+		
+		String paging = Utility.paging(stotal, nowPage, recordPerPage, col, word);
+		log.info("scraplist : " + scraplist);
+		//request에 Model사용 결과 담는다
+		request.setAttribute("scraplist", scraplist);
+		request.setAttribute("nowPage", nowPage);
+		request.setAttribute("col", col);
+		request.setAttribute("word", word);
+		request.setAttribute("paging", paging);
+
 		
 		return "/mypage/my_scrap";
+		//동기
 	}
+	
+	@GetMapping("/mypage/my_scrap/{user_no}")
+	@ResponseBody
+	  public ResponseEntity<List<scrapDTO>> scrapList(@PathVariable("user_no") int user_no
+			  /*@PathVariable("sno") int sno,
+			  @PathVariable("eno") int eno*/) {
+		
+		Map map = new HashMap();
+		map.put("user_no", user_no);
+//		map.put("sno", sno);
+//		map.put("eno", eno);
+		
+	    //비동기
+	    return new ResponseEntity<List<scrapDTO>>(service.scraplist(map), HttpStatus.OK);
+	  }
+	
+	@DeleteMapping("/mypage/my_scrap/{scrapno}")
+	@ResponseBody
+	  public ResponseEntity<String> scraprm(@PathVariable("scrapno") int scrapno) {
+	 
+	    return service.ScrapDelete(scrapno) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
+	        : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	  }
+	
+	//스크랩 끝
 	
 	@GetMapping("/mypage/my_letter")
 	public String my_letter() {
