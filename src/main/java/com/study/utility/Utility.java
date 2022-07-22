@@ -111,7 +111,7 @@ public class Utility {
    * @param word          검색어
    * @return 페이징 생성 문자열
    */
-  public static String paging(int totalRecord, int nowPage, int recordPerPage, String col, String word) {
+  public static String spaging(int totalRecord, int nowPage, int recordPerPage, String col, String word) {
     int pagePerBlock = 5; // 블럭당 페이지 수
     int totalPage = (int) (Math.ceil((double) totalRecord / recordPerPage)); // 전체 페이지, ceil: 올림
     int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));// 전체 그룹
