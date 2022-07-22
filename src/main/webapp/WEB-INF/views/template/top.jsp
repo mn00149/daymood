@@ -27,7 +27,7 @@ body {
 }
 
 header {
-  width: 100%;
+  width: 1400;
   height: 80px;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -50,6 +50,7 @@ ul {
   display: flex;
   font-size: 16px;
   gap: 20px;
+  margin-left: -120px;
 
 }
 ul>li {
@@ -72,19 +73,27 @@ ul>li {
   padding-right: 15px;
   margin-right: 5px;
 }
+
+.container img {
+	width : 200px;
+	height : 58px;
+	display: flex; 
+	justify-content:center;
+	flex-direction: column;
+}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
     
-      <h1>로고</h1>
+      <h1><a href="/"><img src="/image/daymood_logo.png" alt="no image"></a></h1>
 
         <ul id="menu">
-          <li><a href="#">게시판1</a></li>
-          <li><a href="#">게시판2</a></li>
-          <li><a href="#">게시판3</a></li>
-          <li><a href="#">게시판4</a></li>
+          <li><a href="/board/weather_list">mood</a></li>
+          <li><a href="#">info</a></li>
+          <li><a href="/board/recommend_list">recommend</a></li>
+          <li><a href="#">chatting</a></li>
         </ul>
 
       <div id="login">
