@@ -1,5 +1,6 @@
 package com.study.user;
 
+
 import java.sql.Timestamp;
 
 
@@ -27,7 +28,6 @@ public class UserDTO {
     this.password = password;
     this.nation = nation;
     this.role = role;
-    this.user_image = user_image;
+    this.user_image = user_image;}
   }
 
-}

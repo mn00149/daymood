@@ -17,13 +17,14 @@ public class BoardDTO {
   private String title;          
   private String content;            
   private int view_cnt;                      
-  private int recommaend_cnt;                
+  private int recommend_cnt;                
   private String create_date;                       
   private String weather_category;                  
   private String recommend_category;                
   private String info_category;   
   //@DateTimeFormat(pattern = "yyyy-MM-dd")
   //private Date create_date;
+  
   
   private UserDTO udto;
 }

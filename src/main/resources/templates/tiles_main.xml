@@ -14,5 +14,14 @@
     <put-attribute name="body" value="/WEB-INF/views/index.jsp" />
   </definition>
   
+  <definition name="/board/list" extends="main">
+    <put-attribute name="title" value="all"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/list.jsp" />
+  </definition>
   
+  <definition name="/read" extends="main">
+    <put-attribute name="title" value="all"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/read.jsp" />
+  </definition>
+ 
 </tiles-definitions>

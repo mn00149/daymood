@@ -21,4 +21,6 @@ public interface BoardMapper {
   void upViewcnt(int board_no);
   
   List<BoardDTO> list2(Map map);
+  List<Map> getAll();
+
 }

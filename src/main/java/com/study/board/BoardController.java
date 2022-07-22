@@ -7,22 +7,43 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.study.board.BoardController;
+import com.study.reply.ReplyDTO;
+import com.study.reply.ReplyService;
 import com.study.utility.Utility;
 
 @Controller
 public class BoardController {
+  private static final Logger log = LoggerFactory.getLogger(BoardController.class);
+  
+  
 
   @Autowired
   @Qualifier("com.study.board.BoardServiceImpl")
   private BoardService dao;
+  
+  @Autowired
+  @Qualifier("com.study.reply.ReplyServiceImpl")
+  public ReplyService rservice;
+
+  @GetMapping(value = "/board/getAll", produces = "application/json;charset=UTF-8")
+  @ResponseBody
+  public List<Map> getAll(HttpServletRequest request) {
+    List<Map> list = dao.getAll();
+    //log.info("list:"+list);
+    return list;
+  }
+  
   
   // weather_main list start
   @GetMapping("/board/list")
@@ -78,6 +99,7 @@ public class BoardController {
     request.setAttribute("col", col);
     request.setAttribute("word", word);
     request.setAttribute("nowPage", nowPage);
+    request.setAttribute("rservice", rservice);
     
     return "/board/list";
   } // weather_main list end
@@ -142,6 +164,25 @@ public class BoardController {
   public String read(@PathVariable int board_no, Model model, HttpServletRequest request) {
     dao.upViewcnt(board_no); // 조회수 증가
     model.addAttribute("dto", dao.read(board_no));
+    
+    /* 댓글 관련 시작 */
+    int nPage = 1;
+    if (request.getParameter("nPage") != null) {
+      nPage = Integer.parseInt(request.getParameter("nPage"));
+    }
+    int recordPerPage = 3;
+ 
+    int sno = (nPage - 1) * recordPerPage;
+    int eno = recordPerPage;
+ 
+    Map map = new HashMap();
+    map.put("sno", sno);
+    map.put("eno", eno);
+    map.put("nPage", nPage);
+ 
+    model.addAllAttributes(map);
+ 
+    /* 댓글 처리 끝 */
     
     return "/read";
   } // read end

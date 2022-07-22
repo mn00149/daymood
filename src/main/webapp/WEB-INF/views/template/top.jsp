@@ -1,12 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <title>Document</title>
   <style>
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -98,6 +102,26 @@ ul>li {
   line-height: 60px;
 }
   </style>
+    <script>
+    $(function(){
+        $.ajax({
+            url: "/board/getAll",
+            type: "GET",
+            //data: JSON.stringify(),
+            //contentType: "application/json; charset=utf-8;",
+            dataType: "json",
+            success: function(data){
+            for (var i = 0; i < data.length; i++) {
+            		$('#pmenu').append("<li><a href='/board/read/"+data[i].board_no+"'>"+ "</a></li>");
+            }                  
+
+            },
+            error: function(request,status,error){
+               alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+            }                
+        });//ajax end
+  });//페이지로딩
+</script>
 </head>
 <body>
   <div class="container">
