@@ -14,8 +14,8 @@ public class BoardServiceImpl implements BoardService {
   private BoardMapper mapper;
 
   @Override
-  public List<BoardDTO> list(Map map) {
-    return mapper.list(map);
+  public List<BoardDTO> weather_list(Map map) {
+    return mapper.weather_list(map);
   }
 
   @Override
@@ -49,21 +49,18 @@ public class BoardServiceImpl implements BoardService {
   }
 
   @Override
+  public List<BoardDTO> recommend_list(Map map) {
+    return mapper.recommend_list(map);
+  }
 
+  @Override
   public List<BoardDTO> list2(Map map) {
     return mapper.list2(map);
   }
 
-
-
-  
-  
-
-
-  public List<Map> getAll() {
-    // TODO Auto-generated method stub
-    return mapper.getAll();
-  }
-
+  /*
+   * @Override public List<Map> getAll() { // TODO Auto-generated method stub
+   * return mapper.getAll(); }
+   */
 
 }

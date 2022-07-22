@@ -45,7 +45,11 @@ body {
 }
 
 header {
+<<<<<<< HEAD
   
+=======
+  width: 1400;
+>>>>>>> b45528184596309a701a8733f701432ea53d727e
   height: 80px;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -68,6 +72,7 @@ ul {
   display: flex;
   font-size: 16px;
   gap: 20px;
+  margin-left: -120px;
 
 }
 ul>li {
@@ -91,6 +96,7 @@ ul>li {
   margin-right: 5px;
 }
 
+<<<<<<< HEAD
 .footer {
   width: 100vw;
   height: 100px;
@@ -100,9 +106,17 @@ ul>li {
   left: 0;
   padding: 0 25px;
   line-height: 60px;
+=======
+.container img {
+	width : 200px;
+	height : 58px;
+	display: flex; 
+	justify-content:center;
+	flex-direction: column;
+>>>>>>> b45528184596309a701a8733f701432ea53d727e
 }
   </style>
-    <script>
+<!--     <script>
     $(function(){
         $.ajax({
             url: "/board/getAll",
@@ -121,19 +135,19 @@ ul>li {
             }                
         });//ajax end
   });//페이지로딩
-</script>
+</script> -->
 </head>
 <body>
   <div class="container">
     <header>
     
-      <h1>로고</h1>
+      <h1><a href="/"><img src="/image/daymood_logo.png" alt="no image"></a></h1>
 
         <ul id="menu">
-          <li><a href="#">게시판1</a></li>
-          <li><a href="#">게시판2</a></li>
-          <li><a href="#">게시판3</a></li>
-          <li><a href="#">게시판4</a></li>
+          <li><a href="/board/weather_list">mood</a></li>
+          <li><a href="#">info</a></li>
+          <li><a href="/board/recommend_list">recommend</a></li>
+          <li><a href="#">chatting</a></li>
         </ul>
 
       <div id="login">

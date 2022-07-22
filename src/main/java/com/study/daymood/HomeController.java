@@ -13,15 +13,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.study.board.BoardDTO;
-import com.study.board.BoardService;
+import com.study.mainboard.MainBoardService;
 import com.study.utility.Utility;
 
 @Controller
 public class HomeController {
   
   @Autowired
-  @Qualifier("com.study.board.BoardServiceImpl")
-  private BoardService dao;
+  @Qualifier("com.study.mainboard.MainBoardServiceImpl")
+  private MainBoardService dao;
   
   
   @GetMapping("/")
@@ -50,7 +50,7 @@ public class HomeController {
     map.put("sno", sno);
     map.put("eno", eno);
     
-    List<BoardDTO> list = dao.list(map);
+    List<BoardDTO> list = dao.hot_list(map);
     int total = dao.total(map);
     String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
     
@@ -65,8 +65,6 @@ public class HomeController {
     
     List<String> msg2 = Utility.calculateTime(map2);
 
-    System.out.println("list : " + list);
-    System.out.println("msg2 : " + msg2);
     
     
     
@@ -76,13 +74,10 @@ public class HomeController {
     map.put("sno", sno);
     map.put("eno", eno);
     
-    List<BoardDTO> list2 = dao.list2(map3);
+    List<BoardDTO> list2 = dao.new_list(map3);
     int total2 = dao.total(map3);
     String paging2 = Utility.paging(total, nowPage, recordPerPage, col, word);
     
-    
-
-    System.out.println("list2 : " + list2);
     
     
     // 2. request 저장(view에서 사용할 내용을 저장)

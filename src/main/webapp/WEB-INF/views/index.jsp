@@ -11,7 +11,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 
-<link rel="stylesheet" href="css/index.css" />
+<link rel="stylesheet" href="css/index_style.css" />
 <script type="text/javascript">
 	function Show(){
 		document.getElementById("#service-menu-list").style.display="";

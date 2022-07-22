@@ -1,3 +1,4 @@
+
 package com.study.user;
 
 
@@ -30,4 +31,3 @@ public class UserDTO {
     this.role = role;
     this.user_image = user_image;}
   }
-

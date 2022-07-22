@@ -4,6 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
  
 <tiles-definitions>
+
   <!-- main -->
   <definition name="main" template="/WEB-INF/views/template/template.jsp">
     <put-attribute name="header" value="/WEB-INF/views/template/top.jsp" />
@@ -19,9 +20,5 @@
     <put-attribute name="body" value="/WEB-INF/views/list.jsp" />
   </definition>
   
-  <definition name="/read" extends="main">
-    <put-attribute name="title" value="all"></put-attribute>
-    <put-attribute name="body" value="/WEB-INF/views/read.jsp" />
-  </definition>
- 
+  
 </tiles-definitions>

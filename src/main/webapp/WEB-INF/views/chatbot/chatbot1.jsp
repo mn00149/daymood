@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>챗봇</title>
-<link rel="stylesheet" href="css/chatbot1.css">
+<link rel="stylesheet" href="css/chatbot1_style.css">
 <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
 </script>
 <%-- WebSocket 관련 설정 --%>

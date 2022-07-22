@@ -4,10 +4,20 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
  
 <tiles-definitions>
-	<!-- main -->
-  	<definition name="main" template="/WEB-INF/views/template/template.jsp">
+  <!-- main -->
+  <definition name="main" template="/WEB-INF/views/template/template.jsp">
     	<put-attribute name="header" value="/WEB-INF/views/template/top.jsp" />
-  	</definition>
+  </definition>
+  	
+  <definition name="/board/weather_list" extends="main">
+    <put-attribute name="title" value="all"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/weather/weather_list.jsp" />
+  </definition>
+  
+  <definition name="/read" extends="main">
+    <put-attribute name="title" value="read"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/weather/read.jsp" />
+  </definition>
 
    <definition name="/weather/sunny" extends="main">
     	<put-attribute name="title" value="sunny"></put-attribute>
