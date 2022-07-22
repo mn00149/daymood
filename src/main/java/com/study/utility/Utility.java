@@ -5,19 +5,65 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mysql.cj.util.StringUtils;
+import com.study.board.BoardDTO;
 //import com.study.reply.ReplyService;
 
 
 public class Utility {
+  
+  private static class TIME_MAXIMUM {
+    public static final int SEC = 60;
+    public static final int MIN = 60;
+    public static final int HOUR = 24;
+    public static final int DAY = 30;
+    public static final int MONTH = 12;
+  }
+  public static List<String> calculateTime(@RequestParam Map<String, ArrayList> map2) {
+    
+    map2.get("date_list");
+    List<String> msg = new ArrayList<>();
+    
+    for(int i=0; i<map2.get("date_list").size(); i++) {
+      
+      try {
+        String from = (String) map2.get("date_list").get(i);;
+        SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date to = transFormat.parse(from);
+        
+        long curTime = System.currentTimeMillis();
+        long regTime = to.getTime();
+        long diffTime = (curTime - regTime) / 1000;
+        
+        if (diffTime < TIME_MAXIMUM.SEC) {
+          msg.add(Long.toString(diffTime) + "초 전");
+        } else if ((diffTime /= TIME_MAXIMUM.SEC) < TIME_MAXIMUM.MIN) {
+          msg.add(Long.toString(diffTime) + "분 전");
+        } else if ((diffTime /= TIME_MAXIMUM.MIN) < TIME_MAXIMUM.HOUR) {
+          msg.add(Long.toString(diffTime) + "시간 전");
+        } else {
+          msg.add(from);
+        }
+        
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
+      
+    } // for end
+    return msg;
+  }
   public static String paging2(int total, int nowPage, int recordPerPage, String col, String word, int cateno) {
     int pagePerBlock = 5; // 블럭당 페이지 수
     int totalPage = (int) (Math.ceil((double) total / recordPerPage)); // 전체 페이지
