@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.study.reply.ReplyService;
 
+import com.study.reply.ReplyService;
+
 public class Utility {
 
   private static class TIME_MAXIMUM {
@@ -202,6 +204,47 @@ public class Utility {
 
   public static int rcount(int board_no, ReplyService rservice) {
     return rservice.total(board_no);
+  }
+
+  public static String spaging(int totalRecord, int nowPage, int recordPerPage, String col, String word) {
+    int pagePerBlock = 5; // 블럭당 페이지 수
+    int totalPage = (int) (Math.ceil((double) totalRecord / recordPerPage)); // 전체 페이지, ceil: 올림
+    int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));// 전체 그룹
+    int nowGrp = (int) (Math.ceil((double) nowPage / pagePerBlock)); // 현재 그룹
+    int startPage = ((nowGrp - 1) * pagePerBlock) + 1; // 특정 그룹의 페이지 목록 시작
+    int endPage = (nowGrp * pagePerBlock); // 특정 그룹의 페이지 목록 종료
+
+    StringBuffer str = new StringBuffer();
+    str.append("<div class='page'>");
+
+    int _nowPage = (nowGrp - 1) * pagePerBlock; // 5개 이전 페이지로 이동
+    if (nowGrp >= 2) {
+      str.append("<div><a href='./my_scrap?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
+          + "'><i class=\"fa-solid fa-angles-left\"></i></A></div>");
+    }
+
+    str.append("<ul>");
+    for (int i = startPage; i <= endPage; i++) {
+      if (i > totalPage) {
+        break;
+      }
+
+      if (nowPage == i) {
+        str.append("<li><a href=#>" + i + "</a></li>");// 선택한페이지 색깔입히는거?
+      } else {
+        str.append("<li><a href='./my_scrap?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i + "</A></li>");
+      }
+    }
+
+    str.append("</ul>");
+    _nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
+    if (nowGrp < totalGrp) {
+      str.append("<div><A href='./my_scrap?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
+          + "'><i class=\"fa-solid fa-angles-right\"></i></A></div>");
+    }
+    str.append("</div>");
+
+    return str.toString();
   }
 
 }

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.member.MemberMapper">
+
+	<!-- 회원 정보 읽기 -->
+	<select id="read" parameterType="String"
+		resultType="com.study.member.MemberDTO$member">
+		select * from User
+		where username = #{username}
+	</select>
+
+	<!-- 작성 글 갯수 -->
+	<select id="ptotal" parameterType="Map" resultType="int">
+		select count(*) from Board
+		where user_no = #{user_no}
+		<where>
+			<choose>
+				<when test="col=='username'">
+					username like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='nation'">
+					nation like concat('%', #{word} ,'%')
+				</when>
+			</choose>
+		</where>
+	</select>
+
+	<!-- 로그인한 유저의 친구 목록 및 삭제 -->
+	<resultMap type="com.study.member.friendDTO" id="friend">
+			<result property="f_no" column="f_no" />
+			<result property="user_no" column="user_no" />
+			<result property="friends_no" column="friends_no" />
+			<collection property="list" ofType="com.study.member.userDTO" javaType="List" column="list" resultMap="user" />
+	</resultMap>
+	<resultMap type="com.study.member.userDTO" id="user">
+			<result property="username" column="username" />
+			<result property="email" column="email" />
+			<result property="createDate" column="createDate" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+	</resultMap>
+	<select id="list" parameterType="Map" resultMap="friend">
+	
+		select u.user_no, u.username, u.nation, u.email ,u.createDate, f_no, f.friends_no from f f
+		 inner join user u
+		 on u.user_no = f.friends_no
+		 where f.user_no = #{user_no};
+		 
+	</select>
+
+	<delete id="delete" parameterType="int">
+		delete from f
+		where f_no = #{f_no}
+	</delete>
+
+	<!-- 친구 요청 관련 -->
+	<resultMap type="com.study.member.userDTO" id="req">
+			<result property="username" column="username" />
+			<result property="email" column="email" />
+			<result property="createDate" column="createDate" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+		<collection property="rlist" ofType="com.study.member.requestDTO" javaType="List" column="rlist" resultMap="requestlist" />
+	</resultMap>
+	<resultMap type="com.study.member.requestDTO" id="requestlist">
+			<result property="request_no" column="request_no" />
+			<result property="f_id" column="f_id" />
+			<result property="t_id" column="t_id" />
+	</resultMap>
+	<select id="rlist" parameterType="Map" resultMap="req"> <!-- 친구요청리스트 -->
+		select * from rf r
+		 inner join user u
+		 on u.user_no = r.f_id
+		 where r.t_id = #{t_id}
+		order by u.username ASC
+	</select>
+	
+	<delete id="rdelete" parameterType="int">
+		delete from rf
+		where request_no = #{request_no}
+	</delete>
+	
+	<!-- rdelete : 친구 삭제, add : 친구 추가 -->
+	
+	<insert id="add" parameterType="map">
+		insert into f(user_no, friends_no)
+		values (#{t_id}, #{f_id}), (#{f_id}, #{t_id})
+	</insert>
+	
+	<!-- 작성글 관련 -->
+	<select id="plist" parameterType="Map" resultType="com.study.member.boardDTO">
+		select * from Board
+		where user_no = #{user_no}
+		<where>
+			<choose>
+				<when test="col=='title'">
+					title like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='content'">
+					content like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='title_content'">
+					title like CONCAT('%',#{word},'%')
+					or
+					content like CONCAT('%',#{word},'%')
+				</when>
+			</choose>
+		</where>
+		ORDER BY board_no DESC
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- 댓글관련 -->
+	<resultMap type="com.study.member.boardDTO" id="boardDTO">
+		<result property="author" column="author" />
+		<result property="nation" column="nation" />
+		<result property="weather_category" column="weather_category" />
+		<result property="board_no" column="board_no" />
+	</resultMap>
+	<select id="replylist" parameterType="Map" resultMap="boardDTO">
+		select b.author, b.nation, b.weather_category, b.board_no, r.reply_no, r.content, r.create_date 
+		from Reply r join Board b 
+		where r.user_no = #{user_no}
+		<where>
+			<choose>
+				<when test="col=='category'">
+					category like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='content'">
+					content like concat('%', #{word} ,'%')
+				</when>
+			</choose>
+			
+		</where>
+		ORDER BY r.reply_no DESC
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- 스크랩 관련 -->
+	<select id="stotal" parameterType="Map" resultType="int">
+		select count(*) from Scrap s join board b
+		<where>
+			<choose>
+				<when test="col=='username'">
+					b.author like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='nation'">
+					b.nation like concat('%', #{word} ,'%')
+				</when>
+			</choose>
+			and s.user_no = #{user_no}
+		</where>
+	</select>
+	
+	<resultMap type="com.study.member.boardDTO" id="boardDTO2">
+		<result property="author" column="author" />
+		<result property="nation" column="nation" />
+		<result property="weather_category" column="weather_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		
+	</resultMap>
+	<select id="scraplist" parameterType="Map" resultMap="boardDTO2">
+		select b.weather_category, b.author, b.title, b.nation, b.create_date , scrapno
+		from board b join Scrap s
+		<where>
+			<choose>
+			
+				<when test="col=='title'">
+					title like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='content'">
+					content like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='title_content'">
+					title like CONCAT('%',#{word},'%')
+					or
+					content like CONCAT('%',#{word},'%')
+				</when>
+			</choose>
+			and s.user_no = #{user_no}
+		</where>
+		ORDER BY s.scrapno DESC
+		limit #{sno}, #{eno}
+	</select>
+	
+	<delete id="ScrapDelete" parameterType="int">
+		delete from Scrap
+		where scrapno = #{scrapno}
+	</delete>
+</mapper>

@@ -41,7 +41,7 @@ body {
   margin: 0 auto;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr auto;
-  gap: 20px;
+  gap: 10px;
 }
 
 header {
@@ -59,7 +59,8 @@ header {
   justify-content: space-between;
   align-items: center;
   margin: 20px 20px;
-  background-color: #c14c3d;
+  backgorund-color:rgba(255, 55, 59, 0.7);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
   border-bottom: 1px solid #c1c4c7;
   border-radius: 10px;
   box-sizing: border-box;
@@ -67,15 +68,20 @@ header {
 }
 
 
-ul {
+#menu {
   list-style: none;
   display: flex;
   font-size: 16px;
+<<<<<<< HEAD
   gap: 20px;
   margin-left: -120px;
 
+=======
+  gap: 100px;
+>>>>>>> 19e0a323fc872d3caabfbae03d39fbdcf053211f
 }
-ul>li {
+
+#menu>ul>li {
   padding-left: 5em;
 }
 
@@ -83,7 +89,6 @@ ul>li {
   text-decoration: none;
   width: auto;
   color: rgb(0, 0, 0);
-  
 }
 
 #menu>li>a:hover {
@@ -115,6 +120,18 @@ ul>li {
 	flex-direction: column;
 >>>>>>> b45528184596309a701a8733f701432ea53d727e
 }
+
+.logo {
+	display:inline-block;
+	vertical-align: middle;
+}
+.logo > a > img {
+	max-width : 150px;
+}
+a {
+	text-decoration:none;
+	color: none;
+}
   </style>
 <!--     <script>
     $(function(){
@@ -140,6 +157,7 @@ ul>li {
 <body>
   <div class="container">
     <header>
+<<<<<<< HEAD
     
       <h1><a href="/"><img src="/image/daymood_logo.png" alt="no image"></a></h1>
 
@@ -148,10 +166,20 @@ ul>li {
           <li><a href="#">info</a></li>
           <li><a href="/board/recommend_list">recommend</a></li>
           <li><a href="#">chatting</a></li>
+=======
+    <div class="logo">
+      <a href="/main"><img src="/images/daymood.png" alt="logo"></a>
+	</div>
+        <ul id="menu">
+          <li><a href="#">Mood</a></li>
+          <li><a href="#">Info</a></li>
+          <li><a href="#">Recommend</a></li>
+          <li><a href="#">Live Chat</a></li>
+>>>>>>> 19e0a323fc872d3caabfbae03d39fbdcf053211f
         </ul>
 
       <div id="login">
-        <a href="#">로그인</a>
+        <a href="/mypage/member">로그인</a>
         <a href="#">회원가입</a>
       </div>
     </header>

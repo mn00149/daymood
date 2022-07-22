@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<<<<<<< HEAD:src/main/webapp/WEB-INF/views/index.jsp
 <title>DayMood</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -166,5 +167,13 @@
 
 
 	</div>
+=======
+  <title>기본페이지</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+    
+>>>>>>> 19e0a323fc872d3caabfbae03d39fbdcf053211f:src/main/webapp/WEB-INF/views/main.jsp
 </body>
 </html>
