@@ -45,11 +45,8 @@ body {
 }
 
 header {
-<<<<<<< HEAD
   
-=======
   width: 1400;
->>>>>>> b45528184596309a701a8733f701432ea53d727e
   height: 80px;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -72,13 +69,7 @@ header {
   list-style: none;
   display: flex;
   font-size: 16px;
-<<<<<<< HEAD
-  gap: 20px;
-  margin-left: -120px;
-
-=======
   gap: 100px;
->>>>>>> 19e0a323fc872d3caabfbae03d39fbdcf053211f
 }
 
 #menu>ul>li {
@@ -101,7 +92,6 @@ header {
   margin-right: 5px;
 }
 
-<<<<<<< HEAD
 .footer {
   width: 100vw;
   height: 100px;
@@ -110,15 +100,13 @@ header {
   bottom: 0;
   left: 0;
   padding: 0 25px;
-  line-height: 60px;
-=======
+  line-height: 60px;}
 .container img {
 	width : 200px;
 	height : 58px;
 	display: flex; 
 	justify-content:center;
 	flex-direction: column;
->>>>>>> b45528184596309a701a8733f701432ea53d727e
 }
 
 .logo {
@@ -157,16 +145,6 @@ a {
 <body>
   <div class="container">
     <header>
-<<<<<<< HEAD
-    
-      <h1><a href="/"><img src="/image/daymood_logo.png" alt="no image"></a></h1>
-
-        <ul id="menu">
-          <li><a href="/board/weather_list">mood</a></li>
-          <li><a href="#">info</a></li>
-          <li><a href="/board/recommend_list">recommend</a></li>
-          <li><a href="#">chatting</a></li>
-=======
     <div class="logo">
       <a href="/main"><img src="/images/daymood.png" alt="logo"></a>
 	</div>
@@ -175,7 +153,6 @@ a {
           <li><a href="#">Info</a></li>
           <li><a href="#">Recommend</a></li>
           <li><a href="#">Live Chat</a></li>
->>>>>>> 19e0a323fc872d3caabfbae03d39fbdcf053211f
         </ul>
 
       <div id="login">
