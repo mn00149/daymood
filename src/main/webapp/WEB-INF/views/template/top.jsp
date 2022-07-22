@@ -35,7 +35,6 @@ body {
 .container {
   width: 1400px;
   margin: 0 auto;
-  display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr auto;
   gap: 20px;
