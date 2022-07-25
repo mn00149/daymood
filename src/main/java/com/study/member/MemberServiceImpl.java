@@ -7,7 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.study.member.MemberDTO.*;
+import com.study.board.BoardDTO;
+import com.study.reply.ReplyDTO;
+import com.study.user.UserDTO;
 
 @Service("com.study.member.MemberServiceImpl")
 public class MemberServiceImpl implements MemberService {
@@ -16,7 +18,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper mapper;
 
 	@Override
-	public member read(String username) {
+	public UserDTO read(String username) {
 		return mapper.read(username);
 	}
 
@@ -27,7 +29,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<userDTO> list(Map map) {
+	public List<UserDTO> list(Map map) {
 		// TODO Auto-generated method stub
 		return mapper.list(map);
 	}
@@ -39,7 +41,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<userDTO> rlist(Map map) {
+	public List<UserDTO> rlist(Map map) {
 		// TODO Auto-generated method stub
 		return mapper.rlist(map);
 	}
@@ -57,12 +59,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<boardDTO> plist(Map map) {
+	public List<BoardDTO> plist(Map map) {
 		return mapper.plist(map);
 	}
 
 	@Override
-	public List<replyDTO> replylist(Map map) {
+	public List<ReplyDTO> replylist(Map map) {
 		return mapper.replylist(map);
 	}
 
@@ -82,6 +84,12 @@ public class MemberServiceImpl implements MemberService {
 	public int ScrapDelete(int scrapno) {
 		// TODO Auto-generated method stub
 		return mapper.ScrapDelete(scrapno);
+	}
+
+	@Override
+	public int ctotal(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.ctotal(map);
 	}
 
 

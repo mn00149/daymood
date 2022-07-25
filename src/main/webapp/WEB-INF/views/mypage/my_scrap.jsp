@@ -49,7 +49,7 @@
 									<c:forEach var="dto" items="${scraplist}">
 										<tr>
 											<td>${dto.weather_category}</td>
-											<td>${dto.author}</td>
+											<td>${dto.username}</td>
 											<td>${dto.title }</td>
 											<td>${dto.nation }</td>
 											<td><c:out value="${fn:substring(dto.create_date, 0, 10)}"/></td>

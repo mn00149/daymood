@@ -206,7 +206,7 @@ public class Utility {
     return rservice.total(board_no);
   }
 
-  public static String spaging(int totalRecord, int nowPage, int recordPerPage, String col, String word) {
+  public static String spaging(int totalRecord, int nowPage, int recordPerPage, String col, String word, String url) {
     int pagePerBlock = 5; // 블럭당 페이지 수
     int totalPage = (int) (Math.ceil((double) totalRecord / recordPerPage)); // 전체 페이지, ceil: 올림
     int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));// 전체 그룹
@@ -219,7 +219,7 @@ public class Utility {
 
     int _nowPage = (nowGrp - 1) * pagePerBlock; // 5개 이전 페이지로 이동
     if (nowGrp >= 2) {
-      str.append("<div><a href='./my_scrap?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
+      str.append("<div><a href='" + url + "?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
           + "'><i class=\"fa-solid fa-angles-left\"></i></A></div>");
     }
 
@@ -232,14 +232,14 @@ public class Utility {
       if (nowPage == i) {
         str.append("<li><a href=#>" + i + "</a></li>");// 선택한페이지 색깔입히는거?
       } else {
-        str.append("<li><a href='./my_scrap?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i + "</A></li>");
+        str.append("<li><a href='" + url + "?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i + "</A></li>");
       }
     }
 
     str.append("</ul>");
     _nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
     if (nowGrp < totalGrp) {
-      str.append("<div><A href='./my_scrap?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
+      str.append("<div><A href='" + url + "?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
           + "'><i class=\"fa-solid fa-angles-right\"></i></A></div>");
     }
     str.append("</div>");

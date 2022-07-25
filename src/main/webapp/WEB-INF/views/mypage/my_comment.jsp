@@ -62,7 +62,7 @@
 					</table>
 				</div>
 				<div class="friends_header">
-					<form action="post" action="./my_comment">
+					<form action="./my_comment">
 						${paging }
 						<div class="Select">
 							<select name="col" class="form-control">
@@ -70,10 +70,9 @@
 									<c:if test="${col=='category' }">selected</c:if>>카테고리</option>
 								<option value="content"
 									<c:if test="${col=='contents' }">selected</c:if>>내용</option>
-								
 								<option value="total"
 									<c:if test="${col=='total' }">selected</c:if>>전체출력</option>
-							</select> <input placeholder="Find Friend" />
+							</select> <input placeholder="Find Friend" name="word" value="${word}" />
 							<button class="Search">검색</button>
 						</div>
 					</form>

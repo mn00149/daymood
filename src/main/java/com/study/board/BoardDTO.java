@@ -1,9 +1,8 @@
 package com.study.board;
 
-import java.util.Date;
+import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+import com.study.reply.ReplyDTO;
 import com.study.user.UserDTO;
 
 import lombok.Data;
@@ -21,7 +20,8 @@ public class BoardDTO {
   private String create_date;                       
   private String weather_category;                  
   private String recommend_category;                
-  private String info_category;   
+  private String info_category;
+  private List<ReplyDTO> ReplyDTO;
   //@DateTimeFormat(pattern = "yyyy-MM-dd")
   //private Date create_date;
   

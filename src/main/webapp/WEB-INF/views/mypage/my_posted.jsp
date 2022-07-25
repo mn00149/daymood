@@ -52,7 +52,7 @@
 											<td>${dto.weather_category}</td>
 											<td>${dto.title }</td>
 											<td>${dto.view_cnt }</td>
-											<td>${dto.recommend_cnt}</td>
+											<td>${dto.like_cnt}</td>
 											<td>${dto.nation}</td>
 											<td><c:out value="${fn:substring(dto.create_date, 0, 10)}"/></td>
 										</tr>
@@ -65,7 +65,7 @@
 					</table>
 				</div>
 				<div class="friends_header">
-					<form action="post" action="./my_posted">
+					<form action="./my_posted">
 						${paging }
 						<div class="Select">
 							<select name="col" class="form-control">
@@ -77,7 +77,7 @@
 									<c:if test="${col=='title_contents' }">selected</c:if>>제목+내용</option>
 								<option value="total"
 									<c:if test="${col=='total' }">selected</c:if>>전체출력</option>
-							</select> <input placeholder="Find Friend" />
+							</select> <input placeholder="Find Friend" name="word" value="${word}" />
 							<button class="Search">검색</button>
 						</div>
 					</form>

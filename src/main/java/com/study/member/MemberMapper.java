@@ -3,22 +3,24 @@ package com.study.member;
 import java.util.List;
 import java.util.Map;
 
-import com.study.member.MemberDTO.*;
+import com.study.board.BoardDTO;
+import com.study.reply.ReplyDTO;
+import com.study.user.UserDTO;
 
 public interface MemberMapper {
-	member read(String username);
+	UserDTO read(String username);
 
 	int ptotal(Map map);
 
-	List<userDTO> list(Map map);
+	List<UserDTO> list(Map map);
 	
-	List<boardDTO> plist(Map map);
+	List<BoardDTO> plist(Map map);
 	
-	List<replyDTO> replylist(Map map);
+	List<ReplyDTO> replylist(Map map);
 
 	int delete(int f_no);
 
-	List<userDTO> rlist(Map map);
+	List<UserDTO> rlist(Map map);
 
 	int rdelete(int request_no);
 
@@ -29,4 +31,6 @@ public interface MemberMapper {
 	List<scrapDTO> scraplist(Map map);
 	
 	int ScrapDelete(int scrapno);
+	
+	int ctotal(Map map);
 }

@@ -1,5 +1,7 @@
 package com.study.reply;
 
+import com.study.board.BoardDTO;
+
 import lombok.Data;
 
 @Data
@@ -11,4 +13,5 @@ public class ReplyDTO {
   private String username;
   private String content;
   private String create_date;
+  private BoardDTO BoardDTO;
 }

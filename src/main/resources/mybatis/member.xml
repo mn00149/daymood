@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 회원 정보 읽기 -->
 	<select id="read" parameterType="String"
-		resultType="com.study.member.MemberDTO$member">
+		resultType="com.study.user.UserDTO">
 		select * from User
 		where username = #{username}
 	</select>
@@ -15,7 +15,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 작성 글 갯수 -->
 	<select id="ptotal" parameterType="Map" resultType="int">
 		select count(*) from Board
-		where user_no = #{user_no}
 		<where>
 			<choose>
 				<when test="col=='username'">
@@ -25,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					nation like concat('%', #{word} ,'%')
 				</when>
 			</choose>
+		and user_no = #{user_no}
 		</where>
 	</select>
 
@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<result property="friends_no" column="friends_no" />
 			<collection property="list" ofType="com.study.member.userDTO" javaType="List" column="list" resultMap="user" />
 	</resultMap>
-	<resultMap type="com.study.member.userDTO" id="user">
+	<resultMap type="com.study.user.UserDTO" id="user">
 			<result property="username" column="username" />
 			<result property="email" column="email" />
 			<result property="createDate" column="createDate" />
@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 
 	<!-- 친구 요청 관련 -->
-	<resultMap type="com.study.member.userDTO" id="req">
+	<resultMap type="com.study.user.UserDTO" id="req">
 			<result property="username" column="username" />
 			<result property="email" column="email" />
 			<result property="createDate" column="createDate" />
@@ -91,9 +91,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- 작성글 관련 -->
-	<select id="plist" parameterType="Map" resultType="com.study.member.boardDTO">
+	<select id="plist" parameterType="Map" resultType="com.study.board.BoardDTO">
 		select * from Board
-		where user_no = #{user_no}
 		<where>
 			<choose>
 				<when test="col=='title'">
@@ -108,32 +107,50 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					content like CONCAT('%',#{word},'%')
 				</when>
 			</choose>
+		and user_no = #{user_no}
 		</where>
 		ORDER BY board_no DESC
 		limit #{sno}, #{eno}
 	</select>
 	
 	<!-- 댓글관련 -->
-	<resultMap type="com.study.member.boardDTO" id="boardDTO">
-		<result property="author" column="author" />
+	
+	<!-- 작성 댓글 갯수 -->
+	<select id="ctotal" parameterType="Map" resultType="int">
+		select count(*) from reply
+		<where>
+			<choose>
+				<when test="col=='username'">
+					username like concat('%', #{word} ,'%')
+				</when>
+				<when test="col=='nation'">
+					nation like concat('%', #{word} ,'%')
+				</when>
+			</choose>
+		and user_no = #{user_no}
+		</where>
+	</select>
+	
+	<resultMap type="com.study.board.BoardDTO" id="boardDTO">
+		<result property="username" column="username" />
 		<result property="nation" column="nation" />
 		<result property="weather_category" column="weather_category" />
 		<result property="board_no" column="board_no" />
 	</resultMap>
 	<select id="replylist" parameterType="Map" resultMap="boardDTO">
-		select b.author, b.nation, b.weather_category, b.board_no, r.reply_no, r.content, r.create_date 
+		select b.username, b.nation, b.weather_category, b.board_no, r.reply_no, r.content, r.create_date 
 		from Reply r join Board b 
-		where r.user_no = #{user_no}
 		<where>
 			<choose>
 				<when test="col=='category'">
-					category like concat('%', #{word} ,'%')
+					weather_category like concat('%', #{word} ,'%')
 				</when>
+				
 				<when test="col=='content'">
-					content like concat('%', #{word} ,'%')
+					r.content like concat('%', #{word} ,'%')
 				</when>
 			</choose>
-			
+			and r.user_no = #{user_no}
 		</where>
 		ORDER BY r.reply_no DESC
 		limit #{sno}, #{eno}
@@ -145,7 +162,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<where>
 			<choose>
 				<when test="col=='username'">
-					b.author like concat('%', #{word} ,'%')
+					b.username like concat('%', #{word} ,'%')
 				</when>
 				<when test="col=='nation'">
 					b.nation like concat('%', #{word} ,'%')
@@ -155,8 +172,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	
-	<resultMap type="com.study.member.boardDTO" id="boardDTO2">
-		<result property="author" column="author" />
+	<resultMap type="com.study.board.BoardDTO" id="boardDTO2">
+		<result property="username" column="username" />
 		<result property="nation" column="nation" />
 		<result property="weather_category" column="weather_category" />
 		<result property="title" column="title" />
@@ -164,7 +181,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</resultMap>
 	<select id="scraplist" parameterType="Map" resultMap="boardDTO2">
-		select b.weather_category, b.author, b.title, b.nation, b.create_date , scrapno
+		select b.weather_category, b.username, b.title, b.nation, b.create_date , scrapno
 		from board b join Scrap s
 		<where>
 			<choose>
