@@ -10,7 +10,7 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
-.properties
+*.properties
 ### IntelliJ IDEA ###
 .idea
 *.iws
