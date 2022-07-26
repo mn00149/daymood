@@ -22,14 +22,16 @@ public class UserDTO {
   private String user_image;
   private String createDate;
   private List<requestDTO> rlist;
+  private int user_no;
   
   @Builder  
-  public UserDTO(String provider, String username, String email, String password, String nation, String role, String user_image) {
+  public UserDTO(String provider, String username, String email, String password, String nation, String role, String user_image, int user_no) {
     this.provider = provider;
     this.username = username;
     this.email = email;
     this.password = password;
     this.nation = nation;
     this.role = role;
-    this.user_image = user_image;}
+    this.user_image = user_image;
+    this.user_no = user_no;}
   }

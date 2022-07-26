@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.study.board.BoardDTO;
 import com.study.reply.ReplyDTO;
 import com.study.user.UserDTO;
+import com.study.user.auth.PrincipalDetails;
 import com.study.utility.Utility;
 
 @Controller
@@ -34,14 +36,17 @@ public class MemberController {
 	@Autowired
 	@Qualifier("com.study.member.MemberServiceImpl")
 	private MemberService service;
-
+	
+	
+	
+	
+	
 	@GetMapping("/mypage/member")
-	public String mypage(Model model) {
-		String username = "홍길동";
+	public String mypage(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		String username = principalDetails.getUsername();
 		UserDTO dto = service.read(username);
 
-		log.info("dto:" + dto);
-
+		log.info("dto:" + principalDetails);
 		model.addAttribute("dto", dto);
 		return "/mypage/member";
 	}
@@ -65,7 +70,7 @@ public class MemberController {
 	
 	//스크랩 시작
 	@GetMapping("/mypage/my_scrap")
-	public String my_scrap(HttpServletRequest request) {
+	public String my_scrap(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		// 검색관련------------------------
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
@@ -84,13 +89,15 @@ public class MemberController {
 		
 		int sno = (nowPage - 1) * recordPerPage;
 		int eno = recordPerPage;
+		String username = principalDetails.getUsername();
+		UserDTO dto = service.read(username);
 		
 		Map map = new HashMap();
 		map.put("col", col);
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
-		map.put("user_no", 1);
+		map.put("user_no", principalDetails.getUserno() );
 		
 		int stotal = service.stotal(map);
 		
@@ -142,7 +149,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("/mypage/my_friends")
-	public String my_friends(HttpServletRequest request) {
+	public String my_friends(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 	    // 검색관련------------------------
 //	    String col = Utility.checkNull(request.getParameter("col"));
 //	    String word = Utility.checkNull(request.getParameter("word"));
@@ -166,7 +173,7 @@ public class MemberController {
 //	    map.put("word", word);
 //	    map.put("sno", sno);
 //	    map.put("eno", eno);
-	    map.put("user_no", 1);
+	    map.put("user_no", principalDetails.getUserno());
 
 //	    int total = service.total(map);
 
@@ -205,9 +212,10 @@ public class MemberController {
 	  }
 	
 	@GetMapping("/mypage/request_friends")
-	public String request_friends(HttpServletRequest request) {
+	public String request_friends(HttpServletRequest request,@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Map map = new HashMap();
-	    map.put("t_id", 1);
+		
+	    map.put("t_id", principalDetails.getUserno());
 	    
 	    List<UserDTO> list = service.rlist(map);
 	    
@@ -253,7 +261,7 @@ public class MemberController {
 	  }
 	
 	@RequestMapping("/mypage/my_posted")
-	public String my_posted(HttpServletRequest request) {
+	public String my_posted(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 	    // 검색관련------------------------
 	    String col = Utility.checkNull(request.getParameter("col"));
 	    String word = Utility.checkNull(request.getParameter("word"));
@@ -278,7 +286,7 @@ public class MemberController {
 	    map.put("word", word);
 	    map.put("sno", sno);
 	    map.put("eno", eno);
-	    map.put("user_no", 1);
+	    map.put("user_no", principalDetails.getUserno());
 
 	    int ptotal = service.ptotal(map);
 
@@ -297,7 +305,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/mypage/my_comment")
-	public String my_comment(HttpServletRequest request) {
+	public String my_comment(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		// 검색관련------------------------
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
@@ -322,7 +330,7 @@ public class MemberController {
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
-		map.put("user_no", 1);
+		map.put("user_no", principalDetails.getUserno());
 		
 		int ctotal = service.ctotal(map);
 		
