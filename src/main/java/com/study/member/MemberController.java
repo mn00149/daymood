@@ -53,11 +53,6 @@ public class MemberController {
 	
 	
 	@GetMapping("/home")
-	public String intro() {
-		return "/intro";
-	}
-	
-	@GetMapping("/main")
 	public String main() {
 		return "/main";
 	}

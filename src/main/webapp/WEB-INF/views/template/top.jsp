@@ -121,26 +121,7 @@ a {
 	color: none;
 }
   </style>
-<!--     <script>
-    $(function(){
-        $.ajax({
-            url: "/board/getAll",
-            type: "GET",
-            //data: JSON.stringify(),
-            //contentType: "application/json; charset=utf-8;",
-            dataType: "json",
-            success: function(data){
-            for (var i = 0; i < data.length; i++) {
-            		$('#pmenu').append("<li><a href='/board/read/"+data[i].board_no+"'>"+ "</a></li>");
-            }                  
 
-            },
-            error: function(request,status,error){
-               alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-            }                
-        });//ajax end
-  });//페이지로딩
-</script> -->
 </head>
 <body>
   <div class="container">
@@ -156,8 +137,8 @@ a {
         </ul>
 
       <div id="login">
-        <a href="/mypage/member">로그인</a>
-        <a href="#">회원가입</a>
+        <a href="loginForm">로그인</a>
+        <a href="joinForm">회원가입</a>
       </div>
     </header>
   </div>
