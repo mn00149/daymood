@@ -36,7 +36,7 @@ public interface BoardService {
 
   List<BoardDTO> list2(Map map);
 
-  //List<Map> getAll();
+  List<Map> getAll();
 
   
 }

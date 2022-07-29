@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service("com.study.board.BoardServiceImpl")
 public class BoardServiceImpl implements BoardService {
-  
+
   @Autowired
   private BoardMapper mapper;
 
@@ -79,9 +79,9 @@ public class BoardServiceImpl implements BoardService {
     return mapper.list_music(map);
   }
 
-  /*
-   * @Override public List<Map> getAll() { // TODO Auto-generated method stub
-   * return mapper.getAll(); }
-   */
+  @Override
+  public List<Map> getAll() { // TODO Auto-generated method stub
+    return mapper.getAll();
+  }
 
 }

@@ -48,3 +48,13 @@ function remove(reply_no) {
                .then(response => response.text())
                .catch(console.log);
 }
+
+function add2(reply) {
+        return fetch('/reply/create',{
+                method: 'post',
+                body: JSON.stringify(reply),
+                headers: {'Content-Type': "application/json; charset=utf-8"}
+                })
+                .then(response => response.json())
+                .catch(console.log);
+}

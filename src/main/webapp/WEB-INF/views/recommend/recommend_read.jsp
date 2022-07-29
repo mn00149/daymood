@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="util" uri="/ELFunctions" %>
 
 <!DOCTYPE html>
@@ -6,19 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>read page</title>
-
-<link rel="stylesheet" href="/css/board_style.css">
+<link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/reply.css">
-<<<<<<< HEAD:src/main/webapp/WEB-INF/views/board/common/read.jsp
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/6a80a39212.js" crossorigin="anonymous"></script>
 
-=======
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
->>>>>>> ab9b397a08295b4ae4a9c2d370b25812c1f0b0ee:src/main/webapp/WEB-INF/views/read.jsp
 <style>
 .video {
 	width: 1200px;
@@ -35,7 +26,6 @@
 .board_wrap, .card-body {
 	background-color: rgb(250, 248, 231);
 }
-
 </style>
 </head>
 <body>
@@ -48,7 +38,7 @@
 			</video>
 		</div>
 		<div class="board_title">
-			<strong>#맑음</strong>
+			<strong>제목</strong>
 		</div>
 
 		<div class="board_view_wrap">
@@ -82,7 +72,9 @@
 						<dd>댓글수</dd>
 					</dl>
 				</div>
-				<div class="cont">${dto.content }</div>
+				<div class="cont">
+					${dto.content }
+				</div>
 			</div>
 			<div class="bt_wrap">
 
@@ -91,7 +83,8 @@
 			</div>
 		</div>
 	</div>
-	<!---------------------------------------------------->
+
+		<!---------------------------------------------------->
 	<!-- Comments section-->
 	<section class="mb-5">
 		<div class="card bg-white">
@@ -177,7 +170,7 @@
 		 let colx = "${param.col}";
 		 let wordx = "${param.word}";
 		 
-		 let user_no ="${user_no}";  
+		 let user_no ="${user_no}";
 		 let username ="${username}"; 
 	</script>
 	<!-- 댓글처리 관련 Javascript 파일 추가-->
