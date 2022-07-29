@@ -149,9 +149,9 @@ a {
       <a href="/main"><img src="/images/daymood.png" alt="logo"></a>
 	</div>
         <ul id="menu">
-          <li><a href="#">Mood</a></li>
-          <li><a href="#">Info</a></li>
-          <li><a href="#">Recommend</a></li>
+          <li><a href="/board/weather_list">Mood</a></li>
+          <li><a href="/board/info_list">Info</a></li>
+          <li><a href="/board/recommend_list">Recommend</a></li>
           <li><a href="#">Live Chat</a></li>
         </ul>
 

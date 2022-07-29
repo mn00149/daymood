@@ -1,5 +1,7 @@
 package com.study.user;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
@@ -57,7 +59,7 @@ public class UserController {
     String encPassword = bCryptPasswordEncoder.encode(rawPassword);
     user.setPassword(encPassword);
     int result = service.create(user);
-    // userRepository.save(user);//회원 가입잘됨 but 시큐리티 못씀 => 비번이 암호화 되지 안았기 때문
+    // userRepository.save(user);//회원 가입잘됨 but 시큐리티 못씀 => 비번이 암호화 되지 않았기 때문
     return "/user/loginForm";
   }
 
@@ -83,7 +85,6 @@ public class UserController {
     System.out.println("테스트로그인===================================");
     PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
     System.out.println("authentication" + principalDetails.getUser());
-
     System.out.println("userDetails:" + userDetails.getUser());
     return "세션";
   }
