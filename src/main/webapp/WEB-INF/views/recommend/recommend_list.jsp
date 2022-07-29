@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="util" uri="/ELFunctions" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -59,8 +60,12 @@ body {
 						<div class="poster"></div>
 						
 						<div class="explanation">
-							<span class="title"><a href="javascript:read('${dto.board_no}')">${dto.title }</a></span>
-							<a>[40]</a>
+							<span class="title"><a href="javascript:read('${dto.board_no}')">${dto.title }
+	                    			<c:set var="rcount" value="${util:rcount(dto.board_no,rservice) }"/>
+	                            	<c:if test="${rcount>0 }">
+							        <span class="badge">${rcount}</span>
+							   		</c:if></a></span>
+							
 							<p>${dto.content }</p>
 							<span>${dto.udto.username }</span>
 							<c:forEach var="calc_date" items="${msg2[statusList.index]}"

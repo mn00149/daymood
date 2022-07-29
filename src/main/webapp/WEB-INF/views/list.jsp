@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <title>sunny</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/reply_number.css">
     <link rel="stylesheet" href="/video/sunny.mp4">
     <script src="https://kit.fontawesome.com/6a80a39212.js" crossorigin="anonymous"></script>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -36,19 +37,6 @@
 	.board_wrap .board_list .board_body {
 		font-size: 15px;
 	}
-	.badge {
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #c3423f;
-    border-radius: 10px;
 	
     </style>
     

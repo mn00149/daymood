@@ -4,24 +4,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.study.user.UserDTO;
+import com.study.user.auth.PrincipalDetails;
 import com.study.utility.Utility;
 
 @RestController
@@ -38,12 +38,16 @@ public class ReplyController {
   public ResponseEntity<List<ReplyDTO>> getList(
       @PathVariable("board_no") int board_no, 
       @PathVariable("sno") int sno,
-      @PathVariable("eno") int eno) {
+      @PathVariable("eno") int eno
+      ) {
 
+    
     Map map = new HashMap();
     map.put("sno", sno);
     map.put("eno", eno);
     map.put("board_no", board_no);
+
+
     
     log.info("list:"+service.list(map));
 
@@ -66,12 +70,24 @@ public class ReplyController {
   }
   
   @PostMapping("/reply/create")
-  public ResponseEntity<String> create(@RequestBody ReplyDTO vo) {
-
+  public ResponseEntity<String> create(@RequestBody ReplyDTO vo, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+    
+    String user_no = principalDetails.getUser_no();
+    String username = principalDetails.getUsername();
+    
+    Map map = new HashMap();
+    map.put("user_no", principalDetails.getUser_no());
+    map.put("username", principalDetails.getUsername());
+ 
+    vo.setUsername(principalDetails.getUsername());
+    vo.setUser_no(Integer.parseInt(principalDetails.getUser_no()));
+    
     log.info("ReplyDTO1:content " + vo.getContent());
     log.info("ReplyDTO1:username " + vo.getUsername());
     log.info("ReplyDTO1:board_no " + vo.getBoard_no());
     log.info("ReplyDTO1:user_no " + vo.getUser_no());
+    
+    
     
     vo.setContent(vo.getContent().replaceAll("/n/r", "<br>"));
  

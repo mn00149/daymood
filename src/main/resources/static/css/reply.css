@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+.board_wrap, .card-body {
+	background-color: rgb(250, 248, 231);
+}
+
+.pagination {
+	display: flex;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
+	.pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
+	{
+	z-index: 3;
+	color: #fff;
+	cursor: default;
+	background-color: #c3423f;
+	border-color: #c3423f;
+}
+
+.panel-footer {
+	padding: 10px 15px;
+	background-color: #ffffff;
+	border-top: 1px solid #ddd;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+.pagination>li>a, .pagination>li>span {
+	position: relative;
+	float: left;
+	padding: 6px 12px;
+	margin-left: -1px;
+	line-height: 1.42857143;
+	color: #000000;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+.list-group-item {
+    position: static;
+    display: block;
+    padding: 5px 14px;
+    margin-bottom: -1px;
+    background-color: #F8F7F7;
+    border: 1px solid #fff;
+}
+.panel-default>.panel-heading {
+    color: #c3423f;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.card {
+    width: 1200px;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 0px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgb(250,248,231);
+    background-clip: border-box;
+}
+
+.board_wrap {
+    width: 1200px;
+    margin: 25px auto;
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #b73333;
+    border-color: #337ab7;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #b73333;
+    border-color: #b73333;
+}
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #000000;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #ff4c47;
+    border-color: #ff0074;
+}
+
+
+.card {
+    width: 1200px;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 0px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgb(255 255 255);
+    background-clip: border-box;
+}
+

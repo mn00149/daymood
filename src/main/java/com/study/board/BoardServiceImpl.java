@@ -58,9 +58,12 @@ public class BoardServiceImpl implements BoardService {
     return mapper.list2(map);
   }
 
-  /*
-   * @Override public List<Map> getAll() { // TODO Auto-generated method stub
-   * return mapper.getAll(); }
-   */
+  @Override
+  public List<Map> getAll() {
+    // TODO Auto-generated method stub
+    return mapper.getAll();
+  }
+
+
 
 }

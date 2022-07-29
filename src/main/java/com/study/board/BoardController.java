@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.study.board.BoardController;
 import com.study.reply.ReplyDTO;
 import com.study.reply.ReplyService;
+import com.study.user.auth.PrincipalDetails;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.study.utility.Utility;
@@ -37,13 +40,15 @@ public class BoardController {
     @Qualifier("com.study.reply.ReplyServiceImpl")
     public ReplyService rservice;
 
-    /*
-     * @GetMapping(value = "/board/getAll", produces =
-     * "application/json;charset=UTF-8")
-     * 
-     * @ResponseBody public List<Map> getAll(HttpServletRequest request) { List<Map>
-     * list = dao.getAll(); // log.info("list:"+list); return list; }
-     */
+    
+    @GetMapping(value = "/board/getAll", produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public List<Map> getAll(HttpServletRequest request) {
+    List<Map> list = dao.getAll();
+    log.info("list:"+list);
+    return list;
+    }
+     
     // weather_all list start
     @GetMapping("/board/weather_list")
     public String weather_list(HttpServletRequest request) {
@@ -92,7 +97,8 @@ public class BoardController {
         request.setAttribute("col", col);
         request.setAttribute("word", word);
         request.setAttribute("nowPage", nowPage);
-
+        request.setAttribute("rservice", rservice);
+        
         return "/board/weather_list";
     } // weather_all list end
 
@@ -155,9 +161,12 @@ public class BoardController {
 
     // read start
     @GetMapping("/board/read/{board_no}")
-    public String read(@PathVariable int board_no, Model model, HttpServletRequest request) {
+    public String read(@PathVariable int board_no, Model model, HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails userDetails) {
         dao.upViewcnt(board_no); // 조회수 증가
         model.addAttribute("dto", dao.read(board_no));
+
+   
+  
 
         /* 댓글 관련 시작 */
         int nPage = 1;
@@ -173,8 +182,17 @@ public class BoardController {
         map.put("sno", sno);
         map.put("eno", eno);
         map.put("nPage", nPage);
-
+        
+        if(userDetails != null) {
+          String user_no = userDetails.getUser_no();
+          String username = userDetails.getUsername();
+          
+          map.put("user_no", userDetails.getUser_no());
+          map.put("username", userDetails.getUsername());
+        }
+        
         model.addAllAttributes(map);
+        
 
         /* 댓글 처리 끝 */
         return "/read";
@@ -231,7 +249,8 @@ public class BoardController {
         request.setAttribute("col", col);
         request.setAttribute("word", word);
         request.setAttribute("nowPage", nowPage);
-
+        request.setAttribute("rservice", rservice);
+        
         return "/board/recommend/recommend_list";
     } // recommend_all list end
 

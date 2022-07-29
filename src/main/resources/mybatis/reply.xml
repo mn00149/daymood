@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.study.reply.ReplyMapper">
 
 	<insert id="create" parameterType="com.study.reply.ReplyDTO">
-		insert into reply(username, content, create_date, board_no, user_no) 
-	 	values("CW", #{content}, sysdate(), #{board_no}, 1)
+		insert into Reply(user_no, board_no, username, content, create_date)
+		values(#{user_no}, #{board_no}, #{username}, #{content}, sysdate())
 	</insert>
 	<delete id="delete" parameterType="int">
 		delete from reply
@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="list" parameterType="Map" resultType="com.study.reply.ReplyDTO">
-		select reply_no, user_no, board_no, username, content, create_date 
+		select * 
 		from Reply
 		where board_no = #{board_no}
 		order by reply_no DESC

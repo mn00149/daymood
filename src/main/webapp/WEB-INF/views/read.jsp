@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="util" uri="/ELFunctions" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,12 +9,6 @@
 
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/reply.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -33,75 +28,6 @@
 	background-color: rgb(250, 248, 231);
 }
 
-.pagination {
-	display: flex;
-}
-
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
-	.pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
-	{
-	z-index: 3;
-	color: #fff;
-	cursor: default;
-	background-color: #c3423f;
-	border-color: #c3423f;
-}
-
-.panel-footer {
-	padding: 10px 15px;
-	background-color: #ffffff;
-	border-top: 1px solid #ddd;
-	border-bottom-right-radius: 3px;
-	border-bottom-left-radius: 3px;
-}
-
-.pagination>li>a, .pagination>li>span {
-	position: relative;
-	float: left;
-	padding: 6px 12px;
-	margin-left: -1px;
-	line-height: 1.42857143;
-	color: #000000;
-	text-decoration: none;
-	background-color: #fff;
-	border: 1px solid #ddd;
-}
-
-.list-group-item {
-    position: static;
-    display: block;
-    padding: 5px 14px;
-    margin-bottom: -1px;
-    background-color: #F8F7F7;
-    border: 1px solid #fff;
-}
-.panel-default>.panel-heading {
-    color: #c3423f;
-    background-color: #fff;
-    border-color: #fff;
-}
-
-.card {
-    width: 1200px;
-    margin: 0 auto;
-    border-radius: 10px;
-    padding: 0px 0;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: rgb(250,248,231);
-    background-clip: border-box;
-}
-
-.board_wrap {
-    width: 1200px;
-    margin: 25px auto;
-    border-radius: 5px;
-    padding-top: 20px;
-    padding-bottom: 60px;
-}
 </style>
 </head>
 <body>
@@ -243,8 +169,8 @@
 		 let colx = "${param.col}";
 		 let wordx = "${param.word}";
 		 
-		 let user_no ="${sessionScope.user_no}"; //나중에 확인 
-		 let username ="${sessionScope.username}"; //나중에 확인 
+		 let user_no ="${user_no}";  
+		 let username ="${username}"; 
 	</script>
 	<!-- 댓글처리 관련 Javascript 파일 추가-->
 	<script src="/js/producer.js"></script>

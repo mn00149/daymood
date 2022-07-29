@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <title>sunny</title>
 <link rel="stylesheet" href="/css/board_style.css">
+<link rel="stylesheet" href="/css/reply_number.css">
 <link rel="stylesheet" href="/video/sunny.mp4">
 <script src="https://kit.fontawesome.com/6a80a39212.js"
 	crossorigin="anonymous"></script>
@@ -129,7 +130,13 @@
 												</c:choose>
 											</div> <%-- category end --%>
 											
-											<div class="title"><a href="javascript:read('${dto.board_no}')">${dto.title }</a></div>
+											<div class="title"><a href="javascript:read('${dto.board_no}')">${dto.title }
+											<%-- 댓글 갯수 보이기 시작 --%>
+											<c:set var="rcount" value="${util:rcount(dto.board_no,rservice) }"/>
+											<c:if test="${rcount>0 }">
+											<span class="badge">${rcount}</span>
+											</c:if></a></div>
+											<%-- 댓글 갯수 보이기 끝 --%>
 												
 											<div class="username">${dto.udto.username }</div>
 											
@@ -147,8 +154,13 @@
 										<c:otherwise>
 											<div class="category ad">[공지]</div>
 												
-											<div class="title ad"><a href="javascript:read('${dto.board_no}')">${dto.title }</a></div>
-												
+											<div class="title ad"><a href="javascript:read('${dto.board_no}')">${dto.title }
+											<%-- 댓글 갯수 보이기 시작 --%>
+											<c:set var="rcount" value="${util:rcount(dto.board_no,rservice) }"/>
+											<c:if test="${rcount>0 }">
+											<span class="badge">${rcount}</span>
+											</c:if></a></div>
+											<%-- 댓글 갯수 보이기 끝 --%>
 											<div class="username ad">${dto.udto.username }</div>
 											
 											<c:forEach var="calc_date" items="${msg2[statusList.index]}"

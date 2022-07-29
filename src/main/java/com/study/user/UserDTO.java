@@ -13,7 +13,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class UserDTO {
+  
   private String provider;
+  private String user_no;
   private String username; 
   private String email   ; 
   private String password; 
@@ -22,12 +24,13 @@ public class UserDTO {
   private String user_image;
   
   @Builder  
-  public UserDTO(String provider, String username, String email, String password, String nation, String role, String user_image) {
+  public UserDTO(String provider, String username, String email, String password, String nation, String role, String user_image, String user_no) {
     this.provider = provider;
     this.username = username;
     this.email = email;
     this.password = password;
     this.nation = nation;
     this.role = role;
-    this.user_image = user_image;}
+    this.user_image = user_image;
+    this.user_no = user_no;}
   }

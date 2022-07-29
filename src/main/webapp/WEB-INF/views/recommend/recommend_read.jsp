@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8" %> 
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="util" uri="/ELFunctions" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -83,61 +84,99 @@
 		</div>
 	</div>
 
+		<!---------------------------------------------------->
 	<!-- Comments section-->
 	<section class="mb-5">
-		<div class="card bg-light">
-			<div class="card-body">
-				<!-- Comment form-->
-				<form class="mb-4">
-					<textarea class="form-control" rows="3" placeholder="댓글을 작성해 보세요!"></textarea>
-				</form>
-				<!-- Comment with nested comments-->
-				<div class="d-flex mb-4">
-					<!-- Parent comment-->
-					<div class="flex-shrink-0">
-						<img class="rounded-circle"
-							src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
-					</div>
-					<div class="ms-3">
-						<div class="fw-bold">이승찬</div>
-						대댓글은 border 처리
-						<!-- Child comment 1-->
-						<div class="d-flex mt-4">
-							<div class="flex-shrink-0">
-								<img class="rounded-circle"
-									src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
+		<div class="card bg-white">
+			<div class='row'>
+
+				<div class="col-lg-12">
+
+					<div class='row'>
+
+						<div class="col-lg-12">
+
+							<!-- panel start-->
+							<div class="panel panel-default">
+
+								<div class="panel-heading">
+									<i class="fa fa-comments fa-3x" aria-hidden="true"></i>
+									<button id='addReplyBtn'
+										class='btn btn-danger btn-2x pull-right'>댓글 쓰기</button>
+								</div>
+
+
+								<div class="panel-body">
+
+									<ul class="chat list-group">
+										<li class="left clearfix" data-rno="20">
+											<div></div>
+										</li>
+									</ul>
+									<!-- ul end  -->
+								</div>
+
+								<div class="panel-footer"></div>
+
 							</div>
-							<div class="ms-3">
-								<div class="fw-bold">유효선</div>
-								돈그리아
-							</div>
+							<!-- panel end-->
 						</div>
-						<!-- Child comment 2-->
-						<div class="d-flex mt-4">
-							<div class="flex-shrink-0">
-								<img class="rounded-circle"
-									src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
-							</div>
-							<div class="ms-3">
-								<div class="fw-bold">이청우</div>
-								대댓글
-							</div>
-						</div>
+						<!--  col-lg-12 end -->
 					</div>
-				</div>
-				<!-- Single comment-->
-				<div class="d-flex">
-					<div class="flex-shrink-0">
-						<img class="rounded-circle"
-							src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
-					</div>
-					<div class="ms-3">
-						<div class="fw-bold">최욱진</div>
-						댓글
-					</div>
+					<!-- row end -->
 				</div>
 			</div>
 		</div>
 	</section>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 align="center" class="modal-title" id="myModalLabel">댓글</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>내용</label>
+						<textarea cols="50" rows="10" class="form-control" name='content'>New Reply!!!!</textarea>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button id='modalModBtn' type="button" class="btn btn-light">수정하기</button>
+					<button id='modalRemoveBtn' type="button" class="btn btn-light">삭제하기</button>
+					<button id='modalRegisterBtn' type="button" class="btn btn-light">등록하기</button>
+					<button id='modalCloseBtn' type="button" class="btn btn-light">닫기</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+
+	<script>
+		 let board_no = "${dto.board_no}"; 
+		 let sno = "${sno}";
+		 let eno = "${eno}";
+		<!-- 댓글용 paging, 게시판 검색 -->
+		 let nPage = "${nPage}";
+		 let nowPage = "${param.nowPage}";
+		 let colx = "${param.col}";
+		 let wordx = "${param.word}";
+		 
+		 let user_no ="${user_no}";
+		 let username ="${username}"; 
+	</script>
+	<!-- 댓글처리 관련 Javascript 파일 추가-->
+	<script src="/js/producer.js"></script>
+	<script src="/js/consumer.js"></script>
+
+
 </body>
 </html>
