@@ -62,22 +62,21 @@
 				</div>
 				<div class="friends_header">
 					<form action="post" action="my_friends">
-						<div class="page">
+						<!-- <div class="page">
 							<div>
 								<i class="fa-solid fa-angles-left"></i>
 							</div>
 							<div>
 								<i class="fa-solid fa-chevron-left"></i>
 							</div>
-							<div>1</div>
-							<div>2</div>
+							
 							<div>
 								<i class="fa-solid fa-chevron-right"></i>
 							</div>
 							<div>
 								<i class="fa-solid fa-angles-right"></i>
 							</div>
-						</div>
+						</div> -->
 						<div class="Select">
 							<select name="col" class="form-control">
 								<option value="아이디"

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,7 +23,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.study.member.MemberDTO.member;
+import com.study.board.BoardDTO;
+import com.study.reply.ReplyDTO;
+import com.study.user.UserDTO;
+import com.study.user.auth.PrincipalDetails;
 import com.study.utility.Utility;
 
 @Controller
@@ -32,25 +36,23 @@ public class MemberController {
 	@Autowired
 	@Qualifier("com.study.member.MemberServiceImpl")
 	private MemberService service;
-
+	
+	
+	
+	
+	
 	@GetMapping("/mypage/member")
-	public String mypage(Model model) {
-		String username = "홍길동";
-		member dto = service.read(username);
+	public String mypage(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		String username = principalDetails.getUsername();
+		UserDTO dto = service.read(username);
 
-		log.info("dto:" + dto);
-
+		log.info("dto:" + principalDetails);
 		model.addAttribute("dto", dto);
 		return "/mypage/member";
 	}
 	
 	
 	@GetMapping("/home")
-	public String intro() {
-		return "/intro";
-	}
-	
-	@GetMapping("/main")
 	public String main() {
 		return "/main";
 	}
@@ -63,10 +65,11 @@ public class MemberController {
 	
 	//스크랩 시작
 	@GetMapping("/mypage/my_scrap")
-	public String my_scrap(HttpServletRequest request) {
+	public String my_scrap(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		// 검색관련------------------------
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
+		String url = request.getContextPath();
 		
 		if (col.equals("total")) {
 			word = "";
@@ -81,19 +84,21 @@ public class MemberController {
 		
 		int sno = (nowPage - 1) * recordPerPage;
 		int eno = recordPerPage;
+		String username = principalDetails.getUsername();
+		UserDTO dto = service.read(username);
 		
 		Map map = new HashMap();
 		map.put("col", col);
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
-		map.put("user_no", 1);
+		map.put("user_no", principalDetails.getUserno() );
 		
 		int stotal = service.stotal(map);
 		
 		List<scrapDTO> scraplist = service.scraplist(map);
 		
-		String paging = Utility.spaging(stotal, nowPage, recordPerPage, col, word);
+		String paging = Utility.spaging(stotal, nowPage, recordPerPage, col, word, url);
 		log.info("scraplist : " + scraplist);
 		//request에 Model사용 결과 담는다
 		request.setAttribute("scraplist", scraplist);
@@ -139,7 +144,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("/mypage/my_friends")
-	public String my_friends(HttpServletRequest request) {
+	public String my_friends(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 	    // 검색관련------------------------
 //	    String col = Utility.checkNull(request.getParameter("col"));
 //	    String word = Utility.checkNull(request.getParameter("word"));
@@ -163,11 +168,11 @@ public class MemberController {
 //	    map.put("word", word);
 //	    map.put("sno", sno);
 //	    map.put("eno", eno);
-	    map.put("user_no", 1);
+	    map.put("user_no", principalDetails.getUserno());
 
 //	    int total = service.total(map);
 
-	    List<userDTO> list = service.list(map);
+	    List<UserDTO> list = service.list(map);
 
 //	    String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
 	    //log.info("List : " + list);
@@ -183,12 +188,12 @@ public class MemberController {
 	
 	@GetMapping("/mypage/my_friends/{user_no}")
 	@ResponseBody
-	  public ResponseEntity<List<userDTO>> getList(@PathVariable("user_no") int user_no) {
+	  public ResponseEntity<List<UserDTO>> getList(@PathVariable("user_no") int user_no) {
 
 		Map map = new HashMap();
 		map.put("user_no", user_no);
 	    
-	    return new ResponseEntity<List<userDTO>>(service.list(map), HttpStatus.OK);
+	    return new ResponseEntity<List<UserDTO>>(service.list(map), HttpStatus.OK);
 	  }
 	
 	@DeleteMapping("/mypage/my_friends/{f_no}")
@@ -202,11 +207,12 @@ public class MemberController {
 	  }
 	
 	@GetMapping("/mypage/request_friends")
-	public String request_friends(HttpServletRequest request) {
+	public String request_friends(HttpServletRequest request,@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Map map = new HashMap();
-	    map.put("t_id", 1);
+		
+	    map.put("t_id", principalDetails.getUserno());
 	    
-	    List<userDTO> list = service.rlist(map);
+	    List<UserDTO> list = service.rlist(map);
 	    
 	    request.setAttribute("list", list);
 		return "/mypage/request_friends";
@@ -214,11 +220,11 @@ public class MemberController {
 	
 	@GetMapping("/mypage/request_friends/{t_id}")
 	@ResponseBody
-	  public ResponseEntity<List<userDTO>> getrequest (@PathVariable("t_id") int t_id) {
+	  public ResponseEntity<List<UserDTO>> getrequest (@PathVariable("t_id") int t_id) {
 	    Map map = new HashMap();
 	    map.put("t_id", t_id);
 	    
-	    return new ResponseEntity<List<userDTO>>(service.rlist(map), HttpStatus.OK);
+	    return new ResponseEntity<List<UserDTO>>(service.rlist(map), HttpStatus.OK);
 	  }
 	
 //	@PostMapping("/mypage/request_friends/{user_no}")
@@ -250,10 +256,11 @@ public class MemberController {
 	  }
 	
 	@RequestMapping("/mypage/my_posted")
-	public String my_posted(HttpServletRequest request) {
+	public String my_posted(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 	    // 검색관련------------------------
 	    String col = Utility.checkNull(request.getParameter("col"));
 	    String word = Utility.checkNull(request.getParameter("word"));
+	    String url = request.getContextPath();
 
 	    if (col.equals("total")) {
 	      word = "";
@@ -264,7 +271,7 @@ public class MemberController {
 	    if (request.getParameter("nowPage") != null) {
 	      nowPage = Integer.parseInt(request.getParameter("nowPage"));
 	    }
-	    int recordPerPage = 10;// 한페이지당 보여줄 레코드갯수
+	    int recordPerPage = 5;// 한페이지당 보여줄 레코드갯수
 
 	    int sno = (nowPage - 1) * recordPerPage;
 	    int eno = recordPerPage;
@@ -274,13 +281,13 @@ public class MemberController {
 	    map.put("word", word);
 	    map.put("sno", sno);
 	    map.put("eno", eno);
-	    map.put("user_no", 1);
+	    map.put("user_no", principalDetails.getUserno());
 
 	    int ptotal = service.ptotal(map);
 
-	    List<boardDTO> plist = service.plist(map);
+	    List<BoardDTO> plist = service.plist(map);
 
-	    String paging = Utility.spaging(ptotal, nowPage, recordPerPage, col, word);
+	    String paging = Utility.spaging(ptotal, nowPage, recordPerPage, col, word, url);
 	    log.info("pList : " + plist);
 	     //request에 Model사용 결과 담는다
 	    request.setAttribute("plist", plist);
@@ -293,10 +300,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/mypage/my_comment")
-	public String my_comment(HttpServletRequest request) {
+	public String my_comment(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		// 검색관련------------------------
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
+		String url = request.getContextPath();
 		
 		if (col.equals("total")) {
 			word = "";
@@ -307,7 +315,7 @@ public class MemberController {
 		if (request.getParameter("nowPage") != null) {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
-		int recordPerPage = 10;// 한페이지당 보여줄 레코드갯수
+		int recordPerPage = 5;// 한페이지당 보여줄 레코드갯수
 		
 		int sno = (nowPage - 1) * recordPerPage;
 		int eno = recordPerPage;
@@ -317,13 +325,13 @@ public class MemberController {
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
-		map.put("user_no", 1);
+		map.put("user_no", principalDetails.getUserno());
 		
-		int ptotal = service.ptotal(map);
+		int ctotal = service.ctotal(map);
 		
-		List<replyDTO> replylist = service.replylist(map);
+		List<ReplyDTO> replylist = service.replylist(map);
 		
-		String paging = Utility.spaging(ptotal, nowPage, recordPerPage, col, word);
+		String paging = Utility.spaging(ctotal, nowPage, recordPerPage, col, word, url);
 		log.info("replyList : " + replylist);
 		//request에 Model사용 결과 담는다
 		request.setAttribute("replylist", replylist);

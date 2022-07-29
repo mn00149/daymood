@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select *
 		from Board
 		order by like_cnt desc
-		limit 0,7;
+		limit 0,7
 	</select>
 
 	<select id="total" parameterType="Map" resultType="int">

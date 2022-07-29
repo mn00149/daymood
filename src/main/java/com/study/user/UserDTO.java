@@ -2,9 +2,9 @@
 package com.study.user;
 
 
-import java.sql.Timestamp;
+import java.util.List;
 
-
+import com.study.member.requestDTO;
 
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class UserDTO {
-  private int user_no;
+  
   private String provider;
 
   private String username; 
@@ -22,6 +22,9 @@ public class UserDTO {
   private String nation  ; 
   private String role    ; 
   private String user_image;
+  private String createDate;
+  private List<requestDTO> rlist;
+  private int user_no;
   
   
   @Builder  

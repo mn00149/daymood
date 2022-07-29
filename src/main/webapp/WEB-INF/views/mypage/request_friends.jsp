@@ -52,7 +52,7 @@
                     </table>
                 </div>
 				<div class="friends_header">
-					<div class="page">
+					<!-- <div class="page">
 						<div>
 							<i class="fa-solid fa-angles-left"></i>
 						</div>
@@ -67,7 +67,7 @@
 						<div>
 							<i class="fa-solid fa-angles-right"></i>
 						</div>
-					</div>
+					</div> -->
 					<div>
 						<input placeholder="Find Friend" />
 						<button class="Search">검색</button>

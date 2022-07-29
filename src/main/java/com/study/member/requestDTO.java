@@ -2,7 +2,7 @@ package com.study.member;
 
 import java.util.List;
 
-import com.study.member.MemberDTO.*;
+import com.study.user.UserDTO;
 
 import lombok.Data;
 
@@ -12,6 +12,6 @@ public class requestDTO {
 	private int f_id;
 	private int t_id;
 	private byte status;
-	private List<my_friends> Flist;
-	private List<member> list;
+	private List<friendDTO> Flist;
+	private List<UserDTO> list;
 }
