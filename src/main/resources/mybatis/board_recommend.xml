@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.study.board.BoardMapper">
 
-	<!-- Board List - all -->
+	<!-- recommend List - all -->
 	<resultMap type="com.study.board.BoardDTO" id="recommend_list">
 		<result property="recommend_category" column="recommend_category"/>
 		<result property="title" column="title"/>

@@ -22,6 +22,7 @@ public class UserDTO {
   private String role    ; 
   private String user_image;
   
+  
   @Builder  
   public UserDTO(String provider, String username, String email, String password, String nation, String role, String user_image) {
     this.provider = provider;
@@ -30,5 +31,6 @@ public class UserDTO {
     this.password = password;
     this.nation = nation;
     this.role = role;
-    this.user_image = user_image;}
+    this.user_image = user_image;
+    }
   }

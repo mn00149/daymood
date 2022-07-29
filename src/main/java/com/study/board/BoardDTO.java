@@ -22,9 +22,6 @@ public class BoardDTO {
   private String weather_category;                  
   private String recommend_category;                
   private String info_category;   
-  //@DateTimeFormat(pattern = "yyyy-MM-dd")
-  //private Date create_date;
-  
   
   private UserDTO udto;
 }

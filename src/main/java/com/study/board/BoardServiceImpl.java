@@ -29,13 +29,13 @@ public class BoardServiceImpl implements BoardService {
   }
 
   @Override
-  public List<BoardDTO> list_fog(Map map) {
-    return mapper.list_fog(map);
+  public List<BoardDTO> list_cloudy(Map map) {
+    return mapper.list_cloudy(map);
   }
 
   @Override
-  public List<BoardDTO> list_rain(Map map) {
-    return mapper.list_rain(map);
+  public List<BoardDTO> list_rainy(Map map) {
+    return mapper.list_rainy(map);
   }
 
   @Override
@@ -56,6 +56,27 @@ public class BoardServiceImpl implements BoardService {
   @Override
   public List<BoardDTO> list2(Map map) {
     return mapper.list2(map);
+  }
+
+  @Override
+  public int create(Map map) {
+    // TODO Auto-generated method stub
+    return mapper.create(map);
+  }
+
+  @Override
+  public List<BoardDTO> list_movie(Map map) {
+    return mapper.list_movie(map);
+  }
+
+  @Override
+  public List<BoardDTO> list_book(Map map) {
+    return mapper.list_book(map);
+  }
+
+  @Override
+  public List<BoardDTO> list_music(Map map) {
+    return mapper.list_music(map);
   }
 
   /*

@@ -52,7 +52,7 @@
 											<td>${dto.weather_category}</td>
 											<td>${dto.title }</td>
 											<td>${dto.view_cnt }</td>
-											<td>${dto.recommend_cnt}</td>
+											<td>${dto.like_cnt}</td>
 											<td>${dto.nation}</td>
 											<td><c:out value="${fn:substring(dto.create_date, 0, 10)}"/></td>
 										</tr>
