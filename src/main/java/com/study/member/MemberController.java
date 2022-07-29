@@ -92,7 +92,7 @@ public class MemberController {
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
-		map.put("user_no", principalDetails.getUserno() );
+		map.put("user_no", principalDetails.getUser_no() );
 		
 		int stotal = service.stotal(map);
 		
@@ -168,7 +168,7 @@ public class MemberController {
 //	    map.put("word", word);
 //	    map.put("sno", sno);
 //	    map.put("eno", eno);
-	    map.put("user_no", principalDetails.getUserno());
+	    map.put("user_no", principalDetails.getUser_no());
 
 //	    int total = service.total(map);
 
@@ -210,7 +210,7 @@ public class MemberController {
 	public String request_friends(HttpServletRequest request,@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Map map = new HashMap();
 		
-	    map.put("t_id", principalDetails.getUserno());
+	    map.put("t_id", principalDetails.getUser_no());
 	    
 	    List<UserDTO> list = service.rlist(map);
 	    
@@ -281,7 +281,7 @@ public class MemberController {
 	    map.put("word", word);
 	    map.put("sno", sno);
 	    map.put("eno", eno);
-	    map.put("user_no", principalDetails.getUserno());
+	    map.put("user_no", principalDetails.getUser_no());
 
 	    int ptotal = service.ptotal(map);
 
@@ -325,7 +325,7 @@ public class MemberController {
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
-		map.put("user_no", principalDetails.getUserno());
+		map.put("user_no", principalDetails.getUser_no());
 		
 		int ctotal = service.ctotal(map);
 		

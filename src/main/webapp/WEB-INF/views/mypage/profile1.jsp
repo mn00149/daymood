@@ -14,22 +14,14 @@
       <h1>
         회원페이지
       </h1>
-      <div class="bubble_wrap">
-        <a href="/" class="bubble">
-          <i class="fa-solid fa-backward" style="color: black;"></i>
-        </a>
-        <div class="ink_bubble">
-          <div class="arrow"></div>
-          돌아가기
-        </div>
-      </div>
+
     </div>
     <div class="profile1">
       <div class="aa">
-        <div class="imgprofile">이미지</div>
-        <div class="nickname">
+        <div class="imgprofile"><img src="/images/daymood.png" /></div>
+<%--         <div class="nickname">
           <a href="#">${dto.username}</a>
-        </div>
+        </div> --%>
       </div>
       
       <ul class="tmenu">

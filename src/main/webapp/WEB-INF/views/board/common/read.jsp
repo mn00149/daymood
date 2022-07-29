@@ -9,16 +9,14 @@
 
 <link rel="stylesheet" href="/css/board_style.css">
 <link rel="stylesheet" href="/css/reply.css">
-<<<<<<< HEAD:src/main/webapp/WEB-INF/views/board/common/read.jsp
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-=======
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
->>>>>>> ab9b397a08295b4ae4a9c2d370b25812c1f0b0ee:src/main/webapp/WEB-INF/views/read.jsp
+
 <style>
 .video {
 	width: 1200px;

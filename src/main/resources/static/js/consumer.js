@@ -78,6 +78,7 @@ $("#addReplyBtn").on("click", function(e) {
 //댓글 입력
 modalRegisterBtn.on("click", function(e) {
 
+
 	if (modalInputContent.val() == '') {
 		alert("댓글을 입력하세요")
 		return;
