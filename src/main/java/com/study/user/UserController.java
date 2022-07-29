@@ -1,5 +1,8 @@
 package com.study.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,9 +28,13 @@ public class UserController {
   private UserService service;
 
   @Autowired
+  @Qualifier("com.study.user.SendEmailServiceImpl")
+  private SendEmailService eservice;
+
+  @Autowired
   private BCryptPasswordEncoder bCryptPasswordEncoder;
-  
-  //Oauth 로그인을 해도 일반로그인을 해도 => PrincipalDetails
+
+  // Oauth 로그인을 해도 일반로그인을 해도 => PrincipalDetails
   //
   @GetMapping("/user")
   public String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
@@ -44,10 +52,6 @@ public class UserController {
     /* logger.info("loginForm view resolve"); */
     return "/user/loginForm";
   }
-  
-  
-
-
 
   @PostMapping("/join")
   public String join(UserDTO user) {
@@ -66,7 +70,7 @@ public class UserController {
 
     return "/user/joinForm";
   }
-  
+
   @GetMapping("/test/oauth/login")
   public @ResponseBody String testOauthLogin(Authentication authentication, @AuthenticationPrincipal OAuth2User oauth) {// DI
     System.out.println("테스트Oauth로그인===================================");
@@ -77,9 +81,38 @@ public class UserController {
     return "Oauth세션";
   }
 
+  @GetMapping("/findPassword")
+  public String findPwd() {
+    return "user/findPassword";
+  }
+
+  // Email과 name의 일치여부를 check하는 컨트롤러
+  @GetMapping("/check/findPw")
+  public @ResponseBody Map<String, Boolean> pw_find(String email, String username) {
+    Map<String, Boolean> json = new HashMap<>();
+    boolean pwFindCheck = service.userEmailCheck(email, username);
+
+    System.out.println(pwFindCheck);
+    json.put("check", pwFindCheck);
+    return json;
+  }
+
+  // 등록된 이메일로 임시비밀번호를 발송하고 발송된 임시비밀번호로 사용자의 pw를 변경하는 컨트롤러
+
+  @PostMapping("/check/findPw/sendEmail")
+  public @ResponseBody void sendEmail(@RequestBody UserDTO user) {
+    String username = user.getUsername();
+    String email = user.getEmail();
+    System.out.println("============================");
+    System.out.println(username);
+    System.out.println(email);
+    MailDTO dto = eservice.createMailAndChangePassword(email, username);
+    eservice.mailSend(dto);
+
+  }
+
   @GetMapping("/test/login")
-  public @ResponseBody String testLogin(Authentication authentication,
-      @AuthenticationPrincipal PrincipalDetails userDetails) {// DI
+  public @ResponseBody String testLogin(Authentication authentication, @AuthenticationPrincipal PrincipalDetails userDetails) {// DI
     System.out.println("테스트로그인===================================");
     PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
     System.out.println("authentication" + principalDetails.getUser());
@@ -89,6 +122,7 @@ public class UserController {
   }
 
   @Secured("ROLE_ADMIN")
+
   @GetMapping("/info")
   public @ResponseBody String info() {
     return "개인정보";
@@ -99,4 +133,5 @@ public class UserController {
   public @ResponseBody String data() {
     return "data";
   }
+
 }

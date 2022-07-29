@@ -14,5 +14,9 @@ public interface UserService {
 
   int duplicatedEmail(String email);
 
+  boolean userEmailCheck(String userEmail, String userName);
+
+  int updateUserPassword(UserDTO user);
+
 
 }

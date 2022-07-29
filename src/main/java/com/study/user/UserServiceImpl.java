@@ -14,27 +14,38 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public int create(UserDTO user) {
-    // TODO Auto-generated method stub
     return mapper.create(user);
   }
 
   @Override
   public UserDTO findByUsername(String username) {
-    // TODO Auto-generated method stub
     return mapper.findByUsername(username);
   }
-  
+
   @Override
   public int duplicatedUsername(String username) {
-    // TODO Auto-generated method stub
     return mapper.duplicatedUsername(username);
   }
 
   @Override
   public int duplicatedEmail(String email) {
-    // TODO Auto-generated method stub
     return mapper.duplicatedEmail(email);
   }
 
+  @Override
+  public boolean userEmailCheck(String email, String username) {
+    UserDTO user = findByUsername(username);
+    if (user != null && user.getEmail().equals(email)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @Override
+  public int updateUserPassword(UserDTO user) {
+    // TODO Auto-generated method stub
+    return mapper.updateUserPassword(user);
+  }
 
 }

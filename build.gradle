@@ -46,6 +46,11 @@ dependencies {
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+    
+
 	
 }
 

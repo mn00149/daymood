@@ -24,4 +24,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM member
 		WHERE email=#{email}
 	</select>
+	<update id="updateUserPassword" parameterType="com.study.user.UserDTO">
+		update User
+		set password =
+		#{password}
+		where user_no = #{user_no}
+	</update>
 </mapper>
