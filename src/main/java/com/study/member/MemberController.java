@@ -52,7 +52,12 @@ public class MemberController {
 	}
 	
 	
-	@GetMapping("/home")
+	@GetMapping("/")
+	public String intro() {
+		return "/intro";
+	}
+	
+	@GetMapping("/main")
 	public String main() {
 		return "/main";
 	}

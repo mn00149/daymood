@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	<select id="list" parameterType="Map" resultMap="friend">
 	
-		select u.user_no, u.username, u.nation, u.email ,u.createDate, f_no, f.friends_no from f f
+		select u.user_no, u.username, u.nation, u.email ,u.createDate, f_no, f.friends_no from friend f
 		 inner join user u
 		 on u.user_no = f.friends_no
 		 where f.user_no = #{user_no};
@@ -52,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<delete id="delete" parameterType="int">
-		delete from f
+		delete from friend
 		where f_no = #{f_no}
 	</delete>
 
@@ -71,7 +71,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<result property="t_id" column="t_id" />
 	</resultMap>
 	<select id="rlist" parameterType="Map" resultMap="req"> <!-- 친구요청리스트 -->
-		select * from rf r
+		select * from requestfriend r
 		 inner join user u
 		 on u.user_no = r.f_id
 		 where r.t_id = #{t_id}
@@ -79,14 +79,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<delete id="rdelete" parameterType="int">
-		delete from rf
+		delete from requestfriend
 		where request_no = #{request_no}
 	</delete>
 	
 	<!-- rdelete : 친구 삭제, add : 친구 추가 -->
 	
 	<insert id="add" parameterType="map">
-		insert into f(user_no, friends_no)
+		insert into friend(user_no, friends_no)
 		values (#{t_id}, #{f_id}), (#{f_id}, #{t_id})
 	</insert>
 	
