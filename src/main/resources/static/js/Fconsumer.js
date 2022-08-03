@@ -34,7 +34,7 @@ function rm(friends_no) {
 		}
 }
 
-function requestlist() {
+/*function requestlist() {
 	getrequest()
     .then(list => {
       let str = ""
@@ -51,4 +51,4 @@ function requestlist() {
       }
       reqf.html(str);
     });
-}
+}*/

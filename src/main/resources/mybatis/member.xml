@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where f_no = #{f_no}
 	</delete>
 
-	<!-- 친구 요청 관련 -->
+	<!-- 친구 요청 리스트 -->
 	<resultMap type="com.study.user.UserDTO" id="req">
 			<result property="username" column="username" />
 			<result property="email" column="email" />
@@ -83,7 +83,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where request_no = #{request_no}
 	</delete>
 	
-	<!-- rdelete : 친구 삭제, add : 친구 추가 -->
+	<insert id="reqFriend" parameterType="map">
+		insert into requestfriend(user_no, f_id, t_id)
+		values (#{f_id}, #{f_id}, #{t_id})
+	</insert>
+	
+	
+	<!-- rdelete : 친구요청리스트 삭제, add : 친구 추가 -->
 	
 	<insert id="add" parameterType="map">
 		insert into friend(user_no, friends_no)
@@ -207,5 +213,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="ScrapDelete" parameterType="int">
 		delete from Scrap
 		where scrapno = #{scrapno}
+	</delete>
+	
+	<!-- 친구요청, 친구리스트 확인 -->
+	<select id="checkfriend" parameterType="Map" resultType="Integer">
+		select count(*) from friend where user_no = #{f_id} and friends_no = #{t_id};
+	</select>
+	
+	<select id="checkReqfriend" parameterType="Map" resultType="Integer">
+		select count(*) from requestfriend
+		where f_id = #{f_id} and t_id = #{t_id} 
+	</select>
+	
+	<!-- 양쪽 모두 친구요청을 했으면 자동으로 친구 추가할 수 있게 조회// 삭제도 함께 -->
+	<select id="checkboth" parameterType="Map" resultType="Integer">
+		select count(*) from requestfriend 
+		where (user_no = #{f_id} and t_id = #{t_id}) 
+		or (user_no = #{t_id} and t_id = #{f_id});
+	</select>
+	
+	<delete id = "reqBothDelete" parameterType="int">
+		delete from requestfriend 
+		where (f_id = #{f_id} and t_id = #{t_id}) or (f_id = #{t_id} and t_id = #{f_id});
 	</delete>
 </mapper>

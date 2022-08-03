@@ -92,6 +92,36 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.ctotal(map);
 	}
 
+	@Override
+	public int reqFriend(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.reqFriend(map);
+	}
+
+	@Override
+	public Integer checkfriend(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.checkfriend(map);
+	}
+
+	@Override
+	public Integer checkReqfriend(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.checkReqfriend(map);
+	}
+
+	@Override
+	public Integer checkboth(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.checkboth(map);
+	}
+
+	@Override
+	public void reqBothDelete(Map map) {
+		mapper.reqBothDelete(map);
+		
+	}
+
 
 
 

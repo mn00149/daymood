@@ -34,4 +34,14 @@ public interface MemberService {
 
 	int ctotal(Map map);
 
+	int reqFriend(Map map);
+
+	Integer checkfriend(Map map);
+
+	Integer checkReqfriend(Map map);
+
+	Integer checkboth(Map map);
+
+	void reqBothDelete(Map map);
+
 }

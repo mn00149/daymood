@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="/video/sunny.mp4">
 <script src="https://kit.fontawesome.com/6a80a39212.js"
 	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/boardProfile.css">
+<script type="text/javascript" src="/js/boardProfile.js" defer></script>
 <style>
 .video {
 	width: 1200px;
@@ -46,6 +48,30 @@
 </script>
 </head>
 <body>
+<!-- 친구 요청 팝업 -->
+	<div class="popup-overlay">
+	            <div class="popup-box-container">
+	                <div class="check-container">
+	                    <i class="fa-solid fa-handshake"></i>
+	                </div>
+	                <div class="popup-message-container">
+	                    <h1 id="userid"></h1>
+	                    <p>친구 추가 하시겠습니까?</p>
+	                </div>
+	                <button class="ok-btn">
+	                    <span>확인</span>
+	                </button>
+	                <button class="no-btn">
+	                    <span>취소</span>
+	                </button>
+	            </div>
+	</div>
+	<!-- 클릭 시 친구 요청 등 메뉴 뜸 -->
+<ul id="profile" class="container__menu container__menu--hidden">
+                <li class="container__item"><span class="req-btn">친구요청</span></li>
+                <li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
+                <li class="container__item"><a href="#" style="text-decoration:none">쪽지 보내기</a></li>
+</ul>
 	<div class="video">
 		<video muted autoplay loop>
 			<source src="/video/sunny.mp4" type="video/mp4">
@@ -129,7 +155,7 @@
 													<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
 												</div>
 
-												<div class="username">${dto.udto.username }</div>
+												<div class="username"><a class="username2" style="text-decoration:none" data-value="${dto.udto.user_no }">${dto.udto.username }</a></div>
 
 												<c:forEach var="calc_date" items="${msg2[statusList.index]}"
 													varStatus="statusMsg">
@@ -196,4 +222,5 @@
 		</div>
 		<%--  board_wrap --%>
 </body>
+<script type="text/javascript" src="/js/boardProfile.js" defer></script>
 </html>

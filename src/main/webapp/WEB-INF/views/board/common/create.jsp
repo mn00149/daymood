@@ -70,6 +70,7 @@
 				</div>
 			</div>
 			<input type="hidden" name="select_category" id="select_category" value="">
+			<input type="hidden" name="select_category" id="select_category" value="${weather_category}">
 			
 			<div class="board_content">
 				<label class="control-label" for="content">내용</label>

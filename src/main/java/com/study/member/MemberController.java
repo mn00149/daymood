@@ -40,13 +40,59 @@ public class MemberController {
 	
 	
 	
+	@GetMapping("/board/req/{user_no}")
+	@ResponseBody
+	public ResponseEntity<String> requestFriend(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails,
+			@PathVariable("user_no") int t_id) {
+		
+	    
+	    Map map = new HashMap();
+	    map.put("f_id", principalDetails.getUser_no());
+	    map.put("t_id", t_id);
+	    
+	    //친구 목록 검사, 친구 요청 목록 검사 (이미 있는지 없는지)
+	    try {
+			Integer flag = service.checkReqfriend(map);
+			Integer flag2 = service.checkfriend(map);
+			//log.info("flag:"+flag);
+			//log.info("flag2:"+flag2);
+			if(flag >= 1 || flag2 >= 1) {
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} catch(Exception e){
+			System.out.println(e);
+		}
+	    
+	    //자기 자신한테 요청하는지 검사
+	    if(map.get("f_id") == map.get("t_id")) {
+	    	return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	    
+	    //친구 요청
+	    int reqFriend = service.reqFriend(map);
+	    
+	    //친구 요청을 한 뒤 양쪽에 양쪽 모두가 서로 요청을 한 상태라면 자동으로 친구 등록 후 요청목록에서 삭제
+	    try {
+	    	Integer both = service.checkboth(map);
+	    	if(both == 2) {
+	    	service.add(map);
+	    	service.reqBothDelete(map);
+	    	//System.out.println(both);
+	    	}
+	    }catch(Exception e) {
+	    	System.out.println(e);
+	    }
+	    
+	    return reqFriend == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
+	            : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 	
 	@GetMapping("/mypage/member")
 	public String mypage(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		String username = principalDetails.getUsername();
 		UserDTO dto = service.read(username);
 
-		log.info("dto:" + principalDetails);
+		//log.info("dto:" + principalDetails);
 		model.addAttribute("dto", dto);
 		return "/mypage/member";
 	}
@@ -60,6 +106,55 @@ public class MemberController {
 	@GetMapping("/main")
 	public String main() {
 		return "/main";
+	}
+	
+	@GetMapping("/posted")
+	public String posted() {
+		return "/posted";
+	}
+	
+	@RequestMapping("/posted/{user_no}")
+	public String posted(HttpServletRequest request, @PathVariable int user_no) {
+	    // 검색관련------------------------
+	    String col = Utility.checkNull(request.getParameter("col"));
+	    String word = Utility.checkNull(request.getParameter("word"));
+	    String url = request.getContextPath();
+
+	    if (col.equals("total")) {
+	      word = "";
+	    }
+
+	    // 페이지관련-----------------------
+	    int nowPage = 1;// 현재 보고있는 페이지
+	    if (request.getParameter("nowPage") != null) {
+	      nowPage = Integer.parseInt(request.getParameter("nowPage"));
+	    }
+	    int recordPerPage = 5;// 한페이지당 보여줄 레코드갯수
+
+	    int sno = (nowPage - 1) * recordPerPage;
+	    int eno = recordPerPage;
+
+	    Map map = new HashMap();
+	    map.put("col", col);
+	    map.put("word", word);
+	    map.put("sno", sno);
+	    map.put("eno", eno);
+	    map.put("user_no", user_no);
+
+	    int ptotal = service.ptotal(map);
+
+	    List<BoardDTO> plist = service.plist(map);
+
+	    String paging = Utility.spaging(ptotal, nowPage, recordPerPage, col, word, url);
+	    //log.info("pList : " + plist);
+	     //request에 Model사용 결과 담는다
+	    request.setAttribute("plist", plist);
+	    request.setAttribute("nowPage", nowPage);
+	    request.setAttribute("col", col);
+	    request.setAttribute("word", word);
+	    request.setAttribute("paging", paging);
+	    
+		return "/posted";
 	}
 	
 //	@GetMapping("/mypage/my_comment")
@@ -104,7 +199,7 @@ public class MemberController {
 		List<scrapDTO> scraplist = service.scraplist(map);
 		
 		String paging = Utility.spaging(stotal, nowPage, recordPerPage, col, word, url);
-		log.info("scraplist : " + scraplist);
+		//log.info("scraplist : " + scraplist);
 		//request에 Model사용 결과 담는다
 		request.setAttribute("scraplist", scraplist);
 		request.setAttribute("nowPage", nowPage);
@@ -191,12 +286,12 @@ public class MemberController {
 		return "/mypage/my_friends";
 	}
 	
-	@GetMapping("/mypage/my_friends/{user_no}")
+	@GetMapping("/mypage/my_friends2")
 	@ResponseBody
-	  public ResponseEntity<List<UserDTO>> getList(@PathVariable("user_no") int user_no) {
+	  public ResponseEntity<List<UserDTO>> getList(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 
 		Map map = new HashMap();
-		map.put("user_no", user_no);
+		map.put("user_no", principalDetails.getUser_no());
 	    
 	    return new ResponseEntity<List<UserDTO>>(service.list(map), HttpStatus.OK);
 	  }
@@ -223,11 +318,11 @@ public class MemberController {
 		return "/mypage/request_friends";
 	}
 	
-	@GetMapping("/mypage/request_friends/{t_id}")
+	@GetMapping("/mypage/request_friends2")
 	@ResponseBody
-	  public ResponseEntity<List<UserDTO>> getrequest (@PathVariable("t_id") int t_id) {
+	  public ResponseEntity<List<UserDTO>> getrequest (@AuthenticationPrincipal PrincipalDetails principalDetails) {
 	    Map map = new HashMap();
-	    map.put("t_id", t_id);
+	    map.put("t_id", principalDetails.getUser_no());
 	    
 	    return new ResponseEntity<List<UserDTO>>(service.rlist(map), HttpStatus.OK);
 	  }
@@ -246,9 +341,20 @@ public class MemberController {
 		map.put("f_id", f_id);
 		map.put("t_id", t_id);
 		//log.info("int:"+service.add(map));
-	   return service.add(map) == 2? new ResponseEntity<>("success", HttpStatus.OK)
+		try {
+			Integer flag = service.checkfriend(map);
+			log.info("flag:"+flag);
+			if(flag >= 1) {
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} catch(Exception e){
+			System.out.println(e);
+		}
+		
+		return service.add(map) == 2? new ResponseEntity<>("success", HttpStatus.OK)
 	       : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	 }
+	}
+	 
 	
 	// 친구인 경우, 친구 요청 테이블에 Insert 하지 않음
 	
@@ -293,7 +399,7 @@ public class MemberController {
 	    List<BoardDTO> plist = service.plist(map);
 
 	    String paging = Utility.spaging(ptotal, nowPage, recordPerPage, col, word, url);
-	    log.info("pList : " + plist);
+	    //log.info("pList : " + plist);
 	     //request에 Model사용 결과 담는다
 	    request.setAttribute("plist", plist);
 	    request.setAttribute("nowPage", nowPage);
@@ -337,7 +443,7 @@ public class MemberController {
 		List<ReplyDTO> replylist = service.replylist(map);
 		
 		String paging = Utility.spaging(ctotal, nowPage, recordPerPage, col, word, url);
-		log.info("replyList : " + replylist);
+		//log.info("replyList : " + replylist);
 		//request에 Model사용 결과 담는다
 		request.setAttribute("replylist", replylist);
 		request.setAttribute("nowPage", nowPage);

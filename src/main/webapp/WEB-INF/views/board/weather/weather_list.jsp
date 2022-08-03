@@ -18,7 +18,12 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
 	rel="stylesheet">
-<script type="text/javascript" src="/search.js"></script>
+	
+<link rel="stylesheet" href="/css/boardProfile.css">
+	
+<script type="text/javascript" src="/js/boardProfile.js" defer></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
 
 
 <style>
@@ -53,8 +58,35 @@
 	}
 </script>
 
+
+
 </head>
 <body>
+	<!-- 친구 요청 팝업 -->
+	<div class="popup-overlay">
+	            <div class="popup-box-container">
+	                <div class="check-container">
+	                    <i class="fa-solid fa-handshake"></i>
+	                </div>
+	                <div class="popup-message-container">
+	                    <h1 id="userid"></h1>
+	                    <p>친구 추가 하시겠습니까?</p>
+	                </div>
+	                <button class="ok-btn">
+	                    <span>확인</span>
+	                </button>
+	                <button class="no-btn">
+	                    <span>취소</span>
+	                </button>
+	            </div>
+	</div>
+	<!-- 클릭 시 친구 요청 등 메뉴 뜸 -->
+<ul id="profile" class="container__menu container__menu--hidden">
+                <li class="container__item"><span class="req-btn">친구요청</span></li>
+                <li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
+                <li class="container__item"><a href="#" style="text-decoration:none">쪽지 보내기</a></li>
+</ul>
+
 	<div class="video">
 		<video muted autoplay loop>
 			<source src="/video/sunny.mp4" type="video/mp4">
@@ -137,8 +169,9 @@
 											<span class="badge">${rcount}</span>
 											</c:if></a></div>
 											<%-- 댓글 갯수 보이기 끝 --%>
-												
-											<div class="username">${dto.udto.username }</div>
+											
+											<!-- user_no를 받아오기 위해 data-value에 삽입, board_weather.xml 리스트 항목에 user_no 추가 -->
+											<div class="username"><a class="username2" style="text-decoration:none" data-value="${dto.udto.user_no }">${dto.udto.username }</a></div>
 											
 											<c:forEach var="calc_date" items="${msg2[statusList.index]}"
 												varStatus="statusMsg">
@@ -207,4 +240,5 @@
 	</div>
 	<%--  board_wrap --%>
 </body>
+
 </html>
