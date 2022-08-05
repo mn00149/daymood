@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from Reply
 		where board_no = #{board_no}
 		order by reply_no DESC
-		limit #{sno}, 10
+		limit #{sno}, #{eno}
 	</select>
 	
 	<select id="read" parameterType="int" resultType="com.study.reply.ReplyDTO">

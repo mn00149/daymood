@@ -12,6 +12,7 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 
 <link rel="stylesheet" href="css/index_style.css" />
+
 <script type="text/javascript">
 	function Show(){
 		document.getElementById("#service-menu-list").style.display="";
@@ -19,6 +20,15 @@
 	function Hide(){
 		document.getElementById("service-menu-list").style.display = "none";
 	}
+
+	function read(board_no) {
+		let url = 'board/read/' + board_no;
+		url += "?nowPage=${nowPage}";
+		url += "&col=${col}";
+		url += "&word=${word}";
+		location.href = url;
+	}
+
 </script>
 </head>
 <body class="is-preload homepage">
@@ -46,24 +56,24 @@
 						<c:forEach var="dto" items="${list2}">
 								<ul class="libox">
                     			 <li class="title"> 
-                    			  <a href="/board/read" style="text-decoration : none;">
+                    			  <a href="/board/read/${dto.board_no}" style="text-decoration : none;">
                     				<div class=text_img_tool>
        							     <c:choose>
          							  <c:when test = "${dto.weather_category eq '맑음'}">
             							<div class="img1">
-            								<img src="/images/sun.png" alt="no image">
+            								<img class="img1" src="/images/sun.png" alt="no image">
             							</div> 
          							  </c:when>
 
          							  <c:when test = "${dto.weather_category eq '흐림'}">
             						 	<div class="img2">
-            						 		<img src="/images/fog.png" alt="no image">
+            						 		<img class="img2" src="/images/fog.png" alt="no image">
             						 	</div>
 							          </c:when>
 							
 							          <c:when test = "${dto.weather_category eq '비'}">
 							             <div class="img3">
-							             	<img src="/images/rain.png" alt="no image">
+							             	<img class="img3" src="/images/rain.png" alt="no image">
 							             </div>  
 							          </c:when>
 							         </c:choose> 
@@ -85,7 +95,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner2">
 								<header class="innerheader">
-									<h2><a href="#" style="text-decoration : none;">최근 게시글</a></h2>
+									<h2><a href="/board/weather_list" style="text-decoration : none;">최근 게시글</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list}">
@@ -95,24 +105,24 @@
 						<c:forEach var="dto" items="${list}">
 								<ul class="libox">
                     			 <li class="title"> 
-                    			  <a href="/board/read" style="text-decoration : none;">
+                    			  <a href="javascript:read('${dto.board_no}')" style="text-decoration : none;">
                     				<div class=text_img_tool>
        							     <c:choose>
          							  <c:when test = "${dto.weather_category eq '맑음'}">
             							<div class="img1">
-            								<img src="/images/sun.png" alt="no image">
+            								<img class="img1" src="/images/sun.png" alt="no image">
             							</div> 
          							  </c:when>
 
          							  <c:when test = "${dto.weather_category eq '흐림'}">
             						 	<div class="img2">
-            						 		<img src="/images/fog.png" alt="no image">
+            						 		<img class="img2" src="/images/fog.png" alt="no image">
             						 	</div>
 							          </c:when>
 							
 							          <c:when test = "${dto.weather_category eq '비'}">
 							             <div class="img3">
-							             	<img src="/images/rain.png" alt="no image">
+							             	<img class="img3" src="/images/rain.png" alt="no image">
 							             </div>  
 							          </c:when>
 							         </c:choose> 
@@ -133,7 +143,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner4">
 								<header class="innerheader">
-									<h2><a href="#" style="text-decoration : none;">이 주의 추천..? 퇴근하고싶다</a></h2>
+									<h2><a href="#" style="text-decoration : none;">이 주의 추천</a></h2>
 								</header>
 							<div class="recolist">
 
@@ -145,10 +155,10 @@
 		</div>
 	</div>
     <input id="check-btn" type="checkbox" />
-    <label class="quickmenubtn" for="check-btn" ><img class="quickbtn"src="https://user-images.githubusercontent.com/103401972/178628320-ea1e1a62-606d-48f6-aaf2-c590056d6edb.jpg"></label>
+    <label class="quickmenubtn" for="check-btn" ><img class="quickbtn"src="https://cdn.discordapp.com/attachments/988657663237828618/1002798129785098360/logo.png"><!-- src="https://user-images.githubusercontent.com/103401972/178628320-ea1e1a62-606d-48f6-aaf2-c590056d6edb.jpg" --></label>
       <ul class="menubars">
           <li class="listbar">
-          <a class="popup" onclick="window.open('chatbot','window_name','width=440,height=770,scrollbars=yes');">
+          <a class="popup" onclick="window.open('chatbot','window_name','width=426,height=690,scrollbars=yes');">
           <span class="popupimg">
           	<img class="popimg" src="https://www.lge.co.kr/kr/support/images/icon/icon_customer-consultation.svg">
           </span>
@@ -156,11 +166,11 @@
           </a>
           </li>
           <li class="listbar">
-          <a class="popup" onclick="window.open('letter','window_name','width=440,height=770,scrollbars=yes');">
+          <a class="popup" onclick="window.open('letter_list','window_name','width=971,height=624,scrollbars=yes');">
           <span class="popupimg">
           	<img class="popimg" src="/images/letter.svg">
           </span>
-          편지
+          쪽지
           </a>
           </li>
       </ul>   

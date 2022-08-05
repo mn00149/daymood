@@ -96,7 +96,7 @@ public class BoardController {
     if (request.getParameter("nPage") != null) {
       nPage = Integer.parseInt(request.getParameter("nPage"));
     }
-    int recordPerPage = 3;
+    int recordPerPage = 10;
 
     int sno = (nPage - 1) * recordPerPage;
     int eno = recordPerPage;

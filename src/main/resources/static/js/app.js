@@ -20,7 +20,7 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/public', function (message) {
-            showMessage("<img style='width:30px; height:30px;'  src='/images/pac.png' /> : " + message.body + "<hr>"); // 서버에 메시지 전달 후 리턴받는 메시지
+            showMessage("<img style='width:38px; height:43px;'  src='/images/pac.png' /> : " + message.body + "<hr>"); // 서버에 메시지 전달 후 리턴받는 메시지
         });
     });
 }
@@ -35,7 +35,7 @@ function disconnect() {
 
 function sendMessage() {
     let message = $("#msg").val()
-    showMessage("<img style='width:30px; height:30px;'  src='/images/bubble2.svg' /> : " + message );
+    showMessage("<img style='width:36px; height:36px;'  src='/images/bubble2.svg' /> : " + message );
 
     stompClient.send("/app/sendMessage", {}, JSON.stringify(message)); // 서버에 보낼 메시지
 }
