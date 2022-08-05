@@ -49,6 +49,7 @@ $("#update").click(function(e){
 	update(data)
 		.then(result =>{
 			alert("수정 성공!");
+			window.location.replace("/mypage/member");
 		})
 });
 
