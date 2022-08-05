@@ -3,12 +3,16 @@ package com.study.daymood;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServlet;
+
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.ckfinder.connector.ConnectorServlet;
  
 @Configuration
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class ServletRegister {
   //CKEditor 서블릿 등록
   @Bean
