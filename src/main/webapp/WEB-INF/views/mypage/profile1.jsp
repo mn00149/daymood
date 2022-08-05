@@ -18,7 +18,7 @@
     </div>
     <div class="profile1">
       <div class="aa">
-        <div class="imgprofile"><img src="/images/daymood.png" /></div>
+        <div class="imgprofile"><img src="${dto.user_image }" /></div>
 <%--         <div class="nickname">
           <a href="#">${dto.username}</a>
         </div> --%>
