@@ -12,12 +12,9 @@
 <link rel="stylesheet" href="/css/board_style.css">
 <link rel="stylesheet" href="/css/reply_number.css">
 <link rel="stylesheet" href="/video/sunny.mp4">
-<script src="https://kit.fontawesome.com/6a80a39212.js"
-	crossorigin="anonymous"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
-	rel="stylesheet">
+<script src="https://kit.fontawesome.com/6a80a39212.js" crossorigin="anonymous"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 <script type="text/javascript" src="/search.js"></script>
 
 

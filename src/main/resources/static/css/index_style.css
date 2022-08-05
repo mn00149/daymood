@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800");
 
 
-html, body, div, span, applet, object,
+html, body, span,div, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
@@ -508,8 +508,10 @@ section, summary, time, mark, audio, video {
 
 
 			
-		/* 게시판 관련 li,ul */
+		/* 게시판 관련 li,ul,img */
 			
+			
+   			
 			.title{
 			padding: 8px 10px;
    	 		height: 30px;
@@ -518,14 +520,33 @@ section, summary, time, mark, audio, video {
 			
 			.libox{
 			display: block;
+			list-style:none;
+			margin-bottom: 10px;
 			}
 			
 			img{
 			margin: 5px 10px 0 10px;
-			width: 20px;
+			width: 20px ;
 			height: 20px;
 			}
 			
+			.img1{
+			margin: 5px 10px 0 3px;
+			width: 20px !important;
+			height: 20px !important;
+			}
+			
+			.img2{
+			margin: 5px 10px 0 3px;
+			width: 20px !important;
+			height: 20px !important;
+			}
+			
+			.img3{
+			margin: 5px 10px 0 3px;
+			width: 20px !important;
+			height: 20px !important;
+			}
 			.text_img_tool{
 			max-width: 100%;
     		text-overflow: ellipsis;
@@ -548,6 +569,7 @@ section, summary, time, mark, audio, video {
 			}
 			
 		/* 퀵메뉴 */
+		
 		.quickmenubtn{
 			position: fixed;
     		right: 48px;
@@ -585,7 +607,7 @@ section, summary, time, mark, audio, video {
 		.popup{
 			display: block;
     		position: relative;
-    		width: 100px;
+    		width: 100%;
     		padding: 14px 68px 14px 28px;
     		border: 1px solid #fff;
     		border-radius: 28px;
