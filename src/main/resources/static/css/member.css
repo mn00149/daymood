@@ -280,7 +280,7 @@ th,td {
   text-align: center;
 }
 
-td img {
+td img :not(#id_img) {
   height: 60px;
   width: 60px;
   object-fit: contain;

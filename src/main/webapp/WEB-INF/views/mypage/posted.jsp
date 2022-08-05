@@ -65,7 +65,7 @@
 					</table>
 				</div>
 				<div class="friends_header">
-					<form action="./my_posted">
+					<form action="./posted/{user_no}">
 						${paging }
 						<div class="Select">
 							<select name="col" class="form-control">

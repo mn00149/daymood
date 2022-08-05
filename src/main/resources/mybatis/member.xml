@@ -5,12 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.study.member.MemberMapper">
 
-	<!-- 회원 정보 읽기 -->
+	<!-- 회원 정보 읽기 및 수정-->
 	<select id="read" parameterType="String"
 		resultType="com.study.user.UserDTO">
 		select * from User
 		where username = #{username}
 	</select>
+	
+	<update id="update" parameterType="com.study.user.UserDTO">
+		update User
+		
+		set user_image = #{user_image}
+
+		where user_no = #{user_no}
+	</update>
 
 	<!-- 작성 글 갯수 -->
 	<select id="ptotal" parameterType="Map" resultType="int">

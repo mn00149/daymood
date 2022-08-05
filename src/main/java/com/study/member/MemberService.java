@@ -44,4 +44,6 @@ public interface MemberService {
 
 	void reqBothDelete(Map map);
 
+	int update(UserDTO dto);
+
 }

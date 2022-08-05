@@ -43,4 +43,5 @@ public interface MemberMapper {
 	Integer checkboth(Map map);
 	
 	void reqBothDelete(Map map);
+	int update(UserDTO dto);
 }

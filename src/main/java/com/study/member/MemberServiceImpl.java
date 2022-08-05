@@ -122,6 +122,12 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	@Override
+	public int update(UserDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.update(dto);
+	}
+
 
 
 
