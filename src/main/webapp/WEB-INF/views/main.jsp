@@ -12,6 +12,7 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 
 <link rel="stylesheet" href="css/index_style.css" />
+
 <script type="text/javascript">
 	function Show(){
 		document.getElementById("#service-menu-list").style.display="";
@@ -19,6 +20,15 @@
 	function Hide(){
 		document.getElementById("service-menu-list").style.display = "none";
 	}
+
+	function read(board_no) {
+		let url = 'board/read/' + board_no;
+		url += "?nowPage=${nowPage}";
+		url += "&col=${col}";
+		url += "&word=${word}";
+		location.href = url;
+	}
+
 </script>
 </head>
 <body class="is-preload homepage">
@@ -46,7 +56,7 @@
 						<c:forEach var="dto" items="${list2}">
 								<ul class="libox">
                     			 <li class="title"> 
-                    			  <a href="/board/read/${board_no}" style="text-decoration : none;">
+                    			  <a href="/board/read/${dto.board_no}" style="text-decoration : none;">
                     				<div class=text_img_tool>
        							     <c:choose>
          							  <c:when test = "${dto.weather_category eq '맑음'}">
@@ -95,7 +105,8 @@
 						<c:forEach var="dto" items="${list}">
 								<ul class="libox">
                     			 <li class="title"> 
-                    			  <a href="/board/read/${board_no}" style="text-decoration : none;">
+                    			  <a href="javascript:read('${dto.board_no}')" style="text-decoration : none;">
+
                     				<div class=text_img_tool>
        							     <c:choose>
          							  <c:when test = "${dto.weather_category eq '맑음'}">
@@ -145,10 +156,10 @@
 		</div>
 	</div>
     <input id="check-btn" type="checkbox" />
-    <label class="quickmenubtn" for="check-btn" ><img class="quickbtn"src="https://user-images.githubusercontent.com/103401972/178628320-ea1e1a62-606d-48f6-aaf2-c590056d6edb.jpg"></label>
+    <label class="quickmenubtn" for="check-btn" ><img class="quickbtn"src="https://cdn.discordapp.com/attachments/988657663237828618/1002798129785098360/logo.png"><!-- src="https://user-images.githubusercontent.com/103401972/178628320-ea1e1a62-606d-48f6-aaf2-c590056d6edb.jpg" --></label>
       <ul class="menubars">
           <li class="listbar">
-          <a class="popup" onclick="window.open('chatbot','window_name','width=440,height=770,scrollbars=yes');">
+          <a class="popup" onclick="window.open('chatbot','window_name','width=426,height=690,scrollbars=yes');">
           <span class="popupimg">
           	<img class="popimg" src="https://www.lge.co.kr/kr/support/images/icon/icon_customer-consultation.svg">
           </span>
@@ -156,11 +167,11 @@
           </a>
           </li>
           <li class="listbar">
-          <a class="popup" onclick="window.open('letter_list','window_name','width=440,height=770,scrollbars=yes');">
+          <a class="popup" onclick="window.open('letter_list','window_name','width=971,height=624,scrollbars=yes');">
           <span class="popupimg">
           	<img class="popimg" src="/images/letter.svg">
           </span>
-          편지
+          쪽지
           </a>
           </li>
       </ul>   

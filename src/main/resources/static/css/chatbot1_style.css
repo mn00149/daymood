@@ -45,12 +45,10 @@ tr {
 }
 .chattool{
     position: relative;
-    width: 370px;
+    width: 418px;
     height: 680px;
-    margin: 20px auto;
     overflow: hidden;
-    border-radius: 30px;
-    box-shadow: rgb(0 0 0 / 30%) 0px 12px 60px 5px;
+    border-radius: 30px; 
     transform: translate(0px, 0px);
     background-color: rgba(255, 255, 255, 0.95);
 }
