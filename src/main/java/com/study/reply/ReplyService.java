@@ -18,5 +18,8 @@ public interface ReplyService {
    int total(int board_no); //?
 
    int rcount(int board_no); //?
+   
+   int re_create(ReplyDTO ReplyDTO);
+   
 
 }

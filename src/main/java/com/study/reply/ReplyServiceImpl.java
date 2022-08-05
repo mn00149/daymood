@@ -55,4 +55,10 @@ public class ReplyServiceImpl implements ReplyService {
     return 0;
   }
 
+  @Override
+  public int re_create(ReplyDTO ReplyDTO) {
+    // TODO Auto-generated method stub
+    return mapper.re_create(ReplyDTO);
+  }
+
 }

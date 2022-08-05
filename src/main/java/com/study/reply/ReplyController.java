@@ -56,7 +56,7 @@ public class ReplyController {
 
   @GetMapping("/reply/page")
   public ResponseEntity<String> getPage(
-      int nPage, int nowPage,int board_no, String col, String word) {
+      int nPage, int nowPage, int board_no, String col, String word) {
 
     int total = service.total(board_no);
     String url = "/board/read/"+board_no;
@@ -126,4 +126,37 @@ public class ReplyController {
         : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
  
   }
+  
+  // 답글
+  @PostMapping("/reply/re_create")
+  public ResponseEntity<String> re_create(@RequestBody ReplyDTO vo, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+    
+    int user_no = principalDetails.getUser_no();
+    String username = principalDetails.getUsername();
+    //int ansnum = vo.getAnsnum();
+    
+    Map map = new HashMap();
+    map.put("user_no", principalDetails.getUser_no());
+    map.put("username", principalDetails.getUsername());
+ 
+    vo.setUsername(principalDetails.getUsername());
+    vo.setUser_no(principalDetails.getUser_no());
+    
+    log.info("ReplyDTO1:content " + vo.getContent());
+    log.info("ReplyDTO1:username " + vo.getUsername());
+    log.info("ReplyDTO1:board_no " + vo.getBoard_no());
+    log.info("ReplyDTO1:user_no " + vo.getUser_no());
+    
+    
+    
+    vo.setContent(vo.getContent().replaceAll("/n/r", "<br>"));
+ 
+    int flag = service.re_create(vo);
+ 
+    log.info("Reply INSERT flag: " + flag);
+ 
+    return flag == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
+        : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+ 
 }

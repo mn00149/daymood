@@ -6,14 +6,20 @@ import java.util.Map;
 public interface BoardService {
   
   //board_common
-  int total(Map map);
+  int total(Map map); // 검색어 입력 시 페이징 시 필요
   
-  BoardDTO read(int board_no);
+  int weather_total(Map map); // 검색어 입력 시 페이징 시 필요
+  
+  BoardDTO read(int board_no); // 게시물 읽기
 
-  void upViewcnt(int board_no);
+  void upViewcnt(int board_no); // 조회수 ++ 
   
-  int create(Map map);
+  int create(Map map); // 게시물 생성
   
+  int update(BoardDTO dto); // 게시물 업데이트
+  
+  int delete(int board_no); // 게시물 삭제
+
   //weather_board
   List<BoardDTO> weather_list(Map map);
   

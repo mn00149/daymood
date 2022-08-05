@@ -14,4 +14,6 @@ public class ReplyDTO {
   private String content;
   private String create_date;
   private BoardDTO BoardDTO;
+  private int indent;
+  private int ansnum;
 }

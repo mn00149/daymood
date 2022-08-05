@@ -78,7 +78,7 @@
 				
 		<div class="bt_wrap">
 			<button class="btn">등록</button>
-    		<button type="reset" class="btn">취소</button>
+    		<button type="btn" class="btn" onclick="history.back()">취소</button>
 		</div>
 		</form>
 	</div>

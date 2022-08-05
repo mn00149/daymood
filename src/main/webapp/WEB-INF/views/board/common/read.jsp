@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="util" uri="/ELFunctions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,86 +10,110 @@
 
 <link rel="stylesheet" href="/css/board_style.css">
 <link rel="stylesheet" href="/css/reply.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/6a80a39212.js" crossorigin="anonymous"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<script type="text/javascript" src="/search.js"></script>
 
 <style>
 .video {
-	width: 1200px;
-	height: 100%;
-	content: "";
-	background: url("/video/sunny.mp4");
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	opacity: 0.5;
+width: 1200px;
+height: 100%;
+content: "";
+background: url("/video/sunny.mp4");
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+opacity: 0.5;
 }
 
 .board_wrap, .card-body {
-	background-color: rgb(250, 248, 231);
+background-color: rgb(250, 248, 231);
 }
-
 </style>
+
+<script type="text/javascript">
+function update2() {
+var url = "/board/update/${dto.board_no}";
+location.href = url;
+}
+</script>
 </head>
 <body>
-	<div class="board_wrap">
+<div class="board_wrap">
 
-		<div class="video">
-			<video muted autoplay loop>
-				<source src="/video/sunny.mp4" type="video/mp4">
-				<strong>Your browser does not support the video tag.</strong>
-			</video>
-		</div>
-		<div class="board_title">
-			<strong>#맑음</strong>
-		</div>
+<div class="video">
+<video muted autoplay loop>
+<source src="/video/sunny.mp4" type="video/mp4">
+<strong>Your browser does not support the video tag.</strong>
+</video>
+</div>
 
-		<div class="board_view_wrap">
-			<div class="board_view">
-				<div class="title">Title</div>
-				<div class="info">
-					<dl>
-						<dt>글쓴이</dt>
-						<dd>${dto.username }</dd>
-					</dl>
-					<dl>
-						<dt>작성일</dt>
-						<dd>${dto.create_date }</dd>
-					</dl>
-					<dl>
-						<dt>
-							<i class="fa-regular fa-eye"></i>
-						</dt>
-						<dd>${dto.view_cnt }</dd>
-					</dl>
-					<dl>
-						<dt>
-							<i class="fa-solid fa-heart"></i>
-						</dt>
-						<dd>${dto.like_cnt }</dd>
-					</dl>
-					<dl>
-						<dt>
-							<i class="fa-solid fa-comment-dots"></i>
-						</dt>
-						<dd>댓글수</dd>
-					</dl>
-				</div>
-				<div class="cont">${dto.content }</div>
-			</div>
-			<div class="bt_wrap">
+<form class="delete" action="/board/delete" method="post">
+<div class="board_title">
+<strong>#맑음</strong>
+<p> 글쓴이 : ${dto.username}</p>
+<p> 로그인된 사람 : ${username}</p>
+</div>
 
-				<a href="/board/list" class="on"><i class="fa-solid fa-list"></i>목록</a>
-				<a href="create.html"><i class="fa-solid fa-pen"></i> 수정</a>
-			</div>
-		</div>
-	</div>
+<div class="board_view_wrap">
+<div class="board_view">
+
+<input type='hidden' name='board_no' value="${dto.board_no}">
+
+<div class="title">${dto.title }</div>
+<div class="info">
+<dl>
+<dt>글쓴이</dt>
+<dd>${dto.username }</dd>
+</dl>
+<dl>
+<dt>작성일</dt>
+<dd>${dto.create_date }</dd>
+</dl>
+<dl>
+<dt>
+<i class="fa-regular fa-eye"></i>
+</dt>
+<dd>${dto.view_cnt }</dd>
+</dl>
+<dl>
+<dt>
+<i class="fa-solid fa-heart"></i>
+</dt>
+<dd>${dto.like_cnt }</dd>
+</dl>
+<dl>
+<dt>
+<i class="fa-solid fa-comment-dots"></i>
+</dt>
+<dd>댓글수</dd>
+</dl>
+</div>
+<div class="cont">${dto.content }</div>
+</div>
+
+
+<div class="bt_wrap">
+<c:set var="board_username" value="${dto.username }"/>
+<c:set var="session_username" value="${username }"/>
+<c:choose>
+<%-- 글쓴이(dto.username)와 로그인 된 닉네임(session_username) 일치 시 수정 및 삭제 가능 --%>
+<c:when test="${dto.username eq session_username }">
+<button style="margin:auto" type="button" class="btn" onclick="history.back()">목록</button>
+<button type="button" class="btn" onclick="update2()">수정</button>
+<button class="btn">삭제</button>
+</c:when>
+<c:otherwise>
+<button type="button" class="btn" onclick="history.back()">목록</button>
+</c:otherwise>
+</c:choose>
+</div> <%-- bt_wrap end --%>
+
+</div>
+</div>
+</form>
 	<!---------------------------------------------------->
 	<!-- Comments section-->
 	<section class="mb-5">
@@ -107,7 +132,7 @@
 								<div class="panel-heading">
 									<i class="fa fa-comments fa-3x" aria-hidden="true"></i>
 									<button id='addReplyBtn'
-										class='btn btn-danger btn-2x pull-right'>댓글 쓰기</button>
+										class='btn btn-light btn-2x pull-right'>댓글 쓰기</button>
 								</div>
 
 
@@ -155,7 +180,8 @@
 					<button id='modalModBtn' type="button" class="btn btn-light">수정하기</button>
 					<button id='modalRemoveBtn' type="button" class="btn btn-light">삭제하기</button>
 					<button id='modalRegisterBtn' type="button" class="btn btn-light">등록하기</button>
-					<button id='modalCloseBtn' type="button" class="btn btn-light">닫기</button>
+					<button id='modalRecommentBtn' type="button" class="btn btn-light">답글쓰기</button>
+					<button id='modalRecoRegisterBtn' type="button" class="btn btn-light">답글등록</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -177,6 +203,8 @@
 		 
 		 let user_no ="${user_no}";  
 		 let username ="${username}"; 
+		 //let indent ="${vo.indent}"; 
+		 //let ansnum ="${vo.ansnum}"; 
 	</script>
 	<!-- 댓글처리 관련 Javascript 파일 추가-->
 	<script src="/js/producer.js"></script>

@@ -6,7 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.study.board.BoardMapper">
 
-	<!-- 모든 게시판 적용 -->
+<!-- 모든 게시판 적용 -->
+
 	<select id="read" parameterType="int"
 		resultType="com.study.board.BoardDTO">
 		select board_no, username, title, content, view_cnt,
@@ -15,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where board_no = #{board_no}
 	</select>
 
+	<!-- 게시물 생성 -->
 	<insert id="create" parameterType="Map">
 		insert into Board(user_no,
 		nation, username, title, content, create_date, weather_category,
@@ -24,6 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{info_category}, #{recommend_category})
 	</insert>
 
+	<!--  조회수 ++ -->
 	<update id="upViewcnt" parameterType="int">
 		update Board
 		set view_cnt =
@@ -40,7 +43,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</select>
-	<!-- 모든 게시판 적용 -->
+	
+	<!-- 카테고리에서 페이징 시 필요(전체 페이지에 영향) -->
+	<select id="weather_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where weather_category = #{weather}
+		
+		<choose>
+			<when test="weather_category != null">
+				where weather_category = #{weather}
+			</when>
+			<when test="word != ''">
+				and username like concat('%', #{word}, '%')
+			</when>
+		</choose>
+		
+	</select>
+	
+	<!-- 게시물 수정 -->
+	<update id="update"  parameterType="com.study.board.BoardDTO">
+    	update board
+    	set title=#{title}, content=#{content}
+    	where board_no=#{board_no}
+    </update>
+	
+	<!-- 게시물 삭제 -->
+  <delete id="delete" parameterType="int">
+    DELETE FROM board
+    where board_no=#{board_no}
+  </delete>
+	
+<!-- 모든 게시판 적용 -->
+	
+
 
 
 	<!-- weather_List - all -->
@@ -63,8 +98,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultMap="weather_list">
 		select b.weather_category, b.title, u.username, b.create_date,
 		b.view_cnt, b.like_cnt, b.board_no, u.role
-		from board b inner join user
-		u
+		from board b inner join user u
 		on b.user_no = u.user_no and b.weather_category is not null
 
 		<where>
@@ -79,8 +113,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- weather List - sunny -->
-	<resultMap type="com.study.board.BoardDTO"
-		id="boardlist_sunny">
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_sunny">
 		<result property="weather_category" column="weather_category" />
 		<result property="title" column="title" />
 		<result property="create_date" column="create_date" />
@@ -95,12 +128,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<result property="role" column="role" />
 		</association>
 	</resultMap>
-	<select id="list_sunny" parameterType="Map"
-		resultMap="boardlist_sunny">
+	<select id="list_sunny" parameterType="Map" resultMap="boardlist_sunny">
 		select b.weather_category, b.title, u.username, b.create_date,
 		b.view_cnt, b.like_cnt, b.board_no, u.role
-		from board b inner join user
-		u
+		from board b inner join user u
 		on b.user_no = u.user_no and b.weather_category = '맑음'
 
 		<where>
@@ -115,8 +146,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- weather List - cloudy -->
-	<resultMap type="com.study.board.BoardDTO"
-		id="boardlist_cloudy">
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_cloudy">
 		<result property="weather_category" column="weather_category" />
 		<result property="title" column="title" />
 		<result property="create_date" column="create_date" />
@@ -124,15 +154,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="like_cnt" column="like_cnt" />
 		<result property="board_no" column="board_no" />
 
-		<association property="udto"
-			javaType="com.study.user.UserDTO">
+		<association property="udto" javaType="com.study.user.UserDTO">
 			<result property="username" column="username" />
 			<result property="nation" column="nation" />
 			<result property="role" column="role" />
 		</association>
 	</resultMap>
-	<select id="list_cloudy" parameterType="Map"
-		resultMap="boardlist_cloudy">
+	<select id="list_cloudy" parameterType="Map" resultMap="boardlist_cloudy">
 		select b.weather_category, b.title, u.username, b.create_date,
 		b.view_cnt, b.like_cnt, b.board_no, u.role
 		from board b inner join user
@@ -151,8 +179,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- weather List - rainy -->
-	<resultMap type="com.study.board.BoardDTO"
-		id="boardlist_rainy">
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_rainy">
 		<result property="weather_category" column="weather_category" />
 		<result property="title" column="title" />
 		<result property="create_date" column="create_date" />
@@ -160,15 +187,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="like_cnt" column="like_cnt" />
 		<result property="board_no" column="board_no" />
 
-		<association property="udto"
-			javaType="com.study.user.UserDTO">
+		<association property="udto" javaType="com.study.user.UserDTO">
 			<result property="username" column="username" />
 			<result property="nation" column="nation" />
 			<result property="role" column="role" />
 		</association>
 	</resultMap>
-	<select id="list_rainy" parameterType="Map"
-		resultMap="boardlist_rainy">
+	<select id="list_rainy" parameterType="Map" resultMap="boardlist_rainy">
 		select b.weather_category, b.title, u.username, b.create_date,
 		b.view_cnt, b.like_cnt, b.board_no, u.role
 		from board b inner join user

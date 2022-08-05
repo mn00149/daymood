@@ -17,7 +17,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 <script type="text/javascript" src="/search.js"></script>
 
-
 <style>
 .video {
 	width: 1200px;
@@ -156,8 +155,9 @@
 											<c:set var="rcount" value="${util:rcount(dto.board_no,rservice) }"/>
 											<c:if test="${rcount>0 }">
 											<span class="badge">${rcount}</span>
-											</c:if></a></div>
+											</c:if>
 											<%-- 댓글 갯수 보이기 끝 --%>
+											</a></div>
 											<div class="username ad">${dto.udto.username }</div>
 											
 											<c:forEach var="calc_date" items="${msg2[statusList.index]}"
