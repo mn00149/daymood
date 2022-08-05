@@ -18,9 +18,9 @@
 
 <body>
 	<div id="content" class="ink_content" role="main">
-		<%@ include file="profile1.jsp"%>
+		<%-- <%@ include file="profile1.jsp"%> --%>
 		<div class="profile2">
-			<div class="myinfo">
+			<!-- <div class="myinfo">
 				<ul>
 					<li><a href="member" style="text-decoration: none;">회원정보</a></li>
 					<li><a href="my_posted" style="text-decoration: none;">작성글</a></li>
@@ -28,7 +28,7 @@
 					<li><a href="my_scrap" style="text-decoration: none;">스크랩</a></li>
 					<li><a href="my_letter" style="text-decoration: none;">쪽지함</a></li>
 				</ul>
-			</div>
+			</div> -->
 			<div class="friends">
 
 				<div class="friends_section">
@@ -65,7 +65,7 @@
 					</table>
 				</div>
 				<div class="friends_header">
-					<form action="./my_posted">
+					<form action="./posted/{user_no}">
 						${paging }
 						<div class="Select">
 							<select name="col" class="form-control">

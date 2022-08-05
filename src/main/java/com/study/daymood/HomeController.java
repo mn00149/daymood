@@ -24,7 +24,7 @@ public class HomeController {
   private MainBoardService dao;
   
   
-  @GetMapping("/")
+  @GetMapping("/home")
   public String list(HttpServletRequest request) {
 
     Map map = new HashMap();

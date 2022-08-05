@@ -17,11 +17,11 @@
 		<div class="profile2">
 			<div class="myinfo">
 				<ul>
-					<li><a href="member">회원정보</a></li>
-					<li><a href="my_posted">작성글</a></li>
-					<li><a href="my_comment">작성댓글</a></li>
-					<li><a href="my_scrap">스크랩</a></li>
-					<li><a href="my_letter">쪽지함</a></li>
+					<li><a href="member" style="text-decoration: none;">회원정보</a></li>
+					<li><a href="my_posted" style="text-decoration: none;">작성글</a></li>
+					<li><a href="my_comment" style="text-decoration: none;">작성댓글</a></li>
+					<li><a href="my_scrap" style="text-decoration: none;">스크랩</a></li>
+					<li><a href="my_letter" style="text-decoration: none;">쪽지함</a></li>
 				</ul>
 			</div>
 			<div class="friends">

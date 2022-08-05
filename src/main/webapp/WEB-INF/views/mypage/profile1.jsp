@@ -18,7 +18,7 @@
     </div>
     <div class="profile1">
       <div class="aa">
-        <div class="imgprofile"><img src="/images/daymood.png" /></div>
+        <div class="imgprofile"><img src="${dto.user_image }" /></div>
 <%--         <div class="nickname">
           <a href="#">${dto.username}</a>
         </div> --%>
@@ -42,9 +42,9 @@
       
       <div class="menu">
         <ul>
-          <li><a href="#">비밀번호 변경</a></li>
-          <li><a href="#">회원정보 변경</a></li>
-          <li><a href="#">탈퇴</a></li>
+          <li><a href="#" style="text-decoration: none;">비밀번호 변경</a></li>
+          <li><a href="#" style="text-decoration: none;">회원정보 변경</a></li>
+          <li><a href="#" style="text-decoration: none;">탈퇴</a></li>
         </ul>
       </div>
     </div>
@@ -57,7 +57,7 @@
         tmenu.classList.toggle('active')
         tmenuToggle.classList.toggle('active')
     }
-    const list = document.querySelectorAll('li');
+    const list = document.querySelectorAll('.tmenu > li');
     function activeLink(){
         list.forEach( (item) =>
         item.classList.remove('active'));

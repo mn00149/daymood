@@ -345,3 +345,56 @@ a {
 .select2 {
 	width : 20%;
 }
+
+
+
+
+/* 
+(최욱진) 임의로 추가한 CSS
+*/
+
+
+.container__trigger {
+
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	
+	/* Size */
+	height: 1rem;
+	width: 16rem;
+	
+	/* Misc */
+	border: 1px solid #cbd5e0;
+}
+.container__menu {
+    
+    position: fixed;
+
+    /* Reset */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    /* Misc */
+    border: 1px solid #cbd5e0;
+    border-radius: 0.25rem;
+    background-color: #f7fafc;
+}
+.container__menu--hidden {
+    display: none;
+}
+.container__item {
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    cursor : pointer;
+}
+.container__item:hover {
+    background-color: #bee3f8;
+}
+
+.username2 {
+	cursor : pointer;
+}
+
+

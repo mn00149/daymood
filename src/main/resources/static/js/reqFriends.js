@@ -4,8 +4,7 @@ $(function () {//페이지가 로딩될때
 	});//page loading function end  
 	
 function getrequest() {
-	let t_id = 1;
-	return fetch(`/mypage/request_friends/${t_id}`, {method : 'get'} )
+	return fetch(`/mypage/request_friends2`, {method : 'get'} )
 		.then(response => response.json())
 		.catch(console.log)
 }
@@ -39,7 +38,7 @@ function remove(request_no) {
 function add(f_id, t_id) {
 	return fetch(`/mypage/request_friends/${f_id}/${t_id}`, {method: 'post'})
 			.then(response => response.text())
-			.catch(console.log)
+			.catch(alert("이미 친구 목록에 있습니다."))
 }
 
 

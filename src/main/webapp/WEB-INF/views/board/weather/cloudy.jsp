@@ -6,42 +6,34 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="/css/board_style.css">
-<link rel="stylesheet" href="/video/sunny.mp4">
-<script src="https://kit.fontawesome.com/6a80a39212.js"
-	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/css/reply_number.css">
-<style>
-.video {
-	width: 1200px;
-	height: 100%;
-	content: "";
-	background: url("/video/fog.mp4");
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	opacity: 0.5;
-}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/boardProfile.css">
+    <link rel="stylesheet" href="/css/board_style.css">
+    <link rel="stylesheet" href="/video/sunny.mp4">
+    <script src="https://kit.fontawesome.com/6a80a39212.js" crossorigin="anonymous"></script>
+    
+    <script type="text/javascript" src="/js/boardProfile.js" defer></script>
+    <style>
+    .video {
+        width: 1200px;
+        height: 100%;
+        content: "";
+        background: url("/video/fog.mp4");
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.5;
+        }
 
-.board_wrap, .reply_wrap {
-	background-color: rgb(250, 248, 231);
-}
-
-.board_wrap .board_list .board_body {
-	font-size: 15px;
-}
-</style>
-
-<script type="text/javascript">
-	function read(board_no) {
-		let url = '/board/read/' + board_no;
-		url += "?nowPage=${nowPage}";
-		url += "&col=${col}";
-		url += "&word=${word}";
-		location.href = url;
+    .board_wrap, .reply_wrap {
+        background-color: rgb(250,248,231);
+        }
+   
+	.board_wrap .board_list .board_body {
+		font-size: 15px;
 	}
+	 </style>
 </script>
 </head>
 <body>
@@ -51,6 +43,37 @@
 			<strong>Your browser does not support the video tag.</strong>
 		</video>
 	</div>
+	<!-- 친구 요청 팝업 -->
+	<div class="popup-overlay">
+	            <div class="popup-box-container">
+	                <div class="check-container">
+	                    <i class="fa-solid fa-handshake"></i>
+	                </div>
+	                <div class="popup-message-container">
+	                    <h1 id="userid"></h1>
+	                    <p>친구 추가 하시겠습니까?</p>
+	                </div>
+	                <button class="ok-btn">
+	                    <span>확인</span>
+	                </button>
+	                <button class="no-btn">
+	                    <span>취소</span>
+	                </button>
+	            </div>
+	</div>
+	<!-- 클릭 시 친구 요청 등 메뉴 뜸 -->
+<ul id="profile" class="container__menu container__menu--hidden">
+                <li class="container__item"><span class="req-btn">친구요청</span></li>
+                <li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
+                <li class="container__item"><a href="#" style="text-decoration:none">쪽지 보내기</a></li>
+</ul>
+
+    <div class="video">
+        <video muted autoplay loop>
+            <source src="/video/fog.mp4" type="video/mp4">
+            <strong>Your browser does not support the video tag.</strong>
+        </video>
+    </div>
 
 	<div class="board_category">
 		<div class="all">
@@ -70,24 +93,18 @@
 		</div>
 	</div>
 
-	<div class="board_wrap">
-		<div class="board_list_wrap">
-			<div class="board_list">
-				<div class="top">
-					<div class="category">
-						<i class="fa-solid fa-ellipsis"></i>
-					</div>
-					<div class="title">제목</div>
-					<div class="username">글쓴이</div>
-					<div class="date">작성일</div>
-					<div class="view_cnt">
-						<i class="fa-regular fa-eye"></i>
-					</div>
-					<div class="like_cnt">
-						<i class="fa-solid fa-heart"></i>
-					</div>
-				</div>
-
+    <div class="board_wrap">
+        <div class="board_list_wrap">
+            <div class="board_list">
+                <div class="top">
+                    <div class="category"><i class="fa-solid fa-ellipsis"></i></div>
+                    <div class="title">제목</div>
+                    <div class="username">글쓴이</div>
+                    <div class="date">작성일</div>
+                    <div class="view_cnt"><i class="fa-regular fa-eye"></i></div>
+                    <div class="like_cnt"><i class="fa-solid fa-heart"></i></div>
+                </div> 
+               
 				<%-- top --%>
 				<tbody>
 					<c:choose>
