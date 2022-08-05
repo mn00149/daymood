@@ -53,11 +53,6 @@ public class MemberController {
 	public String updateMember(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		
 		
-		Map map = new HashMap();
-	    map.put("user_no", principalDetails.getUser_no());
-	    map.put("user_image", request.getParameter("user_image"));
-	    
-	    System.out.println(map);
 		return "/mypage/member";
 	}
 

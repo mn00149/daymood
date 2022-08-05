@@ -46,7 +46,7 @@ $("#update").click(function(e){
 		user_image : $("#user_image").val()
 	}
 	console.log(data);
-	this.update(data)
+	update(data)
 		.then(result =>{
 			alert("수정 성공!");
 		})

@@ -81,7 +81,7 @@
 
   <div id="content" class="ink_content" role="main">
     <%@ include file="profile1.jsp" %>
-    <form action="/updateMember" name="frm" method="put">
+    
     <input type="hidden" id="user_no" value="${dto.user_no }">
     <input type="hidden" id="user_image" class="user_image" value="${dto.user_image }">
     
@@ -121,7 +121,7 @@
               <span>♣</span>
               </button>
             </th>
-            <td id="preivew"><img class="user_image" name="user_image">${dto.user_image }</td>
+            <td id="preivew"><img class="user_image" name="user_image" src="${dto.user_image }" style="width: 50px; height: 50px"></td>
           </tr>
 
 
@@ -131,7 +131,7 @@
     <div style=" justify-content: center; align-items: center; display: flex;">    
       <button id="update">수정</button>
     </div>
-      </form>
+      
       
   </div>
 
