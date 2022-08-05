@@ -7,9 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.study.reply.ReplyMapper">
 
 	<insert id="create" parameterType="com.study.reply.ReplyDTO">
-		insert into Reply(user_no, board_no, username, content, create_date)
-		values(#{user_no}, #{board_no}, #{username}, #{content}, sysdate())
+		insert into Reply(user_no, board_no, username, content, create_date, indent, ansnum)
+		values(#{user_no}, #{board_no}, #{username}, #{content}, sysdate(), #{indent}, #{ansnum})
 	</insert>
+	
 	<delete id="delete" parameterType="int">
 		delete from reply
 		where reply_no = #{reply_no}
@@ -20,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from Reply
 		where board_no = #{board_no}
 		order by reply_no DESC
-		limit #{sno}, 10
+		limit #{sno}, #{eno}
 	</select>
 	
 	<select id="read" parameterType="int" resultType="com.study.reply.ReplyDTO">
@@ -43,5 +44,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		SELECT count(*) FROM reply
 		WHERE board_no = #{board_no}
 	</select>
-
+	
+	<insert id="re_create" parameterType="com.study.reply.ReplyDTO">
+		insert into Reply(user_no, board_no, username, content, create_date, indent, ansnum)
+		values(#{user_no}, #{board_no}, #{username}, #{content}, sysdate(), #{indent}, #{ansnum}+1)
+	</insert>
 </mapper>

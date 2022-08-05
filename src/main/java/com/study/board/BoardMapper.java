@@ -9,11 +9,17 @@ public interface BoardMapper {
   //board_common
   int total(Map map);
   
+  int weather_total(Map map);
+  
   BoardDTO read(int board_no);
 
   void upViewcnt(int board_no);
   
   int create(Map map);
+  
+  int update(BoardDTO dto);
+  
+  int delete(int board_no);
   
   //weather_board
   List<BoardDTO> weather_list(Map map);
@@ -38,5 +44,10 @@ public interface BoardMapper {
   List<BoardDTO> list2(Map map);
   
   List<Map> getAll();
+
+
+
+  
+
 
 }

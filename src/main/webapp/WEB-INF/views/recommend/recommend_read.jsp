@@ -150,7 +150,8 @@
 					<button id='modalModBtn' type="button" class="btn btn-light">수정하기</button>
 					<button id='modalRemoveBtn' type="button" class="btn btn-light">삭제하기</button>
 					<button id='modalRegisterBtn' type="button" class="btn btn-light">등록하기</button>
-					<button id='modalCloseBtn' type="button" class="btn btn-light">닫기</button>
+					<button id='modalRecommentBtn' type="button" class="btn btn-light">답글쓰기</button>
+					<button id='modalRecoRegisterBtn' type="button" class="btn btn-light">답글등록</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->

@@ -116,7 +116,7 @@ $(".chat").on("click", "li", function (e) {
       modal.find("button[username !='modalCloseBtn']").hide();
 	
 	// 로그인을 했다면 답글쓰기 버튼이 보인다
-	if(username == null || username != ""){
+	if(username != null || username != ""){
     modalRecommentBtn.show();
 	}  
 	
@@ -132,7 +132,7 @@ $(".chat").on("click", "li", function (e) {
 
  //댓글 수정
 modalModBtn.on("click", function (e) {
- 
+  alert("댓글이 수정되었습니다.");
   let reply = { reply_no: modal.data("reply_no"), content: modalInputContent.val() };
   update(reply)
     .then(result => {
@@ -146,6 +146,7 @@ modalModBtn.on("click", function (e) {
 //댓글 삭제
 modalRemoveBtn.on("click", function (e) {
  
+ alert("댓글이 삭제되었습니다.");
   let reply_no = modal.data("reply_no"); 
   remove(reply_no)
     .then(result => {
@@ -184,9 +185,10 @@ modalRecoRegisterBtn.on("click", function (e) {
 		content: modalInputContent.val(),
 		username: username,
 		board_no: board_no,
-		user_no : user_no
-		// ,indent: indent,
-		// ansnum: ansnum
+		user_no : user_no,
+		//ansnum	: ansnum
+		
+
 	};
 	add2(reply)
 		.then(result => {

@@ -50,7 +50,7 @@ function remove(reply_no) {
 }
 
 function add2(reply) {
-        return fetch('/reply/create',{
+        return fetch('/reply/re_create',{
                 method: 'post',
                 body: JSON.stringify(reply),
                 headers: {'Content-Type': "application/json; charset=utf-8"}

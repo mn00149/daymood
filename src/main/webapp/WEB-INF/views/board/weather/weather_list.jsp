@@ -12,14 +12,10 @@
 <link rel="stylesheet" href="/css/board_style.css">
 <link rel="stylesheet" href="/css/reply_number.css">
 <link rel="stylesheet" href="/video/sunny.mp4">
-<script src="https://kit.fontawesome.com/6a80a39212.js"
-	crossorigin="anonymous"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
-	rel="stylesheet">
+<script src="https://kit.fontawesome.com/6a80a39212.js"	crossorigin="anonymous"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"	rel="stylesheet">
 <script type="text/javascript" src="/search.js"></script>
-
 
 <style>
 .video {
@@ -159,8 +155,9 @@
 											<c:set var="rcount" value="${util:rcount(dto.board_no,rservice) }"/>
 											<c:if test="${rcount>0 }">
 											<span class="badge">${rcount}</span>
-											</c:if></a></div>
+											</c:if>
 											<%-- 댓글 갯수 보이기 끝 --%>
+											</a></div>
 											<div class="username ad">${dto.udto.username }</div>
 											
 											<c:forEach var="calc_date" items="${msg2[statusList.index]}"

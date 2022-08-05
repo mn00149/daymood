@@ -10,7 +10,7 @@
 <script src="https://kit.fontawesome.com/6a80a39212.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/recommend_style.css">
-
+<link rel="stylesheet" href="/css/reply_number.css">
 <style>
 body {
 	background-color: #F8ECD1;
@@ -61,11 +61,15 @@ body {
 						
 						<div class="explanation">
 							<span class="title"><a href="javascript:read('${dto.board_no}')">${dto.title }
-	                    			<c:set var="rcount" value="${util:rcount(dto.board_no,rservice) }"/>
-	                            	<c:if test="${rcount>0 }">
-							        <span class="badge">${rcount}</span>
-							   		</c:if></a></span>
 							
+							<%-- 댓글 갯수 보이기 시작 --%>
+	                   			<c:set var="rcount" value="${util:rcount(dto.board_no,rservice) }"/>
+	                           	<c:if test="${rcount>0 }">
+						        <span class="badge">${rcount}</span>
+						   		</c:if>
+							<%-- 댓글 갯수 보이기 끝 --%>	
+						   	</a></span>
+						   		
 							<p>${dto.content }</p>
 							<span>${dto.udto.username }</span>
 							<c:forEach var="calc_date" items="${msg2[statusList.index]}"

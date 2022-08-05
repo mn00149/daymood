@@ -83,5 +83,21 @@ public class BoardServiceImpl implements BoardService {
   public List<Map> getAll() { // TODO Auto-generated method stub
     return mapper.getAll();
   }
+  
+  @Override
+  public int update(BoardDTO dto) {
+  return mapper.update(dto);
+  }
 
-}
+  @Override
+  public int weather_total(Map map) {
+  return mapper.weather_total(map);
+  }
+
+  @Override
+  public int delete(int board_no) {
+  return mapper.delete(board_no);
+  }
+
+  }
+  

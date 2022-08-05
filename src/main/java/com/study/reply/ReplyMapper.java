@@ -19,4 +19,6 @@ public interface ReplyMapper {
 
    int rcount(int user_no); //?
 
+   int re_create(ReplyDTO ReplyDTO);
+   
 }

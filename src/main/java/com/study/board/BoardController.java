@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.study.reply.ReplyDTO;
 import com.study.reply.ReplyService;
 import com.study.user.auth.PrincipalDetails;
 import com.study.utility.Utility;
@@ -96,7 +97,7 @@ public class BoardController {
     if (request.getParameter("nPage") != null) {
       nPage = Integer.parseInt(request.getParameter("nPage"));
     }
-    int recordPerPage = 3;
+    int recordPerPage = 10;
 
     int sno = (nPage - 1) * recordPerPage;
     int eno = recordPerPage;
@@ -119,6 +120,56 @@ public class BoardController {
 
     /* 댓글 처리 끝 */
     return "/board/common/read";
+  }
+  
+  @GetMapping("/board/update/{board_no}")
+  public String update(@PathVariable int board_no, Model model) {
+
+  model.addAttribute("dto",dao.read(board_no));
+
+  return "/board/common/update";
+  }
+
+
+  @PostMapping("/board/update")
+  public String update(BoardDTO dto) {
+  Map map = new HashMap();
+  map.put("board_no", dto.getBoard_no());
+
+  int cnt = 0;
+  cnt = dao.update(dto); // 게시글 업데이트 후 cnt ++
+
+  if (cnt==1) { // 게시물 업데이트 성공
+  // return "redirect:/board/read/" + dto.getBoard_no(); // 해당 게시글로 이동
+  return "redirect:/board/weather_list";
+  }
+  else {
+  return "error";
+  }
+  }
+
+
+  @PostMapping("/board/delete")
+  public String delete(int board_no) {
+
+  Map map = new HashMap();
+  map.put("board_no", board_no);
+
+  System.out.println("board_no : " + board_no);
+  System.out.println("map : " + map);
+  System.out.println("map : " + map);
+  System.out.println("map : " + map);
+  System.out.println("map : " + map);
+
+  int cnt = 0;
+  cnt = dao.delete(board_no);
+
+  if (cnt==1) {
+  return "redirect:/board/weather_list";
+  } else {
+  return "error";
+  }
+
   }
   // --------- board 공통
 
@@ -203,6 +254,20 @@ public class BoardController {
     map.put("word", word);
     map.put("sno", sno);
     map.put("eno", eno);
+    
+  //weather_total - 세부 게시판 페이징 관련(세부 게시판마다 글 개수가 달라서)
+    String db = ""; // 지역변수 밖으로 빼주기 위해서 변수 선언
+
+    if(weather.equals("sunny")) {
+    db = "맑음";
+    map.put("weather", db);
+    } else if(weather.equals("cloudy")) {
+    db = "흐림";
+    map.put("weather", db);
+    } else {
+    db = "비";
+    map.put("weather", db);
+    }
 
     List<String> date_list = new ArrayList<>();
 
@@ -231,8 +296,11 @@ public class BoardController {
       }
     }
 
-    int total = dao.total(map);
-    String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
+    int total = dao.weather_total(map);
+
+    String paging = Utility.weather_paging(total,
+    nowPage, recordPerPage, col, word, weather);
+
 
     Map map2 = new HashMap();
 

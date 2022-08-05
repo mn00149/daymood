@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/video/rain.mp4">
 <script src="https://kit.fontawesome.com/6a80a39212.js"
 	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/reply_number.css">
 <style>
 .video {
 	width: 1200px;
@@ -86,112 +87,126 @@
 						<i class="fa-solid fa-heart"></i>
 					</div>
 				</div>
-				
+
 				<%-- top --%>
-					<tbody>
-						<c:choose>
+				<tbody>
+					<c:choose>
 
-							<%-- 게시판에 글이 없으면 --%>
-							<c:when test="${empty list}">
-								<tr>
-									<td colspan='6'>등록된 글이 없습니다.</td>
-								</tr>
-							</c:when>
+						<%-- 게시판에 글이 없으면 --%>
+						<c:when test="${empty list}">
+							<tr>
+								<td colspan='6'>등록된 글이 없습니다.</td>
+							</tr>
+						</c:when>
 
-							<%-- 게시판에 글이 있으면 --%>
-							<c:otherwise>
-								<c:forEach var="dto" items="${list}" varStatus="statusList">
-									<div class="body">
+						<%-- 게시판에 글이 있으면 --%>
+						<c:otherwise>
+							<c:forEach var="dto" items="${list}" varStatus="statusList">
+								<div class="body">
 
-										<c:choose>
-											<%-- role == '회원' --%>
-											<c:when test="${dto.udto.role eq 'ROLE_USER'}">
-												<div class="category">
-													<c:choose>
-														<c:when test="${dto.weather_category eq '맑음'}">
-															<img src="/image/sun.png" alt="no image">
-														</c:when>
+									<c:choose>
+										<%-- role == '회원' --%>
+										<c:when test="${dto.udto.role eq 'ROLE_USER'}">
+											<div class="category">
+												<c:choose>
+													<c:when test="${dto.weather_category eq '맑음'}">
+														<img src="/image/sun.png" alt="no image">
+													</c:when>
 
-														<c:when test="${dto.weather_category eq '흐림'}">
-															<img src="/image/cloudy.png" alt="no image">
-														</c:when>
+													<c:when test="${dto.weather_category eq '흐림'}">
+														<img src="/image/cloudy.png" alt="no image">
+													</c:when>
 
-														<c:when test="${dto.weather_category eq '비'}">
-															<img src="/image/rain.png" alt="no image">
-														</c:when>
-													</c:choose>
-												</div>
-												<%-- category end --%>
+													<c:when test="${dto.weather_category eq '비'}">
+														<img src="/image/rain.png" alt="no image">
+													</c:when>
+												</c:choose>
+											</div>
+											<%-- category end --%>
 
-												<div class="title">
-													<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
-												</div>
+											<div class="title">
+												<a href="javascript:read('${dto.board_no}')">${dto.title }
+													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
+														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
+														test="${rcount>0 }">
+														<span class="badge">${rcount}</span>
+													</c:if> <%-- 댓글 갯수 보이기 끝 --%>
+												</a>
+											</div>
 
-												<div class="username">${dto.udto.username }</div>
+											<div class="username">${dto.udto.username }</div>
 
-												<c:forEach var="calc_date" items="${msg2[statusList.index]}"
-													varStatus="statusMsg">
-													<div class="date">${calc_date}</div>
-												</c:forEach>
+											<c:forEach var="calc_date" items="${msg2[statusList.index]}"
+												varStatus="statusMsg">
+												<div class="date">${calc_date}</div>
+											</c:forEach>
 
-												<div class="view_cnt">${dto.view_cnt }</div>
+											<div class="view_cnt">${dto.view_cnt }</div>
 
-												<div class="like_cnt">${dto.like_cnt }</div>
-											</c:when>
+											<div class="like_cnt">${dto.like_cnt }</div>
+										</c:when>
 
-											<%-- role == '관리자' --%>
-											<c:otherwise>
-												<div class="category ad">[공지]</div>
+										<%-- role == '관리자' --%>
+										<c:otherwise>
+											<div class="category ad">[공지]</div>
 
-												<div class="title ad">
-													<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
-												</div>
+											<div class="title ad">
+												<a href="javascript:read('${dto.board_no}')">${dto.title }
+													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
+														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
+														test="${rcount>0 }">
+														<span class="badge">${rcount}</span>
+													</c:if> <%-- 댓글 갯수 보이기 끝 --%>
+												</a>
+											</div>
 
-												<div class="username ad">${dto.udto.username }</div>
+											<div class="username ad">${dto.udto.username }</div>
 
-												<c:forEach var="calc_date" items="${msg2[statusList.index]}"
-													varStatus="statusMsg">
-													<div class="date ad">${calc_date}</div>
-												</c:forEach>
+											<c:forEach var="calc_date" items="${msg2[statusList.index]}"
+												varStatus="statusMsg">
+												<div class="date ad">${calc_date}</div>
+											</c:forEach>
 
-												<div class="view_cnt ad">${dto.view_cnt }</div>
+											<div class="view_cnt ad">${dto.view_cnt }</div>
 
-												<div class="like_cnt ad">${dto.like_cnt }</div>
-											</c:otherwise>
-											<%-- role == '관리자' end --%>
+											<div class="like_cnt ad">${dto.like_cnt }</div>
+										</c:otherwise>
+										<%-- role == '관리자' end --%>
 
-										</c:choose>
-										
-										</div> <%-- body end --%>
-								</c:forEach>
-							</c:otherwise> <%-- 게시판 글이 있으면 end --%>
-						</c:choose>
-					</tbody>
-				</div>
-				<%-- board_list --%>
-				<div class="bt_wrap">
-					<div class="box">
-						<form name="search">
-							<input type="text" class="input" name="txt"
-								onmouseout="this.value = ''; this.blur();">
-						</form>
-						<i class="fas fa-search"></i>
-					</div>
-					<%-- box --%>
+									</c:choose>
 
-					<div class="box2">
-						<div class="create2" onclick="location.href='/board/create'">
-							<i class="fa-solid fa-pencil"></i>
-						</div>
-					</div>
-					<%-- box2 --%>
-
-				</div>
-				<%-- bt_wrap --%>
+								</div>
+								<%-- body end --%>
+							</c:forEach>
+						</c:otherwise>
+						<%-- 게시판 글이 있으면 end --%>
+					</c:choose>
+				</tbody>
 			</div>
-			<%-- board_list_wrap --%>
-			${paging }
+			<%-- board_list --%>
+			<div class="bt_wrap">
+				<div class="box">
+					<form name="search">
+						<input type="text" class="input" name="word"
+							onmouseout="this.value = ''; this.blur();">
+					</form>
+					<i class="fas fa-search"></i>
+				</div>
+				<%-- box --%>
+
+				<div class="box2">
+					<div class="create2" onclick="location.href='/board/create'">
+						<i class="fa-solid fa-pencil"></i>
+					</div>
+				</div>
+				<%-- box2 --%>
+
+			</div>
+			<%-- bt_wrap --%>
 		</div>
-		<%--  board_wrap --%>
+		<%-- board_list_wrap --%>
+		${paging }
+	</div>
+	<%--  board_wrap --%>
 </body>
 </html>
