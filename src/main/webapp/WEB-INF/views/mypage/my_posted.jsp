@@ -49,8 +49,23 @@
 								<c:when test="${not empty plist}">
 									<c:forEach var="dto" items="${plist}">
 										<tr>
-											<td>${dto.weather_category}</td>
-											<td>${dto.title }</td>
+											<td>
+
+											<c:choose>
+												<c:when test="${dto.weather_category eq '맑음' || dto.weather_category eq '흐림' || dto.weather_category eq '비' }">
+												${dto.weather_category }
+												</c:when>
+												<c:when test="${dto.recommend_category eq '도서' || dto.recommend_category eq '영화' || dto.recommend_category eq '음악' }">
+												${dto.recommend_category}
+												</c:when>
+												
+												<c:otherwise>
+												${dto.info_category }
+												</c:otherwise>
+											</c:choose>
+											
+											</td>
+											<td><a href="/board/read/${dto.board_no }/?nowPage=1&col=&word=" style="text-decoration: none;">${dto.title }</a></td>
 											<td>${dto.view_cnt }</td>
 											<td>${dto.like_cnt}</td>
 											<td>${dto.nation}</td>

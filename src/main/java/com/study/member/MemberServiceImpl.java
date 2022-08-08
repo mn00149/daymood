@@ -128,6 +128,12 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.update(dto);
 	}
 
+	@Override
+	public Integer scrap(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.scrap(map);
+	}
+
 
 
 

@@ -80,8 +80,9 @@
 <body>
 
   <div id="content" class="ink_content" role="main">
-    <%@ include file="profile1.jsp" %>
-    
+    <jsp:include page="profile1.jsp"> 
+    <jsp:param value="${dto.user_image }" name="user_image"/>
+    </jsp:include>
     <input type="hidden" id="user_no" value="${dto.user_no }">
     <input type="hidden" id="user_image" class="user_image" value="${dto.user_image }">
     

@@ -46,4 +46,6 @@ public interface MemberService {
 
 	int update(UserDTO dto);
 
+	Integer scrap(Map map);
+
 }

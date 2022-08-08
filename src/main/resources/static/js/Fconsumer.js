@@ -13,7 +13,7 @@ function showList() {
       console.log(list);
       for (var i = 0; i < list.length ; i++) {
         str += "<tr>";
-        str += "<td><img src='/images/daymood.png'/></td>";
+        str += "<td><img src="+ list[i].list[0].user_image +" style='width:50px'/></td>";
         str += "<td>"+list[i].list[0].username+"</td>";
         str += "<td>"+list[i].list[0].nation+'</td>';
         str += "<td>"+list[i].list[0].email+'</td>';

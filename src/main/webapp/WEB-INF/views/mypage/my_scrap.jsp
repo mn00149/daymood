@@ -48,7 +48,22 @@
 								<c:when test="${not empty scraplist}">
 									<c:forEach var="dto" items="${scraplist}">
 										<tr>
-											<td>${dto.weather_category}</td>
+											<td>
+
+											<c:choose>
+												<c:when test="${dto.weather_category eq '맑음' || dto.weather_category eq '흐림' || dto.weather_category eq '비' }">
+												${dto.weather_category }
+												</c:when>
+												<c:when test="${dto.recommend_category eq '도서' || dto.recommend_category eq '영화' || dto.recommend_category eq '음악' }">
+												${dto.recommend_category}
+												</c:when>
+												
+												<c:otherwise>
+												${dto.info_category }
+												</c:otherwise>
+											</c:choose>
+											
+											</td>
 											<td>${dto.username}</td>
 											<td>${dto.title }</td>
 											<td>${dto.nation }</td>

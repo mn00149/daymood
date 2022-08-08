@@ -24,6 +24,11 @@
     <put-attribute name="title" value="회원정보"></put-attribute>
     <put-attribute name="body" value="/WEB-INF/views/mypage/member.jsp" />
   </definition>
+  
+   <definition name="/mypage/profile1" extends="main">
+    <put-attribute name="title" value="프로필1"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/profile1.jsp" />
+  </definition>
  
    <definition name="/mypage/my_posted" extends="main">
     <put-attribute name="title" value="작성글"></put-attribute>

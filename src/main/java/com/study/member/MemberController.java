@@ -42,7 +42,7 @@ public class MemberController {
 	@PutMapping("/updateMember")
 	public ResponseEntity<String> modify(@RequestBody UserDTO vo) {
 
-		log.info("modify: " + vo);
+		//log.info("modify: " + vo);
 
 		return service.update(vo) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -111,6 +111,7 @@ public class MemberController {
 		model.addAttribute("dto", dto);
 		return "/mypage/member";
 	}
+	
 
 	@GetMapping("/")
 	public String intro() {
@@ -207,6 +208,7 @@ public class MemberController {
 		map.put("sno", sno);
 		map.put("eno", eno);
 		map.put("user_no", principalDetails.getUser_no());
+		
 
 		int stotal = service.stotal(map);
 
@@ -220,6 +222,7 @@ public class MemberController {
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("paging", paging);
+		request.setAttribute("dto", dto);
 
 		return "/mypage/my_scrap";
 		// 동기
@@ -251,11 +254,24 @@ public class MemberController {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+	@GetMapping("/board/scrap/{board_no}")
+	@ResponseBody
+	public ResponseEntity<Integer> getScrap(@PathVariable("board_no") int board_no,@AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+		Map map = new HashMap();
+		map.put("user_no", principalDetails.getUser_no());
+		map.put("board_no", board_no);
+		log.info("map" + map);
+		return new ResponseEntity<Integer>(service.scrap(map), HttpStatus.OK);
+	}
 	// 스크랩 끝
 
 	@GetMapping("/mypage/my_letter")
-	public String my_letter() {
-
+	public String my_letter(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		String username = principalDetails.getUsername();
+		UserDTO dto = service.read(username);
+		
+		request.setAttribute("dto", dto);
 		return "/mypage/my_letter";
 	}
 
@@ -278,7 +294,9 @@ public class MemberController {
 //
 //	    int sno = (nowPage - 1) * recordPerPage;
 //	    int eno = recordPerPage;
-
+		String username = principalDetails.getUsername();
+		UserDTO dto = service.read(username);
+		
 		Map map = new HashMap();
 //	    map.put("col", col);
 //	    map.put("word", word);
@@ -294,6 +312,7 @@ public class MemberController {
 		// log.info("List : " + list);
 		// request에 Model사용 결과 담는다
 		request.setAttribute("list", list);
+		request.setAttribute("dto", dto);
 //	    request.setAttribute("nowPage", nowPage);
 //	    request.setAttribute("col", col);
 //	    request.setAttribute("word", word);
@@ -327,10 +346,12 @@ public class MemberController {
 		Map map = new HashMap();
 
 		map.put("t_id", principalDetails.getUser_no());
-
+		String username = principalDetails.getUsername();
+		UserDTO dto = service.read(username);
 		List<UserDTO> list = service.rlist(map);
 
 		request.setAttribute("list", list);
+		request.setAttribute("dto", dto);
 		return "/mypage/request_friends";
 	}
 
@@ -401,7 +422,9 @@ public class MemberController {
 
 		int sno = (nowPage - 1) * recordPerPage;
 		int eno = recordPerPage;
-
+		String username = principalDetails.getUsername();
+		UserDTO dto = service.read(username);
+		
 		Map map = new HashMap();
 		map.put("col", col);
 		map.put("word", word);
@@ -421,6 +444,7 @@ public class MemberController {
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("paging", paging);
+		request.setAttribute("dto", dto);
 
 		return "/mypage/my_posted";
 	}
@@ -452,19 +476,22 @@ public class MemberController {
 		map.put("sno", sno);
 		map.put("eno", eno);
 		map.put("user_no", principalDetails.getUser_no());
+		String username = principalDetails.getUsername();
+		UserDTO dto = service.read(username);
 
 		int ctotal = service.ctotal(map);
 
 		List<ReplyDTO> replylist = service.replylist(map);
 
 		String paging = Utility.spaging(ctotal, nowPage, recordPerPage, col, word, url);
-		// log.info("replyList : " + replylist);
+		//log.info("replyList : " + replylist);
 		// request에 Model사용 결과 담는다
 		request.setAttribute("replylist", replylist);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("paging", paging);
+		request.setAttribute("dto", dto);
 
 		return "/mypage/my_comment";
 	}

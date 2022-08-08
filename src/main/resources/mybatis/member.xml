@@ -49,10 +49,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<result property="createDate" column="createDate" />
 			<result property="user_no" column="user_no" />
 			<result property="nation" column="nation" />
+			<result property="user_image" column="user_image" />
 	</resultMap>
 	<select id="list" parameterType="Map" resultMap="friend">
 	
-		select u.user_no, u.username, u.nation, u.email ,u.createDate, f_no, f.friends_no from friend f
+		select u.user_no, u.username, u.nation, u.email, u.user_image ,u.createDate, f_no, f.friends_no from friend f
 		 inner join user u
 		 on u.user_no = f.friends_no
 		 where f.user_no = #{user_no};
@@ -71,6 +72,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<result property="createDate" column="createDate" />
 			<result property="user_no" column="user_no" />
 			<result property="nation" column="nation" />
+			<result property="user_image" column="user_image" />
 		<collection property="rlist" ofType="com.study.member.requestDTO" javaType="List" column="rlist" resultMap="requestlist" />
 	</resultMap>
 	<resultMap type="com.study.member.requestDTO" id="requestlist">
@@ -149,11 +151,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="username" column="username" />
 		<result property="nation" column="nation" />
 		<result property="weather_category" column="weather_category" />
+		<result property="recommend_category" column="recommend_category" />
+		<result property="info_category" column="info_category" />
 		<result property="board_no" column="board_no" />
 	</resultMap>
 	<select id="replylist" parameterType="Map" resultMap="boardDTO">
-		select b.username, b.nation, b.weather_category, b.board_no, r.reply_no, r.content, r.create_date 
-		from Reply r join Board b 
+		select b.username, b.nation, b.weather_category, b.recommend_category, b.info_category, b.board_no, r.reply_no, r.content, r.create_date 
+		from Reply r join Board b on r.board_no = b.board_no
 		<where>
 			<choose>
 				<when test="col=='category'">
@@ -190,12 +194,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="username" column="username" />
 		<result property="nation" column="nation" />
 		<result property="weather_category" column="weather_category" />
+		<result property="recommend_category" column="recommend_category" />
+		<result property="info_category" column="info_category" />
 		<result property="title" column="title" />
 		<result property="create_date" column="create_date" />
 		
 	</resultMap>
 	<select id="scraplist" parameterType="Map" resultMap="boardDTO2">
-		select b.weather_category, b.username, b.title, b.nation, b.create_date , scrapno
+		select b.weather_category, b.recommend_category, b.info_category, b.username, b.title, b.nation, b.create_date , s.scrapno
 		from board b join Scrap s
 		<where>
 			<choose>
@@ -222,6 +228,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from Scrap
 		where scrapno = #{scrapno}
 	</delete>
+	
+	<insert id="scrap" parameterType="map">
+		insert into Scrap(user_no, board_no)
+		values(#{user_no}, #{board_no})
+	</insert>
 	
 	<!-- 친구요청, 친구리스트 확인 -->
 	<select id="checkfriend" parameterType="Map" resultType="Integer">

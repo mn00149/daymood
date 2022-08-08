@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="util" uri="/ELFunctions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -38,6 +39,12 @@ function update2() {
 var url = "/board/update/${dto.board_no}";
 location.href = url;
 }
+
+function scrap(board_no) {
+    return fetch(`/board/scrap/${board_no}`,{method: 'get'})
+           .then(response => alert("스크랩 되었습니다."))
+           .catch(console.log);
+}
 </script>
 </head>
 <body>
@@ -54,7 +61,12 @@ location.href = url;
 <div class="board_title">
 <strong>#맑음</strong>
 <p> 글쓴이 : ${dto.username}</p>
-<p> 로그인된 사람 : ${username}</p>
+
+<sec:authorize access="isAuthenticated()">
+	<p> 로그인된 사람 : ${username}</p>
+</sec:authorize>
+
+<!-- 로그인 됐을 때만 '로그인 된 사람'이라는 말이 뜨도록 바꿨습니다. -->
 </div>
 
 <div class="board_view_wrap">
@@ -95,25 +107,33 @@ location.href = url;
 </div>
 
 
-<div class="bt_wrap">
+<div class="bt_wrap" style="display:flex;justify-content:flex-end;">
 <c:set var="board_username" value="${dto.username }"/>
 <c:set var="session_username" value="${username }"/>
-<c:choose>
 <%-- 글쓴이(dto.username)와 로그인 된 닉네임(session_username) 일치 시 수정 및 삭제 가능 --%>
+<!-- 스크랩 버튼 추가 및 스타일 조정(bt_wrap flex, flex-end, width) -->
+<c:choose>
+
 <c:when test="${dto.username eq session_username }">
 <button style="margin:auto" type="button" class="btn" onclick="history.back()">목록</button>
 <button type="button" class="btn" onclick="update2()">수정</button>
 <button class="btn">삭제</button>
+<button type="button" class="btn" onclick="scrap(${dto.board_no})">스크랩</button>
 </c:when>
+
 <c:otherwise>
+<div class="bt_wrap" style="display:flex;justify-content:flex-end;width:100%">
 <button type="button" class="btn" onclick="history.back()">목록</button>
+<button type="button" class="btn" onclick="scrap(${dto.board_no})">스크랩</button>
+</div>
 </c:otherwise>
 </c:choose>
 </div> <%-- bt_wrap end --%>
 
 </div>
-</div>
 </form>
+<!-- 닫는 form태그 위치 안맞아서 계속 에러떠서 한칸 위로 올렸습니다. -->
+</div>
 	<!---------------------------------------------------->
 	<!-- Comments section-->
 	<section class="mb-5">

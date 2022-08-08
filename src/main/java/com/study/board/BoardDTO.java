@@ -11,6 +11,7 @@ import lombok.Data;
 public class BoardDTO {
   private int board_no;
   private int user_no;
+  private int scrapno;
   private String nation;
   private String username;        
   private String title;          

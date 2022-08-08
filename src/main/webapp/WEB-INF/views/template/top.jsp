@@ -73,6 +73,7 @@ header {
 	display: flex;
 	font-size: 16px;
 	gap: 100px;
+	padding-top : 10px;
 }
 
 #menu > * {
@@ -125,6 +126,7 @@ font-family: 'Noto Sans KR', sans-serif;
 
 .logo>a>img {
 	max-width: 150px;
+	padding-bottom : 10px;
 }
 
 a {
@@ -138,7 +140,7 @@ a {
 	<div class="container">
 		<header>
 			<div class="logo">
-				<a href="/"><img class="logo" src="/images/daymood.png" alt="logo"></a>
+				<a href="/main"><img class="logo" src="/images/daymood.png" alt="logo"></a>
 			</div>
 			<ul id="menu">
 				<li><a href="/board/weather_list">Mood</a></li>
