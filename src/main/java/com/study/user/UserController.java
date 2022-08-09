@@ -88,6 +88,23 @@ public class UserController {
   public String findPwd() {
     return "user/findPassword";
   }
+  
+  @GetMapping(value = "/usernamecheck", produces = "application/json;charset=utf-8")
+  @ResponseBody
+  public Map<String, String> usernameCheck(@RequestParam("username") String username) {
+
+    int cnt = service.duplicatedUsername(username);
+
+    Map<String, String> map = new HashMap<String, String>();
+    if (cnt > 0) {
+      map.put("str", username + "는 중복되어서 사용할 수 없습니다.");
+      map.put("result", "no");
+    } else {
+      map.put("str", username + "는 중복아님, 사용가능합니다.");
+      map.put("result", "ok");
+    }
+    return map;
+  }
 
   // Email과 name의 일치여부를 check하는 컨트롤러
   @GetMapping("/check/findPw")

@@ -18,13 +18,14 @@
             <div class="form-control">
                 <label for="username">Username</label>
                 <input name="username" type="text" id="username" placeholder="Enter Username">
+                <input type="button" value="Username 중복체크" class="btn btn-default col-sm-2" id="checkUsername" >
                 <small>Error Message</small>
             </div>
             <div class="form-control">
                 <label for="email">Email</label>
                 <input name="email" type="text" id="email" placeholder="Enter Email">
                 <button type="button" class="btn btn-default col-sm-2"
-      onclick="idCheck(document.frm.id.value)">ID 중복확인</button>
+      onclick="emailCheck(document.frm.id.value)">Email 중복확인</button>
       <div id="idcheck"></div>
                 <small>Error Message</small>
             </div>

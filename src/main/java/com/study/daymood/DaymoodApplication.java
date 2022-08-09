@@ -1,18 +1,23 @@
 package com.study.daymood;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 
-@ComponentScan(basePackages= {"com.study.*"})
-public class DaymoodApplication {
+@ComponentScan(basePackages = { "com.study.*" })
+public class DaymoodApplication extends SpringBootServletInitializer{
+  public static void main(String[] args) {
+    SpringApplication.run(DaymoodApplication.class, args);
+  }
+  
+  @Override
+  protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+    return application.sources(DaymoodApplication.class);
+  }
 
-	public static void main(String[] args) {
-		SpringApplication.run(DaymoodApplication.class, args);
-	}
 
 }

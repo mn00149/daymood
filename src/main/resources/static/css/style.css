@@ -94,6 +94,20 @@ h2 {
   width: 100%;
 }
 
+.form #checkUsername {
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+
 
 .form img {
     cursor: pointer;

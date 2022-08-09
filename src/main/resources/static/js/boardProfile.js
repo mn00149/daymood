@@ -1,3 +1,5 @@
+
+
 $(function() {
 	$('body').click(function(e) {
 		if (e.target.className !== "username2" && !profile.contains(e.target)) {
@@ -42,6 +44,10 @@ let okbtn = document.querySelector('.ok-btn');
 let noBtn = document.querySelector('.no-btn');
 let popupBox = document.querySelector('.popup-overlay');
 let userid = document.getElementById('userid');
+
+let sendBtn = document.querySelector(".send-btn");
+let letterBox = document.querySelector('.popup-overlay-letter');
+
 reqBtn.addEventListener('click', () => {
 	popupBox.classList.add('active2')
 	userid.innerText = id;
@@ -84,4 +90,10 @@ function add(user_no) {
 function posted() {
 		let url = '/posted/' + user_no;
 		location.href = url;
+	}
+	
+/*보드에서 쪽지 보내기 창으로 이동*/
+function sendLetter() {
+		let url = '/sendLetter?recv_name=' + id;
+		window.open(url)
 	}

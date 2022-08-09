@@ -3,12 +3,13 @@ package com.study.letter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -65,6 +66,21 @@ public class LetterController {
     return "letter/letter_content_list";
   }
   
+  @GetMapping("/sendLetter")
+  public String sendLetter(@RequestParam("recv_name")String recv_name, Model model){
+    model.addAttribute("recv_name", recv_name);
+    return "/letter/sendLetter";
+  }
+  
+  @PostMapping("/sendLetter")
+  public String postLetter(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails userDetails){
+    String send_name = userDetails.getUsername();
+    System.out.println("sendname"+send_name);
+    System.out.println("name::::::::::::::"+request.getParameter("letterContent"));
+    System.out.println("name::::::::::::::"+request.getParameter("recv_name"));
+
+    return "/letter/sendLetter";
+  }
   //메세지 리스트에서 메세지 보내기
   @ResponseBody
   @RequestMapping("/letter_send_inlist")

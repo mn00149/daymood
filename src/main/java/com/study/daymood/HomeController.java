@@ -1,6 +1,5 @@
 package com.study.daymood;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.study.board.BoardDTO;
 import com.study.mainboard.MainBoardService;
-import com.study.utility.Utility;
 
 @Controller
 public class HomeController {
