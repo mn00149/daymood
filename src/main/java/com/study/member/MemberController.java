@@ -261,7 +261,7 @@ public class MemberController {
 		Map map = new HashMap();
 		map.put("user_no", principalDetails.getUser_no());
 		map.put("board_no", board_no);
-		log.info("map" + map);
+		//log.info("map" + map);
 		return new ResponseEntity<Integer>(service.scrap(map), HttpStatus.OK);
 	}
 	// 스크랩 끝
@@ -380,7 +380,7 @@ public class MemberController {
 		// log.info("int:"+service.add(map));
 		try {
 			Integer flag = service.checkfriend(map);
-			log.info("flag:" + flag);
+			//log.info("flag:" + flag);
 			if (flag >= 1) {
 				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}

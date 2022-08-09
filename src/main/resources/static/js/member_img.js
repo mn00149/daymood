@@ -63,3 +63,19 @@ function update(data){
                .then(response => response.text())
                .catch(console.log);	
 }
+
+
+$(document).ready(function(e){
+            $('.update').on('mouseenter', function(e){
+                x = e.pageX - $(this).offset().left;
+                y = e.pageY - $(this).offset().top;
+                $(this).find('span').css({top:y, left:x})
+            })
+        })
+        $(document).ready(function(e){
+            $('.update').on('mouseout', function(e){
+                x = e.pageX - $(this).offset().left;
+                y = e.pageY - $(this).offset().top;
+                $(this).find('span').css({top:y, left:x})
+            })
+        })

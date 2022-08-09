@@ -201,7 +201,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</resultMap>
 	<select id="scraplist" parameterType="Map" resultMap="boardDTO2">
-		select b.weather_category, b.recommend_category, b.info_category, b.username, b.title, b.nation, b.create_date , s.scrapno
+		select b.weather_category, b.recommend_category, b.info_category, b.username, b.title, b.nation, b.create_date , b.board_no, s.scrapno, s.board_no
 		from board b join Scrap s
 		<where>
 			<choose>
@@ -218,7 +218,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					content like CONCAT('%',#{word},'%')
 				</when>
 			</choose>
-			and s.user_no = #{user_no}
+			and (s.user_no = 1) and (s.board_no = b.board_no)
 		</where>
 		ORDER BY s.scrapno DESC
 		limit #{sno}, #{eno}

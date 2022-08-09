@@ -47,7 +47,7 @@
 							<c:choose>
 								<c:when test="${not empty scraplist}">
 									<c:forEach var="dto" items="${scraplist}">
-										<tr>
+										<tr onclick="location.href='/board/read/${dto.board_no}/?nowPage=1&col=&word='">
 											<td>
 
 											<c:choose>

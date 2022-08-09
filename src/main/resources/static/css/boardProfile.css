@@ -87,3 +87,39 @@
     opacity: 1;
     z-index: 10;
 }
+
+.update{
+    position: relative;
+    padding: 10px 30px;
+    border: 2px solid #222327;
+    margin: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #222327;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.update:hover{
+    color: #111;
+}
+
+.update span
+{
+    position : absolute;
+    display: block;
+    width: 0px;
+    height: 0px;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background-color: #41f321;
+    transition: width 0.5s, height 0.5s;
+    z-index: -1;
+}
+
+.update:hover span {
+    width: 300px;
+    height: 300px;
+}

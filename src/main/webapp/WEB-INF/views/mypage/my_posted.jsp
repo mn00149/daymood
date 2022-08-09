@@ -65,7 +65,7 @@
 											</c:choose>
 											
 											</td>
-											<td><a href="/board/read/${dto.board_no }/?nowPage=1&col=&word=" style="text-decoration: none;">${dto.title }</a></td>
+											<td onclick="location.href='/board/read/${dto.board_no}/?nowPage=1&col=&word='">${dto.title }</td>
 											<td>${dto.view_cnt }</td>
 											<td>${dto.like_cnt}</td>
 											<td>${dto.nation}</td>
