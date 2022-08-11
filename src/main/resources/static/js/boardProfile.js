@@ -85,3 +85,54 @@ function posted() {
 		let url = '/posted/' + user_no;
 		location.href = url;
 	}
+	
+/* 쪽지보내기 */
+    const body = document.querySelector('body');
+    const modal = document.querySelector('.modal');
+    const btnOpenPopup = document.querySelector('.btn-open-popup');
+	const close = document.querySelector('#modal_close');
+	const msg_submit = document.querySelector('#msg_submit');
+
+
+    btnOpenPopup.addEventListener('click', () => {
+	
+      modal.classList.add('show');
+     
+    });
+	close.addEventListener('click', () =>{
+		modal.classList.remove('show')
+	})
+	msg_submit.addEventListener('click', () =>{
+		modal.classList.remove('show')
+	})
+	
+	
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.classList.toggle('show');
+
+        if (!modal.classList.contains('show')) {
+          body.style.overflow = 'auto';
+        }
+      }
+    });
+
+
+   $("#msg_submit").click(function(){
+        let msg= "쪽지를 보내시겠습니까?";
+		let content = $("#content").val()
+		
+        if(!confirm(msg))
+            return false;
+	
+        $.ajax({
+            url : "/letter_send_profile",
+            dataType : "json",
+            type : "post",
+            data : {"other_name":id,
+            		"content":content},
+        })
+        	alert ("전송");
+      
+    });
+    

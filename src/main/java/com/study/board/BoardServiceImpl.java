@@ -53,10 +53,7 @@ public class BoardServiceImpl implements BoardService {
     return mapper.recommend_list(map);
   }
 
-  @Override
-  public List<BoardDTO> list2(Map map) {
-    return mapper.list2(map);
-  }
+
 
   @Override
   public int create(Map map) {
@@ -97,6 +94,12 @@ public class BoardServiceImpl implements BoardService {
   @Override
   public int delete(int board_no) {
   return mapper.delete(board_no);
+  }
+
+  @Override
+  public List<BoardDTO> list2(Map map) {
+    // TODO Auto-generated method stub
+    return mapper.list2(map);
   }
 
   }

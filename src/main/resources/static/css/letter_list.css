@@ -136,7 +136,12 @@ img{
 }
 .incoming_msg_img{
 	display: inline-block;
-	width: 6%;
+}
+.sendname{
+	font-family: 'Nanum Pen Script' , cursive;
+	font-size : 25px;
+	margin : 12px;
+	padding : 5px;
 }
 .received_msg{
 	display: inline-block;
@@ -206,7 +211,7 @@ img{
 .type_msg{
 	border-top: 1px solid #dfdfdf;
 	position: relative;
-	margin-left: 390px;
+	margin-left: 40%;
 }
 .msg_send_btn{
 	background: #97df93 none repeat scroll 0 0;

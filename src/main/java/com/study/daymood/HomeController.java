@@ -1,6 +1,5 @@
 package com.study.daymood;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,11 +28,11 @@ public class HomeController {
 
     Map map = new HashMap();
     List<BoardDTO> list = dao.hot_list(map);
-    int total = dao.total(map);
+
     
-    Map map3 = new HashMap();
-    List<BoardDTO> list2 = dao.new_list(map3);
-    int total2 = dao.total(map3);
+    Map map2 = new HashMap();
+    List<BoardDTO> list2 = dao.new_list(map2);
+
   
     // 2. request 저장(view에서 사용할 내용을 저장)
     request.setAttribute("list", list);

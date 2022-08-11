@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/boardProfile.css">
     <link rel="stylesheet" href="/css/board_style.css">
     <link rel="stylesheet" href="/video/sunny.mp4">
+    <link rel="stylesheet" href="/css/letter_modal.css">
     <script src="https://kit.fontawesome.com/6a80a39212.js" crossorigin="anonymous"></script>
     
     <script type="text/javascript" src="/js/boardProfile.js" defer></script>
@@ -65,9 +66,30 @@
 <ul id="profile" class="container__menu container__menu--hidden">
                 <li class="container__item"><span class="req-btn">친구요청</span></li>
                 <li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
-                <li class="container__item"><a href="#" style="text-decoration:none">쪽지 보내기</a></li>
-</ul>
+<li class="container__item"><span class="btn-open-popup" data-backdrop="static">쪽지 보내기</span></li></ul>
 
+	<!-- 쪽지보내기 모달 -->
+	<c:forEach var="tmp" items="${list}">
+	   <form class="modal" action="/letter_send_profile" method="post">
+        <div class="modal_body" >
+          <div class="modal_title">쪽지 보내기</div>
+       <!--    <div class="profile_area">
+             <div class="receiver">
+                  <span class="recvname" value="${tmp.ldto.recv_name }">to.</span>
+            </div>
+            <div class="sender">
+                <span class="sendname" value="${tmp.ldto.other_name }"></span>
+            </div> 
+          </div> -->
+          <textarea class="let content" id="content" name="content" placeholder="내용"></textarea>
+          <div class="bt_duo">
+          <button  type="button" class="mes mes_send" id="msg_submit" >전송</button>
+          <button  type="button" class="mes mes_close" id="modal_close">취소</button>
+          </div>
+        </div>
+        </form>
+       </c:forEach>
+       
     <div class="video">
         <video muted autoplay loop>
             <source src="/video/fog.mp4" type="video/mp4">

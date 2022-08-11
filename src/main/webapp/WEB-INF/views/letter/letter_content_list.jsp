@@ -8,9 +8,10 @@
             <!--받은 메세지-->
             <div class="incoming_msg">
                 <div class="incoming_msg_img">
-                    <a href="other_profile?other_name=${tmp.send_name }">
+                	<span class="sendname">${tmp.send_name }</span>
+                  <!--   <a href="other_profile?other_name=${tmp.send_name }">
                        <img src="./upload/profile/${tmp.user_image}" alt="abc" >   
-                    </a>
+                    </a>  프로필 경로설정 및 프로필 이미지 폴더 -->
                 </div>
                 <div class="received_msg">
                     <div class="received_withd_msg">

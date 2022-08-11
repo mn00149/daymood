@@ -3,12 +3,13 @@ package com.study.letter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,9 +24,9 @@ public class LetterController {
   
   //메세지 목록
   @RequestMapping("/letter_list")
-  public String letter_list(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails userDetails, Model model) {
+  public String letter_list(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails userDetails) {
         String username = userDetails.getUsername();
-
+        
         
         LetterDTO to = new LetterDTO();
         to.setUsername(username);
@@ -59,6 +60,7 @@ public class LetterController {
     to.setRoom(room);
     to.setUsername(userDetails.getUsername());
     model.addAttribute("username", userDetails.getUsername());
+    
     //메세지 내용을 가져온다.
     ArrayList<LetterDTO> clist = LetterDao.roomContentList(to);
     request.setAttribute("clist", clist);
@@ -81,4 +83,22 @@ public class LetterController {
     return flag;
   }
   
+  //프로필에서 메세지 보내기
+  @PostMapping("/letter_send_profile")
+  public String postletter(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails userDetails) {
+    String other_name = request.getParameter("other_name");
+    String content = request.getParameter("content");
+    
+    LetterDTO to = new LetterDTO();
+    
+    to.setRoom(0);
+    to.setSend_name(userDetails.getUsername());
+    to.setRecv_name(other_name);
+    to.setContent(content);
+    
+    int flag = LetterDao.letter_send_profile(to);
+    
+    return "letter/letter_ajax_list";
+  }
 }
+
