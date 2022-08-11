@@ -18,6 +18,7 @@
 <title>Document</title>
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 @media ( max-width : 1400px) {
 	body {
@@ -37,7 +38,7 @@ body {
 	color: #28313b;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Jua', sans-serif;
 }
 
 .container {
@@ -48,8 +49,8 @@ body {
 	gap: 10px;
 }
 
-header {
-	width: 1400;
+#main_header {
+	width: 98%;
 	height: 80px;
 	grid-column-start: 1;
 	grid-column-end: 3;
@@ -58,12 +59,14 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 20px 20px;
-	backgorund-color: rgba(255, 55, 59, 0.7);
-    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%,
-				rgba(148, 187, 233, 1) 100%); 
-	border-bottom: 1px solid #c1c4c7;
+	margin: 20px 0;
+	/* backgorund-color: rgba(255, 55, 59, 0.7); */
+    /* background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%,
+				rgba(148, 187, 233, 1) 100%);  */
+	background : #FEECE1;
+	border: 2px solid;
 	border-radius: 10px;
+	border-color : #E2E2E8;
 	box-sizing: border-box;
 	padding: 0 70px;
 }
@@ -77,7 +80,7 @@ header {
 }
 
 #menu > * {
-font-family: 'Noto Sans KR', sans-serif;
+font-family: 'Jua', sans-serif;
 }
 
 #menu>ul>li {
@@ -92,7 +95,7 @@ font-family: 'Noto Sans KR', sans-serif;
 
 #menu>li>a:hover {
 	transition: color 0.3s;
-	color: #eee2de;
+	color: #18AFE3;
 }
 
 #login>a {
@@ -127,6 +130,7 @@ font-family: 'Noto Sans KR', sans-serif;
 .logo>a>img {
 	max-width: 150px;
 	padding-bottom : 10px;
+	padding-top : 5px;
 }
 
 a {
@@ -138,9 +142,9 @@ a {
 </head>
 <body>
 	<div class="container">
-		<header>
+		<header id="main_header">
 			<div class="logo">
-				<a href="/main"><img class="logo" src="/images/daymood.png" alt="logo"></a>
+				<a href="/main"><img class="logo" src="/images/main_logo.png" alt="logo"></a>
 			</div>
 			<ul id="menu">
 				<li><a href="/board/weather_list">Mood</a></li>
