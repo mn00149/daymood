@@ -53,21 +53,21 @@ public class ReplyController {
 
     return new ResponseEntity<List<ReplyDTO>>(service.list(map), HttpStatus.OK);
   }
-
-  @GetMapping("/reply/page")
-  public ResponseEntity<String> getPage(
-      int nPage, int nowPage, int board_no, String col, String word) {
-
-    int total = service.total(board_no);
-    String url = "/board/read/"+board_no;
-
-    int recordPerPage = 10; // 한페이지당 출력할 레코드 갯수
-
-    String paging = Utility.rpaging(total, nowPage, recordPerPage, col, word, url, nPage);
-
-    return new ResponseEntity<>(paging, HttpStatus.OK);
-
-  }
+  
+//  @GetMapping("/reply/page")
+//  public ResponseEntity<String> getPage(
+//      int nPage, int nowPage, int board_no, String col, String word) {
+//
+//    int total = service.total(board_no);
+//    String url = "/board/read/"+board_no;
+//
+//    int recordPerPage = 999; // 한페이지당 출력할 레코드 갯수
+//
+//    String paging = Utility.rpaging(total, nowPage, recordPerPage, col, word, url, nPage);
+//
+//    return new ResponseEntity<>(paging, HttpStatus.OK);
+//
+//  }
   
   @PostMapping("/reply/create")
   public ResponseEntity<String> create(@RequestBody ReplyDTO vo, @AuthenticationPrincipal PrincipalDetails principalDetails) {
@@ -133,9 +133,9 @@ public class ReplyController {
     
     int user_no = principalDetails.getUser_no();
     String username = principalDetails.getUsername();
-    //int ansnum = vo.getAnsnum();
     
     Map map = new HashMap();
+    
     map.put("user_no", principalDetails.getUser_no());
     map.put("username", principalDetails.getUsername());
  

@@ -1,21 +1,42 @@
 $(function() {//페이지가 로딩될때
 	showList();
-	showPage();
+	//showPage();
 });//page loading function end  
 
 let replyUL = $(".chat");
 let replyPageFooter = $(".panel-footer");
 
+   
+
 function showList() {
 	getList({ board_no: board_no, sno: sno, eno: eno })
 		.then(list => {
 			let str = ""
+			let replyList = new Array();
+			let reReplyList = new Array();
 
 			for (var i = 0; i < list.length; i++) {
-				str += "<li class='list-group-item' data-reply_no='" + list[i].reply_no + "'>";
-				str += "<div><div class='header'><strong class='primary-font'>" + list[i].username + "</strong>";
-				str += "<small class='pull-right text-muted'>" + list[i].create_date + "</small></div>";
-				str += replaceAll(list[i].content, '\n', '<br>') + "</div></li>";
+				if(list[i].ansnum == 0){
+					replyList.push(list[i]);
+				}
+				else{
+					reReplyList.push(list[i]);
+				}
+			}
+			
+			for (var i = 0; i < replyList.length; i++) {
+				str += "<li class='list-group-item' data-reply_no='" + replyList[i].reply_no + "'>";
+				str += "<div><div class='header'><strong class='primary-font'>" + replyList[i].username + "</strong>";
+				str += "<small class='pull-right text-muted'>" + replyList[i].create_date + "</small></div>";
+				str += replaceAll(replyList[i].content, '\n', '<br>') + "</div></li>";
+				for(var j = 0; j<reReplyList.length;j++){
+					if(reReplyList[j].indent == replyList[i].reply_no){
+						str += "<li class='list-group-item' data-reply_no='" + reReplyList[j].reply_no + "'>";
+						str += "<div><div class='header'><strong class='primary-font'>" + "&emsp;&ensp;" + reReplyList[j].username + "</strong>";
+						str += "<small class='pull-right text-muted'>" + reReplyList[j].create_date + "</small></div>";
+						str += "&emsp;&ensp;"+replaceAll(reReplyList[j].content, '\n', '<br>') + "</div></li>";
+					}
+				}
 			}
 
 			replyUL.html(str);
@@ -34,15 +55,15 @@ param += "&col=" + colx;
 param += "&word=" + wordx;
 
 
-function showPage() {
-	getPage(param)
-		.then(paging => {
-			console.log(paging);
-			let str = "<div><small class='text-muted'>" + paging + "</small></div>";
-
-			replyPageFooter.html(str);
-		});
-}
+//function showPage() {
+//	getPage(param)
+//		.then(paging => {
+//			console.log(paging);
+//			let str = "<div><small class='text-muted'>" + paging + "</small></div>";
+//
+//			replyPageFooter.html(str);
+//		});
+//}
 let modal = $(".modal");
 let modalInputContent = modal.find("textarea[name='content']");
 
@@ -96,7 +117,7 @@ modalRegisterBtn.on("click", function(e) {
 			modal.modal("hide");
 
 			showList();
-			showPage();
+			//showPage();
 
 		});
 
@@ -107,7 +128,7 @@ $(".chat").on("click", "li", function (e) {
  
  
   let reply_no = $(this).data("reply_no");
- 
+  indent = reply_no;
    get(reply_no)
     .then(reply => {
  
@@ -138,7 +159,7 @@ modalModBtn.on("click", function (e) {
     .then(result => {
       modal.modal("hide");
       showList();
-      showPage();
+      //showPage();
     });
  
 });//modify
@@ -152,7 +173,7 @@ modalRemoveBtn.on("click", function (e) {
     .then(result => {
       modal.modal("hide");
       showList();
-      showPage();
+      //showPage();
     });
  
 });//remove
@@ -186,9 +207,7 @@ modalRecoRegisterBtn.on("click", function (e) {
 		username: username,
 		board_no: board_no,
 		user_no : user_no,
-		//ansnum	: ansnum
-		
-
+		reply_no : indent
 	};
 	add2(reply)
 		.then(result => {
@@ -196,7 +215,7 @@ modalRecoRegisterBtn.on("click", function (e) {
 			modal.modal("hide");
 
 			showList();
-			showPage();
+			//showPage();
 
 		}); 
 

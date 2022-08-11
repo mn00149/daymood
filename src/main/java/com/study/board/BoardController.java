@@ -92,17 +92,35 @@ public class BoardController {
     dao.upViewcnt(board_no); // 조회수 증가
     model.addAttribute("dto", dao.read(board_no));
 
+ // 검색 관련 --------------------------
+    String col = Utility.checkNull(request.getParameter("col"));
+    String word = Utility.checkNull(request.getParameter("word"));
+
+    // 페이징 관련 ------------------------
+    int nowPage = 1;
+    if (request.getParameter("nowPage") != null) {
+    nowPage = Integer.parseInt(request.getParameter("nowPage"));
+    }
+
+    request.setAttribute("col", col);
+    request.setAttribute("word", word);
+    request.setAttribute("nowPage", nowPage);
+
+    Map map = new HashMap();
+    map.put("col", col);
+    map.put("word", word);
+    map.put("nowPage", nowPage);
+    
     /* 댓글 관련 시작 */
     int nPage = 1;
     if (request.getParameter("nPage") != null) {
       nPage = Integer.parseInt(request.getParameter("nPage"));
     }
-    int recordPerPage = 10;
+    int recordPerPage = 1;
 
     int sno = (nPage - 1) * recordPerPage;
-    int eno = recordPerPage;
+    int eno = nPage * recordPerPage;
 
-    Map map = new HashMap();
     map.put("sno", sno);
     map.put("eno", eno);
     map.put("nPage", nPage);
@@ -435,5 +453,34 @@ public class BoardController {
     else
       return "/board/recommend/music";
   } // weather_category end
+  
+    //좋아요 기능 구현
+    @ResponseBody
+    @PostMapping("/board/read")
+    public int updateLike(HttpServletRequest request) throws Exception {
+    
+    int board_no = Integer.parseInt(request.getParameter("board_no"));
+    int user_no = Integer.parseInt(request.getParameter("user_no"));
+    String username = request.getParameter("username");
+    
+    Map map = new HashMap();
+    map.put("board_no", board_no);
+    map.put("user_no", user_no);
+    map.put("username", username);
+    
+    int likeCheck = dao.likeCheck(map);
+    
+    if(likeCheck == 0) { // 로그인한 회원이 해당 게시글에 좋아요를 처음 누름
+    dao.insertLike(map); // 좋아요를 누르면 LikeTable에 insert
+    dao.updateLike_cnt(map); // 게시글 like_cnt ++
+    dao.updateLikeCheck(map); // likecheck 1로 변경
+    } else if(likeCheck == 1) { // 이미 좋아요를 누른 상태
+    dao.updateLikeCheckCancel(map); // likecheck 0으로 변경(좋아요 취소)
+    dao.updateLike_cnt2(map); // 게시글 like_cnt --
+    dao.deleteLike(map); // like 테이블 삭제
+    }
+
+return likeCheck;
+}
 
 }

@@ -99,5 +99,42 @@ public class BoardServiceImpl implements BoardService {
   return mapper.delete(board_no);
   }
 
+  //좋아요 기능 구현
+  
+  @Override
+  public int likeCheck(Map map) {
+    return mapper.likeCheck(map);
   }
+
+  @Override
+  public void insertLike(Map map) {
+    mapper.insertLike(map);
+  }
+
+  @Override
+  public void updateLike_cnt(Map map) {
+    mapper.updateLike_cnt(map);
+  }
+
+  @Override
+  public void updateLikeCheck(Map map) {
+    mapper.updateLikeCheck(map);
+  }
+
+  @Override
+  public void updateLikeCheckCancel(Map map) {
+    mapper.updateLikeCheckCancel(map);
+  }
+
+  @Override
+  public void updateLike_cnt2(Map map) {
+    mapper.updateLike_cnt2(map);
+  }
+
+  @Override
+  public void deleteLike(Map map) {
+    mapper.deleteLike(map);
+  }
+
+}
   

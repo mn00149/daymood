@@ -8,14 +8,14 @@ function getList(param) {
               .catch(console.log)
 }
 
-function getPage(param) {
-	    let url = `/reply/page?${param}`;
-		console.log(url);
-        return fetch(url,{method : 'get'})
-              .then(response => response.text())
-              .catch(console.log)
+//function getPage(param) {
+//	    let url = `/reply/page?${param}`;
+//		console.log(url);
+//        return fetch(url,{method : 'get'})
+//              .then(response => response.text())
+//              .catch(console.log)
 
-}
+//}
     
 function add(reply) {
         return fetch('/reply/create',{

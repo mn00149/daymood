@@ -7,7 +7,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
   	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  	
   	<script type="text/javascript" src="/js/select.js"></script>
   	<script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
     <link rel="stylesheet" href="/css/board_style.css">
@@ -36,17 +35,12 @@
 </head>
 <body>
 	<div class="board_wrap">
-		<div class="board_title">
-			<strong>게시글 작성</strong>
-		</div>
 		
 		<form class="create" action="create" method="post">	
 		<div class="board_write">
 			<div class="title">
-				<dl>
 					<dt>제목</dt>
-					<dd><input type="text" name="title" id="title" placeholder="제목을 입력해 주세요."></dd>
-				</dl>
+					<input type="text" name="title" id="title_input" placeholder="제목을 입력해 주세요.">
 			</div>
 		</div>
 		
@@ -70,6 +64,7 @@
 				</div>
 			</div>
 			<input type="hidden" name="select_category" id="select_category" value="">
+			<input type="hidden" name="select_category" id="select_category" value="${weather_category}">
 			
 			<div class="board_content">
 				<label class="control-label" for="content">내용</label>

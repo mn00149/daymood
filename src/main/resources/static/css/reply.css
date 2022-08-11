@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-.board_wrap, .card-body {
-	background-color: rgb(250, 248, 231);
-}
+
 
 .pagination {
 	display: flex;
@@ -14,14 +12,14 @@
 	z-index: 3;
 	color: #fff;
 	cursor: default;
-	background-color: #c3423f;
-	border-color: #c3423f;
+	background-color: #FEECE1;
+	border-color: #FEECE1;
 }
 
 .panel-footer {
 	padding: 10px 15px;
 	background-color: #ffffff;
-	border-top: 1px solid #ddd;
+	border-top: 1px solid #ffffff;
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
 }
@@ -44,26 +42,25 @@
     padding: 5px 14px;
     margin-bottom: -1px;
     background-color: #F8F7F7;
-    border: 1px solid #fff;
+    border: 3px solid #fff;
 }
 .panel-default>.panel-heading {
-    color: #c3423f;
+    color: #fff;
     background-color: #fff;
     border-color: #fff;
 }
 
 .card {
-    width: 1200px;
-    margin: 0 auto;
-    border-radius: 10px;
-    padding: 0px 0;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: rgb(250,248,231);
-    background-clip: border-box;
+	width: 1200px;
+	margin: 0 auto;
+	padding: 0px 0;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-clip: border-box;
+	border-radius: 10px;
 }
 
 .board_wrap {
@@ -111,17 +108,15 @@
 }
 
 
-.card {
-    width: 1200px;
-    margin: 0 auto;
-    border-radius: 10px;
-    padding: 0px 0;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: rgb(255 255 255);
-    background-clip: border-box;
+.panel-default {
+    border-color: #fff;
 }
 
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border : 2px solid #E2E2E8;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 0%);
+    box-shadow: 0 1px 1pxrgba(0,0,0,.05);
+}

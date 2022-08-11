@@ -15,7 +15,7 @@ public interface ReplyMapper {
    
    int delete(int reply_no);
  
-   int total(int user_no); //?
+   int total(int user_no); //?  
 
    int rcount(int user_no); //?
 

@@ -19,27 +19,20 @@ a {
 .board_wrap {
 	width: 1200px;
 	margin: 50px auto;
-	border-radius: 10px;
+	border-radius: 4px;
 	padding-top: 20px;
 	padding-bottom: 60px;
+	border : 2px solid #E2E2E8;
+	background-color: #ffffff;
 }
 
 .board_title {
 	margin-bottom: 30px;
-}
-
-.board_title strong {
-	font-size: 3rem;
-}
-
-.board_title p {
-	margin-top: 5px;
-	font-size: 1.4rem;
+	border :none;
 }
 
 .board_list {
 	width: 100%;
-	border-top: 2px solid #999;
 }
 
 .board_list>div {
@@ -103,19 +96,42 @@ a {
 /* read */
 .board_view {
 	width: 100%;
-	border-top: 2px solid #000;
+	background-color : #ffffff;
 }
 
 .board_view .title {
-	padding: 20px 15px;
-	border-bottom: 1px solid #999;
-	font-size: 2rem;
+	padding-left: 80px;
+}
+
+#list_title {
+	font-size: 3rem;
+}
+
+#list_title_category {
+	font-size: 1.6rem;
 }
 
 .board_view .info {
-	padding: 10px;
-	border-bottom: 1px solid #999;
-	font-size: 0;
+	padding-top: 10px;
+	font-size: 2rem;
+}
+
+.dl:first-child {
+	margin-left : 63px;
+}
+
+.board_view img {
+	weight: 20px;
+	height: 20px;
+}
+
+.board_view .info:after {
+  content: "";
+  display: block;
+  width: 1100px;
+  border-bottom: 1px solid #E2E2E8;
+  margin: 0 auto;
+  
 }
 
 .board_view .info dl {
@@ -124,24 +140,10 @@ a {
 	position: relative;
 }
 
-.board_view .info dl:first-child {
-	padding-left: 0;
+.board_view .info dl_2 {
+	
 }
 
-.board_view .info dl::before {
-	content: "";
-	position: absolute;
-	top: 3px;
-	left: 0;
-	display: block;
-	width: 1px;
-	height: 13px;
-	background: #777;
-}
-
-.board_view .info dl:first-child::before {
-	display: none;
-}
 
 .board_view .info dt {
 	display: inline-block;
@@ -156,13 +158,13 @@ a {
 }
 
 .board_view .cont {
-	height: 500px;
-	padding: 15px;
+	padding: 40px 60px;
 	line-height: 160%;
 	font-size: 1.4rem;
 	overflow: scroll;
 	overflow-y: auto;
 	overflow-x: hidden;
+	min-height : 500px;
 }
 
 .board_view .cont::-webkit-scrollbar {
@@ -265,17 +267,48 @@ a {
 	margin-right: auto;
 	display: flex;
 	justify-content: center;
-} /* 큰 div */
+} 
+
+/* 큰 div */
 .pagination li {
 	padding: 10px;
 	float: left;
 	font-size: 1.6rem;
 } /* 자식 li */
 
-/* 검색버튼 */
+/* list페이지 하단 버튼 */
 .bt_wrap {
 	display: flex;
 	margin : 10px;
+}
+
+.read_bt_wrap button:first-child {
+	margin-left:50px;
+}
+
+
+.read_bt_wrap:before {
+  	content: "";
+  	display: block;
+  	width: 1100px;
+  	border-top: 1px solid #E2E2E8;
+  	margin: 0 auto;
+  	padding-top: 10px;
+}
+
+.read_bt_wrap button {
+	background: #F2F4F9;
+	color: BLACK;
+}
+
+.read_bt_wrap button:hover {
+	background: #FEECE1;
+	color: white;
+	
+}
+
+.read_bt_wrap button:active {
+	border: 1px solid white;
 }
 
 .box, .box2{
@@ -287,15 +320,15 @@ a {
 
 .input, .create2 {
     padding: 10px;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: none;
-    border: 3px solid #999;
+    border: 2px solid gray;
     border-radius: 50px;
     box-sizing: border-box;
     font-family: Comic Sans MS;
-    font-size: 26px;
-    color: #999;
+    font-size: 18px;
+    color: gray;
     outline: none;
     transition: .5s;
 }
@@ -315,7 +348,7 @@ a {
 .box i{
     position: absolute;
     top: 50%;
-    right: 5px;
+    right: 0;
     transform: translate(-50%,-50%);
     font-size: 26px;
     color: #999;
@@ -345,3 +378,68 @@ a {
 .select2 {
 	width : 20%;
 }
+
+
+
+
+/* 
+(최욱진) 임의로 추가한 CSS
+*/
+
+
+.container__trigger {
+
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	
+	/* Size */
+	height: 1rem;
+	width: 16rem;
+	
+	/* Misc */
+	border: 1px solid #cbd5e0;
+}
+.container__menu {
+    
+    position: fixed;
+
+    /* Reset */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    /* Misc */
+    border: 1px solid #cbd5e0;
+    border-radius: 0.25rem;
+    background-color: #f7fafc;
+}
+.container__menu--hidden {
+    display: none;
+}
+.container__item {
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    cursor : pointer;
+}
+.container__item:hover {
+    background-color: #bee3f8;
+}
+
+.username2 {
+	cursor : pointer;
+}
+
+/* create  */
+.title {
+	font-size: 1.8rem;
+}
+
+.title #title_input {
+	border-radius: 5px;
+	border: 2px solid gray;
+	width: 350px;
+	height: 40px;
+}
+
+
