@@ -2,14 +2,16 @@ const form = document.getElementById('form')
 const username = document.getElementById('username')
 const checkUsername = document.getElementById('checkUsername')
 const email = document.getElementById('email')
+const checkUsername = document.getElementById('checkEmail')
 const password = document.getElementById('password')
 const confirmpassword = document.getElementById('confirmpassword')
 
 let errorExist = false
 let availableUsername = false
+let availableEmail = false
 async function usernameCheck(username) {
 	if (username.value == '') {
-		alert("아이디를 입력하세요");
+		alert("username을 입력하세요");
 		availableUsername = false
 	} else {
 		let param = "username=" + username.value;
@@ -29,11 +31,30 @@ async function usernameCheck(username) {
 				}
 			});
 
-		
-		
+	}
+}
 
+async function emailCheck(email) {
+	if (email.value == '') {
+		alert("email을 입력하세요");
+		availableUsername = false
+	} else {
+		let param = "email=" + email.value;
+		let url = "/emailcheck?" + param;
 
+		let status = "상태"
 
+		let response = await fetch(url)
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.result === "ok") {
+					alert(data.str)
+					availableUsername = true
+				} else {
+					alert(data.str)
+					availableUsername = false
+				}
+			});
 
 	}
 }

@@ -60,6 +60,7 @@ public class UserController {
   public String join(UserDTO user) {
     System.out.println(user);
     user.setRole("ROLE_USER");
+    user.setUser_image("/images/daymood.png");
     String rawPassword = user.getPassword();
     String encPassword = bCryptPasswordEncoder.encode(rawPassword);
     user.setPassword(encPassword);

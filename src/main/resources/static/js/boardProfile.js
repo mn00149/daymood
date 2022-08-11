@@ -92,8 +92,3 @@ function posted() {
 		location.href = url;
 	}
 	
-/*보드에서 쪽지 보내기 창으로 이동*/
-function sendLetter() {
-		let url = '/sendLetter?recv_name=' + id;
-		window.open(url)
-	}

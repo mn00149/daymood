@@ -72,15 +72,7 @@ public class LetterController {
     return "/letter/sendLetter";
   }
   
-  @PostMapping("/sendLetter")
-  public String postLetter(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails userDetails){
-    String send_name = userDetails.getUsername();
-    System.out.println("sendname"+send_name);
-    System.out.println("name::::::::::::::"+request.getParameter("letterContent"));
-    System.out.println("name::::::::::::::"+request.getParameter("recv_name"));
-
-    return "/letter/sendLetter";
-  }
+ 
   //메세지 리스트에서 메세지 보내기
   @ResponseBody
   @RequestMapping("/letter_send_inlist")
