@@ -7,8 +7,8 @@
             <!--active-chat-->
             <div class="chat_people">
                 <div class="chat_img">
-                  <!-- 프로필이동..? 할까말까 -->    <a href="other_image?other_name=${tmp.other_name }"> 
-                  <!-- 경로 정해지면 수정해야됨. -->        <img src="./upload/profile/${tmp.user_image}" alt="abc" >  
+                  <!-- 프로필이동..? 할까말까     <a href="other_image?other_name=${tmp.other_name }"> -->
+                  <!-- 경로 정해지면 수정해야됨.         <img src="./upload/profile/${tmp.user_image}" alt="abc" > --> 
                     </a>
                 </div>
                 <div class="chat_ib">

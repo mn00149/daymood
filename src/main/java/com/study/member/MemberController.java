@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.study.board.BoardDTO;
+import com.study.mainboard.MainBoardService;
 import com.study.reply.ReplyDTO;
 import com.study.user.UserDTO;
 import com.study.user.auth.PrincipalDetails;
@@ -39,6 +40,10 @@ public class MemberController {
 	@Qualifier("com.study.member.MemberServiceImpl")
 	private MemberService service;
 
+  @Autowired
+  @Qualifier("com.study.mainboard.MainBoardServiceImpl")
+  private MainBoardService dao;
+  
 	@PutMapping("/updateMember")
 	public ResponseEntity<String> modify(@RequestBody UserDTO vo) {
 
@@ -119,7 +124,19 @@ public class MemberController {
 	}
 
 	@GetMapping("/main")
-	public String main() {
+  public String list(HttpServletRequest request) {
+
+    Map map = new HashMap();
+    List<BoardDTO> list = dao.hot_list(map);
+
+    
+    Map map2 = new HashMap();
+    List<BoardDTO> list2 = dao.new_list(map2);
+
+  
+    // 2. request 저장(view에서 사용할 내용을 저장)
+    request.setAttribute("list", list);
+    request.setAttribute("list2", list2);
 		return "/main";
 	}
 

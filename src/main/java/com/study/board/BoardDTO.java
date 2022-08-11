@@ -2,6 +2,7 @@ package com.study.board;
 
 import java.util.List;
 
+import com.study.letter.LetterDTO;
 import com.study.reply.ReplyDTO;
 import com.study.user.UserDTO;
 
@@ -26,4 +27,6 @@ public class BoardDTO {
   
   
   private UserDTO udto;
+  private LetterDTO ldto;
+
 }

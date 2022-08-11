@@ -12,19 +12,7 @@
    function send() {
         $("#sendbtn").click();
     }
-/*$(function() {
-  $('textarea').on('keydown', function(event) {
-      if (event.keyCode == 13)
-          if (!event.shiftKey){
-             event.preventDefault();
-             var button=document.getElementById('sendbtn');
-             
-             button.click();
-             $('textarea').empty()
-          }
-  });
- 
-});*/
+
 
 </script>
 <head>
@@ -43,7 +31,7 @@
                         <!-- 쪽지 검색-->
                         <div class="srch_bar">
                         	<div class="stylish-input-group">
-                                <input type="text" placeholder="Search" >
+                                <input type="text" placeholder="Search" name="word" value="${word }">
                                 <span class="input-group-addon">
                                 <button type="button"> <i class="fa fa-search" aria-hidden="true"></i></button>
                                 </span>
@@ -100,8 +88,6 @@
                     send_msg += "   <div class='input_msg_write row'>";
                     send_msg += "        <div class='col-11' id='sendsend'>";
                     send_msg += "                <textarea autofocus class='write_msg form-control' onkeyup='if(window.event.keyCode==13){send()}' id='enter'  />";
-                    //send_msg += "        </div>";
-                    //send_msg += "        <div class='col-1'>";
                     send_msg += "                <button class='msg_send_btn' id='sendbtn' type='button'><i class='fa fa-paper-plane-o' aria-hidden='true'></i></button>";
                     send_msg += "        </div>";
                     send_msg += "   </div>";
@@ -157,8 +143,6 @@ const MessageList = function(){
                         send_msg += "   <div class='input_msg_write row'>";
                         send_msg += "        <div class='col-11' id='sendsend'>";
                         send_msg += "                <textarea autofocus class='write_msg form-control' onkeyup='if(window.event.keyCode==13){send()}' id='enter'  />";
-                        //send_msg += "        </div>";
-                        //send_msg += "        <div class='col-1'>";
                         send_msg += "                <button class='msg_send_btn' id='sendbtn' type='button'><i class='fa fa-paper-plane-o' aria-hidden='true'></i></button>";
                         send_msg += "        </div>";
                         send_msg += "   </div>";
@@ -208,7 +192,7 @@ const MessageContentList = function(room){
                 $('.let_history').scrollTop($(".let_history")[0].scrollHeight);
             },
             error : function(){
-                alert('ContentList 서버 에러');
+                alert('메세지 내용 가져오기 실패');
             }
         })
         
@@ -244,7 +228,7 @@ const SendMessage = function(room, other_name){
                 MessageList();
             },
             error : function(){
-                alert('서버 에러');
+                alert('메세지 전송 실패');
             }
         });
     }

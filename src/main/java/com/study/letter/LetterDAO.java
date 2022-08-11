@@ -68,5 +68,28 @@ public class LetterDAO {
     int flag = sqlSession.insert("letterSendInlist",to);
     return flag;
   }
+  
+  public int letter_send_profile(LetterDTO to) {
+    //메세지 리스트에서 보낸건지 프로필에서 보낸건지 구분하기 위함
+    if(to.getRoom() == 0) {//room이 0이라면 프로필에서 보낸거다
+      int exist_chat = sqlSession.selectOne("exist_chat",to);
+      //프로필에서 보낸것중 메세지 내역이 없어서 첫메세지가 될경우를 구분하기 위함
+      if(exist_chat == 0) {
+        try {
+          int max_room = sqlSession.selectOne("max_room",to);
+          to.setRoom(max_room+1);
+        }catch(Exception e){ // selectOne 널포인트 떠서 try / catch 로
+          to.setRoom(1);
+        }
+        
+      }else {
+        int room = Integer.parseInt(sqlSession.selectOne("select_room",to));
+        to.setRoom(room);
+      }
+    }
+    int flag = sqlSession.insert("letterSendInlist",to);
+    return flag;
+  }
+  
 }
 

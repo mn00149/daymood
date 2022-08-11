@@ -41,9 +41,11 @@ public interface BoardMapper {
   
   //------ board end
   
-  List<BoardDTO> list2(Map map);
+
   
   List<Map> getAll();
+
+  List<BoardDTO> list2(Map map);
 
 
 
