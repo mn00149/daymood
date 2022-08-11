@@ -16,7 +16,7 @@ function requestlist() {
       //console.log(list);
       for (var i = 0; i < list.length; i++) {
         str += "<tr>";
-        str += "<td><img src='/images/daymood.png'/></td>";
+        str += "<td><img src="+ list[i].user_image +"style='width:50px'</td>";
         str += "<td>"+list[i].username+"</td>";
         str += "<td>"+list[i].nation+'</td>';
         str += "<td>"+list[i].email+'</td>';
@@ -38,7 +38,7 @@ function remove(request_no) {
 function add(f_id, t_id) {
 	return fetch(`/mypage/request_friends/${f_id}/${t_id}`, {method: 'post'})
 			.then(response => response.text())
-			.catch(alert("이미 친구 목록에 있습니다."))
+			.catch(console.log)
 }
 
 

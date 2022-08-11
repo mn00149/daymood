@@ -252,7 +252,9 @@ input {
 }
 
 .friends_section {
-  height: 500px;
+  min-height : 300px;
+  max-height : 400px;
+  height : auto;
   overflow : auto;
 }
 

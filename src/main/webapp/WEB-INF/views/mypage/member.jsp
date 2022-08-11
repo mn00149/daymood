@@ -67,21 +67,16 @@
     margin: 10px;
 }
 
-#update {
 
-    color: #222327;
-    margin-top: 10px;
-    background-color: skyblue;
-
-}
   </style>
 </head>
 
 <body>
 
   <div id="content" class="ink_content" role="main">
-    <%@ include file="profile1.jsp" %>
-    
+    <jsp:include page="profile1.jsp"> 
+    <jsp:param value="${dto.user_image }" name="user_image"/>
+    </jsp:include>
     <input type="hidden" id="user_no" value="${dto.user_no }">
     <input type="hidden" id="user_image" class="user_image" value="${dto.user_image }">
     
@@ -129,7 +124,7 @@
       </table>
     </div>
     <div style=" justify-content: center; align-items: center; display: flex;">    
-      <button id="update">수정</button>
+      <a href="#" class="update" id="update" style="text-decoration:none"><span></span>수정</a>
     </div>
       
       
@@ -145,6 +140,12 @@
                 <li class="my"><img src="/image/cloudy.png" style="width: 50px; height: 50px"></li>
                 <li class="my"><img src="/image/fog.png" style="width: 50px; height: 50px"></li>
                 <li class="my"><img src="/image/recommend/book.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/image/daymood_logo.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/daymood.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/letter.svg" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/send.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/pac.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/bubble.png" style="width: 50px; height: 50px"></li>
             </ul>
         </div>
         <button class="ok-btn">
