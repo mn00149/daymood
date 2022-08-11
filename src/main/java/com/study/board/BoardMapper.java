@@ -49,7 +49,18 @@ public interface BoardMapper {
 
 
 
-  
+  int likeCheck(Map map);
 
+  void insertLike(Map map);
+
+  void updateLike_cnt(Map map);
+
+  void updateLikeCheck(Map map);
+
+  void updateLikeCheckCancel(Map map);
+
+  void updateLike_cnt2(Map map);
+
+  void deleteLike(Map map);
 
 }

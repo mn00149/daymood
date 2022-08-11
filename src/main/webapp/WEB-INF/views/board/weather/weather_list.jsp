@@ -11,13 +11,7 @@
 <title>sunny</title>
 <link rel="stylesheet" href="/css/board_style.css">
 <link rel="stylesheet" href="/css/reply_number.css">
-<link rel="stylesheet" href="/video/sunny.mp4">
-<script src="https://kit.fontawesome.com/6a80a39212.js"
-	crossorigin="anonymous"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
-	rel="stylesheet">
+
 
 <link rel="stylesheet" href="/css/boardProfile.css">
 
@@ -25,20 +19,13 @@
 <script type="text/javascript" src="/js/boardProfile.js" defer></script>
 <script type="text/javascript" src="/js/search.js"></script>
 
+<script src="https://kit.fontawesome.com/6a80a39212.js"	crossorigin="anonymous"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"	rel="stylesheet">
+<script type="text/javascript" src="/search.js"></script>
+
 
 <style>
-.video {
-	width: 1200px;
-	height: 100%;
-	content: "";
-	background: url("/video/sunny.mp4");
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	opacity: 0.5;
-}
-
 .board_wrap, .reply_wrap {
 	background-color: rgb(250, 248, 231);
 }
@@ -65,6 +52,7 @@
 
 </head>
 <body>
+
 	<!-- 친구 요청 팝업 -->
 	<div class="popup-overlay">
 		<div class="popup-box-container">
@@ -114,12 +102,8 @@
         </div>
         </form>
        </c:forEach>
-	<div class="video">
-		<video muted autoplay loop>
-			<source src="/video/sunny.mp4" type="video/mp4">
-			<strong>Your browser does not support the video tag.</strong>
-		</video>
-	</div>
+	
+
 
 	<div class="board_category">
 		<div class="all">

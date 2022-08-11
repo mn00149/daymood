@@ -21,7 +21,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from Reply
 		where board_no = #{board_no}
 		order by reply_no DESC
-		limit #{sno}, #{eno}
 	</select>
 	
 	<select id="read" parameterType="int" resultType="com.study.reply.ReplyDTO">
@@ -47,6 +46,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="re_create" parameterType="com.study.reply.ReplyDTO">
 		insert into Reply(user_no, board_no, username, content, create_date, indent, ansnum)
-		values(#{user_no}, #{board_no}, #{username}, #{content}, sysdate(), #{indent}, #{ansnum}+1)
+		values(#{user_no}, #{board_no}, #{username}, #{content}, sysdate(), #{reply_no}, 1)
 	</insert>
 </mapper>
