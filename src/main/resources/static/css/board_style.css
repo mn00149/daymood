@@ -18,7 +18,7 @@ a {
 
 .board_wrap {
 	width: 1200px;
-	margin: 50px auto;
+	margin: 15px auto;
 	border-radius: 4px;
 	padding-top: 20px;
 	padding-bottom: 60px;
@@ -41,11 +41,11 @@ a {
 }
 
 .board_list>div.top {
-	border-bottom: 2px solid #999;
+	border-bottom: 2px solid #E2E2E8;
 }
 
 .board_list>div:last-child {
-	border-bottom: 2px solid #999;
+	border-bottom: 2px solid #E2E2E8;
 }
 
 .board_list>div>div {
@@ -176,7 +176,7 @@ a {
 }
 
 .board_view .cont::-webkit-scrollbar-track {
-	background-color: rgb(250, 248, 231);
+	background-color: rgb(255, 255, 255);
 }
 
 /* 댓글 */
@@ -185,16 +185,17 @@ a {
 	margin: 200px auto;
 	border-radius: 10px;
 	padding: 20px 0;
+	
 }
 
 /* 게시판 카테고리 */
 .board_category {
 	height: 45px;
-	width: 400px;
+	width: 1200px;
 	text-align: center;
 	border-radius: 7px;
-	margin-left: 350px;
-	margin-bottom: -40px;
+	margin : 0 auto;
+	margin-top : 40px;
 }
 
 .board_category div {
@@ -206,45 +207,49 @@ a {
 }
 
 .board_category .all {
-	border-top-left-radius: 7px;
-	border-bottom-left-radius: 7px;
-	background-color: rgb(250, 248, 231);
-	border: 2px solid #999;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	font-size: 16px;
-	box-shadow: 3px 3px 3px #999;
-	transition-duration: 0.3s;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    background-color: white;
+    border: 2px solid #E2E2E8;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 16px;
+    box-shadow: 3px 3px 3px #E2E2E8;
+    transition-duration: 0.3s;
 }
 
 .board_category .sunny {
-	background-color: rgb(250, 248, 231);
-	border: 2px solid #999;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	box-shadow: 3px 3px 3px #999;
+    background-color: white;
+    border: 2px solid #E2E2E8;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 3px 3px 3px #E2E2E8;
 }
 
-.board_category .fog {
-	background-color: rgb(250, 248, 231);
-	border: 2px solid #999;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	box-shadow: 3px 3px 3px #999;
+.board_category .cloudy {
+    background-color: white;
+    border: 2px solid #E2E2E8;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 3px 3px 3px #E2E2E8;
 }
 
 .board_category .rain {
-	border-top-right-radius: 7px;
-	border-bottom-right-radius: 7px;
-	background-color: rgb(250, 248, 231);
-	border: 2px solid #999;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	box-shadow: 3px 3px 3px #999;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    background-color: white;
+    border: 2px solid #E2E2E8;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 3px 3px 3px #E2E2E8;
+}
+
+.board_category div:hover {
+    background-color: #FEECE1;
 }
 
 .board_category img {
@@ -301,6 +306,7 @@ a {
 	color: BLACK;
 }
 
+
 .read_bt_wrap button:hover {
 	background: #FEECE1;
 	color: white;
@@ -318,17 +324,21 @@ a {
 
 }
 
+#ab {
+	color: black;
+}
+
 .input, .create2 {
     padding: 10px;
     width: 50px;
     height: 50px;
     background: none;
-    border: 2px solid gray;
+    border: 2px solid #E2E2E8;
     border-radius: 50px;
     box-sizing: border-box;
     font-family: Comic Sans MS;
     font-size: 18px;
-    color: gray;
+    color: #E2E2E8;
     outline: none;
     transition: .5s;
 }
@@ -342,7 +352,7 @@ a {
 
 .box:hover input{
     width: 350px;
-    background: rgb(250,248,231);
+    background: #FFF;
     border-radius: 10px;
 }
 .box i{
@@ -351,7 +361,7 @@ a {
     right: 0;
     transform: translate(-50%,-50%);
     font-size: 26px;
-    color: #999;
+    color: #E2E2E8;
     transition: .2s;
 }
 .box:hover i{
@@ -430,7 +440,6 @@ a {
 	cursor : pointer;
 }
 
-
 /* create  */
 .title {
 	font-size: 1.8rem;
@@ -443,4 +452,10 @@ a {
 	height: 40px;
 }
 
-
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #FEECE1;
+    border-color: #E2E2E8;
+}

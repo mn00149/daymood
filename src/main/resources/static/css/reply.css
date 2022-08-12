@@ -63,13 +63,7 @@
 	border-radius: 10px;
 }
 
-.board_wrap {
-    width: 1200px;
-    margin: 25px auto;
-    border-radius: 5px;
-    padding-top: 20px;
-    padding-bottom: 60px;
-}
+
 
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
@@ -119,4 +113,14 @@
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 0%);
     box-shadow: 0 1px 1pxrgba(0,0,0,.05);
+}
+
+.btn {
+    background: #F2F4F9;
+    color: BLACK;
+}
+.btn:hover {
+	background: #FEECE1;
+	color: white;
+	
 }
