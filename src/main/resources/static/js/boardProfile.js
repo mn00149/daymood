@@ -1,5 +1,3 @@
-
-
 $(function() {
 	$('body').click(function(e) {
 		if (e.target.className !== "username2" && !profile.contains(e.target)) {
@@ -143,4 +141,3 @@ function posted() {
       
     });
     
-

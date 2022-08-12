@@ -59,7 +59,7 @@ public class UserController {
   @PostMapping("/join")
   public String join(UserDTO user) {
     System.out.println(user);
-    user.setRole("ROLE_USER");
+    user.setRole("ROLE_ADMIN");
     user.setUser_image("/images/daymood.png");
     String rawPassword = user.getPassword();
     String encPassword = bCryptPasswordEncoder.encode(rawPassword);

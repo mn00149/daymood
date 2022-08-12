@@ -218,7 +218,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					content like CONCAT('%',#{word},'%')
 				</when>
 			</choose>
-			and (s.user_no = 1) and (s.board_no = b.board_no)
+			and (s.user_no = #{user_no}) and (s.board_no = b.board_no)
 		</where>
 		ORDER BY s.scrapno DESC
 		limit #{sno}, #{eno}
