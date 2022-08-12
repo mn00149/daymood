@@ -1,0 +1,125 @@
+.req-btn:hover{
+    opacity: 0.6;
+}
+
+.popup-overlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+    opacity: 0;
+}
+
+.popup-box-container {
+    background-color: #fdfdfd;
+    width: 400px;
+    height: 51vh;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    border-radius: 10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+}
+
+.check-container i{
+    background-color: #fdfdfd;
+    border-radius: 50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50%;
+    -o-border-radius:50%;
+    color: green;
+    opacity: 0.6;
+    font-size: 250%;
+    margin: 50px;
+    padding: 10px;
+    box-shadow: 0 0 10px #000;
+}
+
+.popup-message-container p {
+    margin-top: 15px;
+    color: rgb(14, 13, 13);
+}
+
+.ok-btn, .no-btn {
+    background-color: #00bba9;
+    border:transparent;
+    border-radius: 10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+    padding: 15px;
+    color: #fff;
+    margin-top: 30px;
+    width: 25%;
+    font-size: 90%;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:400px){
+    .popup-box-container{
+        width: 300px;
+    }
+}
+
+.active2 {
+    opacity: 1;
+    z-index: 10;
+}
+
+.update{
+    position: relative;
+    padding: 10px 30px;
+    border: 2px solid #222327;
+    margin: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #222327;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.update:hover{
+    color: #111;
+}
+
+.update span
+{
+    position : absolute;
+    display: block;
+    width: 0px;
+    height: 0px;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background-color: #41f321;
+    transition: width 0.5s, height 0.5s;
+    z-index: -1;
+}
+
+.update:hover span {
+    width: 300px;
+    height: 300px;
+}

@@ -4,10 +4,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.study.daymood.*;
+
 
  
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
+  
   /*
    *  View 페이지에서 이미지 보이도록 함
   - Spring Boot가 OS의 특정 폴더에 접근 가능하도록 설정
@@ -24,7 +27,10 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         //.addResourceLocations("file:///" + UploadCon.getUploadDir());
         
         //registry.addResourceHandler("/member/storage/**")
-        //         .addResourceLocations("file:///" + UploadMem.getUploadDir());
+        //.addResourceLocations("file:///" + UploadMem.getUploadDir());
+      
+      registry.addResourceHandler("/ckstorage/files/**")
+      .addResourceLocations("file:///"+UploadCk.getUploadDir()+"/files/");
     }
  
 }

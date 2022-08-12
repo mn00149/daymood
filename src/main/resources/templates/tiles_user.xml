@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+ 
+<tiles-definitions>
+
+  <!-- main -->
+  <definition name="main" template="/WEB-INF/views/template/template.jsp">
+    <put-attribute name="header" value="/WEB-INF/views/template/top.jsp" />
+  </definition>
+  
+  
+  <definition name="/user/loginForm" extends="main">
+    <put-attribute name="title" value="로그인 페이지"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/user/loginForm.jsp" />
+  </definition>
+  
+   <definition name="/user/joinForm" extends="main">
+    <put-attribute name="title" value="회원 가입 페이지"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/user/joinForm.jsp" />
+  </definition>
+  
+  <definition name="/user/findPassword" extends="main">
+    <put-attribute name="title" value="password 찾기 페이지"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/user/findPassword.jsp" />
+  </definition>
+
+  
+  
+</tiles-definitions>

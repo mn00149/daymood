@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.board.BoardMapper">
+
+	<!-- recommend List - all -->
+	<resultMap type="com.study.board.BoardDTO" id="recommend_list">
+		<result property="recommend_category" column="recommend_category"/>
+		<result property="title" column="title"/>
+		<result property="create_date" column="create_date"/>
+		<result property="view_cnt" column="view_cnt"/>
+		<result property="like_cnt" column="like_cnt"/>
+		<result property="board_no" column="board_no"/>
+		<result property="content" column="content"/>
+		
+		<association property="udto" javaType="com.study.user.UserDTO">
+			<result property="username" column="username"/>
+			<result property="nation" column="nation"/>
+			<result property="role" column="role"/>
+		</association>
+	</resultMap>
+	<select id="recommend_list" parameterType="Map" resultMap="recommend_list">
+		select b.recommend_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, b.content
+		from board b inner join user u
+		on b.user_no = u.user_no and recommend_category is not null
+		<!-- 
+		<where>
+		<if test="word != ''">
+			u.username like concat('%', #{word}, '%')
+		</if>
+		</where> 
+		
+		order by  field(role, '관리자', '회원'), create_date desc
+		limit #{sno}, #{eno} -->
+	</select>
+
+ </mapper>

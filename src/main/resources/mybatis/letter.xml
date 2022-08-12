@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.study.letter.LetterDAO">
+<!--메세지 리스트 가져오기 -->
+    <select id="letter_list"  parameterType="com.study.letter.LetterDTO" resultType="com.study.letter.LetterDTO">
+		<!-- select letter_no, room, send_name, recv_name, date_format(send_time, '%Y-%m-%d %H:%i') ,content, read_chk -->
+		select *
+		from letter
+		where letter_no in (select max(letter_no) from letter group by room) and (send_name =#{username} or recv_name=#{username})
+		order by letter_no desc;
+    </select>
+        
+<!-- 메세지 list에서 상대방 profile 가져오기 -->
+ <!--   	<select id="get_other_image" parameterType="com.study.letter.LetterDTO" resultType="String">
+		select user_image form user
+		<choose>
+			<when test="send_name == username">
+				where username =#{recv_name}
+			</when>
+			<otherwise>
+				where username =#{send_name}
+			</otherwise>
+		</choose>
+	</select> --> 
+	
+<!-- 안읽은 메세지 갯수 가져오기 -->
+	<select id="count_unread" parameterType="com.study.letter.LetterDTO" resultType="int">
+		select count(letter_no)
+		from letter
+		where recv_name=#{username} and read_chk=0 and room=#{room}
+	</select>
+	
+<!-- 메세지 내용 가져오기 -->
+	<select id="room_content_list" parameterType="com.study.letter.LetterDTO" resultType="com.study.letter.LetterDTO">
+		select l.letter_no , l.room , l.send_name , l.recv_name , l.send_time, l.content, l.read_chk
+		from letter l left outer join user u
+		on l.send_name = u.username
+		<choose>
+			<when test="room != 0">
+				where room=#{room}
+			</when>
+			<otherwise>
+				where(recv_name = #{recv_name} and send_name = #{username}) or (send_name = #{recv_name} and recv_name = #{username})
+			</otherwise>
+		</choose>
+		
+	</select>
+	
+<!-- 메세지 읽음 처리 -->
+	<update id="read_chk" parameterType="com.study.letter.LetterDTO">
+		update letter set read_chk=1
+		<choose>
+			<when test="room != 0">
+				where room = #{room} and read_chk=0 and recv_name= #{username}
+			</when>
+			<otherwise>
+				where send_name= #{recv_name} and read_chk=0 and recv_name = #{username}
+			</otherwise>
+		</choose>
+		
+	</update>
+	
+<!-- 메세지리스트에서 메세지 보내기 -->
+	<insert id="letterSendInlist" parameterType="com.study.letter.LetterDTO">
+		<choose>
+			<when test="room != 0">
+				insert into letter values(0, #{room}, #{content}, #{recv_name}, #{send_name}, curtime(), 0);
+			</when>
+			<otherwise>
+				insert into letter values(0, #{room}, #{content}, #{recv_name}, #{send_name}, curtime(), 0);
+			</otherwise>
+		</choose>
+	</insert>
+	
+<!-- room 번호 최대값 구하기 -->
+	<select id="max_room" parameterType="com.study.letter.LetterDTO" resultType="int">
+		select max(room) from letter
+	</select>
+	
+<!-- 메세지 이력이 있는지 검색 -->
+	<select id="exist_chat" parameterType="com.study.letter.LetterDTO" resultType="int">
+		select count(letter_no)
+		from letter
+		where (recv_name = #{recv_name} and send_name = #{send_name}) or (send_name = #{recv_name} and recv_name = #{send_name})
+	</select>
+	
+<!-- 기존 메세지 내역의 room 번호를 가져옴 -->
+	<select id="select_room" parameterType="com.study.letter.LetterDTO" resultType="String">
+		select room
+		from letter
+		where (recv_name = #{recv_name} and send_name = #{send_name}) or (send_name = #{recv_name} and recv_name = #{send_name})
+		limit 0,1
+	</select>
+</mapper>

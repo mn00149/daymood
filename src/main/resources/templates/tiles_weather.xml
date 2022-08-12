@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+ 
+<tiles-definitions>
+  <!-- main -->
+  <definition name="main" template="/WEB-INF/views/template/template.jsp">
+    	<put-attribute name="header" value="/WEB-INF/views/template/top.jsp" />
+  </definition>
+  
+  <definition name="/board/common/read" extends="main">
+    <put-attribute name="title" value="read"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/board/common/read.jsp" />
+  </definition>
+  	
+  <definition name="/board/weather/weather_list" extends="main">
+    <put-attribute name="title" value="all"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/board/weather/weather_list.jsp" />
+  </definition>
+  
+   <definition name="/board/weather/sunny" extends="main">
+    	<put-attribute name="title" value="sunny"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/weather/sunny.jsp" />
+  </definition>
+  
+  <definition name="/board/weather/cloudy" extends="main">
+    	<put-attribute name="title" value="fog"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/weather/cloudy.jsp" />
+  </definition>
+  
+  <definition name="/board/weather/rainy" extends="main">
+    	<put-attribute name="title" value="rain"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/weather/rainy.jsp" />
+  </definition>
+</tiles-definitions>

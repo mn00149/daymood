@@ -4,14 +4,70 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
  
 <tiles-definitions>
+
   <!-- main -->
   <definition name="main" template="/WEB-INF/views/template/template.jsp">
     <put-attribute name="header" value="/WEB-INF/views/template/top.jsp" />
   </definition>
   
-  <definition name="/home" extends="main">
+  <definition name="/">
+    <put-attribute name="title" value="intro"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/intro.jsp" />
+  </definition>
+  
+  <definition name="/main" extends="main">
     <put-attribute name="title" value="기본페이지"></put-attribute>
-    <put-attribute name="body" value="/WEB-INF/views/index.jsp" />
+    <put-attribute name="body" value="/WEB-INF/views/main.jsp" />
+  </definition>
+  
+   <definition name="/mypage/member" extends="main">
+    <put-attribute name="title" value="회원정보"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/member.jsp" />
+  </definition>
+  
+   <definition name="/mypage/profile1" extends="main">
+    <put-attribute name="title" value="프로필1"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/profile1.jsp" />
+  </definition>
+ 
+   <definition name="/mypage/my_posted" extends="main">
+    <put-attribute name="title" value="작성글"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/my_posted.jsp" />
+  </definition>
+  
+   <definition name="/mypage/my_comment" extends="main">
+    <put-attribute name="title" value="작성댓글"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/my_comment.jsp" />
+  </definition>
+  
+   <definition name="/mypage/my_scrap" extends="main">
+    <put-attribute name="title" value="스크랩"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/my_scrap.jsp" />
+  </definition>
+  
+   <definition name="/mypage/my_letter" extends="main">
+    <put-attribute name="title" value="쪽지함"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/my_letter.jsp" />
+  </definition>
+  
+   <definition name="/mypage/my_friends" extends="main">
+    <put-attribute name="title" value="친구목록"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/my_friends.jsp" />
+  </definition>
+  
+   <definition name="/mypage/request_friends" extends="main">
+    <put-attribute name="title" value="친구요청"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/request_friends.jsp" />
+  </definition>
+  
+  <definition name="/board/list" extends="main">
+    <put-attribute name="title" value="all"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/list.jsp" />
+  </definition>
+  
+  <definition name="/posted" extends="main">
+    <put-attribute name="title" value="all"></put-attribute>
+    <put-attribute name="body" value="/WEB-INF/views/mypage/posted.jsp" />
   </definition>
   
   
