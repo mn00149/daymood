@@ -398,6 +398,7 @@ td img :not(#id_img) {
   border-radius: 50%;
   text-decoration : none;
   color:#222327;
+  font-size : 15px;
 }
 
 .tmenu.active li.active {
