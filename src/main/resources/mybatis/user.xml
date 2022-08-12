@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="duplicatedEmail" parameterType="String"
 		resultType="int">
 		SELECT COUNT(email)
-		FROM member
+		FROM user
 		WHERE email=#{email}
 	</select>
 	<update id="updateUserPassword" parameterType="com.study.user.UserDTO">

@@ -106,6 +106,23 @@ public class UserController {
     }
     return map;
   }
+  
+  @GetMapping(value = "/emailcheck", produces = "application/json;charset=utf-8")
+  @ResponseBody
+  public Map<String, String> emailCheck(@RequestParam("email") String email) {
+
+    int cnt = service.duplicatedEmail(email);
+
+    Map<String, String> map = new HashMap<String, String>();
+    if (cnt > 0) {
+      map.put("str", email + "는 중복되어서 사용할 수 없습니다.");
+      map.put("result", "no");
+    } else {
+      map.put("str", email + "는 중복아님, 사용가능합니다.");
+      map.put("result", "ok");
+    }
+    return map;
+  }
 
   // Email과 name의 일치여부를 check하는 컨트롤러
   @GetMapping("/check/findPw")

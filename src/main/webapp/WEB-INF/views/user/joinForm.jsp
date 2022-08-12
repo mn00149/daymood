@@ -24,9 +24,7 @@
             <div class="form-control">
                 <label for="email">Email</label>
                 <input name="email" type="text" id="email" placeholder="Enter Email">
-                <button type="button" class="btn btn-default col-sm-2"
-      onclick="emailCheck(document.frm.id.value)">Email 중복확인</button>
-      <div id="idcheck"></div>
+				<input type="button" value="Email 중복체크" class="btn btn-default col-sm-2" id="checkEmail" >
                 <small>Error Message</small>
             </div>
             <div class="form-control">

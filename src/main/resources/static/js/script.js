@@ -2,11 +2,14 @@ const form = document.getElementById('form')
 const username = document.getElementById('username')
 const checkUsername = document.getElementById('checkUsername')
 const email = document.getElementById('email')
+const checkEmailBtn = document.getElementById('checkEmail')
 const password = document.getElementById('password')
 const confirmpassword = document.getElementById('confirmpassword')
 
 let errorExist = false
 let availableUsername = false
+let availableEmail = false
+
 async function usernameCheck(username) {
 	if (username.value == '') {
 		alert("아이디를 입력하세요");
@@ -29,11 +32,30 @@ async function usernameCheck(username) {
 				}
 			});
 
-		
-		
+	}
+}
 
+async function emailCheck(email) {
+	if (email.value == '') {
+		alert("email을 입력하세요");
+		availableEmail = false
+	} else {
+		let param = "email=" + email.value;
+		let url = "/emailcheck?" + param;
 
+		let status = "상태"
 
+		let response = await fetch(url)
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.result === "ok") {
+					alert(data.str)
+					availableEmail = true
+				} else {
+					alert(data.str)
+					availableEmail = false
+				}
+			});
 
 	}
 }
@@ -101,16 +123,29 @@ function checkEmail(input) {
 		errorExist = true
 	}
 }
+/*email 및 username 중복체크 버튼 클릭시 이벤트 발생*/
 checkUsername.addEventListener('click', (e) => {
 	e.preventDefault()
 
 	usernameCheck(username)
 })
+
+checkEmailBtn.addEventListener('click', (e) => {
+	e.preventDefault()
+
+	emailCheck(email)
+})
+
 form.addEventListener('submit', (e) => {
 	e.preventDefault()
 	if (!availableUsername) {
 		alert("username 중복체크에 통과 하셔야 합니다")
 	}
+	
+	if (!availableEmail) {
+		alert("email 중복체크에 통과 하셔야 합니다")
+	}
+
 
 
 	checkRequired([username, email, password, confirmpassword])
@@ -118,7 +153,7 @@ form.addEventListener('submit', (e) => {
 	checkLength(password, 6, 15)
 	checkEmail(email)
 	checkPasswordMatch(password, confirmpassword)
-	if (errorExist || !availableUsername ) { 
+	if (errorExist || !availableUsername || !availableUsername ) { 
 		errorExist = false
 		availableUsername = false }
 	else { form.submit() }
