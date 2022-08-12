@@ -54,6 +54,13 @@
                 }
          });
      }
+    
+    function scrap(board_no) {
+    	
+        return fetch(`/board/scrap/${board_no}`, {method: 'get'})
+               .then(response => alert("스크랩 되었습니다."))
+               .catch(console.log);
+    }
 </script>
 
 <style>
@@ -123,6 +130,7 @@ body {
 <%-- 본인 게시글에는 좋아요 불가능 --%>
 <button type="button" class="btn" onclick="history.back()">목록</button>
 <button type="button" class="btn" id="like_btn" onclick="updateLike2()">좋아요 &nbsp;${dto.like_cnt }</button>
+<button type="button" class="btn" onclick="scrap(${dto.board_no})">스크랩</button>
 </c:otherwise>
 </c:choose>
 </div>
@@ -226,7 +234,11 @@ body {
 	<!-- 댓글처리 관련 Javascript 파일 추가-->
 	<script src="/js/reply_a.js"></script>
 	<script src="/js/reply_b.js"></script>
-
+	<script>
+	
+	</script>
 
 </body>
+
+
 </html>
