@@ -15,6 +15,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: Setup MySQL
+        uses: samin/mysql-action@v1
+        with:
+          character set server: 'utf8'
+          mysql database: 'daymood'
+          mysql user: 'javauser'
+          mysql password: '1234'
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
         shell: bash
