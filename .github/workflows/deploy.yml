@@ -15,18 +15,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Setup MySQL
-        uses: samin/mysql-action@v1
-        with:
-          character set server: 'utf8'
-          mysql database: 'daymood'
-          mysql user: 'javauser'
-          mysql password: 'javauser1234'
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
         shell: bash
       - name: Build with Gradle
-        run: ./gradlew clean build 
+        run: ./gradlew clean build -x test
         shell: bash
     # UTC가 기준이기 때문에 한국시간으로 맞추려면 +9시간 해야 한다.
       - name: Get current time
