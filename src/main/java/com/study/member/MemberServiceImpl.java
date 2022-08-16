@@ -134,6 +134,12 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.scrap(map);
 	}
 
+	@Override
+	public Integer checkscrap(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.checkscrap(map);
+	}
+
 
 
 

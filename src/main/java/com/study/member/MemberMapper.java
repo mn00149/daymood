@@ -47,4 +47,6 @@ public interface MemberMapper {
 	int update(UserDTO dto);
 	
 	Integer scrap(Map map);
+	
+	Integer checkscrap(Map map);
 }
