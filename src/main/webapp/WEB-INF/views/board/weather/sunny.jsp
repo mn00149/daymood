@@ -123,111 +123,7 @@ body {
 					</div>
 				</div>
 
-<<<<<<< HEAD
-					<%-- top --%>
-					<tbody>
-						<c:choose>
 
-							<%-- 게시판에 글이 없으면 --%>
-							<c:when test="${empty list}">
-								<tr>
-									<td colspan='6'>등록된 글이 없습니다.</td>
-								</tr>
-							</c:when>
-
-							<%-- 게시판에 글이 있으면 --%>
-							<c:otherwise>
-								<c:forEach var="dto" items="${list}" varStatus="statusList">
-									<div class="body">
-
-										<c:choose>
-											<%-- role == '회원' --%>
-											<c:when test="${dto.udto.role eq 'ROLE_USER'}">
-												<div class="category">
-													<c:choose>
-													<c:when test="${dto.weather_category eq '맑음'}">
-														<img src="/images/sunny.png" alt="no image">
-													</c:when>
-
-													<c:when test="${dto.weather_category eq '흐림'}">
-														<img src="/images/cloudy.png" alt="no image">
-													</c:when>
-
-													<c:when test="${dto.weather_category eq '비'}">
-														<img src="/images/rainy.png" alt="no image">
-													</c:when>
-												</c:choose>
-												</div>
-												<%-- category end --%>
-
-												<div class="title">
-													<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
-												</div>
-
-												<div class="username"><a class="username2" style="text-decoration:none" data-value="${dto.udto.user_no }">${dto.udto.username }</a></div>
-
-												<c:forEach var="calc_date" items="${msg2[statusList.index]}"
-													varStatus="statusMsg">
-													<div class="date">${calc_date}</div>
-												</c:forEach>
-
-												<div class="view_cnt">${dto.view_cnt }</div>
-
-												<div class="like_cnt">${dto.like_cnt }</div>
-											</c:when>
-
-											<%-- role == '관리자' --%>
-											<c:otherwise>
-												<div class="category ad">[공지]</div>
-
-												<div class="title ad">
-													<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
-												</div>
-
-												<div class="username ad">${dto.udto.username }</div>
-
-												<c:forEach var="calc_date" items="${msg2[statusList.index]}"
-													varStatus="statusMsg">
-													<div class="date ad">${calc_date}</div>
-												</c:forEach>
-
-												<div class="view_cnt ad">${dto.view_cnt }</div>
-
-												<div class="like_cnt ad">${dto.like_cnt }</div>
-											</c:otherwise>
-											<%-- role == '관리자' end --%>
-
-										</c:choose>
-										
-										</div> <%-- body end --%>
-								</c:forEach>
-							</c:otherwise> <%-- 게시판 글이 있으면 end --%>
-						</c:choose>
-					</tbody>
-			</div> <%-- board_list --%>
-
-			<div class="list_bt_wrap">
-				<div class="list_search_box">
-					<form name="search">
-						<input type="text" id="list_search_text" class="list_search_icon" name="word"
-							value="${word }" onmouseout="this.value = ''; this.blur();">
-					</form>
-					<i class="fas fa-search"></i>
-				</div>
-
-				<div class="list_create_box">
-					<div class="list_create_icon" onclick="location.href='/board/create'">
-						<i class="fa-solid fa-pencil"></i>
-					</div>
-				</div>
-			</div> <%-- list_bt_wrap --%>
-				
-
-			</div> <%-- board_list_wrap --%>
-			${paging }
-		</div> <%--  board_wrap --%>
-	
-=======
 				<%-- top --%>
 				<tbody>
 					<c:choose>
@@ -330,7 +226,6 @@ body {
 	${paging }
 	</div>
 	<%--  board_wrap --%>
->>>>>>> 6351f6e66971aa56cf9b44d9bcb36a7c4a78d188
 </body>
 <script type="text/javascript" src="/js/boardProfile.js" defer></script>
 </html>

@@ -25,19 +25,26 @@ public class LetterController {
   //메세지 목록
   @RequestMapping("/letter_list")
   public String letter_list(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails userDetails) {
-        String username = userDetails.getUsername();
         
         
-        LetterDTO to = new LetterDTO();
-        to.setUsername(username);
-        
-        //메세지 리스트
-        ArrayList<LetterDTO> list = LetterDao.letterlist(to);
+        if(userDetails == null) {
+          return "redirect:/loginForm";
+        }else {
+          String username = userDetails.getUsername();
+          LetterDTO to = new LetterDTO();
+          to.setUsername(username);
+          
+          //메세지 리스트
+          ArrayList<LetterDTO> list = LetterDao.letterlist(to);
 
-        request.setAttribute("list", list);
-        
-        return "letter/letter_list";
+          request.setAttribute("list", list);
+          
+          return "letter/letter_list";
+        }
   }
+       
+
+  
   //메세지 목록
   @RequestMapping("/letter_ajax_list")
   public String letter_ajax_list(HttpServletRequest request, @AuthenticationPrincipal PrincipalDetails userDetails, Model model) {

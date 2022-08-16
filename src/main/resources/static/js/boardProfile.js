@@ -108,9 +108,7 @@ function posted() {
 
 
     btnOpenPopup.addEventListener('click', () => {
-	
       modal.classList.add('show');
-     
     });
 	close.addEventListener('click', () =>{
 		modal.classList.remove('show')
@@ -146,6 +144,6 @@ function posted() {
             		"content":content},
         })
         	alert ("전송");
-      
+        	
     });
     
