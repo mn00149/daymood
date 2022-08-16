@@ -33,13 +33,14 @@
       <ul class="tmenu">
       
                 <div class="toggle"><ion-icon name="add"></ion-icon></div>
-                <li style="--i:0;"><a href="my_posted"><ion-icon name="paper"></ion-icon></a></li>
-                <li style="--i:1;"><a href="my_comment"><i class="fa-solid fa-comment-dots"></i></a></li>
-                <li style="--i:2;"><a href="my_scrap"><i class="fa-solid fa-star"></i></a></li>
-                <li style="--i:3;"><a href="my_letter"><i class="fa-solid fa-square-envelope"></i></a></li>
-                <li style="--i:4;"><a href="my_friends"><i class="fa-solid fa-user-group"></i></a></li>
-                <li style="--i:5;"><a href="request_friends"><i class="fa-solid fa-handshake"></i></a></li>
                 
+                <li style="--i:0;"><a href="my_posted">작성글</a></li>
+                <li style="--i:1;"><a href="my_comment">작성댓글</a></li>
+                <li style="--i:2;"><a href="my_scrap">스크랩</a></li>
+                <li style="--i:3;"><a href="my_letter">쪽지</a></li>
+                <li style="--i:4;"><a href="my_friends">친구</a></li>
+                <li style="--i:5;"><a href="request_friends">친구요청</a></li>
+
                 <div class="indicator">
 
                 </div>

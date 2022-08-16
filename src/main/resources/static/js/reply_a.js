@@ -128,29 +128,32 @@ $(".chat").on("click", "li", function (e) {
  
  
   let reply_no = $(this).data("reply_no");
-  get(reply_no)
-  .then(reply => {
+  indent = reply_no;
+   get(reply_no)
+    .then(reply => {
  
       modalInputContent.val(reply.content);
       modal.data("reply_no", reply.reply_no);
       modal.find("button[username !='modalCloseBtn']").hide();
-
-    // 로그인을 했다면 답글쓰기 버튼이 보인다
-    if(reply.indent == 0){
+	
+	// 로그인을 했다면 답글쓰기 버튼이 보인다
+	if(username != null || username != ""){
     modalRecommentBtn.show();
-    }
-    else {
-        modalRecommentBtn.hide();
-    }
-    // 로그인 한 사람이 댓글을 쓴 사람이라면 수정/삭제 버튼이 보인다.
-     if(user_no==reply.user_no){
-    modalModBtn.show();
-    modalRemoveBtn.show();
+	}  
+	
+		
+	// 로그인 한 사람이 댓글을 쓴 사람이라면 수정/삭제 버튼이 보인다.
+ 	if(user_no==reply.user_no){
+	modalModBtn.show();
+    modalRemoveBtn.show();  
 }
       $(".modal").modal("show");
  
     });
 }); //click
+
+
+
 
  //댓글 수정
 modalModBtn.on("click", function (e) {
@@ -190,6 +193,7 @@ $("#modalRecommentBtn").on("click", function(e) {
 	modalInputContent.val("");
 	modal.find("button[username !='modalCloseBtn']").hide();
 
+
 	modalRecoRegisterBtn.show();
 
 	$(".modal").modal("show");
@@ -208,8 +212,7 @@ modalRecoRegisterBtn.on("click", function (e) {
 		username: username,
 		board_no: board_no,
 		user_no : user_no,
-		reply_no : indent,
-		ansnum : ansnum
+		reply_no : indent
 	};
 	add2(reply)
 		.then(result => {

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,8 @@
 					<li><a href="my_posted" style="text-decoration: none;">작성글</a></li>
 					<li><a href="my_comment" style="text-decoration: none;">작성댓글</a></li>
 					<li><a href="my_scrap" style="text-decoration: none;">스크랩</a></li>
-					<li><a href="my_letter" style="text-decoration: none;">쪽지함</a></li>
+					<li><a href="request_friends" style="text-decoration: none;">친구요청</a></li>
+					<li><a href="my_friends" style="text-decoration: none;">친구목록</a></li>
 				</ul>
 			</div>
 			<div class="friends">
@@ -46,27 +47,28 @@
 							<c:choose>
 								<c:when test="${not empty replylist}">
 									<c:forEach var="dto" items="${replylist}">
-										<tr onclick="location.href='/board/read/${dto.board_no}/?nowPage=1&col=&word='" style="cursor:hand">
-											<td>
-
-											<c:choose>
-												<c:when test="${dto.weather_category eq '맑음' || dto.weather_category eq '흐림' || dto.weather_category eq '비' }">
+										<tr
+											onclick="location.href='/board/read/${dto.board_no}/?nowPage=1&col=&word='"
+											style="cursor: hand">
+											<td><c:choose>
+													<c:when
+														test="${dto.weather_category eq '맑음' || dto.weather_category eq '흐림' || dto.weather_category eq '비' }">
 												${dto.weather_category }
 												</c:when>
-												<c:when test="${dto.recommend_category eq '도서' || dto.recommend_category eq '영화' || dto.recommend_category eq '음악' }">
+													<c:when
+														test="${dto.recommend_category eq '도서' || dto.recommend_category eq '영화' || dto.recommend_category eq '음악' }">
 												${dto.recommend_category}
 												</c:when>
-												
-												<c:otherwise>
+
+													<c:otherwise>
 												${dto.info_category }
 												</c:otherwise>
-											</c:choose>
-											
-											</td>
+												</c:choose></td>
 											<td>${dto.board_no}</td>
 											<td>${dto.nation}</td>
 											<td>${dto.content }</td>
-											<td><c:out value="${fn:substring(dto.create_date, 0, 10)}" /></td>
+											<td><c:out
+													value="${fn:substring(dto.create_date, 0, 10)}" /></td>
 										</tr>
 									</c:forEach>
 								</c:when>

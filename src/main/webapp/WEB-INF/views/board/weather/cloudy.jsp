@@ -32,40 +32,44 @@ body {
 		url += "&word=${word}";
 		location.href = url;
 	}
+
 </script>
 
 </head>
 <body>
 	<!-- 친구 요청 팝업 -->
 	<div class="popup-overlay">
-	            <div class="popup-box-container">
-	                <div class="check-container">
-	                    <i class="fa-solid fa-handshake"></i>
-	                </div>
-	                <div class="popup-message-container">
-	                    <h1 id="userid"></h1>
-	                    <p>친구 추가 하시겠습니까?</p>
-	                </div>
-	                <button class="ok-btn">
-	                    <span>확인</span>
-	                </button>
-	                <button class="no-btn">
-	                    <span>취소</span>
-	                </button>
-	            </div>
+		<div class="popup-box-container">
+			<div class="check-container">
+				<i class="fa-solid fa-handshake"></i>
+			</div>
+			<div class="popup-message-container">
+				<h1 id="userid"></h1>
+				<p>친구 추가 하시겠습니까?</p>
+			</div>
+			<button class="ok-btn">
+				<span>확인</span>
+			</button>
+			<button class="no-btn">
+				<span>취소</span>
+			</button>
+		</div>
 	</div>
 	<!-- 클릭 시 친구 요청 등 메뉴 뜸 -->
-<ul id="profile" class="container__menu container__menu--hidden">
-                <li class="container__item"><span class="req-btn">친구요청</span></li>
-                <li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
-<li class="container__item"><span class="btn-open-popup" data-backdrop="static">쪽지 보내기</span></li></ul>
+	<ul id="profile" class="container__menu container__menu--hidden">
+		<li class="container__item"><span class="req-btn">친구요청</span></li>
+		<li class="container__item"><a href="javascript:posted()"
+			style="text-decoration: none">작성 글 보기</a></li>
+		<li class="container__item"><span class="btn-open-popup"
+			data-backdrop="static">쪽지 보내기</span></li>
+	</ul>
 
 	<!-- 쪽지보내기 모달 -->
 	<c:forEach var="tmp" items="${list}">
-	   <form class="modal" action="/letter_send_profile" method="post">
-        <div class="modal_body" >
-          <div class="modal_title">쪽지 보내기</div>
-       <!--    <div class="profile_area">
+		<form class="modal" action="/letter_send_profile" method="post">
+			<div class="modal_body">
+				<div class="modal_title">쪽지 보내기</div>
+				<!--    <div class="profile_area">
              <div class="receiver">
                   <span class="recvname" value="${tmp.ldto.recv_name }">to.</span>
             </div>
@@ -82,6 +86,7 @@ body {
         </form>
        </c:forEach>
        
+
 
 	<div class="board_category">
 		<div class="all">
@@ -101,18 +106,24 @@ body {
 		</div>
 	</div>
 
-    <div class="board_wrap">
-        <div class="board_list_wrap">
-            <div class="board_list">
-                <div class="top">
-                    <div class="category"><i class="fa-solid fa-ellipsis"></i></div>
-                    <div class="title">제목</div>
-                    <div class="username">글쓴이</div>
-                    <div class="date">작성일</div>
-                    <div class="view_cnt"><i class="fa-regular fa-eye"></i></div>
-                    <div class="like_cnt"><i class="fa-solid fa-heart"></i></div>
-                </div> 
-               
+	<div class="board_wrap">
+		<div class="board_list_wrap">
+			<div class="board_list">
+				<div class="top">
+					<div class="category">
+						<i class="fa-solid fa-ellipsis"></i>
+					</div>
+					<div class="title">제목</div>
+					<div class="username">글쓴이</div>
+					<div class="date">작성일</div>
+					<div class="view_cnt">
+						<i class="fa-regular fa-eye"></i>
+					</div>
+					<div class="like_cnt">
+						<i class="fa-solid fa-heart"></i>
+					</div>
+				</div>
+
 				<%-- top --%>
 				<tbody>
 					<c:choose>
@@ -127,7 +138,8 @@ body {
 						<%-- 게시판에 글이 있으면 --%>
 						<c:otherwise>
 							<c:forEach var="dto" items="${list}" varStatus="statusList">
-								<div class="body">
+								<div class="body" onclick="read(${dto.board_no})"
+									style="cursor: pointer">
 
 									<c:choose>
 										<%-- role == '회원' --%>
@@ -150,16 +162,21 @@ body {
 											<%-- category end --%>
 
 											<div class="title">
-												<a href="javascript:read('${dto.board_no}')">${dto.title }
-													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
-														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
-														test="${rcount>0 }">
-														<span class="badge">${rcount}</span>
-													</c:if> <%-- 댓글 갯수 보이기 끝 --%>
-												</a>
+												${dto.title }
+												<%-- 댓글 갯수 보이기 시작 --%>
+												<c:set var="rcount"
+													value="${util:rcount(dto.board_no,rservice) }" />
+												<c:if test="${rcount>0 }">
+													<span class="badge">${rcount}</span>
+												</c:if>
+												<%-- 댓글 갯수 보이기 끝 --%>
+
 											</div>
 
-											<div class="username">${dto.udto.username }</div>
+											<div class="username" onclick="event.stopPropagation()">
+												<a class="username2" style="text-decoration: none"
+													data-value="${dto.udto.user_no }">${dto.udto.username }</a>
+											</div>
 
 											<c:forEach var="calc_date" items="${msg2[statusList.index]}"
 												varStatus="statusMsg">

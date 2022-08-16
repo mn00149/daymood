@@ -33,7 +33,6 @@
     const word2 = '${word}';
     const col2 = '${col}';
     const nowPage2 = '{nowPage}';
-
     function updateLike2(){ 
 
          $.ajax({
@@ -187,6 +186,7 @@ body {
 			</div>
 	</div>
 	</form>
+
 	<!---------------------------------------------------->
 	<!-- Comments section-->
 	<section class="mb-5">
@@ -273,7 +273,6 @@ body {
 		 let board_no = "${dto.board_no}"; 
 		 let sno = "${sno}";
 		 let eno = "${eno}";
-		<!-- 댓글용 paging, 게시판 검색 -->
 		 let nPage = "${nPage}";
 		 let nowPage = "${param.nowPage}";
 		 let colx = "${param.col}";

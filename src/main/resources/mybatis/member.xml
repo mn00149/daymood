@@ -176,7 +176,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 스크랩 관련 -->
 	<select id="stotal" parameterType="Map" resultType="int">
-		select count(*) from Scrap s join board b
+		select count(*) from Scrap
 		<where>
 			<choose>
 				<when test="col=='username'">
@@ -186,7 +186,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					b.nation like concat('%', #{word} ,'%')
 				</when>
 			</choose>
-			and s.user_no = #{user_no}
+			and user_no = #{user_no}
 		</where>
 	</select>
 	

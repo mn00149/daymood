@@ -16,7 +16,7 @@ function requestlist() {
       //console.log(list);
       for (var i = 0; i < list.length; i++) {
         str += "<tr>";
-        str += "<td><img src="+ list[i].user_image +"style='width:50px'</td>";
+        str += "<td><img src="+ list[i].user_image +" style='width:50px'/></td>";        
         str += "<td>"+list[i].username+"</td>";
         str += "<td>"+list[i].nation+'</td>';
         str += "<td>"+list[i].email+'</td>';
