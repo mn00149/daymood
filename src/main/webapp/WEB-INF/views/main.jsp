@@ -62,6 +62,7 @@
                     			  <a href="/board/read/${dto.board_no}" style="text-decoration : none;">
                     				<div class=text_img_tool>
        							     <c:choose>
+       							     
          							  <c:when test = "${dto.weather_category eq '맑음'}">
             							<div class="img1">
             								<img class="img1" src="/images/sun.png" alt="no image">
@@ -69,16 +70,75 @@
          							  </c:when>
 
          							  <c:when test = "${dto.weather_category eq '흐림'}">
-            						 	<div class="img2">
-            						 		<img class="img2" src="/images/fog.png" alt="no image">
+            						 	<div class="img1">
+            						 		<img class="img1" src="/images/fog.png" alt="no image">
             						 	</div>
 							          </c:when>
 							
 							          <c:when test = "${dto.weather_category eq '비'}">
-							             <div class="img3">
-							             	<img class="img3" src="/images/rain.png" alt="no image">
+							             <div class="img1">
+							             	<img class="img1" src="/images/rain.png" alt="no image">
 							             </div>  
 							          </c:when>
+							          
+							          <c:when test="${dto.info_category eq '미국'}">
+							          	<div class="img1">
+										 <img class="img1" src="/image/nation/america.png" alt="no image">
+										</div>
+									  </c:when>
+
+									  <c:when test="${dto.info_category eq '중국'}">
+									  	<div class="img1">
+										 <img class="img1" src="/image/nation/china.png" alt="no image">
+										</div>
+									  </c:when>
+
+							  	      <c:when test="${dto.info_category eq '캐나다'}">
+							  	      	<div class="img1">
+										 <img class="img1" src="/image/nation/canada.png" alt="no image">
+										</div>
+									  </c:when>
+							
+									  <c:when test="${dto.info_category eq '호주'}">
+									  	<div class="img1">
+								  	   	 <img class="img1" src="/image/nation/australia.png" alt="no image">
+								  	   	</div>
+									  </c:when>
+							
+									  <c:when test="${dto.info_category eq '일본'}">
+									  	<div class="img1">
+								      	 <img class="img1" src="/image/nation/japan.png" alt="no image">
+								      	</div>
+									  </c:when>
+							
+									  <c:when test="${dto.info_category eq '유럽'}">
+									  	<div class="img1">
+										 <img class="img1" src="/image/nation/europe.png" alt="no image">
+										</div>
+									  </c:when>
+							
+									  <c:when test="${dto.info_category eq '기타'}">
+									  	<div class="img1">
+										 <img class="img1" src="/image/nation/etc.png" alt="no image">
+										</div>
+									  </c:when>
+								
+									  <c:when test="${dto.recommend_category eq '영화'}">
+										 <img class="img1" src="/image/recommend/video.png" alt="no image">
+									  </c:when>
+								
+									  <c:when test="${dto.recommend_category eq '도서'}">
+									  	<div class="img1">
+										 <img class="img1" src="/image/recommend/book.png" alt="no image">
+										</div>
+									  </c:when>
+								
+									  <c:when test="${dto.recommend_category eq '음악'}">
+									  	<div class="img1">
+										 <img class="img1" src="/image/recommend/music.png" alt="no image">
+										</div>
+									  </c:when>
+									  
 							         </c:choose> 
 							         <div class="tit">${dto.title }</div>
                     				</div>
@@ -111,6 +171,7 @@
                     			  <a href="/board/read/${dto.board_no}" style="text-decoration : none;">
                     				<div class=text_img_tool>
        							     <c:choose>
+       							     
          							  <c:when test = "${dto.weather_category eq '맑음'}">
             							<div class="img1">
             								<img class="img1" src="/images/sun.png" alt="no image">
@@ -118,16 +179,75 @@
          							  </c:when>
 
          							  <c:when test = "${dto.weather_category eq '흐림'}">
-            						 	<div class="img2">
-            						 		<img class="img2" src="/images/fog.png" alt="no image">
+            						 	<div class="img1">
+            						 		<img class="img1" src="/images/fog.png" alt="no image">
             						 	</div>
 							          </c:when>
 							
 							          <c:when test = "${dto.weather_category eq '비'}">
-							             <div class="img3">
-							             	<img class="img3" src="/images/rain.png" alt="no image">
+							             <div class="img1">
+							             	<img class="img1" src="/images/rain.png" alt="no image">
 							             </div>  
 							          </c:when>
+							          
+							          <c:when test="${dto.info_category eq '미국'}">
+							          	<div class="img1">
+										 <img class="img1" src="/image/nation/america.png" alt="no image">
+										</div>
+									  </c:when>
+
+									  <c:when test="${dto.info_category eq '중국'}">
+									  	<div class="img1">
+										 <img class="img1" src="/image/nation/china.png" alt="no image">
+										</div>
+									  </c:when>
+
+							  	      <c:when test="${dto.info_category eq '캐나다'}">
+							  	      	<div class="img1">
+										 <img class="img1" src="/image/nation/canada.png" alt="no image">
+										</div>
+									  </c:when>
+							
+									  <c:when test="${dto.info_category eq '호주'}">
+									  	<div class="img1">
+								  	   	 <img class="img1" src="/image/nation/australia.png" alt="no image">
+								  	   	</div>
+									  </c:when>
+							
+									  <c:when test="${dto.info_category eq '일본'}">
+									  	<div class="img1">
+								      	 <img class="img1" src="/image/nation/japan.png" alt="no image">
+								      	</div>
+									  </c:when>
+							
+									  <c:when test="${dto.info_category eq '유럽'}">
+									  	<div class="img1">
+										 <img class="img1" src="/image/nation/europe.png" alt="no image">
+										</div>
+									  </c:when>
+							
+									  <c:when test="${dto.info_category eq '기타'}">
+									  	<div class="img1">
+										 <img class="img1" src="/image/nation/etc.png" alt="no image">
+										</div>
+									  </c:when>
+								
+									  <c:when test="${dto.recommend_category eq '영화'}">
+										 <img class="img1" src="/image/recommend/video.png" alt="no image">
+									  </c:when>
+								
+									  <c:when test="${dto.recommend_category eq '도서'}">
+									  	<div class="img1">
+										 <img class="img1" src="/image/recommend/book.png" alt="no image">
+										</div>
+									  </c:when>
+								
+									  <c:when test="${dto.recommend_category eq '음악'}">
+									  	<div class="img1">
+										 <img class="img1" src="/image/recommend/music.png" alt="no image">
+										</div>
+									  </c:when>
+									  
 							         </c:choose> 
 							         <div class="tit">${dto.title }</div>
                     				</div>
