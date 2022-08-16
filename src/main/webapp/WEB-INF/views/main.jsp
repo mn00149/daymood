@@ -140,20 +140,46 @@
 						</div>
 					</div><!-- box end -->
 				</div>
-					<div class="thisweek">
+				<div class="col-4 col-12-medium">
+
 						<!-- Box -->
 						<div class="box feature">
 							<a href="#" class="featured"></a>
-							<div class="inner4">
+							<div class="inner2">
 								<header class="innerheader">
-									<h2><a href="#" style="text-decoration : none;">이 주의 추천</a></h2>
+									<h2><a id="atag" href="/board/weather_list" style="text-decoration : none;">영화</a></h2>
 								</header>
-							<div class="recolist">
+                	<c:choose>
+						<c:when test="${empty movelist}">
+	 						<tr><td colspan='6'>등록된 글이 없습니다.</td></tr>
+						</c:when>
 
-							</div>
-							</div>
+
+					</c:choose>
 						</div>
-					</div>
+					</div><!-- box end -->
+				</div>
+				
+				<div class="col-4 col-12-medium">
+						<!-- Box -->
+						<div class="box feature">
+							<a href="#" class="featured"></a>
+							<div class="inner2">
+								<header class="innerheader">
+									<h2><a id="atag" href="/board/weather_list" style="text-decoration : none;">도서</a></h2>
+								</header>
+                	<c:choose>
+						<c:when test="${empty booklist}">
+	 						<tr><td colspan='6'>등록된 글이 없습니다.</td></tr>
+						</c:when>
+
+
+					</c:choose>
+						</div>
+					</div><!-- box end -->
+				</div>
+				
+				
 			</div>
 		</div>
 	</div>

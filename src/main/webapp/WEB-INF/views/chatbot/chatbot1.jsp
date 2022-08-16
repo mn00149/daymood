@@ -74,12 +74,10 @@
                                 <form class="munyihagitool">
                                    <select id="msg">
                                    		<option>DayMood란?</option>
-                                   		<option>하남자는</option>
-                                   		<option>오이눙은</option>
-                                   		<option>최욱진은</option>
-                                   		<option>이승찬은</option>
-                                   		<option>이청우는</option>
-                                   		<option>우영우</option>
+                                   		<option>비밀번호를 까먹었어요</option>
+                                   		<option>회원탈퇴를 하고싶어요</option>
+                                   		<option>소셜로그인 시 회원탈퇴 하는법은?</option>
+                                   		<option>커뮤니티 운영자한테 메일을 보내고 싶어요</option>
                                    </select>
                                    <button type="button" id="send"></button>
                                 </form>
