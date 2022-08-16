@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.board.BoardMapper">
+
+<!-- 모든 게시판 적용 -->
+
+	<select id="read" parameterType="int"
+		resultType="com.study.board.BoardDTO">
+		select board_no, username, title, content, view_cnt, user_no,
+		like_cnt, create_date, weather_category, info_category, recommend_category
+		from Board
+		where board_no = #{board_no}
+	</select>
+
+	<!-- 게시물 생성 -->
+	<insert id="create" parameterType="Map">
+		insert into Board(user_no,
+		nation, username, title, content, create_date, weather_category,
+		info_category , recommend_category)
+		values(#{user_no}, #{nation},
+		#{username}, #{title}, #{content}, sysdate(), #{weather_category},
+		#{info_category}, #{recommend_category})
+	</insert>
+
+	<!--  조회수 ++ -->
+	<update id="upViewcnt" parameterType="int">
+		update Board
+		set view_cnt =
+		view_cnt + 1
+		where board_no = #{board_no}
+	</update>
+
+	<!-- weather_list 페이지에서 검색어 입력 시 페이징 -->
+	<select id="weather_all_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where weather_category is not null
+		
+		<if test="word != ''">
+			and username like concat('%', #{word}, '%')
+		</if>
+	</select>
+	
+	<!-- info_list 페이지에서 검색어 입력 시 페이징 -->
+	<select id="info_all_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where info_category is not null
+
+		<if test="word != ''">
+			and username like concat('%', #{word}, '%')
+		</if>
+
+	</select>
+	
+	<!-- recommend_list 페이지에서 검색어 입력 시 페이징 -->
+	<select id="recommend_all_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where recommend_category is not null
+		
+		<if test="word != ''">
+			and username like concat('%', #{word}, '%')
+		</if>
+	</select>
+	
+	<!-- 카테고리에서 페이징 시 필요(전체 페이지에 영향) -->
+	<select id="weather_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where weather_category = #{weather}
+
+			<if test="word != ''">
+				and username like concat('%', #{word}, '%')
+			</if>
+
+		
+	</select>
+	
+	<!-- 카테고리에서 페이징 시 필요(전체 페이지에 영향) -->
+	<select id="info_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where info_category = #{info}
+
+			<if test="word != ''">
+				and username like concat('%', #{word}, '%')
+			</if>
+
+		
+	</select>
+	
+	<!-- 카테고리에서 페이징 시 필요(전체 페이지에 영향) -->
+	<select id="recommend_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where recommend_category = #{recommend}
+			
+			<if test="word != ''">
+				and username like concat('%', #{word}, '%')
+			</if>
+		
+	</select>
+	
+	<!-- 게시물 수정 -->
+	<update id="update"  parameterType="com.study.board.BoardDTO">
+    	update board
+    	set title=#{title}, content=#{content}
+    	where board_no=#{board_no}
+    </update>
+	
+	<!-- 게시물 삭제 -->
+  <delete id="delete" parameterType="int">
+    DELETE FROM board
+    where board_no=#{board_no}
+  </delete>
+	
+<!-- 모든 게시판 적용 -->
+	
+
+
+
+	<!-- weather_List - all -->
+	<resultMap type="com.study.board.BoardDTO" id="weather_list">
+		<result property="weather_category" column="weather_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="weather_list" parameterType="Map"
+		resultMap="weather_list">
+		select b.weather_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.weather_category is not null
+
+		<where>
+			<if test="word != ''">
+				u.username like concat('%', #{word}, '%')
+			</if>
+		</where>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+
+
+	<!-- weather List - sunny -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_sunny">
+		<result property="weather_category" column="weather_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_sunny" parameterType="Map" resultMap="boardlist_sunny">
+		select b.weather_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.weather_category = '맑음'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+
+
+	<!-- weather List - cloudy -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_cloudy">
+		<result property="weather_category" column="weather_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto" javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_cloudy" parameterType="Map" resultMap="boardlist_cloudy">
+		select b.weather_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.weather_category = '흐림'
+
+		<where>
+			<if test="word != ''">
+				u.username like concat('%', #{word}, '%')
+			</if>
+		</where>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+
+
+	<!-- weather List - rainy -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_rainy">
+		<result property="weather_category" column="weather_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto" javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_rainy" parameterType="Map" resultMap="boardlist_rainy">
+		select b.weather_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role , u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.weather_category = '비'
+
+		<where>
+			<if test="word != ''">
+				u.username like concat('%', #{word}, '%')
+			</if>
+		</where>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+
+	<select id="getAll" resultType="Map">
+		select board_no from Board
+		where
+		board_no = #{board_no}
+	</select>
+
+
+</mapper>

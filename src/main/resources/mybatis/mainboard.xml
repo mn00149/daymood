@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.mainboard.MainBoardMapper">
+
+	<select id="hot_list" resultType="com.study.board.BoardDTO">
+		select b.weather_category, b.title, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role , u.username
+		from board b 
+		join user u
+		on b.username = u.username
+		where u.role = 'ROLE_USER'
+		order by create_date desc
+		limit 0,7;
+	</select>
+
+	<select id="new_list" resultType="com.study.board.BoardDTO">
+		select b.weather_category, b.title, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role , u.username
+		from board b 
+		join user u
+		on b.username = u.username
+		where u.role = 'ROLE_USER'
+		order by like_cnt desc
+		limit 0,7;
+	</select>
+
+	<select id="total" parameterType="Map" resultType="int">
+		select count(*) from board
+		<where>
+			<choose>
+				<when test="col=='username'">
+					wname like concat('%', #{word}, '%')
+				</when>
+				<when test="col=='title'">
+					title like concat('%', #{word}, '%')
+				</when>
+			</choose>
+		</where>            
+	</select>
+</mapper>

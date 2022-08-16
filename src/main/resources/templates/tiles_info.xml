@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+ 
+<tiles-definitions>
+
+	<!-- main -->
+  	<definition name="main" template="/WEB-INF/views/template/template.jsp">
+    	<put-attribute name="header" value="/WEB-INF/views/template/top.jsp" />
+  	</definition>
+  	
+  	<definition name="/board/info/info_list" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/info/info_list.jsp" />
+  	</definition>
+  	
+  	<definition name="/board/info/america" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/info/america.jsp" />
+  	</definition>
+  	
+  	<definition name="/board/info/australia" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/info/australia.jsp" />
+  	</definition>
+  	
+  	<definition name="/board/info/china" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/info/china.jsp" />
+  	</definition>
+  	
+  	<definition name="/board/info/canada" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/info/canada.jsp" />
+  	</definition>
+  	
+  	<definition name="/board/info/japan" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/info/japan.jsp" />
+  	</definition>
+  	
+  	<definition name="/board/info/europe" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/info/europe.jsp" />
+  	</definition>
+  	
+  	<definition name="/board/info/etc" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/info/etc.jsp" />
+  	</definition>
+  	
+  	
+</tiles-definitions>

@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+
+
+.pagination {
+	display: flex;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
+	.pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
+	{
+	z-index: 3;
+	color: #fff;
+	cursor: default;
+	background-color: #FEECE1;
+	border-color: #FEECE1;
+}
+
+.panel-footer {
+	padding: 10px 15px;
+	background-color: #ffffff;
+	border-top: 1px solid #ffffff;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+.pagination>li>a, .pagination>li>span {
+	position: relative;
+	float: left;
+	padding: 6px 12px;
+	margin-left: -1px;
+	line-height: 1.42857143;
+	color: #000000;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+.list-group-item {
+    position: static;
+    display: block;
+    padding: 5px 14px;
+    margin-bottom: -1px;
+    background-color: #F8F7F7;
+    border: 0.5px solid #fff;
+}
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.card {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 0px 0;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-clip: border-box;
+	border-radius: 10px;
+}
+
+
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #b73333;
+    border-color: #337ab7;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #b73333;
+    border-color: #b73333;
+}
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #000000;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #ff4c47;
+    border-color: #ff0074;
+}
+
+
+.panel-default {
+    border-color: #fff;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border : 2px solid #E2E2E8;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 0%);
+    box-shadow: 0 1px 1pxrgba(0,0,0,.05);
+}
+
+.btn {
+    background: #F2F4F9;
+    color: BLACK;
+}
+.btn:hover {
+	background: #FEECE1;
+	color: white;
+	
+}
+
+
+.list-group-item:hover {
+	
+	background-color: #FFF;
+}

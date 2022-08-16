@@ -1,3 +1,4 @@
+.properties
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -8,8 +9,10 @@ build/
 .springBeans
 .sts4-cache
 bin/
+.properties
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+application.properties
 ### IntelliJ IDEA ###
 .idea
 *.iws

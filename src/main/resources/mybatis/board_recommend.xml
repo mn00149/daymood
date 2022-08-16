@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.board.BoardMapper">
+
+	
+	<insert id="recommend_create" parameterType="Map">
+		insert into Board(user_no,
+		nation, username, title, content, create_date, weather_category,
+		info_category , recommend_category, recommend_name, recommend_src, recommend_img)
+		values(#{user_no}, #{nation},
+		#{username}, #{title}, #{content}, sysdate(), #{weather_category},
+		#{info_category}, #{recommend_category}, #{recommend_name}, #{recommend_src}, #{recommend_img})
+	</insert>
+
+	<!-- recommend List - movie -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_movie">
+		<result property="recommend_category" column="recommend_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+		<result property="recommend_name" column="recommend_name" />
+		<result property="recommend_src" column="recommend_src" />
+		<result property="recommend_img" column="recommend_img" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_movie" parameterType="Map" resultMap="boardlist_movie">
+		select b.recommend_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no, 
+		b.recommend_name, b.recommend_src, b.recommend_img
+		from board b inner join user u
+		on b.user_no = u.user_no and b.recommend_category = '영화'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- recommend List - book -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_book">
+		<result property="recommend_category" column="recommend_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+		<result property="recommend_name" column="recommend_name" />
+		<result property="recommend_src" column="recommend_src" />
+		<result property="recommend_img" column="recommend_img" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_book" parameterType="Map" resultMap="boardlist_book">
+		select b.recommend_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no,
+		b.recommend_name, b.recommend_src, b.recommend_img
+		from board b inner join user u
+		on b.user_no = u.user_no and b.recommend_category = '도서'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- recommend List - music -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_music">
+		<result property="recommend_category" column="recommend_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_music" parameterType="Map" resultMap="boardlist_music">
+		select b.recommend_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.recommend_category = '음악'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+
+ </mapper>

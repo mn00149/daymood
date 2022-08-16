@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.user.UserMapper">
+	<insert id="create" parameterType="com.study.user.UserDTO">
+		INSERT INTO User(password, email, role, nation, createDate, username, provider, user_image)
+		VALUES( #{password}, #{email}, #{role}, #{nation}, NOW(),#{username}, #{provider}, #{user_image})
+	</insert>
+	<select id="findByUsername" parameterType="String" resultType="com.study.user.UserDTO">
+		SELECT * FROM User
+		WHERE username=#{username}
+	</select>
+	<select id="duplicatedId" parameterType="String"
+		resultType="int">
+		SELECT COUNT(id)
+		FROM member
+		WHERE id=#{id}
+	</select>
+	<select id="duplicatedEmail" parameterType="String"
+		resultType="int">
+		SELECT COUNT(email)
+		FROM user
+		WHERE email=#{email}
+	</select>
+	<update id="updateUserPassword" parameterType="com.study.user.UserDTO">
+		update User
+		set password =
+		#{password}
+		where user_no = #{user_no}
+	</update>
+	<select id="duplicatedUsername" parameterType="String"
+		resultType="int">
+		SELECT COUNT(username)
+		FROM User
+		WHERE username=#{username}
+	</select>
+</mapper>
