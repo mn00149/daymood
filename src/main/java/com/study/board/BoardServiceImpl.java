@@ -19,9 +19,35 @@ public class BoardServiceImpl implements BoardService {
   }
 
   @Override
-  public int total(Map map) {
-    return mapper.total(map);
+  public int weather_all_total(Map map) {
+    return mapper.weather_all_total(map);
   }
+  
+  @Override
+  public int info_all_total(Map map) {
+    return mapper.info_all_total(map);
+  }
+  
+  @Override
+  public int recommend_all_total(Map map) {
+    return mapper.recommend_all_total(map);
+  }
+  
+  @Override
+  public int weather_total(Map map) {
+  return mapper.weather_total(map);
+  }
+  
+  @Override
+  public int info_total(Map map) {
+    return mapper.info_total(map);
+  }
+  
+  @Override
+  public int recommend_total(Map map) {
+  return mapper.recommend_total(map);
+  }
+  
 
   @Override
   public List<BoardDTO> list_sunny(Map map) {
@@ -87,11 +113,6 @@ public class BoardServiceImpl implements BoardService {
   }
 
   @Override
-  public int weather_total(Map map) {
-  return mapper.weather_total(map);
-  }
-
-  @Override
   public int delete(int board_no) {
   return mapper.delete(board_no);
   }
@@ -139,6 +160,53 @@ public class BoardServiceImpl implements BoardService {
   public void deleteLike(Map map) {
     mapper.deleteLike(map);
   }
+
+  @Override
+  public List<BoardDTO> info_list(Map map) {
+    return mapper.info_list(map);
+  }
+
+  @Override
+  public List<BoardDTO> list_america(Map map) {
+    return mapper.list_america(map);
+  }
+
+  @Override
+  public List<BoardDTO> list_china(Map map) {
+    return mapper.list_china(map);
+  }
+
+  @Override
+  public List<BoardDTO> list_canada(Map map) {
+    return mapper.list_canada(map);
+  }
+
+  @Override
+  public List<BoardDTO> list_australia(Map map) {
+    return mapper.list_australia(map);
+  }
+
+  @Override
+  public List<BoardDTO> list_japan(Map map) {
+    return mapper.list_japan(map);
+  }
+
+  @Override
+  public List<BoardDTO> list_europe(Map map) {
+    return mapper.list_europe(map);
+  }
+
+  @Override
+  public List<BoardDTO> list_etc(Map map) {
+    return mapper.list_etc(map);
+  }
+
+  @Override
+  public int recommend_create(Map map) {
+    return mapper.recommend_create(map);
+  }
+
+
 
 }
   

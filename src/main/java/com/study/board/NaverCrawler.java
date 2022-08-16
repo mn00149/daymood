@@ -64,7 +64,15 @@ public class NaverCrawler {
       throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
     }
   }
-  
+
+  /**
+   * 결과를 파싱하는 메소드
+   * 
+   * @param response
+   * @param fiels
+   * 
+   * @return
+   */
   public Map<String, Object> getResult(String response, String[] fields) {
     Map<String, Object> rtnObj = new HashMap<>();
 
@@ -94,6 +102,4 @@ public class NaverCrawler {
 
     return rtnObj;
   }
-
-  
 }

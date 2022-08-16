@@ -141,7 +141,7 @@ public class Utility {
       }
 
       if (nowPage == i) {
-        str.append("<li class='active'><a href=#>" + i + "</a></li>");// 선택한페이지 색깔입히는거?
+        str.append("<li class='active'><a href=#>" + i + "</a></li>");
       } else {
         str.append("<li><a href='./weather_list?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i + "</A></li>");
       }
@@ -150,6 +150,46 @@ public class Utility {
     _nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
     if (nowGrp < totalGrp) {
       str.append("<li><a href='./weather_list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
+          + "'><i class=\"fa-solid fa-angle-right\"></i></a></li>");
+    }
+    str.append("</div>");
+    // str.append("</div>");
+
+    return str.toString();
+  }
+  
+  public static String paging2(int totalRecord, int nowPage, int recordPerPage, String col, String word) {
+    int pagePerBlock = 3; // 블럭당 페이지 수
+    int totalPage = (int) (Math.ceil((double) totalRecord / recordPerPage)); // 전체 페이지, ceil: 올림
+    int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));// 전체 그룹
+    int nowGrp = (int) (Math.ceil((double) nowPage / pagePerBlock)); // 현재 그룹
+    int startPage = ((nowGrp - 1) * pagePerBlock) + 1; // 특정 그룹의 페이지 목록 시작
+    int endPage = (nowGrp * pagePerBlock); // 특정 그룹의 페이지 목록 종료
+
+    StringBuffer str = new StringBuffer();
+    // str.append("<div class='paging' style='text-align:center'>");
+    str.append("<div class='pagination'>");
+    int _nowPage = (nowGrp - 1) * pagePerBlock; // 10개 이전 페이지로 이동
+    if (nowGrp >= 2) {
+      str.append("<li><a href='./info_list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
+          + "'><i class=\"fa-solid fa-angle-left\"></i></a></li>");
+    }
+
+    for (int i = startPage; i <= endPage; i++) {
+      if (i > totalPage) {
+        break;
+      }
+
+      if (nowPage == i) {
+        str.append("<li class='active'><a href=#>" + i + "</a></li>");
+      } else {
+        str.append("<li><a href='./info_list?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i + "</A></li>");
+      }
+    }
+
+    _nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
+    if (nowGrp < totalGrp) {
+      str.append("<li><a href='./info_list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
           + "'><i class=\"fa-solid fa-angle-right\"></i></a></li>");
     }
     str.append("</div>");
@@ -182,7 +222,7 @@ public class Utility {
       }
 
       if (nowPage == i) {
-        str.append("<li class='active'><a href=#>" + i + "</a></li>");// 선택한페이지 색깔입히는거?
+        str.append("<li class='active'><a href=#>" + i + "</a></li>");
       } else {
         str.append("<li><a href='./" + weather + "?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i + "</A></li>");
       }
@@ -191,6 +231,86 @@ public class Utility {
     _nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
     if (nowGrp < totalGrp) {
       str.append("<li><a href='./" + weather + "?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
+          + "'><i class=\"fa-solid fa-angle-right\"></i></a></li>");
+    }
+    str.append("</div>");
+    // str.append("</div>");
+
+    return str.toString();
+  }
+  
+  public static String info_paging(int totalRecord, int nowPage, int recordPerPage, String col, String word, String info) {
+    int pagePerBlock = 3; // 블럭당 페이지 수
+    int totalPage = (int) (Math.ceil((double) totalRecord / recordPerPage)); // 전체 페이지, ceil: 올림
+    int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));// 전체 그룹
+    int nowGrp = (int) (Math.ceil((double) nowPage / pagePerBlock)); // 현재 그룹
+    int startPage = ((nowGrp - 1) * pagePerBlock) + 1; // 특정 그룹의 페이지 목록 시작
+    int endPage = (nowGrp * pagePerBlock); // 특정 그룹의 페이지 목록 종료
+
+    StringBuffer str = new StringBuffer();
+    // str.append("<div class='paging' style='text-align:center'>");
+    str.append("<div class='pagination'>");
+    int _nowPage = (nowGrp - 1) * pagePerBlock; // 10개 이전 페이지로 이동
+    if (nowGrp >= 2) {
+      str.append("<li><a href='./" + info + "?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
+          + "'><i class=\"fa-solid fa-angle-left\"></i></a></li>");
+    }
+
+    for (int i = startPage; i <= endPage; i++) {
+      if (i > totalPage) {
+        break;
+      }
+
+      if (nowPage == i) {
+        str.append("<li class='active'><a href=#>" + i + "</a></li>");
+      } else {
+        str.append("<li><a href='./" + info + "?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i + "</A></li>");
+      }
+    }
+
+    _nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
+    if (nowGrp < totalGrp) {
+      str.append("<li><a href='./" + info + "?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
+          + "'><i class=\"fa-solid fa-angle-right\"></i></a></li>");
+    }
+    str.append("</div>");
+    // str.append("</div>");
+
+    return str.toString();
+  }
+  
+  public static String recommend_paging(int totalRecord, int nowPage, int recordPerPage, String col, String word, String recommend) {
+    int pagePerBlock = 3; // 블럭당 페이지 수
+    int totalPage = (int) (Math.ceil((double) totalRecord / recordPerPage)); // 전체 페이지, ceil: 올림
+    int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));// 전체 그룹
+    int nowGrp = (int) (Math.ceil((double) nowPage / pagePerBlock)); // 현재 그룹
+    int startPage = ((nowGrp - 1) * pagePerBlock) + 1; // 특정 그룹의 페이지 목록 시작
+    int endPage = (nowGrp * pagePerBlock); // 특정 그룹의 페이지 목록 종료
+
+    StringBuffer str = new StringBuffer();
+    // str.append("<div class='paging' style='text-align:center'>");
+    str.append("<div class='pagination'>");
+    int _nowPage = (nowGrp - 1) * pagePerBlock; // 10개 이전 페이지로 이동
+    if (nowGrp >= 2) {
+      str.append("<li><a href='./" + recommend + "?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
+          + "'><i class=\"fa-solid fa-angle-left\"></i></a></li>");
+    }
+
+    for (int i = startPage; i <= endPage; i++) {
+      if (i > totalPage) {
+        break;
+      }
+
+      if (nowPage == i) {
+        str.append("<li class='active'><a href=#>" + i + "</a></li>");
+      } else {
+        str.append("<li><a href='./" + recommend + "?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i + "</A></li>");
+      }
+    }
+
+    _nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
+    if (nowGrp < totalGrp) {
+      str.append("<li><a href='./" + recommend + "?col=" + col + "&word=" + word + "&nowPage=" + _nowPage
           + "'><i class=\"fa-solid fa-angle-right\"></i></a></li>");
     }
     str.append("</div>");

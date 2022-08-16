@@ -23,6 +23,9 @@ public class BoardDTO {
   private String weather_category;                  
   private String recommend_category;                
   private String info_category;
+  private String recommend_name;
+  private String recommend_img;
+  private String recommend_src;
   private List<ReplyDTO> ReplyDTO;
   
   

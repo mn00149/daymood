@@ -150,8 +150,9 @@ a {
 			<ul id="menu">
 				<li><a href="/board/weather_list">Mood</a></li>
 				<li><a href="/board/info_list">Info</a></li>
-				<li><a href="/board/recommend_list">Recommend</a></li>
-				
+
+				<li><a href="/board/recommend/movie">Recommend</a></li>
+
 			</ul>
 
 			<sec:authorize access="isAnonymous()">

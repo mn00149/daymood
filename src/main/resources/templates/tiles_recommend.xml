@@ -10,9 +10,19 @@
     	<put-attribute name="header" value="/WEB-INF/views/template/top.jsp" />
   	</definition>
   	
-  	<definition name="/board/recommend/recommend_list" extends="main">
+  	<definition name="/board/recommend/movie" extends="main">
     	<put-attribute name="title" value="all"></put-attribute>
-    	<put-attribute name="body" value="/WEB-INF/views/board/recommend/recommend_list.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/views/board/recommend/movie.jsp" />
+  	</definition>
+  	
+  	<definition name="/board/recommend/book" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/recommend/book.jsp" />
+  	</definition>
+  	
+  	<definition name="/board/recommend/music" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/recommend/music.jsp" />
   	</definition>
   	
   	<definition name="/board/common/create" extends="main">
