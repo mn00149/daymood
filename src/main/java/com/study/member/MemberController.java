@@ -279,7 +279,15 @@ public class MemberController {
 		map.put("user_no", principalDetails.getUser_no());
 		map.put("board_no", board_no);
 		//log.info("map" + map);
-		return new ResponseEntity<Integer>(service.scrap(map), HttpStatus.OK);
+		int check = service.checkscrap(map);
+		
+		if(check == 1) {
+			return new ResponseEntity<Integer>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		else {
+			int cnt = service.scrap(map);
+			return new ResponseEntity<Integer>(cnt, HttpStatus.OK);
+		}
 	}
 	// 스크랩 끝
 

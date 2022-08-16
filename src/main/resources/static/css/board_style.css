@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 * {
 	text-decoration-line: none;
 	box-sizing: border-box;
+	font-family: 'Jua', sans-serif;
 }
 
 html {
@@ -45,6 +48,7 @@ a:hover {
 
 .board_list {
 	width: 100%;
+	text-align : center;
 }
 
 .board_list>div {
@@ -354,6 +358,7 @@ a:hover {
 
 #list_search_text {
 	color: black;
+	font-family: 'Jua', sans-serif;
 }
 
 .list_create_box {

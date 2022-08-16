@@ -48,4 +48,6 @@ public interface MemberService {
 
 	Integer scrap(Map map);
 
+	Integer checkscrap(Map map);
+
 }

@@ -118,7 +118,7 @@ font-family: 'Jua', sans-serif;
 
 #menu>li>a:hover {
 	transition: color 0.3s;
-	color: #18AFE3;
+	color: #958CC3;
 }
 
 #menu > li > a {

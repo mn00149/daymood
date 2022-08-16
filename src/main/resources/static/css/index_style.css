@@ -26,7 +26,13 @@ section, summary, time, mark, audio, video {
 /* Basic */
 
 	a{
-	color : #958CC3;
+		text-decoration : none;
+	}
+	
+	a:hover{
+		transition: color 0.3s;
+		text-decoration : none;
+		color: #958CC3;
 	}
 	
 	@-ms-viewport {

@@ -60,7 +60,15 @@
     function scrap(board_no) {
     	
         return fetch(`/board/scrap/${board_no}`, {method: 'get'})
-               .then(response => alert("스크랩 되었습니다."))
+               .then(response => {
+            	   if (!response.ok){
+            		      throw new Error(alert("이미 스크랩 했습니다."))
+            		    }
+            		    return response.json()
+            		  })
+        		.then ((result) => {
+         		   alert("스크랩 했습니다.");
+         		  })
                .catch(console.log);
     }
 </script>
