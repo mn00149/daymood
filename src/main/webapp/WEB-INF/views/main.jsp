@@ -27,6 +27,11 @@
 		url += "&word=${word}";
 		location.href = url;
 	}
+	$("#popupletter").on("click",funtion({
+		alert("로그인")
+	})
+
+
 </script>
 </head>
 <body class="is-preload homepage">
@@ -44,7 +49,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner2">
 								<header class="innerheader">
-									<h2><a href="#" style="text-decoration : none;">인기 게시글</a></h2>
+									<h2><a id="atag" href="#" style="text-decoration : none;">인기 게시글</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list}">
@@ -93,7 +98,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner2">
 								<header class="innerheader">
-									<h2><a href="/board/weather_list" style="text-decoration : none;">최근 게시글</a></h2>
+									<h2><a id="atag" href="/board/weather_list" style="text-decoration : none;">최근 게시글</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list}">
@@ -103,7 +108,7 @@
 						<c:forEach var="dto" items="${list}">
 								<ul class="libox">
                     			 <li class="title"> 
-                    			  <a href="javascript:read('${dto.board_no}')" style="text-decoration : none;">
+                    			  <a href="/board/read/${dto.board_no}" style="text-decoration : none;">
                     				<div class=text_img_tool>
        							     <c:choose>
          							  <c:when test = "${dto.weather_category eq '맑음'}">
@@ -153,11 +158,11 @@
 		</div>
 	</div>
     <input id="check-btn" type="checkbox" />
-    <label class="quickmenubtn" for="check-btn" ><img class="quickbtn"src="https://cdn.discordapp.com/attachments/988657663237828618/1002798129785098360/logo.png"><!-- src="https://user-images.githubusercontent.com/103401972/178628320-ea1e1a62-606d-48f6-aaf2-c590056d6edb.jpg" --></label>
+    <label class="quickmenubtn" for="check-btn" ><img class="quickbtn"src="https://cdn.discordapp.com/attachments/991610192431161384/1007543710571057213/logo_pic.png"></label>
       
       <ul class="menubars">
           <li class="listbar">
-          <a class="popup" onclick="window.open('chatbot','window_name','width=426,height=690,scrollbars=yes');">
+          <a class="popup" onclick="window.open('chatbot','window_name','width=435,height=714,scrollbars=yes');">
           <span class="popupimg">
           	<img class="popimg" src="https://www.lge.co.kr/kr/support/images/icon/icon_customer-consultation.svg">
           </span>
@@ -165,7 +170,7 @@
           </a>
           </li>
           <li class="listbar">
-          <a class="popup" onclick="window.open('letter_list','window_name','width=971,height=624,scrollbars=yes resizable=no location=no');">
+          <a class="popup" id="popupletter" onclick="window.open('letter_list','window_name','width=971,height=624,top=300,,scrollbars=yes');">
           <span class="popupimg">
           	<img class="popimg" src="/images/letter.svg">
           </span>

@@ -519,7 +519,10 @@ section, summary, time, mark, audio, video {
 			
 		/* 게시판 관련 li,ul,img */
 			
-			
+			#atag{
+			pointer-events: none;
+			cursor: default;
+			}
    			
 			.title{
 			padding: 8px 10px;
@@ -529,7 +532,7 @@ section, summary, time, mark, audio, video {
 			
 			.libox{
 			display: block;
-			list-style:none;
+			/* list-style:none; li 태그 점 */
 			margin-bottom: 10px;
 			}
 			

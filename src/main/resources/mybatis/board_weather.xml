@@ -200,8 +200,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="list_rainy" parameterType="Map" resultMap="boardlist_rainy">
 		select b.weather_category, b.title, u.username, b.create_date,
 		b.view_cnt, b.like_cnt, b.board_no, u.role , u.user_no
-		from board b inner join user
-		u
+		from board b inner join user u
 		on b.user_no = u.user_no and b.weather_category = '비'
 
 		<where>

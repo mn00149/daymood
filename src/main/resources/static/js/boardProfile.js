@@ -138,6 +138,6 @@ function posted() {
             		"content":content},
         })
         	alert ("전송");
-      
+        	
     });
     
