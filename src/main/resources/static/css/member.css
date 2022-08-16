@@ -129,7 +129,7 @@ h1 {
 
 .mb_table {
   width: 100%;
-  font-size: 13px;
+  font-size: 15px;
   margin: 0;
   table-layout: auto;
   text-indent: initial;
@@ -150,7 +150,8 @@ h1 {
 
 .mb_table td {
   width: 100%;
-  padding: 15px;
+  padding: 16px;
+  font-size: 15px;
   color: #666;
   text-align: center;
   border-bottom: 1px solid #eee;

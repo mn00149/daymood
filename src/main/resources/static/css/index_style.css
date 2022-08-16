@@ -25,6 +25,10 @@ section, summary, time, mark, audio, video {
 
 /* Basic */
 
+	a{
+	color : #958CC3;
+	}
+	
 	@-ms-viewport {
 		width: device-width;
 	}
@@ -36,13 +40,9 @@ section, summary, time, mark, audio, video {
 
 	body {
 
-		background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
-		background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
-		background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
-		background-image: linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
-		background-color: #e0e0e0;
+		background-color: #F2F4F9;
 
-		background-position: top left, top left;
+
 		background-repeat: repeat-x, repeat;
 		background-size: 100% 30em, auto;
 		font-family: 'Jua', sans-serif;
@@ -529,10 +529,11 @@ section, summary, time, mark, audio, video {
 			
 			.libox{
 			display: block;
-			list-style:none;
 			margin-bottom: 10px;
 			}
-			
+			li.title{
+			color:#968CC3;
+			}
 			img{
 			margin: 5px 10px 0 10px;
 			width: 20px ;
@@ -628,10 +629,18 @@ section, summary, time, mark, audio, video {
 		.popupimg{
 			    position: absolute;
     			top: 50%;
+    			right: 14px;
+    			transform: translateY(-50%);
+    			width: 42px;
+    			height: 42px;
+		}
+		.popupimg2{
+			    position: absolute;
+    			top: 50%;
     			right: 16px;
     			transform: translateY(-50%);
-    			width: 40px;
-    			height: 40px;
+    			width: 37px;
+    			height: 37px;
 		}
 		.popimg{
 				width: 100%;

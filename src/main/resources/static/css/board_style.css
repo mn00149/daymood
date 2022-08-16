@@ -16,6 +16,11 @@ a {
 	color: inherit;
 }
 
+body {
+	background-color : #F2F4F9;
+	
+}
+
 .board_wrap {
 	width: 1200px;
 	margin: 15px auto;

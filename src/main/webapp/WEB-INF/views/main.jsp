@@ -44,7 +44,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner2">
 								<header class="innerheader">
-									<h2><a href="#" style="text-decoration : none;">인기 게시글</a></h2>
+									<h2 style="color:#958CC3;">인기 게시글</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list}">
@@ -93,7 +93,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner2">
 								<header class="innerheader">
-									<h2><a href="/board/weather_list" style="text-decoration : none;">최근 게시글</a></h2>
+									<h2 style="color:#958CC3;">최근 게시글</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list}">
@@ -141,7 +141,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner4">
 								<header class="innerheader">
-									<h2><a href="#" style="text-decoration : none;">이 주의 추천</a></h2>
+									<h2 style="color:#958CC3;">이 주의 추천</a></h2>
 								</header>
 							<div class="recolist">
 
@@ -153,20 +153,19 @@
 		</div>
 	</div>
     <input id="check-btn" type="checkbox" />
-    <label class="quickmenubtn" for="check-btn" ><img class="quickbtn"src="https://cdn.discordapp.com/attachments/988657663237828618/1002798129785098360/logo.png"><!-- src="https://user-images.githubusercontent.com/103401972/178628320-ea1e1a62-606d-48f6-aaf2-c590056d6edb.jpg" --></label>
-      
+	<label class="quickmenubtn" for="check-btn" ><img class="quickbtn"src="https://cdn.discordapp.com/attachments/991610192431161384/1007543710571057213/logo_pic.png"></label>      
       <ul class="menubars">
           <li class="listbar">
-          <a class="popup" onclick="window.open('chatbot','window_name','width=426,height=690,scrollbars=yes');">
+          <a class="popup" onclick="window.open('chatbot','window_name','width=435,height=714,scrollbars=yes');">
           <span class="popupimg">
-          	<img class="popimg" src="https://www.lge.co.kr/kr/support/images/icon/icon_customer-consultation.svg">
+          	<img class="popimg" src="/images/chatbot.png">
           </span>
           챗봇
           </a>
           </li>
           <li class="listbar">
           <a class="popup" onclick="window.open('letter_list','window_name','width=971,height=624,scrollbars=yes resizable=no location=no');">
-          <span class="popupimg">
+          <span class="popupimg2">
           	<img class="popimg" src="/images/letter.svg">
           </span>
           쪽지

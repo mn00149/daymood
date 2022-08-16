@@ -7,42 +7,17 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/reply_number.css">
     <link rel="stylesheet" href="/css/boardProfile.css">
     <link rel="stylesheet" href="/css/board_style.css">
-    <link rel="stylesheet" href="/video/sunny.mp4">
     <link rel="stylesheet" href="/css/letter_modal.css">
     <script src="https://kit.fontawesome.com/6a80a39212.js" crossorigin="anonymous"></script>
     
     <script type="text/javascript" src="/js/boardProfile.js" defer></script>
     <style>
-    .video {
-        width: 1200px;
-        height: 100%;
-        content: "";
-        background: url("/video/fog.mp4");
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        opacity: 0.5;
-        }
-
-    .board_wrap, .reply_wrap {
-        background-color: rgb(250,248,231);
-        }
-   
-	.board_wrap .board_list .board_body {
-		font-size: 15px;
-	}
 	 </style>
-</script>
 </head>
 <body>
-	<div class="video">
-		<video muted autoplay loop>
-			<source src="/video/fog.mp4" type="video/mp4">
-			<strong>Your browser does not support the video tag.</strong>
-		</video>
 	</div>
 	<!-- 친구 요청 팝업 -->
 	<div class="popup-overlay">
@@ -90,13 +65,6 @@
         </form>
        </c:forEach>
        
-    <div class="video">
-        <video muted autoplay loop>
-            <source src="/video/fog.mp4" type="video/mp4">
-            <strong>Your browser does not support the video tag.</strong>
-        </video>
-    </div>
-
 	<div class="board_category">
 		<div class="all">
 			<a href="/board/weather_list">all</a>
@@ -105,7 +73,7 @@
 			<a href="/board/weather/sunny"><img src="/image/sun.png"
 				alt="no image"></a>
 		</div>
-		<div class="fog">
+		<div class="cloudy">
 			<a href="/board/weather/cloudy"><img src="/image/cloudy.png"
 				alt="no image"></a>
 		</div>

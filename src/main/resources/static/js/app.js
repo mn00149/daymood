@@ -20,7 +20,7 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/public', function (message) {
-            showMessage("<img style='width:38px; height:43px;'  src='/images/pac.png' /> : " + message.body + "<hr>"); // 서버에 메시지 전달 후 리턴받는 메시지
+            showMessage("<img style='width:38px; height:43px;'  src='/images/logo_pic.png' /> : " + message.body + "<hr>"); // 서버에 메시지 전달 후 리턴받는 메시지
         });
     });
 }
