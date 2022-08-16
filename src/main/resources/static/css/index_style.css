@@ -29,6 +29,11 @@ section, summary, time, mark, audio, video {
 	color : #958CC3;
 	}
 	
+	a:hover{
+		transition: color 0.3s;
+		color: #958CC3;
+	}
+	
 	@-ms-viewport {
 		width: device-width;
 	}

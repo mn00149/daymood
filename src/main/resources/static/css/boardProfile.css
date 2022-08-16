@@ -2,6 +2,7 @@
     opacity: 0.6;
 }
 
+
 .popup-overlay{
     position: fixed;
     left: 0;
@@ -112,6 +113,7 @@
 .update:hover{
     color: #111;
 }
+
 
 .update span
 {

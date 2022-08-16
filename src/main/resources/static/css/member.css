@@ -144,17 +144,20 @@ h1 {
   padding: 15px;
   display: inline-block;
   text-align: center;
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
   border-right: 1px solid #ddd;
 }
 
+tr {
+	border-bottom: 1px solid #dddddd;
+}
 .mb_table td {
   width: 100%;
-  padding: 16px;
+  
   font-size: 15px;
   color: #666;
   text-align: center;
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
 }
 
 .mb_table tr:last-child td, .mb_table tr:last-child th {
@@ -278,7 +281,7 @@ thead th {
 }
 
 th,td {
-  border-bottom: 1px solid #dddddd;
+  /* border-bottom: 1px solid #dddddd; */
   padding: 10px 20px;
   word-break: break-all;
   text-align: center;
@@ -453,7 +456,7 @@ td img :not(#id_img) {
   width: 55px;
   height: 55px;
   background: #222327;
-  box-shadow: 0 0 0 6px #29fd53;
+  box-shadow: 0 0 0 6px #e2e2eb;
   border-radius: 50%;
   transition: 0.5s;
   opacity: 0;
@@ -464,7 +467,7 @@ td img :not(#id_img) {
   top : -27.5px;
   left : -27.5px;
   background: #FEECE1;
-  box-shadow: 0 0 0 6px #222327;
+  box-shadow: 0 0 0 2px #e2e2eb;
 }
 
 .tmenu li:nth-child(2).active ~ .indicator {
