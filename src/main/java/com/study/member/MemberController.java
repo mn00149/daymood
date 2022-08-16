@@ -128,15 +128,17 @@ public class MemberController {
 
     Map map = new HashMap();
     List<BoardDTO> list = dao.hot_list(map);
-
-    
-    Map map2 = new HashMap();
-    List<BoardDTO> list2 = dao.new_list(map2);
-
+    List<BoardDTO> list2 = dao.new_list(map);
+    List<BoardDTO> list3 = dao.book_list(map);
+    List<BoardDTO> list4 = dao.movie_list(map);
+ 
   
     // 2. request 저장(view에서 사용할 내용을 저장)
     request.setAttribute("list", list);
     request.setAttribute("list2", list2);
+    request.setAttribute("list3", list3);
+    request.setAttribute("list4", list4);
+    
 		return "/main";
 	}
 

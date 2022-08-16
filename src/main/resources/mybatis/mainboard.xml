@@ -7,27 +7,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.study.mainboard.MainBoardMapper">
 
 	<select id="hot_list" resultType="com.study.board.BoardDTO">
-		select b.weather_category, b.title, b.create_date,
-		b.view_cnt, b.like_cnt, b.board_no, u.role , u.username
+		select b.weather_category, b.title, b.create_date, b.info_category,b.recommend_category,b.recommend_name,
+			   b.view_cnt, b.like_cnt, b.board_no, u.role , u.username
 		from board b 
 		join user u
-		on b.username = u.username
-		where u.role = 'ROLE_USER'
+		on b.username = u.username 
+		where b.recommend_name is null and u.role = 'ROLE_USER' 
 		order by create_date desc
 		limit 0,7;
 	</select>
 
 	<select id="new_list" resultType="com.study.board.BoardDTO">
-		select b.weather_category, b.title, b.create_date,
-		b.view_cnt, b.like_cnt, b.board_no, u.role , u.username
+		select b.weather_category, b.title, b.create_date,b.info_category,b.recommend_category,b.recommend_name,
+			   b.view_cnt, b.like_cnt, b.board_no, u.role , u.username
 		from board b 
 		join user u
 		on b.username = u.username
-		where u.role = 'ROLE_USER'
+		where b.recommend_name is null and u.role = 'ROLE_USER'
 		order by like_cnt desc
 		limit 0,7;
 	</select>
-
+	
+  	<select id="book_list" resultType="com.study.board.BoardDTO">
+		select b.recommend_name, b.recommend_img, b.create_date, b.view_cnt, b.like_cnt, b.board_no, 
+		 	   u.role, u.user_no , u.username
+		from board b inner join user u
+		on b.username = u.username 
+		where u.role = 'ROLE_USER' and b.recommend_category = '도서'
+		limit 0,4;
+	</select> 
+	
+	  	<select id="movie_list" resultType="com.study.board.BoardDTO">
+		select b.recommend_name, b.recommend_img, b.create_date, b.view_cnt, b.like_cnt, b.board_no, 
+		 	   u.role, u.user_no , u.username
+		from board b inner join user u
+		on b.username = u.username 
+		where u.role = 'ROLE_USER' and b.recommend_category = '영화'
+		limit 0,4;
+	</select> 
+	
 	<select id="total" parameterType="Map" resultType="int">
 		select count(*) from board
 		<where>
