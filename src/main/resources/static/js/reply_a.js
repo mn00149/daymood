@@ -137,20 +137,18 @@ $(".chat").on("click", "li", function (e) {
       modal.find("button[username !='modalCloseBtn']").hide();
 	
 	// 로그인을 했다면 답글쓰기 버튼이 보인다
-	if(indent == reply_no && (username != null || username != "")  ){
+	if(username != null || username != ""){
     modalRecommentBtn.show();
 	}  
-
+	
 		
 	// 로그인 한 사람이 댓글을 쓴 사람이라면 수정/삭제 버튼이 보인다.
  	if(user_no==reply.user_no){
 	modalModBtn.show();
     modalRemoveBtn.show();  
-	}
-     
-    $(".modal").modal("show");
+}
+      $(".modal").modal("show");
  
-
     });
 }); //click
 

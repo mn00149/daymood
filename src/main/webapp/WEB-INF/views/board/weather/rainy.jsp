@@ -9,12 +9,18 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/board_style.css">
 <link rel="stylesheet" href="/css/boardProfile.css">
-<script src="https://kit.fontawesome.com/6a80a39212.js"
-	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/reply_number.css">
 <link rel="stylesheet" href="/css/letter_modal.css">
 <script type="text/javascript" src="/js/boardProfile.js" defer></script>
+<script type="text/javascript" src="/js/search.js"></script>
+<script src="https://kit.fontawesome.com/6a80a39212.js"	crossorigin="anonymous"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"	rel="stylesheet">
+
 <style>
+body {
+	background-color: #F2F4F9;
+}
 </style>
 
 <script type="text/javascript">
@@ -26,6 +32,7 @@
 		location.href = url;
 	}
 </script>
+
 </head>
 <body>
 <!-- 친구 요청 팝업 -->
@@ -79,15 +86,15 @@
 			<a href="/board/weather_list">all</a>
 		</div>
 		<div class="sunny">
-			<a href="/board/weather/sunny"><img src="/image/sun.png"
+			<a href="/board/weather/sunny"><img src="/images/sunny.png"
 				alt="no image"></a>
 		</div>
 		<div class="cloudy">
-			<a href="/board/weather/cloudy"><img src="/image/cloudy.png"
+			<a href="/board/weather/cloudy"><img src="/images/cloudy.png"
 				alt="no image"></a>
 		</div>
 		<div class="rain">
-			<a href="/board/weather/rainy"><img src="/image/rain.png"
+			<a href="/board/weather/rainy"><img src="/images/rainy.png"
 				alt="no image"></a>
 		</div>
 	</div>
@@ -131,30 +138,23 @@
 											<c:when test="${dto.udto.role eq 'ROLE_USER'}">
 												<div class="category">
 													<c:choose>
-														<c:when test="${dto.weather_category eq '맑음'}">
-															<img src="/image/sun.png" alt="no image">
-														</c:when>
+													<c:when test="${dto.weather_category eq '맑음'}">
+														<img src="/images/sunny.png" alt="no image">
+													</c:when>
 
-														<c:when test="${dto.weather_category eq '흐림'}">
-															<img src="/image/cloudy.png" alt="no image">
-														</c:when>
+													<c:when test="${dto.weather_category eq '흐림'}">
+														<img src="/images/cloudy.png" alt="no image">
+													</c:when>
 
-														<c:when test="${dto.weather_category eq '비'}">
-															<img src="/image/rain.png" alt="no image">
-														</c:when>
-													</c:choose>
+													<c:when test="${dto.weather_category eq '비'}">
+														<img src="/images/rainy.png" alt="no image">
+													</c:when>
+												</c:choose>
 												</div>
 												<%-- category end --%>
 
 												<div class="title">
-													<a href="javascript:read('${dto.board_no}')">${dto.title }
-														<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
-														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
-														test="${rcount>0 }">
-														<span class="badge">${rcount}</span>
-														</c:if> 
-														<%-- 댓글 갯수 보이기 끝 --%>
-													</a>
+													<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
 												</div>
 
 												<div class="username"><a class="username2" style="text-decoration:none" data-value="${dto.udto.user_no }">${dto.udto.username }</a></div>
@@ -174,14 +174,7 @@
 												<div class="category ad">[공지]</div>
 
 												<div class="title ad">
-													<a href="javascript:read('${dto.board_no}')">${dto.title }
-														<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
-														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
-														test="${rcount>0 }">
-														<span class="badge">${rcount}</span>
-														</c:if> 
-														<%-- 댓글 갯수 보이기 끝 --%>
-													</a>
+													<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
 												</div>
 
 												<div class="username ad">${dto.udto.username }</div>
@@ -204,22 +197,27 @@
 							</c:otherwise> <%-- 게시판 글이 있으면 end --%>
 						</c:choose>
 					</tbody>
+			</div> <%-- board_list --%>
+				
+			<div class="list_bt_wrap">
+				<div class="list_search_box">
+					<form name="search">
+						<input type="text" id="list_search_text" class="list_search_icon" name="word"
+							value="${word }" onmouseout="this.value = ''; this.blur();">
+					</form>
+					<i class="fas fa-search"></i>
 				</div>
-				<%-- box --%>
 
-				<div class="box2">
-					<div class="create2" onclick="location.href='/board/create'">
+				<div class="list_create_box">
+					<div class="list_create_icon" onclick="location.href='/board/create'">
 						<i class="fa-solid fa-pencil"></i>
 					</div>
 				</div>
-				<%-- box2 --%>
-
-			</div>
-			<%-- bt_wrap --%>
-		</div>
-		<%-- board_list_wrap --%>
+			</div> <%-- list_bt_wrap --%>
+			
+		</div> <%-- board_list_wrap --%>
 		${paging }
-	</div>
-	<%--  board_wrap --%>
+	</div> <%--  board_wrap --%>
+	
 </body>
 </html>

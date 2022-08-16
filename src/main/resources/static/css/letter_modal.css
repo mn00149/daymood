@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+	font-family: 'Jua', sans-serif;
+}
+
 .modal {
  /*       position: absolute; */
         top: 0;
@@ -30,7 +36,6 @@
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
 
   transform: translateX(-50%) translateY(-50%);
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
 }
 .modal_title{
     background-color: #222;

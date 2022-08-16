@@ -75,7 +75,7 @@ section, summary, time, mark, audio, video {
 		@media screen and (max-width: 1680px) {
 
 			.container {
-				width: 1200px;
+				width: 1400px;
 			}
 
 		}
@@ -519,7 +519,10 @@ section, summary, time, mark, audio, video {
 			
 		/* 게시판 관련 li,ul,img */
 			
-			
+			#atag{
+			pointer-events: none;
+			cursor: default;
+			}
    			
 			.title{
 			padding: 8px 10px;
@@ -529,6 +532,8 @@ section, summary, time, mark, audio, video {
 			
 			.libox{
 			display: block;
+
+			/* list-style:none; li 태그 점 */
 			margin-bottom: 10px;
 			}
 			li.title{
@@ -557,6 +562,7 @@ section, summary, time, mark, audio, video {
 			width: 20px !important;
 			height: 20px !important;
 			}
+			
 			.text_img_tool{
 			max-width: 100%;
     		text-overflow: ellipsis;
@@ -647,5 +653,4 @@ section, summary, time, mark, audio, video {
 				height: 100%;
 				margin: 0;
 		}
-		
 		

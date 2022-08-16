@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.board.BoardMapper">
+
+	<!-- info_List - all -->
+	<resultMap type="com.study.board.BoardDTO" id="info_list">
+		<result property="info_category" column="info_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="info_list" parameterType="Map"
+		resultMap="info_list">
+		select b.info_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.info_category is not null
+
+		<where>
+			<if test="word != ''">
+				u.username like concat('%', #{word}, '%')
+			</if>
+		</where>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- info List - america -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_america">
+		<result property="info_category" column="info_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_america" parameterType="Map" resultMap="boardlist_america">
+		select b.info_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.info_category = '미국'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- info List - china -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_china">
+		<result property="info_category" column="info_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_china" parameterType="Map" resultMap="boardlist_china">
+		select b.info_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.info_category = '중국'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- info List - canada -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_canada">
+		<result property="info_category" column="info_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_canada" parameterType="Map" resultMap="boardlist_canada">
+		select b.info_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.info_category = '캐나다'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- info List - australia -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_australia">
+		<result property="info_category" column="info_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_australia" parameterType="Map" resultMap="boardlist_australia">
+		select b.info_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.info_category = '호주'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- info List - japan -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_japan">
+		<result property="info_category" column="info_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_japan" parameterType="Map" resultMap="boardlist_japan">
+		select b.info_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.info_category = '일본'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- info List - europe -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_europe">
+		<result property="info_category" column="info_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_europe" parameterType="Map" resultMap="boardlist_europe">
+		select b.info_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.info_category = '유럽'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+	
+	<!-- info List - etc -->
+	<resultMap type="com.study.board.BoardDTO" id="boardlist_etc">
+		<result property="info_category" column="info_category" />
+		<result property="title" column="title" />
+		<result property="create_date" column="create_date" />
+		<result property="view_cnt" column="view_cnt" />
+		<result property="like_cnt" column="like_cnt" />
+		<result property="board_no" column="board_no" />
+
+		<association property="udto"
+			javaType="com.study.user.UserDTO">
+			<result property="username" column="username" />
+			<result property="user_no" column="user_no" />
+			<result property="nation" column="nation" />
+			<result property="role" column="role" />
+		</association>
+	</resultMap>
+	<select id="list_etc" parameterType="Map" resultMap="boardlist_etc">
+		select b.info_category, b.title, u.username, b.create_date,
+		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
+		from board b inner join user u
+		on b.user_no = u.user_no and b.info_category = '기타'
+		where u.role = 'ROLE_USER'
+
+			<if test="word != ''">
+				and u.username like concat('%', #{word}, '%')
+			</if>
+
+		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
+		limit #{sno}, #{eno}
+	</select>
+
+
+
+
+</mapper>

@@ -8,25 +8,21 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>sunny</title>
+<title>weather</title>
 <link rel="stylesheet" href="/css/board_style.css">
-<link rel="stylesheet" href="/css/reply_number.css">
-
-
 <link rel="stylesheet" href="/css/boardProfile.css">
-
+<link rel="stylesheet" href="/css/reply_number.css">
 <link rel="stylesheet" href="/css/letter_modal.css">
 <script type="text/javascript" src="/js/boardProfile.js" defer></script>
 <script type="text/javascript" src="/js/search.js"></script>
-
 <script src="https://kit.fontawesome.com/6a80a39212.js"	crossorigin="anonymous"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"	rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"	rel="stylesheet">
-<script type="text/javascript" src="/search.js"></script>
-
 
 <style>
-
+body {
+	background-color: #F2F4F9;
+}
 </style>
 
 <script type="text/javascript">
@@ -37,11 +33,7 @@
 		url += "&word=${word}";
 		location.href = url;
 	}
-
 </script>
-
-
-
 
 </head>
 <body>
@@ -65,14 +57,12 @@
 		</div>
 	</div>
 	
-
 	<!-- 클릭 시 친구 요청 등 메뉴 뜸 -->
-
-<ul id="profile" class="container__menu container__menu--hidden">
+	<ul id="profile" class="container__menu container__menu--hidden">
                 <li class="container__item"><span class="req-btn">친구요청</span></li>
                 <li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
                 <li class="container__item"><span class="btn-open-popup" data-backdrop="static">쪽지 보내기</span></li>
-</ul>
+	</ul>
 
 	<!-- 쪽지보내기 모달 -->
 	<c:forEach var="tmp" items="${list}">
@@ -96,22 +86,20 @@
         </form>
        </c:forEach>
 	
-
-
 	<div class="board_category">
 		<div class="all">
 			<a href="/board/weather_list">all</a>
 		</div>
 		<div class="sunny">
-			<a href="/board/weather/sunny"><img src="/image/sun.png"
+			<a href="/board/weather/sunny"><img src="/images/sunny.png"
 				alt="no image"></a>
 		</div>
 		<div class="cloudy">
-			<a href="/board/weather/cloudy"><img src="/image/cloudy.png"
+			<a href="/board/weather/cloudy"><img src="/images/cloudy.png"
 				alt="no image"></a>
 		</div>
 		<div class="rain">
-			<a href="/board/weather/rainy"><img src="/image/rain.png"
+			<a href="/board/weather/rainy"><img src="/images/rainy.png"
 				alt="no image"></a>
 		</div>
 	</div>
@@ -147,7 +135,8 @@
 						<%-- 게시판에 글이 있으면 --%>
 						<c:otherwise>
 							<c:forEach var="dto" items="${list}" varStatus="statusList">
-								<div class="body">
+							
+								<div class="body" onclick="read(${dto.board_no})" style="cursor:pointer">
 
 									<c:choose>
 										<%-- role == '회원' --%>
@@ -155,33 +144,32 @@
 											<div class="category">
 												<c:choose>
 													<c:when test="${dto.weather_category eq '맑음'}">
-														<img src="/image/sun.png" alt="no image">
+														<img src="/images/sunny.png" alt="no image">
 													</c:when>
 
 													<c:when test="${dto.weather_category eq '흐림'}">
-														<img src="/image/cloudy.png" alt="no image">
+														<img src="/images/cloudy.png" alt="no image">
 													</c:when>
 
 													<c:when test="${dto.weather_category eq '비'}">
-														<img src="/image/rain.png" alt="no image">
+														<img src="/images/rainy.png" alt="no image">
 													</c:when>
 												</c:choose>
 											</div>
 											<%-- category end --%>
 
 											<div class="title">
-												<a href="javascript:read('${dto.board_no}')">${dto.title }
+												${dto.title }
 													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
 														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
 														test="${rcount>0 }">
 														<span class="badge">${rcount}</span>
 													</c:if>
-												</a>
 											</div>
 											<%-- 댓글 갯수 보이기 끝 --%>
 
 											<!-- user_no를 받아오기 위해 data-value에 삽입, board_weather.xml 리스트 항목에 user_no 추가 -->
-											<div class="username">
+											<div class="username" onclick="event.stopPropagation()">
 												<a class="username2" style="text-decoration: none"
 													data-value="${dto.udto.user_no }">${dto.udto.username }</a>
 											</div>
@@ -233,30 +221,27 @@
 				</tbody>
 			</div>
 			<%-- board_list --%>
-			<div class="bt_wrap">
-				<div class="box">
+			
+			<div class="list_bt_wrap">
+				<div class="list_search_box">
 					<form name="search">
-						<input type="text" id="ab" class="input" name="word"
+						<input type="text" id="list_search_text" class="list_search_icon" name="word"
 							value="${word }" onmouseout="this.value = ''; this.blur();">
 					</form>
 					<i class="fas fa-search"></i>
 				</div>
-				<%-- box --%>
 
-				<div class="box2">
-					<div class="create2" onclick="location.href='/board/create'">
+				<div class="list_create_box">
+					<div class="list_create_icon" onclick="location.href='/board/create'">
 						<i class="fa-solid fa-pencil"></i>
 					</div>
 				</div>
-				<%-- box2 --%>
-
-			</div>
-			<%-- bt_wrap --%>
-		</div>
-		<%-- board_list_wrap --%>
+			</div> <%-- list_bt_wrap --%>
+			
+		</div> <%-- board_list_wrap --%>
 		${paging }
-	</div>
-	<%--  board_wrap --%>
+	</div> <%--  board_wrap --%>
+	
 
 </body>
 

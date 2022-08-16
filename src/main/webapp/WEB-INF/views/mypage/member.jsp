@@ -27,8 +27,8 @@
 }
 
 .req-btn {
-    background-color: #00bba9;
-    border: transparent;
+    background-color: #FEECE1;
+    border: 1px solid #E2E2E8;
     border-radius: 10px;
     -webkit-border-radius:10px;
     -moz-border-radius:10px;
@@ -50,8 +50,8 @@
     opacity: 0.6;
 }
 .liborder {
-    border : 1px solid rgb(6, 210, 224);
-    border-radius: 5px;
+    border : 2px solid #E2E2E8;
+    border-radius: 10px;
     padding: 2px;
 }
 
@@ -87,7 +87,8 @@
           <li><a href="my_posted" style="text-decoration: none;">작성글</a></li>
           <li><a href="my_comment" style="text-decoration: none;">작성댓글</a></li>
           <li><a href="my_scrap" style="text-decoration: none;">스크랩</a></li>
-          <li><a href="my_letter" style="text-decoration: none;">쪽지함</a></li>
+          <li><a href="request_friends" style="text-decoration: none;">친구요청</a></li>
+          <li><a href="my_friends" style="text-decoration: none;">친구목록</a></li>
         </ul>
       </div>
       <table class="mb_table">
@@ -111,9 +112,9 @@
           </tr>
           <tr>
             <th>
-            프로필 사진
+            
             <button type="button" class="req-btn" style="width:auto">
-              <span>♣</span>
+              <span><img src="/images/upload.png" style="width: 30px; height: 30px"/></span>
               </button>
             </th>
             <td id="preivew"><img class="user_image" name="user_image" src="${dto.user_image }" style="width: 50px; height: 50px"></td>
@@ -136,16 +137,18 @@
         <div class="popup-message-container">
             <h1>프로필 사진</h1>
             <ul class="ulimg">
-                <li class="my" ><img src="/image/sun.png" style="width: 50px; height: 50px"></li>
-                <li class="my"><img src="/image/cloudy.png" style="width: 50px; height: 50px"></li>
-                <li class="my"><img src="/image/fog.png" style="width: 50px; height: 50px"></li>
-                <li class="my"><img src="/image/recommend/book.png" style="width: 50px; height: 50px"></li>
-                <li class="my" ><img src="/image/daymood_logo.png" style="width: 50px; height: 50px"></li>
-                <li class="my" ><img src="/images/daymood.png" style="width: 50px; height: 50px"></li>
-                <li class="my" ><img src="/images/letter.svg" style="width: 50px; height: 50px"></li>
-                <li class="my" ><img src="/images/send.png" style="width: 50px; height: 50px"></li>
-                <li class="my" ><img src="/images/pac.png" style="width: 50px; height: 50px"></li>
-                <li class="my" ><img src="/images/bubble.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/묘.png" style="width: 50px; height: 50px"></li>
+                <li class="my"><img src="/images/미.png" style="width: 50px; height: 50px"></li>
+                <li class="my"><img src="/images/사.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/술.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/신.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/오.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/유.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/인.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/자.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/진.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/축.png" style="width: 50px; height: 50px"></li>
+                <li class="my" ><img src="/images/해.png" style="width: 50px; height: 50px"></li>
             </ul>
         </div>
         <button class="ok-btn">
