@@ -42,7 +42,7 @@
     padding: 5px 14px;
     margin-bottom: -1px;
     background-color: #F8F7F7;
-    border: 3px solid #fff;
+    border: 0.5px solid #fff;
 }
 .panel-default>.panel-heading {
     color: #fff;
@@ -123,4 +123,10 @@
 	background: #FEECE1;
 	color: white;
 	
+}
+
+
+.list-group-item:hover {
+	
+	background-color: #FFF;
 }

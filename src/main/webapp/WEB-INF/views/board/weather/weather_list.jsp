@@ -26,13 +26,6 @@
 
 
 <style>
-.board_wrap, .reply_wrap {
-	background-color: rgb(250, 248, 231);
-}
-
-.board_wrap .board_list .board_body {
-	font-size: 15px;
-}
 
 </style>
 
@@ -113,7 +106,7 @@
 			<a href="/board/weather/sunny"><img src="/image/sun.png"
 				alt="no image"></a>
 		</div>
-		<div class="fog">
+		<div class="cloudy">
 			<a href="/board/weather/cloudy"><img src="/image/cloudy.png"
 				alt="no image"></a>
 		</div>

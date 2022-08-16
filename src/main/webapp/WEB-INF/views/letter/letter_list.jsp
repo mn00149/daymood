@@ -31,7 +31,7 @@
                         <!-- 쪽지 검색-->
                         <div class="srch_bar">
                         	<div class="stylish-input-group">
-                                <input type="text" placeholder="Search" name="word" value="${word }">
+                                <input type="text" placeholder="검색" name="word" value="${word }">
                                 <span class="input-group-addon">
                                 <button type="button"> <i class="fa fa-search" aria-hidden="true"></i></button>
                                 </span>

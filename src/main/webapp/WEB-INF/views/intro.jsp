@@ -27,7 +27,7 @@
     <div id="aa">
       <header>
         <a href="/main" target="">
-          <img width="120" height="37" src="images/logo_txt.png" align="right" style="margin-right:30px" />
+          <img width="170" height="48" src="images/main_logo.png" align="right" style="margin-right:30px" />
         </a>
         <div>
           <!-- <h3 align="right">메인으로 가기　</h3> -->

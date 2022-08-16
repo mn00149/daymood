@@ -9,32 +9,12 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/board_style.css">
 <link rel="stylesheet" href="/css/boardProfile.css">
-<link rel="stylesheet" href="/video/rain.mp4">
 <script src="https://kit.fontawesome.com/6a80a39212.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/reply_number.css">
 <link rel="stylesheet" href="/css/letter_modal.css">
 <script type="text/javascript" src="/js/boardProfile.js" defer></script>
 <style>
-.video {
-	width: 1200px;
-	height: 100%;
-	content: "";
-	background: url("/video/rain.mp4");
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	opacity: 0.5;
-}
-
-.board_wrap, .reply_wrap {
-	background-color: rgb(250, 248, 231);
-}
-
-.board_wrap .board_list .board_body {
-	font-size: 15px;
-}
 </style>
 
 <script type="text/javascript">
@@ -94,13 +74,6 @@
         </form>
        </c:forEach>
 
-	<div class="video">
-		<video muted autoplay loop>
-			<source src="/video/rain.mp4" type="video/mp4">
-			<strong>Your browser does not support the video tag.</strong>
-		</video>
-	</div>
-
 	<div class="board_category">
 		<div class="all">
 			<a href="/board/weather_list">all</a>
@@ -109,7 +82,7 @@
 			<a href="/board/weather/sunny"><img src="/image/sun.png"
 				alt="no image"></a>
 		</div>
-		<div class="fog">
+		<div class="cloudy">
 			<a href="/board/weather/cloudy"><img src="/image/cloudy.png"
 				alt="no image"></a>
 		</div>
@@ -174,7 +147,14 @@
 												<%-- category end --%>
 
 												<div class="title">
-													<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
+													<a href="javascript:read('${dto.board_no}')">${dto.title }
+														<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
+														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
+														test="${rcount>0 }">
+														<span class="badge">${rcount}</span>
+														</c:if> 
+														<%-- 댓글 갯수 보이기 끝 --%>
+													</a>
 												</div>
 
 												<div class="username"><a class="username2" style="text-decoration:none" data-value="${dto.udto.user_no }">${dto.udto.username }</a></div>
@@ -194,7 +174,14 @@
 												<div class="category ad">[공지]</div>
 
 												<div class="title ad">
-													<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
+													<a href="javascript:read('${dto.board_no}')">${dto.title }
+														<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
+														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
+														test="${rcount>0 }">
+														<span class="badge">${rcount}</span>
+														</c:if> 
+														<%-- 댓글 갯수 보이기 끝 --%>
+													</a>
 												</div>
 
 												<div class="username ad">${dto.udto.username }</div>

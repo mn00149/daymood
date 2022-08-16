@@ -31,10 +31,11 @@ img{
 	max-width:100%;
 }
 .inbox_people{
-	background: #f8f8f8 none repeat scroll 0 0;
+	background:#f2F4F9;
 	float: left;
 	overflow: hidden;
 	width: 40%; border-right:1px solid #f7f7f7;
+	border-radius: 7px;
 }
 .inbox_msg{
 	border: 1px solid #f7f7f7;
@@ -61,7 +62,7 @@ img{
 	border-bottom:1px solid #f7f7f7;
 }
 .recent_heading h4{
-	color: #5fcf80;
+	color: #F2F4F9;
 	font-size: 30px;
 	margin: auto;
 	font-family: 'Nanum Pen Script' , cursive;
@@ -114,12 +115,12 @@ img{
 	clear:both;
 }
 .chat_list{
-	border-bottom: 1px solid #f7f7f7;
+	border-bottom: 1px solid #fff;
 	margin: 0;
 	padding: 18px 16px 10px;
 }
 .chat_list_box :hover{
-	background-color: #d6ead0;
+	background-color: #FEECE1;
 }
 .inbox_chat{
 	height: 550px;
@@ -129,7 +130,7 @@ img{
   width: 3px;
 }
 .inbox_chat::-webkit-scrollbar-thumb{
-	background: gray;
+	background: #F2F4F9;
 }
 .active_chat{
 	background:#ebebeb;
@@ -150,9 +151,9 @@ img{
 	width: 92%;
 }
 .received_withd_msg p{
-	background:#f4f4f4 none repeat scroll 0 0;
+	background: #F2F4F9 none repeat scroll 0 0;
 	border-radius: 7px;
-	color: #646464;
+	color: BLACK;
 	font-size: 14px;
 	margin: 0;
 	padding: 10px 10px 10px 12px;
@@ -174,11 +175,11 @@ img{
 	width: 60%;
 }
 .sent_msg p{
-	background: #97df93 none repeat scroll 0 0;
+	background: #FEECE1 none repeat scroll 0 0;
 	border-radius: 7px;
 	font-size: 14px;
 	margin: 0;
-	color: #fff;
+	color: black;
 	padding: 10px 10px 10px 12px;
 	width:100%;
 	font-family: 'Noto Sans KR' , sans-serif;
@@ -214,10 +215,10 @@ img{
 	margin-left: 40%;
 }
 .msg_send_btn{
-	background: #97df93 none repeat scroll 0 0;
+	background: #E2E2E8 none repeat scroll 0 0;
 	border: medium none;
 	border-radius: 50%;
-	color: #fff;
+	color: black;
 	cursor: pointer;
 	font-size: 17px;
 	height: 33px;
@@ -227,7 +228,7 @@ img{
 	width: 33px;
 }
 .msg_send_btn:hover{
-	background: #5fcd58 none repeat scroll 0 0;
+	background: #FEECE1 none repeat scroll 0 0;
 }
 .messaging{
 	padding: 0 0 50px 0;
@@ -240,5 +241,5 @@ img{
   width: 3px;
 }
 .let_history::-webkit-scrollbar-thumb{
-	background: gray;
+	background: #F2F4F9;
 }
