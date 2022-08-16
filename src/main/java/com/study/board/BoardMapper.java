@@ -7,9 +7,17 @@ import java.util.Map;
 public interface BoardMapper {
   
   //board_common
-  int total(Map map);
+  int weather_all_total(Map map);
+  
+  int info_all_total(Map map);
+
+  int recommend_all_total(Map map);
   
   int weather_total(Map map);
+  
+  int info_total(Map map);
+  
+  int recommend_total(Map map);
   
   BoardDTO read(int board_no);
 
@@ -29,8 +37,27 @@ public interface BoardMapper {
   List<BoardDTO> list_cloudy(Map map);
   
   List<BoardDTO> list_rainy(Map map);
+  
+  //info_board
+  List<BoardDTO> info_list(Map map);
+  
+  List<BoardDTO> list_america(Map map);
+  
+  List<BoardDTO> list_china(Map map);
+  
+  List<BoardDTO> list_canada(Map map);
+
+  List<BoardDTO> list_australia(Map map);
+  
+  List<BoardDTO> list_japan(Map map);
+
+  List<BoardDTO> list_europe(Map map);
+  
+  List<BoardDTO> list_etc(Map map);
 
   //recommend_board
+  int recommend_create(Map map);
+  
   List<BoardDTO> recommend_list(Map map);
   
   List<BoardDTO> list_movie(Map map);

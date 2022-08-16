@@ -16,6 +16,11 @@ a {
 	color: inherit;
 }
 
+a:hover {
+	text-decoration-line: none;
+}
+
+/* 게시판 공통 적용 */
 .board_wrap {
 	width: 1200px;
 	margin: 15px auto;
@@ -206,7 +211,7 @@ a {
 	
 }
 
-.board_category .all {
+.board_category .all, .movie {
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
     background-color: white;
@@ -219,7 +224,7 @@ a {
     transition-duration: 0.3s;
 }
 
-.board_category .sunny {
+.board_category .sunny, .america, .book {
     background-color: white;
     border: 2px solid #E2E2E8;
     display: flex;
@@ -228,7 +233,7 @@ a {
     box-shadow: 3px 3px 3px #E2E2E8;
 }
 
-.board_category .cloudy {
+.board_category .cloudy, .china, .canada, .australia, .japan, .europe {
     background-color: white;
     border: 2px solid #E2E2E8;
     display: flex;
@@ -237,7 +242,7 @@ a {
     box-shadow: 3px 3px 3px #E2E2E8;
 }
 
-.board_category .rain {
+.board_category .rain, .etc, .music {
     border-top-right-radius: 7px;
     border-bottom-right-radius: 7px;
     background-color: white;
@@ -256,12 +261,7 @@ a {
 	width: 30px;
 	height: 30px;
 }
-
-.board_category a:active {
-	box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
-	position: relative;
-	top: 2px;
-}
+ /* 게시판 카테고리 */
 
 /* 페이징 */
 .pagination {
@@ -317,18 +317,20 @@ a {
 	border: 1px solid white;
 }
 
-.box, .box2{
+
+/* 게시판 글쓰기, 유저검색 아이콘 */
+.list_bt_wrap {
+	display: flex;
+	margin: 10px -30px;
+}
+
+.list_search_box, .list_create_box {
 	margin: 0; 
     padding: 0;
     position: relative;
-
 }
 
-#ab {
-	color: black;
-}
-
-.input, .create2 {
+.list_search_icon, .list_create_icon {
     padding: 10px;
     width: 50px;
     height: 50px;
@@ -343,31 +345,48 @@ a {
     transition: .5s;
 }
 
-.box2 {
+#list_search_text {
+	color: black;
+}
+
+.list_create_box {
 	text-align: center;
 	display: flex;
 	justify-content:center;
 	margin-left: 5px;
 }
 
-.box:hover input{
-    width: 350px;
-    background: #FFF;
-    border-radius: 10px;
+.list_create_box:hover .list_create_icon {
+	background-color: #FEECE1;
+	cursor: pointer;
 }
-.box i{
+
+.list_create_box i {
+	font-size: 25px;
+}
+
+.list_search_box i {
     position: absolute;
-    top: 50%;
+    top: 42%;
     right: 0;
     transform: translate(-50%,-50%);
     font-size: 26px;
     color: #E2E2E8;
     transition: .2s;
 }
-.box:hover i{
+
+.list_search_box:hover input {
+    width: 350px;
+    background: #FFF;
+    border-radius: 10px;
+}
+
+.list_search_box:hover i {
     opacity: 0;
     z-index: -1;
-}
+} /* 게시판 글쓰기, 유저검색 아이콘 */
+
+
 
 /* 게시판 관리자 글 */
 .ad {
@@ -375,19 +394,128 @@ a {
 	font-weight: bold;
 }
 
-/* create 콤보상자 */
-.select {
-	margin-bottom : 50px;
+/* 게시글 create(weather, info) */
+.board_wrap_create {
+	width: 1200px;
+	margin: 50px auto;
+	border-radius: 4px;
+	padding-top: 20px;
+	padding-bottom: 60px;
+	border : 2px solid #E2E2E8;
+	background-color: white;
+} /* 게시글 작성(weather, info) */
+
+.create_title {
+	font-size: 1.6rem;
+	margin-top: 30px;
+	margin-bottom: 20px;
 }
 
-.select1 {
-	width : 30%;
+.create_title2 {
+	font-size: 1.6rem;
+	margin-top: 10px;
+}
+
+.create_movie {
+	font-size: 1.6rem;
+	margin-top: 20px;
+}
+
+.create_title #title_input, .create_title2 #title_input {
+	border-radius: 4px;
+	border: 1px solid #E2E2E8;
+	width: 550px;
+	height: 40px;
+	padding-left: 17px;
+}
+
+.create_movie #movie_input {
+	border-radius: 4px;
+	border: 1px solid #E2E2E8;
+	width: 300px;
+	height: 40px;
+	padding-left: 17px;
+}
+
+.board_write .create_title dt, input, .create_movie dt, input, .create_title2 dt, input {
+	margin-left: 50px;
 	margin-bottom: 10px;
 }
 
-.select2 {
-	width : 20%;
+.create_title2:before {
+	content: "";
+  	display: block;
+  	width: 1100px;
+  	border-top: 1px solid #E2E2E8;
+  	margin-left: 50px;
+  	margin-bottom: 30px;
 }
+
+.select {
+	width: 100%;
+	margin-bottom : 30px;
+}
+
+.select1:before {
+	content: "";
+  	display: block;
+  	width: 1100px;
+  	border-top: 1px solid #E2E2E8;
+  	margin-bottom: 30px;
+}
+
+.select1, .select2, .recommend_select1, .recommend_select2 {
+	font-size: 1.6rem;
+	margin-top: 10px;
+	margin-left: 50px;
+	width: 230px;
+}
+
+.select2, .recommend_select2 {
+	font-size: 1.6rem;
+	margin-top: 25px;
+	margin-left: 50px;
+	width: 230px;
+}
+
+#p_create {
+	font-size: 3rem;
+	padding-left: 50px;
+	margin-top: 20px;
+}
+
+.form-control {
+	border: 1px solid #E2E2E8;
+	height: 40px;
+}
+
+.board_content {
+	margin-left: 50px;
+	margin-top: 10px;
+}
+
+.bt_wrap_create {
+	margin-top: 30px;
+	margin-left: 543px;
+	width: 100%;
+}
+
+.bt_wrap_create button {
+	background: #F2F4F9;
+	color: BLACK;
+}
+
+.bt_wrap_create button:hover {
+	background: #FEECE1;
+	color: white;
+	
+}
+
+.create_bt_wrap_create button:active {
+	border: 1px solid white;
+}
+/* create end*/
+
 
 
 
@@ -395,8 +523,6 @@ a {
 /* 
 (최욱진) 임의로 추가한 CSS
 */
-
-
 .container__trigger {
 
 	align-items: center;
@@ -440,18 +566,6 @@ a {
 	cursor : pointer;
 }
 
-/* create  */
-.title {
-	font-size: 1.8rem;
-}
-
-.title #title_input {
-	border-radius: 5px;
-	border: 2px solid gray;
-	width: 350px;
-	height: 40px;
-}
-
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
     color: #fff;
@@ -459,3 +573,68 @@ a {
     background-color: #FEECE1;
     border-color: #E2E2E8;
 }
+
+/* 게시글 수정 */
+#update_title_dl {
+	display: inline-block;
+	
+}
+
+#update_title_dl:before {
+	content: "";
+  	display: block;
+  	width: 1100px;
+  	border-top: 1px solid #E2E2E8;
+  	margin-left: 50px;
+}
+
+#update_title_dt {
+	margin-top: 35px;
+	margin-left: 50px;
+}
+
+#update_title_dd {
+	margin-top: 10px;
+}
+
+.title_div input {
+	border-radius: 4px;
+	border: 1px solid #E2E2E8;
+	width: 550px;
+	height: 40px;
+	padding-left: 17px;
+}
+
+/* recommend_list */
+.top_poster, .top_view_cnt, .top_like_cnt {
+	width: 10%;
+}
+
+.top_description, .top_date, .top_username {
+	width: 15%;
+}
+
+.top_title {
+	width: 25%;
+}
+
+.recommend_body {
+	font-size: 1.4rem;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

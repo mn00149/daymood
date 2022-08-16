@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="read" parameterType="int"
 		resultType="com.study.board.BoardDTO">
 		select board_no, username, title, content, view_cnt, user_no,
-		like_cnt, create_date
+		like_cnt, create_date, weather_category, info_category, recommend_category
 		from Board
 		where board_no = #{board_no}
 	</select>
@@ -34,29 +34,69 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where board_no = #{board_no}
 	</update>
 
-	<!-- 리스트 페이지에서 검색어 입력 시 페이징 -->
-	<select id="total" parameterType="Map" resultType="int">
+	<!-- weather_list 페이지에서 검색어 입력 시 페이징 -->
+	<select id="weather_all_total" parameterType="Map" resultType="int">
 		select count(*) from board
-		<where>
-			<if test="word != ''">
-				username like concat('%', #{word}, '%')
-			</if>
-		</where>
+		where weather_category is not null
+		
+		<if test="word != ''">
+			and username like concat('%', #{word}, '%')
+		</if>
+	</select>
+	
+	<!-- info_list 페이지에서 검색어 입력 시 페이징 -->
+	<select id="info_all_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where info_category is not null
+
+		<if test="word != ''">
+			and username like concat('%', #{word}, '%')
+		</if>
+
+	</select>
+	
+	<!-- recommend_list 페이지에서 검색어 입력 시 페이징 -->
+	<select id="recommend_all_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where recommend_category is not null
+		
+		<if test="word != ''">
+			and username like concat('%', #{word}, '%')
+		</if>
 	</select>
 	
 	<!-- 카테고리에서 페이징 시 필요(전체 페이지에 영향) -->
 	<select id="weather_total" parameterType="Map" resultType="int">
 		select count(*) from board
 		where weather_category = #{weather}
-		
-		<choose>
-			<when test="weather_category != null">
-				where weather_category = #{weather}
-			</when>
-			<when test="word != ''">
+
+			<if test="word != ''">
 				and username like concat('%', #{word}, '%')
-			</when>
-		</choose>
+			</if>
+
+		
+	</select>
+	
+	<!-- 카테고리에서 페이징 시 필요(전체 페이지에 영향) -->
+	<select id="info_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where info_category = #{info}
+
+			<if test="word != ''">
+				and username like concat('%', #{word}, '%')
+			</if>
+
+		
+	</select>
+	
+	<!-- 카테고리에서 페이징 시 필요(전체 페이지에 영향) -->
+	<select id="recommend_total" parameterType="Map" resultType="int">
+		select count(*) from board
+		where recommend_category = #{recommend}
+			
+			<if test="word != ''">
+				and username like concat('%', #{word}, '%')
+			</if>
 		
 	</select>
 	
@@ -135,12 +175,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
 		from board b inner join user u
 		on b.user_no = u.user_no and b.weather_category = '맑음'
+		where u.role = 'ROLE_USER'
 
-		<where>
 			<if test="word != ''">
-				u.username like concat('%', #{word}, '%')
+				and u.username like concat('%', #{word}, '%')
 			</if>
-		</where>
 
 		order by field(role, 'ROLE_ADMIN', 'ROLE_USER'), create_date desc
 		limit #{sno}, #{eno}
@@ -166,8 +205,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="list_cloudy" parameterType="Map" resultMap="boardlist_cloudy">
 		select b.weather_category, b.title, u.username, b.create_date,
 		b.view_cnt, b.like_cnt, b.board_no, u.role, u.user_no
-		from board b inner join user
-		u
+		from board b inner join user u
 		on b.user_no = u.user_no and b.weather_category = '흐림'
 
 		<where>
@@ -200,8 +238,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="list_rainy" parameterType="Map" resultMap="boardlist_rainy">
 		select b.weather_category, b.title, u.username, b.create_date,
 		b.view_cnt, b.like_cnt, b.board_no, u.role , u.user_no
-		from board b inner join user
-		u
+		from board b inner join user u
 		on b.user_no = u.user_no and b.weather_category = '비'
 
 		<where>
