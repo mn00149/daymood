@@ -1,4 +1,9 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+	font-family: 'Jua', sans-serif;
+}
 
 img{
 	/*글쓴이의 프로필 사진을 둥글게*/
@@ -10,7 +15,6 @@ img{
 }
 
 p{
-	font-family: 'Noto Sans KR' , sans-serif;
 	font-size: 20px;
 }
 
@@ -64,7 +68,6 @@ img{
 	color: #5fcf80;
 	font-size: 30px;
 	margin: auto;
-	font-family: 'Nanum Pen Script' , cursive;
 }
 .srch_bar input{
 	border:1px solid #cdcdcd;
@@ -72,7 +75,6 @@ img{
 	width:80%;
 	padding:2px 0 4px 6px;
 	background:none;
-	font-family: 'Nanum Pen Script' , cursive;
 	font-size: 25px;
 }
 .srch_bar .input-group-addon button{
@@ -89,7 +91,6 @@ img{
 	font-size:20px;
 	color: #464646;
 	margin: 0 0 8px 0;
-	font-family: 'Nanum Pen Script', cursive;
 }
 .chat_ib h5 span{
 	font-size:17px;
@@ -138,7 +139,6 @@ img{
 	display: inline-block;
 }
 .sendname{
-	font-family: 'Nanum Pen Script' , cursive;
 	font-size : 25px;
 	margin : 12px;
 	padding : 5px;
@@ -157,7 +157,6 @@ img{
 	margin: 0;
 	padding: 10px 10px 10px 12px;
 	width: 100%;
-	font-family: 'Noto Sans KR', sans-serif;
 }
 .time_date{
 	color: #747474;
@@ -181,7 +180,6 @@ img{
 	color: #fff;
 	padding: 10px 10px 10px 12px;
 	width:100%;
-	font-family: 'Noto Sans KR' , sans-serif;
 }
 .outgoing_msg{
 	overflow:hidden;
@@ -190,7 +188,6 @@ img{
 .sent_msg{
 	float: right;
 	width: 46%;
-	font-family: 'Noto Sans KR' , sans-serif;
 }
 .input_msg_write textarea{
 	background: rgba(0,0,0,0) none repeat scroll 0 0;

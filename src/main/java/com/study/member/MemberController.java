@@ -177,7 +177,7 @@ public class MemberController {
 
 		List<BoardDTO> plist = service.plist(map);
 
-		String paging = Utility.spaging(ptotal, nowPage, recordPerPage, col, word, url);
+		String paging = Utility.slpaging(ptotal, nowPage, recordPerPage, col, word, url);
 		// log.info("pList : " + plist);
 		// request에 Model사용 결과 담는다
 		request.setAttribute("plist", plist);
@@ -231,7 +231,7 @@ public class MemberController {
 
 		List<scrapDTO> scraplist = service.scraplist(map);
 
-		String paging = Utility.spaging(stotal, nowPage, recordPerPage, col, word, url);
+		String paging = Utility.slpaging(stotal, nowPage, recordPerPage, col, word, url);
 		// log.info("scraplist : " + scraplist);
 		// request에 Model사용 결과 담는다
 		request.setAttribute("scraplist", scraplist);
@@ -453,7 +453,7 @@ public class MemberController {
 
 		List<BoardDTO> plist = service.plist(map);
 
-		String paging = Utility.spaging(ptotal, nowPage, recordPerPage, col, word, url);
+		String paging = Utility.slpaging(ptotal, nowPage, recordPerPage, col, word, url);
 		// log.info("pList : " + plist);
 		// request에 Model사용 결과 담는다
 		request.setAttribute("plist", plist);
@@ -500,7 +500,7 @@ public class MemberController {
 
 		List<ReplyDTO> replylist = service.replylist(map);
 
-		String paging = Utility.spaging(ctotal, nowPage, recordPerPage, col, word, url);
+		String paging = Utility.slpaging(ctotal, nowPage, recordPerPage, col, word, url);
 		//log.info("replyList : " + replylist);
 		// request에 Model사용 결과 담는다
 		request.setAttribute("replylist", replylist);

@@ -43,6 +43,9 @@ let noBtn = document.querySelector('.no-btn');
 let popupBox = document.querySelector('.popup-overlay');
 let userid = document.getElementById('userid');
 
+let sBtn = document.querySelector(".btn-open-popup")
+/*let sendok = document.getElementById('msg_submit');
+let sendno = document.getElementById('modal_close');*/
 let sendBtn = document.querySelector(".send-btn");
 let letterBox = document.querySelector('.popup-overlay-letter');
 
@@ -64,6 +67,11 @@ okbtn.addEventListener('click', () => {
 noBtn.addEventListener('click', () => {
 	popupBox.classList.remove('active2')
 })
+
+sBtn.addEventListener('click', () => {
+	profile.classList.add('container__menu--hidden');
+})
+
 
 $(document).mouseup(function(e) {
 

@@ -21,6 +21,12 @@
 	}
 	
 </script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+* {
+	font-family: 'Jua', sans-serif;
+}
+</style>
 </head>
 <body>
     <div id="ch-chatbot">

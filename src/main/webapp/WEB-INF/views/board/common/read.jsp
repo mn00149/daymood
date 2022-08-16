@@ -30,7 +30,6 @@
     const word2 = '${word}';
     const col2 = '${col}';
     const nowPage2 = '{nowPage}';
-
     function updateLike2(){ 
 
          $.ajax({
@@ -70,6 +69,7 @@ body {
 </style>
 </head>
 <body>
+
 <div class="board_wrap">
 
 
@@ -80,7 +80,6 @@ body {
 <div class="board_view">
 
 <input type='hidden' name='board_no' id='board_no' value="${dto.board_no}">
-
 <div class="title_info">
 <div class="title">
 <p id="list_title_category">[Mood] [Sun]</p>

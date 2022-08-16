@@ -85,6 +85,7 @@ font-family: 'Jua', sans-serif;
 
 #menu>ul>li {
 	padding-left: 5em;
+	
 }
 
 #menu>li>a, #login>a {
@@ -96,6 +97,10 @@ font-family: 'Jua', sans-serif;
 #menu>li>a:hover {
 	transition: color 0.3s;
 	color: #18AFE3;
+}
+
+#menu > li > a {
+	font-size : 1.4em;
 }
 
 #login>a {
@@ -150,7 +155,6 @@ a {
 				<li><a href="/board/weather_list">Mood</a></li>
 				<li><a href="/board/info_list">Info</a></li>
 				<li><a href="/board/recommend_list">Recommend</a></li>
-				<li><a href="#">Live Chat</a></li>
 			</ul>
 
 			<sec:authorize access="isAnonymous()">

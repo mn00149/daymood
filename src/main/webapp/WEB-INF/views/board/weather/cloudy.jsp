@@ -6,35 +6,36 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/boardProfile.css">
-    <link rel="stylesheet" href="/css/board_style.css">
-    <link rel="stylesheet" href="/video/sunny.mp4">
-    <link rel="stylesheet" href="/css/letter_modal.css">
-    <script src="https://kit.fontawesome.com/6a80a39212.js" crossorigin="anonymous"></script>
-    
-    <script type="text/javascript" src="/js/boardProfile.js" defer></script>
-    <style>
-    .video {
-        width: 1200px;
-        height: 100%;
-        content: "";
-        background: url("/video/fog.mp4");
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        opacity: 0.5;
-        }
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/boardProfile.css">
+<link rel="stylesheet" href="/css/board_style.css">
+<link rel="stylesheet" href="/video/sunny.mp4">
+<link rel="stylesheet" href="/css/letter_modal.css">
+<script src="https://kit.fontawesome.com/6a80a39212.js"
+	crossorigin="anonymous"></script>
 
-    .board_wrap, .reply_wrap {
-        background-color: rgb(250,248,231);
-        }
-   
-	.board_wrap .board_list .board_body {
-		font-size: 15px;
-	}
-	 </style>
+<script type="text/javascript" src="/js/boardProfile.js" defer></script>
+<style>
+.video {
+	width: 1200px;
+	height: 100%;
+	content: "";
+	background: url("/video/fog.mp4");
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	opacity: 0.5;
+}
+
+.board_wrap, .reply_wrap {
+	background-color: rgb(250, 248, 231);
+}
+
+.board_wrap .board_list .board_body {
+	font-size: 15px;
+}
+</style>
 </script>
 </head>
 <body>
@@ -46,34 +47,37 @@
 	</div>
 	<!-- 친구 요청 팝업 -->
 	<div class="popup-overlay">
-	            <div class="popup-box-container">
-	                <div class="check-container">
-	                    <i class="fa-solid fa-handshake"></i>
-	                </div>
-	                <div class="popup-message-container">
-	                    <h1 id="userid"></h1>
-	                    <p>친구 추가 하시겠습니까?</p>
-	                </div>
-	                <button class="ok-btn">
-	                    <span>확인</span>
-	                </button>
-	                <button class="no-btn">
-	                    <span>취소</span>
-	                </button>
-	            </div>
+		<div class="popup-box-container">
+			<div class="check-container">
+				<i class="fa-solid fa-handshake"></i>
+			</div>
+			<div class="popup-message-container">
+				<h1 id="userid"></h1>
+				<p>친구 추가 하시겠습니까?</p>
+			</div>
+			<button class="ok-btn">
+				<span>확인</span>
+			</button>
+			<button class="no-btn">
+				<span>취소</span>
+			</button>
+		</div>
 	</div>
 	<!-- 클릭 시 친구 요청 등 메뉴 뜸 -->
-<ul id="profile" class="container__menu container__menu--hidden">
-                <li class="container__item"><span class="req-btn">친구요청</span></li>
-                <li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
-<li class="container__item"><span class="btn-open-popup" data-backdrop="static">쪽지 보내기</span></li></ul>
+	<ul id="profile" class="container__menu container__menu--hidden">
+		<li class="container__item"><span class="req-btn">친구요청</span></li>
+		<li class="container__item"><a href="javascript:posted()"
+			style="text-decoration: none">작성 글 보기</a></li>
+		<li class="container__item"><span class="btn-open-popup"
+			data-backdrop="static">쪽지 보내기</span></li>
+	</ul>
 
 	<!-- 쪽지보내기 모달 -->
 	<c:forEach var="tmp" items="${list}">
-	   <form class="modal" action="/letter_send_profile" method="post">
-        <div class="modal_body" >
-          <div class="modal_title">쪽지 보내기</div>
-       <!--    <div class="profile_area">
+		<form class="modal" action="/letter_send_profile" method="post">
+			<div class="modal_body">
+				<div class="modal_title">쪽지 보내기</div>
+				<!--    <div class="profile_area">
              <div class="receiver">
                   <span class="recvname" value="${tmp.ldto.recv_name }">to.</span>
             </div>
@@ -81,21 +85,22 @@
                 <span class="sendname" value="${tmp.ldto.other_name }"></span>
             </div> 
           </div> -->
-          <textarea class="let content" id="content" name="content" placeholder="내용"></textarea>
-          <div class="bt_duo">
-          <button  type="button" class="mes mes_send" id="msg_submit" >전송</button>
-          <button  type="button" class="mes mes_close" id="modal_close">취소</button>
-          </div>
-        </div>
-        </form>
-       </c:forEach>
-       
-    <div class="video">
-        <video muted autoplay loop>
-            <source src="/video/fog.mp4" type="video/mp4">
-            <strong>Your browser does not support the video tag.</strong>
-        </video>
-    </div>
+				<textarea class="let content" id="content" name="content"
+					placeholder="내용"></textarea>
+				<div class="bt_duo">
+					<button type="button" class="mes mes_send" id="msg_submit">전송</button>
+					<button type="button" class="mes mes_close" id="modal_close">취소</button>
+				</div>
+			</div>
+		</form>
+	</c:forEach>
+
+	<div class="video">
+		<video muted autoplay loop>
+			<source src="/video/fog.mp4" type="video/mp4">
+			<strong>Your browser does not support the video tag.</strong>
+		</video>
+	</div>
 
 	<div class="board_category">
 		<div class="all">
@@ -115,18 +120,24 @@
 		</div>
 	</div>
 
-    <div class="board_wrap">
-        <div class="board_list_wrap">
-            <div class="board_list">
-                <div class="top">
-                    <div class="category"><i class="fa-solid fa-ellipsis"></i></div>
-                    <div class="title">제목</div>
-                    <div class="username">글쓴이</div>
-                    <div class="date">작성일</div>
-                    <div class="view_cnt"><i class="fa-regular fa-eye"></i></div>
-                    <div class="like_cnt"><i class="fa-solid fa-heart"></i></div>
-                </div> 
-               
+	<div class="board_wrap">
+		<div class="board_list_wrap">
+			<div class="board_list">
+				<div class="top">
+					<div class="category">
+						<i class="fa-solid fa-ellipsis"></i>
+					</div>
+					<div class="title">제목</div>
+					<div class="username">글쓴이</div>
+					<div class="date">작성일</div>
+					<div class="view_cnt">
+						<i class="fa-regular fa-eye"></i>
+					</div>
+					<div class="like_cnt">
+						<i class="fa-solid fa-heart"></i>
+					</div>
+				</div>
+
 				<%-- top --%>
 				<tbody>
 					<c:choose>
@@ -141,7 +152,8 @@
 						<%-- 게시판에 글이 있으면 --%>
 						<c:otherwise>
 							<c:forEach var="dto" items="${list}" varStatus="statusList">
-								<div class="body">
+								<div class="body" onclick="read(${dto.board_no})"
+									style="cursor: pointer">
 
 									<c:choose>
 										<%-- role == '회원' --%>
@@ -164,16 +176,21 @@
 											<%-- category end --%>
 
 											<div class="title">
-												<a href="javascript:read('${dto.board_no}')">${dto.title }
-													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
-														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
-														test="${rcount>0 }">
-														<span class="badge">${rcount}</span>
-													</c:if> <%-- 댓글 갯수 보이기 끝 --%>
-												</a>
+												${dto.title }
+												<%-- 댓글 갯수 보이기 시작 --%>
+												<c:set var="rcount"
+													value="${util:rcount(dto.board_no,rservice) }" />
+												<c:if test="${rcount>0 }">
+													<span class="badge">${rcount}</span>
+												</c:if>
+												<%-- 댓글 갯수 보이기 끝 --%>
+
 											</div>
 
-											<div class="username">${dto.udto.username }</div>
+											<div class="username" onclick="event.stopPropagation()">
+												<a class="username2" style="text-decoration: none"
+													data-value="${dto.udto.user_no }">${dto.udto.username }</a>
+											</div>
 
 											<c:forEach var="calc_date" items="${msg2[statusList.index]}"
 												varStatus="statusMsg">

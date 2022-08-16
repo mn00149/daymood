@@ -128,19 +128,20 @@ $(".chat").on("click", "li", function (e) {
  
  
   let reply_no = $(this).data("reply_no");
-  indent = reply_no;
    get(reply_no)
     .then(reply => {
  
       modalInputContent.val(reply.content);
       modal.data("reply_no", reply.reply_no);
+      modal.data("indent", reply.indent);
       modal.find("button[username !='modalCloseBtn']").hide();
-	
 	// 로그인을 했다면 답글쓰기 버튼이 보인다
-	if(username != null || username != ""){
+	if(reply.indent == 0 && username2){
     modalRecommentBtn.show();
 	}  
-	
+	else if(reply.indent > 0) {
+		modalRecommentBtn.hide();
+	}
 	// 로그인 한 사람이 댓글을 쓴 사람이라면 수정/삭제 버튼이 보인다.
  	if(user_no==reply.user_no){
 	modalModBtn.show();
