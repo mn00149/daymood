@@ -48,7 +48,7 @@
 
 .req-btn:hover{
     opacity: 0.6;
-    color:#FFFFFF;
+    color:#958CC3;
 }
 
 

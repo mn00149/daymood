@@ -1,6 +1,10 @@
 .req-btn:hover{
     opacity: 0.6;
     color: #958CC3 ;
+<<<<<<< HEAD
+=======
+   /*  background-color:#958CC3; */
+>>>>>>> 85561e70dfe94c5fac18b0e0d1f405e710cc26f8
 }
 .btn-open-popup:hover{
     opacity: 0.6;

@@ -141,7 +141,7 @@ body {
 						</div>
 						<div class="info">
 							<dl class="dl">
-								<dt>${dto.username }</dt>
+								<dt><img class="userimage" src="${dto.user_image}">${dto.username }</dt>
 							</dl>
 							<dl class="dl">
 								<dt>작성일</dt>
@@ -175,17 +175,17 @@ body {
 					<c:choose>
 						<%-- 글쓴이(dto.username)와 로그인 된 닉네임(session_username) 일치 시 수정 및 삭제 가능 --%>
 						<c:when test="${dto.username eq session_username }">
+							<button class="btn" style="float:right">삭제</button>
+							<button type="button" class="btn" onclick="update2()" style="float:right">수정</button>
 							<button type="button" class="btn" onclick="history.back()">목록</button>
-							<button type="button" class="btn" onclick="update2()">수정</button>
-							<button class="btn">삭제</button>
 						</c:when>
 						<c:otherwise>
 							<%-- 본인 게시글에는 좋아요 불가능 --%>
-							<button type="button" class="btn" onclick="history.back()">목록</button>
-							<button type="button" class="btn" id="like_btn"
-								onclick="updateLike2()">좋아요 &nbsp;${dto.like_cnt }</button>
 							<button type="button" class="btn"
-								onclick="scrap(${dto.board_no})">스크랩</button>
+								onclick="scrap(${dto.board_no})" style="float:right">스크랩</button>
+							<button type="button" class="btn" id="like_btn"
+								onclick="updateLike2()" style="float:right">좋아요 &nbsp;${dto.like_cnt }</button>
+							<button type="button" class="btn" onclick="history.back()">목록</button>
 						</c:otherwise>
 					</c:choose>
 				</div>

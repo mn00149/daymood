@@ -315,21 +315,32 @@ a:hover{
 }
 
 
+.read_bt_wrap {
+	text-align: center;
+    content: "";
+    display: block;
+    width: 1100px;
+    border-top: 1px solid #E2E2E8;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-left: 70px;
+}
 
-.read_bt_wrap:before {
+
+/* .read_bt_wrap:before {
   	content: "";
   	display: block;
   	width: 1100px;
   	border-top: 1px solid #E2E2E8;
   	margin: 0 auto;
   	padding-top: 10px;
-}
+} */
 
 
 .read_bt_wrap button {
 	background: #F2F4F9;
 	color: BLACK;
-	float:right;
+    display: inline-block;
 }
 
 
@@ -661,7 +672,9 @@ a:hover{
 	text-align: center;
 }
 
-
+.userimage {
+	width : auto;
+}
 
 
 
