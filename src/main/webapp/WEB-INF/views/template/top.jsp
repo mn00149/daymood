@@ -33,14 +33,36 @@
 body {
 	margin: 0;
 	padding: 0;
-	font-size: 14px;
+	font-size: 16px;
 	height: 100%;
 	color: #28313b;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	font-family: 'Jua', sans-serif;
 }
+/* XLarge */
 
+	@media screen and (max-width: 1680px) {
+
+		/* Basic */
+
+			body, input, select, textarea {
+				font-size: 12pt;
+			}
+
+	}
+
+/* Large */
+
+	@media screen and (max-width: 1280px) {
+
+		/* Basic */
+
+			body, input, select, textarea {
+				font-size: 11pt;
+			}
+
+	}
 .container {
 	width: 1400px;
 	margin: 0 auto;
@@ -125,6 +147,7 @@ font-family: 'Jua', sans-serif;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+	margin: 5px 10px 0 10px;
 }
 
 .logo {
@@ -142,7 +165,45 @@ a {
 	text-decoration: none;
 	color: none;
 }
+/* Container */
 
+	.container {
+		margin: 0 auto;
+		max-width: 100%;
+		width: 1400px;
+	}
+
+		@media screen and (max-width: 1680px) {
+
+			.container {
+				width: 1200px;
+			}
+
+		}
+
+		@media screen and (max-width: 1280px) {
+
+			.container {
+				width: 960px;
+			}
+
+		}
+
+		@media screen and (max-width: 980px) {
+
+			.container {
+				width: 90%;
+			}
+
+		}
+
+		@media screen and (max-width: 736px) {
+
+			.container {
+				width: 100%;
+			}
+
+		}
 </style>
 
 </head>
