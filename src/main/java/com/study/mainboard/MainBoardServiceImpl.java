@@ -20,13 +20,20 @@ public class MainBoardServiceImpl implements MainBoardService {
   }
 
   @Override
-  public int total(Map map) {
-    return mapper.total(map);
+  public List<BoardDTO> new_list(Map map) {
+    return mapper.new_list(map);
   }
 
   @Override
-  public List<BoardDTO> new_list(Map map) {
-    return mapper.new_list(map);
+  public List<BoardDTO> book_list(Map map) {
+    // TODO Auto-generated method stub
+    return mapper.book_list(map);
+  }
+
+  @Override
+  public List<BoardDTO> movie_list(Map map) {
+    // TODO Auto-generated method stub
+    return mapper.movie_list(map);
   }
 
 

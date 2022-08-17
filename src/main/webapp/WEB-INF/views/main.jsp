@@ -27,11 +27,6 @@
 		url += "&word=${word}";
 		location.href = url;
 	}
-	$("#popupletter").on("click",funtion({
-		alert("로그인")
-	})
-
-
 </script>
 </head>
 <body class="is-preload homepage">
@@ -49,7 +44,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner2">
 								<header class="innerheader">
-									<h2><a id="atag" href="#" style="text-decoration : none;">인기 게시글</a></h2>
+									<h2><a id="atag" style="text-decoration : none;">인기 게시글</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list}">
@@ -76,8 +71,8 @@
 							          </c:when>
 							
 							          <c:when test = "${dto.weather_category eq '비'}">
-							             <div class="img1">
-							             	<img class="img1" src="/images/rainy.png" alt="no image">
+							             <div class="img2">
+							             	<img class="img2" src="/images/rainy.png" alt="no image">
 							             </div>  
 							          </c:when>
 							          
@@ -121,18 +116,8 @@
 									  	<div class="img1">
 										 <img class="img1" src="/image/nation/etc.png" alt="no image">
 										</div>
-									  </c:when>
-								
-									  <c:when test="${dto.recommend_category eq '영화'}">
-										 <img class="img1" src="/image/recommend/video.png" alt="no image">
-									  </c:when>
-								
-									  <c:when test="${dto.recommend_category eq '도서'}">
-									  	<div class="img1">
-										 <img class="img1" src="/image/recommend/book.png" alt="no image">
-										</div>
-									  </c:when>
-								
+									  </c:when>						
+	
 									  <c:when test="${dto.recommend_category eq '음악'}">
 									  	<div class="img1">
 										 <img class="img1" src="/image/recommend/music.png" alt="no image">
@@ -158,7 +143,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner2">
 								<header class="innerheader">
-									<h2><a id="atag" href="/board/weather_list" style="text-decoration : none;">최근 게시글</a></h2>
+									<h2><a id="atag" style="text-decoration : none;">최근 게시글</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list}">
@@ -185,8 +170,8 @@
 							          </c:when>
 							
 							          <c:when test = "${dto.weather_category eq '비'}">
-							             <div class="img1">
-							             	<img class="img1" src="/images/rainy.png" alt="no image">
+							             <div class="img2">
+							             	<img class="img2" src="/images/rainy.png" alt="no image">
 							             </div>
 							          </c:when>
 							          
@@ -232,16 +217,6 @@
 										</div>
 									  </c:when>
 								
-									  <c:when test="${dto.recommend_category eq '영화'}">
-										 <img class="img1" src="/image/recommend/video.png" alt="no image">
-									  </c:when>
-								
-									  <c:when test="${dto.recommend_category eq '도서'}">
-									  	<div class="img1">
-										 <img class="img1" src="/image/recommend/book.png" alt="no image">
-										</div>
-									  </c:when>
-								
 									  <c:when test="${dto.recommend_category eq '음악'}">
 									  	<div class="img1">
 										 <img class="img1" src="/image/recommend/music.png" alt="no image">
@@ -260,40 +235,78 @@
 						</div>
 					</div><!-- box end -->
 				</div>
+				
+				
+				
+				
+				
 				<div class="col-4 col-12-medium">
 
 						<!-- Box -->
 						<div class="box feature">
 							<a href="#" class="featured"></a>
-							<div class="inner2">
+							<div class="inner3">
 								<header class="innerheader">
-									<h2><a id="atag" href="/board/weather_list" style="text-decoration : none;">영화</a></h2>
+									<h2><a id="atag" style="text-decoration : none;">도서</a></h2>
 								</header>
                 	<c:choose>
-						<c:when test="${empty movelist}">
+						<c:when test="${empty list3}">
 	 						<tr><td colspan='6'>등록된 글이 없습니다.</td></tr>
 						</c:when>
-
-
+					<c:otherwise>
+						<c:forEach var="dto" items="${list3 }" varStatus="statusList">
+							<ul class ="libox2">
+								<li class="title2">
+									<a href="board/read/${dto.board_no }" style="text-decoration : none;">
+								<div class="text_img_tool2">
+									<div class="img3">
+										<img src="${dto.recommend_img }" style="height: 120px; width: 90px;">
+									</div>
+									<div class="tit2">${dto.recommend_name }</div>
+								</div>
+								</a>
+								</li>
+							</ul>
+						</c:forEach>
+					</c:otherwise>
 					</c:choose>
 						</div>
 					</div><!-- box end -->
 				</div>
 				
+				
+				
+				
+				
 				<div class="col-4 col-12-medium">
+
 						<!-- Box -->
 						<div class="box feature">
 							<a href="#" class="featured"></a>
-							<div class="inner2">
+							<div class="inner3">
 								<header class="innerheader">
-									<h2><a id="atag" href="/board/weather_list" style="text-decoration : none;">도서</a></h2>
+									<h2><a id="atag" style="text-decoration : none;">영화</a></h2>
 								</header>
                 	<c:choose>
-						<c:when test="${empty booklist}">
+						<c:when test="${empty list4}">
 	 						<tr><td colspan='6'>등록된 글이 없습니다.</td></tr>
 						</c:when>
-
-
+					<c:otherwise>
+						<c:forEach var="dto" items="${list4 }" varStatus="statusList">
+							<ul class ="libox2">
+								<li class ="title2">
+									<a href="board/read/${dto.board_no }" style="text-decoration : none;">
+								<div class="text_img_tool2">
+								  <div class="img3">
+									<img src="${dto.recommend_img }" style="height: 120px; width: 90px;">
+								  </div>
+								  <div class="tit2">${dto.recommend_name }</div>
+								</div>
+								</a>
+								</li>
+							</ul>
+						</c:forEach>
+					</c:otherwise>
 					</c:choose>
 						</div>
 					</div><!-- box end -->
