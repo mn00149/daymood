@@ -26,7 +26,7 @@
                 <div class="inbox_people">
                     <div class="headind_srch">
                         <div class="recent_heading">
-                            <h4>MoodTalk</h4>
+                            <h4>&nbsp;</h4>
                         </div>
                         <!-- 쪽지 검색-->
                         <div class="srch_bar">

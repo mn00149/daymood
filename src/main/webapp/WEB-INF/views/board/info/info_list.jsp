@@ -196,9 +196,9 @@ body {
 														test="${rcount>0 }">
 														<span class="badge">${rcount}</span>
 													</c:if>
+													<%-- 댓글 갯수 보이기 끝 --%>
 												</a>
 											</div>
-											<%-- 댓글 갯수 보이기 끝 --%>
 
 											<!-- user_no를 받아오기 위해 data-value에 삽입, board_weather.xml 리스트 항목에 user_no 추가 -->
 											<div class="username">

@@ -137,7 +137,14 @@ body {
 												<%-- category end --%>
 
 												<div class="title">
-													<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
+													<a href="javascript:read('${dto.board_no}')">${dto.title }
+													<%-- 댓글 갯수 보이기 시작 --%> 
+													<c:set var="rcount" value="${util:rcount(dto.board_no,rservice) }" /> 
+													<c:if test="${rcount>0 }">
+													<span class="badge">${rcount}</span>
+													</c:if>
+													<%-- 댓글 갯수 보이기 끝 --%>
+													</a>
 												</div>
 
 												<div class="username"><a class="username2" style="text-decoration:none" data-value="${dto.udto.user_no }">${dto.udto.username }</a></div>

@@ -43,6 +43,10 @@ tr {
 #ch-chatbot *{
     font-family: inherit;
 }
+td:hover{
+	background-color:#FEECE1;
+	border-radius:10px;	
+}
 .chattool{
     position: relative;
     width: 418px;
@@ -148,7 +152,6 @@ tr {
 .Content-ch-front.maintool{
     display: none;
     margin: 0px 6px;
-    cursor: pointer;
     height: 450px;
     border-radius: 12px;
     transition: background-color 0.2s ease 0s;
@@ -156,7 +159,6 @@ tr {
 .Content-ch-front.imgtexttool{
     display: flex;
     margin: 5px 10px;
-    cursor: pointer;
     border-radius: 15px;
 
 }
@@ -218,6 +220,11 @@ tr {
     background : white;
 }
 
+.connect:hover{
+	background:#FEECE1;
+	color:#958CC3;
+
+	}
 .back{
     display: flex;
     -webkit-box-align: center;
