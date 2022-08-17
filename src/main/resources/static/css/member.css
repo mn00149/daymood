@@ -242,12 +242,21 @@ button {
 }
 
 td button:first-child {
-  background-color: #0298cf;
+  background-color: #F2F4F9;
+  border : 2px solid #E2E2E8;
+  color: black;
 }
 td button:last-child {
-  background-color: #f80000;
+  background-color: #F2F4F9;
+  border : 2px solid #E2E2E8;
+  color: black;
 }
 
+td button:hover{
+	color:#FEECE1;
+	background-color: #958CC3;
+	
+}
 input {
   padding: 10px 20px;
   margin: 0 10px;

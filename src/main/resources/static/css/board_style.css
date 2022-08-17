@@ -25,6 +25,11 @@ body {
 	
 }
 
+.fa-solid fa-handshake{
+	color:red;
+}
+
+
 a:hover {
 	color : #958CC3;
 }

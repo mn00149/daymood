@@ -28,23 +28,23 @@
   width: 320px;
   height: 430px;
 
-  border-radius: 20px 20px 0 0;
   text-align: center;
 
-  background-color: #2d2d2d;
-  border-radius: 10px;
-  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  background-color: #FFFFFF ;
+  border-radius: 25px;
+  border : 2px solid #E2E2E8;
 
   transform: translateX(-50%) translateY(-50%);
 }
 .modal_title{
-    background-color: #222;
+    background-color: #FEECE1;
     padding: 15px;
     margin: 0;
     display: block;
-    font-size: 20px;
-    color: #e9e9e9;
+    font-size: 25px;
+    color: black;
     border-radius: 20px 20px 0 0;
+    border : 2px solid #E2E2E8;
 }
 .profile_area{
     position: relative;
@@ -79,7 +79,7 @@
     margin-bottom: 10px;
     width: 70%;
     background-color: #222;
-    color: #e9e9e9;
+    color: black;
     height: 32px;
     line-height: 32px;
     font-size: 18px;
@@ -92,12 +92,12 @@
 
 }
 .let.content{
-    color: #e9e9e9;
+    color: black;
     height: 100px;
     width: 80%;
     line-height: 160%;
     padding: 5px 10px;
-    background-color: #222;
+    background-color: #fff;
     height: 60%;
     line-height: 32px;
     font-size: 18px;
@@ -110,12 +110,12 @@
     resize: none;
 }
 .mes_send{
-    background-color: #27c0c3;
+    background-color: #F2F4F9;
     color: #222;
 
 }
 .mes_close{
-    background-color: #c73927;
+    background-color: #F2F4F9;
     color: #222;
 }
 .mes{
@@ -124,11 +124,15 @@
     height: 42px;
     line-height: 42px;
     border-radius: 10px;
+    border : 2px solid #E2E2E8;
     position: relative;
     overflow: hidden;
     font-size: 14px;
     z-index: 1;
-    cursor: pointer;
+}
+.mes:hover{
+	background-color:#FEECE1;
+	color:#958CC3;
 }
 .mes::before{
     content: '';

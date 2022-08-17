@@ -9,11 +9,11 @@ iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
-u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+u, i, center, dl, dt, dd, ol, li, fieldset,
 form, label, legend, table, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
-footer, header, hgroup, menu, nav, output, ruby,
+footer, header, hgroup,  nav, output, ruby,
 section, summary, time, mark, audio, video {
 	/* margin: 0;
 	padding: 0; */
@@ -500,7 +500,7 @@ section, summary, time, mark, audio, video {
 				}
 					
 				.box.feature .inner3 {
-					padding: 0px 0px 40px 0px;
+					padding: 0px 0px 20px 0px;
 				}
 					
 				.box.feature .inner4 {
@@ -531,7 +531,6 @@ section, summary, time, mark, audio, video {
 			}
    			
 			.title{
-			padding: 8px 10px;
    	 		height: 30px;
    	 		/* border-bottom: 1px solid #e1e1e1; */
 			}
@@ -546,6 +545,13 @@ section, summary, time, mark, audio, video {
 			/* list-style:none; li 태그 점 */
 			margin-bottom: 10px;
 			}
+			
+			.libox2{
+			dlsplay: block;
+			margin: 10px 0 0 -35px;
+			list-style:none;
+			
+			}
 			li.title{
 			color:#968CC3;
 			}
@@ -556,7 +562,6 @@ section, summary, time, mark, audio, video {
 			}
 			
 			.img1{
-			margin: 5px 10px 0 3px;
 			width: 20px !important;
 			height: 20px !important;
 			}
@@ -568,12 +573,23 @@ section, summary, time, mark, audio, video {
 			}
 			
 			.img3{
-			margin: 30px 20px -60px 10px;
-			width: 90px !important;
-			height: 120px !important;
+			margin: 0px 20px -60px 10px;
+			width: 100px !important;
+			height: 185px !important;
 			}
 			
 			.text_img_tool{
+			max-width: 100%;
+    		text-overflow: ellipsis;
+    		white-space: nowrap;
+    		word-wrap: normal;
+    		width: auto;
+    		overflow: hidden;
+    		display: flex;
+    		margin-right: 5px;
+			}
+			
+			.text_img_tool2{
 			max-width: 100%;
     		text-overflow: ellipsis;
     		white-space: nowrap;
@@ -592,7 +608,9 @@ section, summary, time, mark, audio, video {
 
 			.tit2{
 			 color: #222222;
-    		font-size: 17px;}
+    		font-size: 19px;
+    		padding: 50px 0px 0px 10px;
+    		}
 
 			.tit:hover{
 			color:#958CC3;
