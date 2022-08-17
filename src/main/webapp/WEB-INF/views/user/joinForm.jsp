@@ -44,6 +44,7 @@
                   <option>미국</option>
                   <option>일본</option>
                   <option>중국</option>
+                  <option>캐나다</option>
                   <option>호주</option>
                   <option>유럽</option>
                 </select>

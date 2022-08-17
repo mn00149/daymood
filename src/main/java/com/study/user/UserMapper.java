@@ -17,4 +17,10 @@ public interface UserMapper {
   
   int updateUserPassword(UserDTO user);
 
+  int checkPassword(String username, String password);
+
+  int deleteUser(String username);
+
+  int updatePassword(UserDTO user);
+
 }
