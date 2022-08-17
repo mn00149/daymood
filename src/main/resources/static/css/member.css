@@ -20,9 +20,7 @@ a {
   color:black;
   text-decoration: none;
 }
-tr:hover{
-	background-color : #FEECE1;	
-}
+
 ul {
   list-style: none;
 }
@@ -288,11 +286,6 @@ thead th {
 }
 
 th,td {
-<<<<<<< HEAD
-  border-bottom: 1px solid #E2E2E8;
-=======
-  /* border-bottom: 1px solid #dddddd; */
->>>>>>> 532928f781822860b606be6a6ce4cb5eb94712b5
   padding: 10px 20px;
   word-break: break-all;
   text-align: center;
@@ -375,12 +368,21 @@ a:hover{
 
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
-    color: red;
+    color: #958CC3;
     cursor: default;
     background-color: #FEECE1;
     border-color: #E2E2E8;
 }
 
+.pagination>li>a, .pagination>li>span{
+	background-color:white;
+	color:black;
+	
+}
+.pagination>li>a:hover, .pagination>li>span:hover{
+	background-color: #FEECE1;
+	color:#958CC3;
+	}
 .tmenu{
   position: relative;
   width: 300px;
@@ -470,12 +472,8 @@ a:hover{
   width: 55px;
   height: 55px;
   background: #222327;
-<<<<<<< HEAD
   box-shadow: 0 0 0 6px #E2E2E8;
-=======
-  box-shadow: 0 0 0 6px #e2e2eb;
->>>>>>> 532928f781822860b606be6a6ce4cb5eb94712b5
-  border-radius: 50%;
+  border-radius: 100%;
   transition: 0.5s;
   opacity: 0;
 }

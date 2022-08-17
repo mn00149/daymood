@@ -26,7 +26,7 @@ body {
 }
 
 a:hover {
-	text-decoration-line: none;
+	color : #958CC3;
 }
 
 /* 게시판 공통 적용 */
@@ -82,6 +82,13 @@ a:hover {
 .board_list .title {
 	width: 40%;
 	text-align: center;
+}
+
+.board_list .title:hover{
+	color:#958CC3;
+}
+a:hover{
+	color:#958CC3;
 }
 
 .board_list .top .title {
@@ -299,8 +306,9 @@ a:hover {
 }
 
 .read_bt_wrap button:first-child {
-	margin-left:50px;
+	margin-left:0px;
 }
+
 
 
 .read_bt_wrap:before {
@@ -312,15 +320,17 @@ a:hover {
   	padding-top: 10px;
 }
 
+
 .read_bt_wrap button {
 	background: #F2F4F9;
 	color: BLACK;
+	float:right;
 }
 
 
 .read_bt_wrap button:hover {
 	background: #FEECE1;
-	color: white;
+	color: #958CC3;
 	
 }
 
@@ -519,7 +529,7 @@ a:hover {
 
 .bt_wrap_create button:hover {
 	background: #FEECE1;
-	color: white;
+	color: #958CC3;
 	
 }
 
@@ -578,13 +588,7 @@ a:hover {
 	cursor : pointer;
 }
 
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-    z-index: 3;
-    color: #fff;
-    cursor: default;
-    background-color: #FEECE1;
-    border-color: #E2E2E8;
-}
+
 
 /* 게시글 수정 */
 #update_title_dl {
@@ -592,6 +596,23 @@ a:hover {
 	
 }
 
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #958CC3;
+    cursor: default;
+    background-color: #FEECE1;
+    border-color: #E2E2E8;
+}
+
+.pagination>li>a, .pagination>li>span{
+	background-color:white;
+	color:black;
+	
+}
+.pagination>li>a:hover, .pagination>li>span:hover{
+	background-color: #FEECE1;
+	color:#958CC3;
+	}
 #update_title_dl:before {
 	content: "";
   	display: block;

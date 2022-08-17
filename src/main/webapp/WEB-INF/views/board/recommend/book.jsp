@@ -101,8 +101,8 @@ body {
 		<div class="board_list_wrap">
 			<div class="board_list">
 				<div class="top">
-					<div class="top_poster">포스터</div>
-					<div class="top_description">책</div>
+					<div class="top_poster">표지</div>
+					<div class="top_description">도서</div>
 					<div class="top_title">제목</div>
 					<div class="top_username">글쓴이</div>
 					<div class="top_date">작성일</div>

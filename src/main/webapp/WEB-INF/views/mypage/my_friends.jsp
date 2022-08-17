@@ -44,7 +44,7 @@
 								<c:when test="${not empty list}">
 									<c:forEach var="dto" items="${list}">
 										<tr>
-											<td><img src="/images/daymood.png" /></td>
+											<td><img src="/images/avatar.png" /></td>
 											<td>${dto.friendname}</td>
 											<td>${dto.nation }</td>
 											<td>${dto.email}</td>

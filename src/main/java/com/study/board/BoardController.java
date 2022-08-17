@@ -88,7 +88,7 @@ public class BoardController {
 
     if (cnt != 1)
       return "error";
-    return "/";
+    return "redirect:weather_list";
   }
 
   // read start

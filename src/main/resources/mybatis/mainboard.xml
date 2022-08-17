@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.study.mainboard.MainBoardMapper">
 
 	<select id="hot_list" resultType="com.study.board.BoardDTO">
-		select b.weather_category, b.title, b.create_date,
+		select b.weather_category, b.title, b.create_date, b.info_category,
 		b.view_cnt, b.like_cnt, b.board_no, u.role , u.username
 		from board b 
 		join user u
@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="new_list" resultType="com.study.board.BoardDTO">
-		select b.weather_category, b.title, b.create_date,
+		select b.weather_category, b.title, b.create_date,b.info_category,
 		b.view_cnt, b.like_cnt, b.board_no, u.role , u.username
 		from board b 
 		join user u

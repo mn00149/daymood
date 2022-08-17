@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: white;
+  background-color: #F2F4F9;
   font-family: "Open Sans", sans-serif;
   display: flex;
   align-items: center;
@@ -21,8 +21,7 @@ body {
 
 .container {
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   width: 400px;
 }
 
@@ -33,6 +32,8 @@ h2 {
 
 .form {
   padding: 30px 40px;
+  border : 2px solid #E2E2E8;
+  border-radius:10px;
 }
 
 .form-control {
@@ -58,7 +59,7 @@ h2 {
 
 .form-control input:focus {
   outline: 0;
-  border-color: #777;
+  border-color: #FEECE1;
 }
 
 .form-control.success input {
@@ -83,23 +84,29 @@ h2 {
 
 .form button {
   cursor: pointer;
-  background-color: #3498db;
-  border: 2px solid #3498db;
+  background-color: #F2F4F9;
+  border: 2px solid #E2E2E8;
   border-radius: 4px;
-  color: #fff;
+  color: black;
   display: block;
   font-size: 16px;
   padding: 10px;
   margin-top: 20px;
   width: 100%;
+}
+
+.form button:hover{
+	
+  background-color: #FEECE1;
+  color: #958CC3;
 }
 
 .form #checkUsername, #checkEmail {
   cursor: pointer;
-  background-color: #3498db;
-  border: 2px solid #3498db;
+  background-color: #F2F4F9;
+  border: 2px solid #E2E2E8;
   border-radius: 4px;
-  color: #fff;
+  color: black;
   display: block;
   font-size: 16px;
   padding: 10px;
@@ -107,7 +114,10 @@ h2 {
   width: 100%;
 }
 
-
+.form #checkUsername:hover, #checkEmail:hover{
+  background-color: #FEECE1;
+  color: #958CC3;
+}
 
 .form img {
     cursor: pointer;

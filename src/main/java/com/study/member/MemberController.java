@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.study.board.BoardDTO;
 import com.study.mainboard.MainBoardService;
 import com.study.reply.ReplyDTO;
+import com.study.reply.ReplyService;
 import com.study.user.UserDTO;
 import com.study.user.auth.PrincipalDetails;
 import com.study.utility.Utility;
@@ -36,6 +37,11 @@ import com.study.utility.Utility;
 public class MemberController {
 	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 
+	
+  @Autowired
+  @Qualifier("com.study.reply.ReplyServiceImpl")
+  public ReplyService rservice;
+  
 	@Autowired
 	@Qualifier("com.study.member.MemberServiceImpl")
 	private MemberService service;
@@ -137,6 +143,7 @@ public class MemberController {
     // 2. request 저장(view에서 사용할 내용을 저장)
     request.setAttribute("list", list);
     request.setAttribute("list2", list2);
+    request.setAttribute("rservice", rservice);
 		return "/main";
 	}
 

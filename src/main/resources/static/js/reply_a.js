@@ -136,17 +136,23 @@ $(".chat").on("click", "li", function (e) {
       modal.data("reply_no", reply.reply_no);
       modal.find("button[username !='modalCloseBtn']").hide();
 	
-	// 로그인을 했다면 답글쓰기 버튼이 보인다
-	if(username != null || username != ""){
-    modalRecommentBtn.show();
-	}  
+	// 대댓글이 아니면 답글쓰기 버튼이 보인다.
+	if(reply.indent==0){
+	modalRecommentBtn.show();
+	}
 	
-		
+	// 로그인을 안 했다면 답글쓰기 버튼이 안 보인다.
+	if(username == null || username == ""){
+			modalRecommentBtn.hide();
+	}
+	
 	// 로그인 한 사람이 댓글을 쓴 사람이라면 수정/삭제 버튼이 보인다.
  	if(user_no==reply.user_no){
 	modalModBtn.show();
     modalRemoveBtn.show();  
-}
+	}
+	
+	//
       $(".modal").modal("show");
  
     });
@@ -212,7 +218,7 @@ modalRecoRegisterBtn.on("click", function (e) {
 		username: username,
 		board_no: board_no,
 		user_no : user_no,
-		reply_no : indent
+		reply_no : indent,
 	};
 	add2(reply)
 		.then(result => {

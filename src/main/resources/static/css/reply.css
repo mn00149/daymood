@@ -81,6 +81,10 @@
     border-color: #b73333;
 }
 
+td{
+	align:center;
+}
+
 .pagination>li>a, .pagination>li>span {
     position: relative;
     float: left;
@@ -121,12 +125,12 @@
 }
 .btn:hover {
 	background: #FEECE1;
-	color: white;
+	color: #958CC3;
 	
 }
 
 
 .list-group-item:hover {
 	
-	background-color: #FFF;
+	background-color: #FEECE1;
 }

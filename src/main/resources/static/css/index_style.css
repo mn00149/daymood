@@ -585,6 +585,10 @@ section, summary, time, mark, audio, video {
 			font-size: 17px;
 			}
 			
+			.tit:hover{
+			color:#958CC3;
+			}
+			
 			.thisweek{
 			width: 100%;
 			margin-top: -190px;
@@ -637,22 +641,25 @@ section, summary, time, mark, audio, video {
     		box-shadow: 0.1px 4px 11px 0 rgb(0 0 0 / 15%);
     		background: #fff;
     		font-size:20px;
+    		color:black;
 		}
+		
+
 		.popupimg{
 			    position: absolute;
     			top: 50%;
     			right: 14px;
     			transform: translateY(-50%);
-    			width: 42px;
-    			height: 42px;
+    			width: 44px;
+    			height: 44px;
 		}
 		.popupimg2{
 			    position: absolute;
     			top: 50%;
-    			right: 16px;
+    			right: 20px;
     			transform: translateY(-50%);
-    			width: 37px;
-    			height: 37px;
+    			width: 33px;
+    			height: 33px;
 		}
 		.popimg{
 				width: 100%;

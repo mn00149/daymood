@@ -131,7 +131,7 @@ body {
 							<%-- 게시판에 글이 있으면 --%>
 							<c:otherwise>
 								<c:forEach var="dto" items="${list}" varStatus="statusList">
-									<div class="body">
+									<div class="body" >
 
 										<c:choose>
 											<%-- role == '회원' --%>

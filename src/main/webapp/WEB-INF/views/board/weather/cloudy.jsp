@@ -138,8 +138,7 @@ body {
 						<%-- 게시판에 글이 있으면 --%>
 						<c:otherwise>
 							<c:forEach var="dto" items="${list}" varStatus="statusList">
-								<div class="body" onclick="read(${dto.board_no})"
-									style="cursor: pointer">
+								<div class="body" >
 
 									<c:choose>
 										<%-- role == '회원' --%>
@@ -162,7 +161,7 @@ body {
 											<%-- category end --%>
 
 											<div class="title">
-												${dto.title }
+												<a href="javascript:read('${dto.board_no}')">${dto.title }
 												<%-- 댓글 갯수 보이기 시작 --%>
 												<c:set var="rcount"
 													value="${util:rcount(dto.board_no,rservice) }" />
@@ -170,10 +169,10 @@ body {
 													<span class="badge">${rcount}</span>
 												</c:if>
 												<%-- 댓글 갯수 보이기 끝 --%>
-
+											</a>
 											</div>
 
-											<div class="username" onclick="event.stopPropagation()">
+											<div class="username">
 												<a class="username2" style="text-decoration: none"
 													data-value="${dto.udto.user_no }">${dto.udto.username }</a>
 											</div>
