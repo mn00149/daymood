@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="util" uri="/ELFunctions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -59,9 +59,11 @@ body {
 	
 	<!-- 클릭 시 친구 요청 등 메뉴 뜸 -->
 	<ul id="profile" class="container__menu container__menu--hidden">
+		<sec:authorize access="isAuthenticated()">
                 <li class="container__item"><span class="req-btn">친구요청</span></li>
-                <li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
                 <li class="container__item"><span class="btn-open-popup" data-backdrop="static">쪽지 보내기</span></li>
+    	</sec:authorize>
+                <li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
 	</ul>
 
 	<!-- 쪽지보내기 모달 -->
@@ -152,7 +154,9 @@ body {
 											<!-- user_no를 받아오기 위해 data-value에 삽입, board_weather.xml 리스트 항목에 user_no 추가 -->
 											<div class="top_username">
 												<a class="username2" style="text-decoration: none"
-													data-value="${dto.udto.user_no }">${dto.udto.username }</a>
+													data-value="${dto.udto.user_no }">
+													<img class="userimage" src="${dto.udto.user_image}">
+													${dto.udto.username }</a>
 											</div>
 
 											<c:forEach var="calc_date" items="${msg2[statusList.index]}"

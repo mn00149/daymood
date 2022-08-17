@@ -656,7 +656,9 @@ a:hover{
 	text-align: center;
 }
 
-
+.userimage {
+	width : auto;
+}
 
 
 
