@@ -270,12 +270,13 @@ body {
 					<i class="fas fa-search"></i>
 				</div>
 
+				<sec:authorize access="isAuthenticated()">
 				<div class="list_create_box">
-					<div class="list_create_icon"
-						onclick="location.href='/board/create'">
+					<div class="list_create_icon" onclick="location.href='/board/create'">
 						<i class="fa-solid fa-pencil"></i>
 					</div>
 				</div>
+				</sec:authorize>
 			</div>
 			<%-- list_bt_wrap --%>
 

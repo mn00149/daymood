@@ -83,7 +83,7 @@
 			<div class="board_write">
 				<div class="create_title">
 					<dt>제목</dt>
-					<input type="text" name="title" id="title_input" placeholder="제목을 입력해 주세요.">
+					<input type="text" name="title" id="title_input" placeholder="제목을 입력해 주세요." required>
 				</div>
 			</div>
 			
