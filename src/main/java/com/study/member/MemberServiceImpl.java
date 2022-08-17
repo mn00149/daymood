@@ -35,9 +35,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int delete(int f_no) {
+	public int delete(Map map) {
 		// TODO Auto-generated method stub
-		return mapper.delete(f_no);
+		return mapper.delete(map);
 	}
 
 	@Override

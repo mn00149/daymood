@@ -12,7 +12,10 @@ $(function() {
 	
 	$("#modal_button").click(function() {
 		let naver_data = $("#name_input").val();
-		
+		if (naver_data === null || naver_data === ''){
+				alert("도서 제목을 입력해주세요");
+				return;
+			}
 		 $.ajax({
          	type : "POST",
          	url : "/naverapi/book",

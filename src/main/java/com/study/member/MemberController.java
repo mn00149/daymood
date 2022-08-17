@@ -368,11 +368,14 @@ public class MemberController {
 		return new ResponseEntity<List<UserDTO>>(service.list(map), HttpStatus.OK);
 	}
 
-	@DeleteMapping("/mypage/my_friends/{f_no}")
+	@DeleteMapping("/mypage/my_friends/{friends_no}")
 	@ResponseBody
-	public ResponseEntity<String> remove(@PathVariable("f_no") int f_no) {
+	public ResponseEntity<String> remove(@PathVariable("friends_no") int friends_no, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
-		return service.delete(f_no) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
+		Map map = new HashMap();
+		map.put("user_no", principalDetails.getUser_no());
+		map.put("friends_no", friends_no);
+		return service.delete(map) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}

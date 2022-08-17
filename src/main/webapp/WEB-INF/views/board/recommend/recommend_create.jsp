@@ -93,7 +93,7 @@
 			
 			<div class="create_movie">
 				<dt>추천 영화</dt>
-				<input type="text" name="recommend_name" id="name_input" value="" placeholder="영화 제목을 입력해 주세요.">
+				<input type="text" name="recommend_name" id="name_input" value="" placeholder="영화 제목을 입력해 주세요." required>
 				<input type="hidden" name="recommend_img" id="img_input" value="">
 				<input type="hidden" name="recommend_src" id="src_input" value="">
 				<input type="button" id="modal_button" value="검색">
