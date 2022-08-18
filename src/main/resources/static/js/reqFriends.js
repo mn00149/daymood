@@ -21,7 +21,7 @@ function requestlist() {
         str += "<td>"+list[i].nation+'</td>';
         str += "<td>"+list[i].email+'</td>';
         str += "<td>"+list[i].createDate+'</td>';
-        str += "<td><button onclick = addfriend("+list[i].rlist[0].request_no+ ',' + list[i].rlist[0].f_id+','+list[i].rlist[0].t_id+")><i class='fa-solid fa-check'></i></button>"+
+        str += "<td><button onclick = addfriend("+list[i].rlist[0].request_no+ ',' + list[i].rlist[0].f_id+','+list[i].rlist[0].t_id+")><i class='fa-regular fa-circle'></i></button>"+
         "<button onclick = rm("+list[i].rlist[0].request_no+")><i class='fa-solid fa-x'></i></button></td>";
         str += "</tr>";
       }

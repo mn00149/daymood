@@ -147,7 +147,7 @@ font-family: 'Jua', sans-serif;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	margin: 0.5px 0px 0px 0px;
+	margin: 8px 0px 0px 0px;
 }
 
 .logo {

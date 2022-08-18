@@ -15,6 +15,7 @@ public class BoardDTO {
   private int scrapno;
   private String nation;
   private String username;        
+  private String user_image;        
   private String title;          
   private String content;            
   private int view_cnt;                      

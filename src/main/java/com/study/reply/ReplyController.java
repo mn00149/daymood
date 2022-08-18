@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.study.board.BoardDTO;
 import com.study.user.UserDTO;
 import com.study.user.auth.PrincipalDetails;
 import com.study.utility.Utility;
@@ -46,7 +47,6 @@ public class ReplyController {
     map.put("sno", sno);
     map.put("eno", eno);
     map.put("board_no", board_no);
-
 
     
     log.info("list:"+service.list(map));

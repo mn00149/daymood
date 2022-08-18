@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="util" uri="/ELFunctions"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,9 +14,12 @@
 <link rel="stylesheet" href="/css/letter_modal.css">
 <script type="text/javascript" src="/js/boardProfile.js" defer></script>
 <script type="text/javascript" src="/js/search.js"></script>
-<script src="https://kit.fontawesome.com/6a80a39212.js"	crossorigin="anonymous"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"	rel="stylesheet">
+<script src="https://kit.fontawesome.com/6a80a39212.js"
+	crossorigin="anonymous"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+	rel="stylesheet">
 
 
 <style>
@@ -32,7 +36,6 @@ body {
 		url += "&word=${word}";
 		location.href = url;
 	}
-
 </script>
 
 </head>
@@ -57,11 +60,12 @@ body {
 	</div>
 	<!-- 클릭 시 친구 요청 등 메뉴 뜸 -->
 	<ul id="profile" class="container__menu container__menu--hidden">
-		<li class="container__item"><span class="req-btn">친구요청</span></li>
-		<li class="container__item"><a href="javascript:posted()"
-			style="text-decoration: none">작성 글 보기</a></li>
-		<li class="container__item"><span class="btn-open-popup"
-			data-backdrop="static">쪽지 보내기</span></li>
+		<sec:authorize access="isAuthenticated()">
+			<li class="container__item"><span class="req-btn">친구요청</span></li>
+			<li class="container__item"><span class="btn-open-popup"
+				data-backdrop="static">쪽지 보내기</span></li>
+		</sec:authorize>
+		<li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
 	</ul>
 
 	<!-- 쪽지보내기 모달 -->
@@ -77,15 +81,16 @@ body {
                 <span class="sendname" value="${tmp.ldto.other_name }"></span>
             </div> 
           </div> -->
-          <textarea class="let content" id="content" name="content" placeholder="내용"></textarea>
-          <div class="bt_duo">
-          <button  type="button" class="mes mes_send" id="msg_submit" >전송</button>
-          <button  type="button" class="mes mes_close" id="modal_close">취소</button>
-          </div>
-        </div>
-        </form>
-       </c:forEach>
-       
+				<textarea class="let content" id="content" name="content"
+					placeholder="내용"></textarea>
+				<div class="bt_duo">
+					<button type="button" class="mes mes_send" id="msg_submit">전송</button>
+					<button type="button" class="mes mes_close" id="modal_close">취소</button>
+				</div>
+			</div>
+		</form>
+	</c:forEach>
+
 
 
 	<div class="board_category">
@@ -138,7 +143,7 @@ body {
 						<%-- 게시판에 글이 있으면 --%>
 						<c:otherwise>
 							<c:forEach var="dto" items="${list}" varStatus="statusList">
-								<div class="body" >
+								<div class="body">
 
 									<c:choose>
 										<%-- role == '회원' --%>
@@ -162,19 +167,19 @@ body {
 
 											<div class="title">
 												<a href="javascript:read('${dto.board_no}')">${dto.title }
-												<%-- 댓글 갯수 보이기 시작 --%>
-												<c:set var="rcount"
-													value="${util:rcount(dto.board_no,rservice) }" />
-												<c:if test="${rcount>0 }">
-													<span class="badge">${rcount}</span>
-												</c:if>
-												<%-- 댓글 갯수 보이기 끝 --%>
-											</a>
+													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
+														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
+														test="${rcount>0 }">
+														<span class="badge">${rcount}</span>
+													</c:if> <%-- 댓글 갯수 보이기 끝 --%>
+												</a>
 											</div>
 
 											<div class="username">
 												<a class="username2" style="text-decoration: none"
-													data-value="${dto.udto.user_no }">${dto.udto.username }</a>
+													data-value="${dto.udto.user_no }">
+													<img class="userimage" src="${dto.udto.user_image}">
+													${dto.udto.username }</a>
 											</div>
 
 											<c:forEach var="calc_date" items="${msg2[statusList.index]}"
@@ -223,27 +228,34 @@ body {
 						<%-- 게시판 글이 있으면 end --%>
 					</c:choose>
 				</tbody>
-			</div> <%-- board_list --%>
-			
+			</div>
+			<%-- board_list --%>
+
 			<div class="list_bt_wrap">
 				<div class="list_search_box">
 					<form name="search">
-						<input type="text" id="list_search_text" class="list_search_icon" name="word"
-							value="${word }" onmouseout="this.value = ''; this.blur();">
+						<input type="text" id="list_search_text" class="list_search_icon"
+							name="word" value="${word }"
+							onmouseout="this.value = ''; this.blur();">
 					</form>
 					<i class="fas fa-search"></i>
 				</div>
-
+<sec:authorize access="isAuthenticated()">
 				<div class="list_create_box">
-					<div class="list_create_icon" onclick="location.href='/board/create'">
+					<div class="list_create_icon"
+						onclick="location.href='/board/create'">
 						<i class="fa-solid fa-pencil"></i>
 					</div>
 				</div>
-			</div> <%-- list_bt_wrap --%>
+				</sec:authorize>
+			</div>
+			<%-- list_bt_wrap --%>
 
-		</div> <%-- board_list_wrap --%>
+		</div>
+		<%-- board_list_wrap --%>
 		${paging }
-	</div> <%--  board_wrap --%>
-	
+	</div>
+	<%--  board_wrap --%>
+
 </body>
 </html>

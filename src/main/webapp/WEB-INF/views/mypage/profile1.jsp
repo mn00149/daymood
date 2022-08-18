@@ -37,7 +37,7 @@
                 <li style="--i:0;"><a href="my_posted">작성글</a></li>
                 <li style="--i:1;"><a href="my_comment">작성댓글</a></li>
                 <li style="--i:2;"><a href="my_scrap">스크랩</a></li>
-                <li style="--i:3;"><a href="my_letter">쪽지</a></li>
+                <li style="--i:3;"><a href="#" onclick="window.open('/letter_list','window_name','width=971,height=624,top=300,,scrollbars=yes');">쪽지</a></li>
                 <li style="--i:4;"><a href="my_friends">친구</a></li>
                 <li style="--i:5;"><a href="request_friends">친구요청</a></li>
 

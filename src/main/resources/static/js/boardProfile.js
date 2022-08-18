@@ -132,10 +132,10 @@ function posted() {
    $("#msg_submit").click(function(){
         let msg= "쪽지를 보내시겠습니까?";
 		let content = $("#content").val()
-		
+		id = id.trim();
         if(!confirm(msg))
             return false;
-	
+		console.log(id);
         $.ajax({
             url : "/letter_send_profile",
             dataType : "json",
@@ -146,4 +146,3 @@ function posted() {
         	alert ("전송");
         	
     });
-    

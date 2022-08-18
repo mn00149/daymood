@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-
+<link rel="stylesheet" href="/css/reply_number.css">
 <link rel="stylesheet" href="/css/index_style.css" />
 
 <script type="text/javascript">
@@ -44,7 +44,8 @@
 							<a href="#" class="featured"></a>
 							<div class="inner2">
 								<header class="innerheader">
-									<h2><a id="atag" style="text-decoration : none;">인기 게시글</a></h2>
+									<h2><a id="atag" style="color: #958CC3; text-decoration: none;">인기 게시글
+									</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list}">
@@ -71,8 +72,8 @@
 							          </c:when>
 							
 							          <c:when test = "${dto.weather_category eq '비'}">
-							             <div class="img2">
-							             	<img class="img2" src="/images/rainy.png" alt="no image">
+							             <div class="img1">
+							             	<img class="img1" src="/images/rainy.png" alt="no image">
 							             </div>  
 							          </c:when>
 							          
@@ -125,7 +126,12 @@
 									  </c:when>
 									  
 							         </c:choose> 
-							         <div class="tit">${dto.title }</div>
+							         <div class="tit">&nbsp; &nbsp;${dto.title }
+							         													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
+														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
+														test="${rcount>0 }">
+														<span class="badge">${rcount}</span>
+													</c:if> <%-- 댓글 갯수 보이기 끝 --%></div>
                     				</div>
                     			  </a>
                     			 </li>
@@ -143,7 +149,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner2">
 								<header class="innerheader">
-									<h2><a id="atag" style="text-decoration : none;">최근 게시글</a></h2>
+									<h2><a id="atag" style="color: #958CC3; text-decoration: none;">최근 게시글</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list}">
@@ -153,7 +159,7 @@
 						<c:forEach var="dto" items="${list}">
 								<ul class="libox">
                     			 <li class="title"> 
-                    			  <a href="/board/read/${dto.board_no}" style="text-decoration : none;">
+                    			  <a href="/board/read/${dto.board_no}" style="color: #958CC3; text-decoration: none;">
                     				<div class=text_img_tool>
        							     <c:choose>
        							     
@@ -170,8 +176,8 @@
 							          </c:when>
 							
 							          <c:when test = "${dto.weather_category eq '비'}">
-							             <div class="img2">
-							             	<img class="img2" src="/images/rainy.png" alt="no image">
+							             <div class="img1">
+							             	<img class="img1" src="/images/rainy.png" alt="no image">
 							             </div>
 							          </c:when>
 							          
@@ -224,7 +230,12 @@
 									  </c:when>
 									  
 							         </c:choose> 
-							         <div class="tit">${dto.title }</div>
+							         <div class="tit">&nbsp; &nbsp;${dto.title }
+							         													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
+														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
+														test="${rcount>0 }">
+														<span class="badge">${rcount}</span>
+													</c:if> <%-- 댓글 갯수 보이기 끝 --%></div>
                     				</div>
                     			  </a>
                     			 </li>
@@ -247,7 +258,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner3">
 								<header class="innerheader">
-									<h2><a id="atag" style="text-decoration : none;">도서</a></h2>
+									<h2><a id="atag" style="color: #958CC3; text-decoration: none;">DayMood 추천 도서</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list3}">
@@ -262,7 +273,12 @@
 									<div class="img3">
 										<img src="${dto.recommend_img }" style="height: 120px; width: 90px;">
 									</div>
-									<div class="tit2">${dto.recommend_name }</div>
+									<div class="tit2">${dto.recommend_name }
+																						<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
+														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
+														test="${rcount>0 }">
+														<span class="badge">${rcount}</span>
+													</c:if> <%-- 댓글 갯수 보이기 끝 --%></div>
 								</div>
 								</a>
 								</li>
@@ -285,7 +301,7 @@
 							<a href="#" class="featured"></a>
 							<div class="inner3">
 								<header class="innerheader">
-									<h2><a id="atag" style="text-decoration : none;">영화</a></h2>
+									<h2><a id="atag" style="color: #958CC3; text-decoration: none;">DayMood 추천 영화</a></h2>
 								</header>
                 	<c:choose>
 						<c:when test="${empty list4}">
@@ -300,7 +316,12 @@
 								  <div class="img3">
 									<img src="${dto.recommend_img }" style="height: 120px; width: 90px;">
 								  </div>
-								  <div class="tit2">${dto.recommend_name }</div>
+								  <div class="tit2">${dto.recommend_name }
+								  													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
+														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
+														test="${rcount>0 }">
+														<span class="badge">${rcount}</span>
+													</c:if> <%-- 댓글 갯수 보이기 끝 --%></div>
 								</div>
 								</a>
 								</li>
@@ -323,7 +344,7 @@
           <li class="listbar">
           <a class="popup" onclick="window.open('chatbot','window_name','width=435,height=714,scrollbars=yes');">
           <span class="popupimg">
-          	<img class="popimg" src="https://www.lge.co.kr/kr/support/images/icon/icon_customer-consultation.svg">
+          	<img class="popimg" src="/images/chatbot.png">
           </span>
           챗봇
           </a>

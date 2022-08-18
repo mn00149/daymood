@@ -29,6 +29,19 @@
     	<put-attribute name="title" value="all"></put-attribute>
     	<put-attribute name="body" value="/WEB-INF/views/board/common/create.jsp" />
   	</definition>
+
+	<definition name="/board/recommend/recommend_create"
+		extends="main">
+		<put-attribute name="title" value="all"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/board/recommend/recommend_create.jsp" />
+	</definition>
+	<definition name="/board/recommend/recommend_create2"
+		extends="main">
+		<put-attribute name="title" value="all"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/board/recommend/recommend_create2.jsp" />
+	</definition>
   	
   	
 </tiles-definitions>
