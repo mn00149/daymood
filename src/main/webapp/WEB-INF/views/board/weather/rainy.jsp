@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="util" uri="/ELFunctions"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -59,13 +60,6 @@ body {
 	</div>
 	<!-- 클릭 시 친구 요청 등 메뉴 뜸 -->
 	<ul id="profile" class="container__menu container__menu--hidden">
-<<<<<<< HEAD
-		<li class="container__item"><span class="req-btn">친구요청</span></li>
-		<li class="container__item"><a href="javascript:posted()"
-			style="text-decoration: none">작성 글 보기</a></li>
-		<li class="container__item"><span class="btn-open-popup"
-			data-backdrop="static">쪽지 보내기</span></li>
-=======
 		<sec:authorize access="isAuthenticated()">
 			<li class="container__item"><span class="req-btn">친구요청</span></li>
 			<li class="container__item"><span class="btn-open-popup"
@@ -73,7 +67,6 @@ body {
 		</sec:authorize>
 		<li class="container__item"><a href="javascript:posted()"
 			style="text-decoration: none">작성 글 보기</a></li>
->>>>>>> 85561e70dfe94c5fac18b0e0d1f405e710cc26f8
 	</ul>
 
 	<!-- 쪽지보내기 모달 -->
@@ -172,7 +165,6 @@ body {
 											<%-- category end --%>
 
 											<div class="title">
-<<<<<<< HEAD
 												<a href="javascript:read('${dto.board_no}')">${dto.title }
 													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
 														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
@@ -180,20 +172,14 @@ body {
 														<span class="badge">${rcount}</span>
 													</c:if> <%-- 댓글 갯수 보이기 끝 --%>
 												</a>
-=======
-												<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
->>>>>>> 85561e70dfe94c5fac18b0e0d1f405e710cc26f8
 											</div>
 
 											<div class="username">
 												<a class="username2" style="text-decoration: none"
-<<<<<<< HEAD
-													data-value="${dto.udto.user_no }">${dto.udto.username }</a>
-=======
-													data-value="${dto.udto.user_no }">
-													<img class="userimage" src="${dto.udto.user_image}">
-													${dto.udto.username }</a>
->>>>>>> 85561e70dfe94c5fac18b0e0d1f405e710cc26f8
+													data-value="${dto.udto.user_no }"> <img
+													class="userimage" src="${dto.udto.user_image}">
+													${dto.udto.username }
+												</a>
 											</div>
 
 											<c:forEach var="calc_date" items="${msg2[statusList.index]}"
@@ -211,7 +197,6 @@ body {
 											<div class="category ad">[공지]</div>
 
 											<div class="title ad">
-<<<<<<< HEAD
 												<a href="javascript:read('${dto.board_no}')">${dto.title }
 													<%-- 댓글 갯수 보이기 시작 --%> <c:set var="rcount"
 														value="${util:rcount(dto.board_no,rservice) }" /> <c:if
@@ -219,9 +204,6 @@ body {
 														<span class="badge">${rcount}</span>
 													</c:if> <%-- 댓글 갯수 보이기 끝 --%>
 												</a>
-=======
-												<a href="javascript:read('${dto.board_no}')">${dto.title }</a>
->>>>>>> 85561e70dfe94c5fac18b0e0d1f405e710cc26f8
 											</div>
 
 											<div class="username ad">${dto.udto.username }</div>
@@ -231,7 +213,6 @@ body {
 												<div class="date ad">${calc_date}</div>
 											</c:forEach>
 
-											<div class="view_cnt ad">${dto.view_cnt }</div>
 
 											<div class="like_cnt ad">${dto.like_cnt }</div>
 										</c:otherwise>
@@ -258,13 +239,14 @@ body {
 					</form>
 					<i class="fas fa-search"></i>
 				</div>
-
-				<div class="list_create_box">
-					<div class="list_create_icon"
-						onclick="location.href='/board/create'">
-						<i class="fa-solid fa-pencil"></i>
+				<sec:authorize access="isAuthenticated()">
+					<div class="list_create_box">
+						<div class="list_create_icon"
+							onclick="location.href='/board/create'">
+							<i class="fa-solid fa-pencil"></i>
+						</div>
 					</div>
-				</div>
+				</sec:authorize>
 			</div>
 			<%-- list_bt_wrap --%>
 
@@ -275,4 +257,6 @@ body {
 	<%--  board_wrap --%>
 
 </body>
+<script type="text/javascript" src="/js/boardProfile.js" defer></script>
+
 </html>

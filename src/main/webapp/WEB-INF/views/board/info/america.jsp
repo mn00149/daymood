@@ -1,4 +1,5 @@
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -61,10 +62,12 @@ body {
 	<!-- 클릭 시 친구 요청 등 메뉴 뜸 -->
 	<ul id="profile" class="container__menu container__menu--hidden">
 		<sec:authorize access="isAuthenticated()">
-                <li class="container__item"><span class="req-btn">친구요청</span></li>
-                <li class="container__item"><span class="btn-open-popup" data-backdrop="static">쪽지 보내기</span></li>
-    	</sec:authorize>
-                <li class="container__item"><a href="javascript:posted()" style="text-decoration:none">작성 글 보기</a></li>
+			<li class="container__item"><span class="req-btn">친구요청</span></li>
+			<li class="container__item"><span class="btn-open-popup"
+				data-backdrop="static">쪽지 보내기</span></li>
+		</sec:authorize>
+		<li class="container__item"><a href="javascript:posted()"
+			style="text-decoration: none">작성 글 보기</a></li>
 	</ul>
 
 	<!-- 쪽지보내기 모달 -->
@@ -206,9 +209,10 @@ body {
 
 											<div class="username">
 												<a class="username2" style="text-decoration: none"
-													data-value="${dto.udto.user_no }">
-													<img class="userimage" src="${dto.udto.user_image}">
-													${dto.udto.username }</a>
+													data-value="${dto.udto.user_no }"> <img
+													class="userimage" src="${dto.udto.user_image}">
+													${dto.udto.username }
+												</a>
 											</div>
 
 											<c:forEach var="calc_date" items="${msg2[statusList.index]}"
@@ -269,13 +273,14 @@ body {
 					</form>
 					<i class="fas fa-search"></i>
 				</div>
-
-				<div class="list_create_box">
-					<div class="list_create_icon"
-						onclick="location.href='/board/create'">
-						<i class="fa-solid fa-pencil"></i>
+				<sec:authorize access="isAuthenticated()">
+					<div class="list_create_box">
+						<div class="list_create_icon"
+							onclick="location.href='/board/create'">
+							<i class="fa-solid fa-pencil"></i>
+						</div>
 					</div>
-				</div>
+				</sec:authorize>
 			</div>
 			<%-- list_bt_wrap --%>
 

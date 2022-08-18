@@ -81,29 +81,10 @@
 	<div class="board_wrap">
 	
 		<p id="p_create">게시물 등록</p>
-		
+		<div class="board_write_wrap">
 		<form class="create" action="/board/recommend/recommend_create" method="post">		
 		
-		<div class="board_write">
-			<div class="create_title2">
-				<dt>제목</dt>
-				<input type="text" name="title" id="title_input" placeholder="게시글 제목을 입력해 주세요.">
-			</div>
-			
-			<div class="create_movie">
-				<dt>추천 도서</dt>
-				<input type="text" name="recommend_name" id="name_input" value="" placeholder="도서 제목을 입력해 주세요.">
-				<input type="hidden" name="recommend_img" id="img_input" value="">
-				<input type="hidden" name="recommend_src" id="src_input" value="">
-				<input type="button" id="modal_button" value="검색">
-				<div class="modal" id='modal'>
-					<div class="modal_content" id="modal_content">
-					
-					</div>
-				</div>
-			</div>
-			
-		</div>
+
 		
 		<div class="board_write_wrap">
 			<div class="select">
@@ -127,11 +108,34 @@
 			<input type="hidden" name="select_category" id="select_category" value="">
 			<input type="hidden" name="select_category" id="select_category" value="${weather_category}">
 			
+			
+					<div class="board_write">
+			
+			<div class="create_movie">
+				<dt>추천 도서</dt>
+				<input type="text" name="recommend_name" id="name_input" value="" placeholder="도서 제목을 입력해 주세요." required >
+				<input type="hidden" name="recommend_img" id="img_input" value="">
+				<input type="hidden" name="recommend_src" id="src_input" value="">
+				<input class="reco_btn" type="button" id="modal_button" value="검색">
+				<div class="modal" id='modal'>
+					<div class="modal_content" id="modal_content">
+					
+					</div>
+				</div>
+			</div>
+					<div class="create_title">
+				<dt>제목</dt>
+				<input type="text" name="title" id="title_input" placeholder="게시글 제목을 입력해 주세요." required >
+			</div>
+		</div>
+			
+			
+			
 			<div class="board_content">
 				<label class="control-label" for="content">내용</label>
     			<textarea id="content" name="content" class="form-control"></textarea>
     		</div>
-				
+			</div>
 			
 			
 		<div class="bt_wrap_create">
@@ -140,7 +144,7 @@
 		</div>
 		</form>
 	</div>
-	
+</div>
 </body>
 <script type="text/javascript" src="/js/select_book.js"></script>
 </html>
