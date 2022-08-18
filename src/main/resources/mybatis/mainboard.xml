@@ -34,6 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from board b inner join user u
 		on b.username = u.username 
 		where u.role = 'ROLE_USER' and b.recommend_category = '도서'
+		order by like_cnt desc
 		limit 0,4;
 	</select> 
 	
@@ -43,6 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from board b inner join user u
 		on b.username = u.username 
 		where u.role = 'ROLE_USER' and b.recommend_category = '영화'
+		order by like_cnt desc
 		limit 0,4;
 	</select> 
 	

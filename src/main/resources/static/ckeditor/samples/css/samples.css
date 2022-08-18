@@ -203,6 +203,10 @@ html {
   text-transform: uppercase;
 }
 .navigation-a ul li a:hover {
+	background-color:#FEECE1;
+
+	}
+.navigation-a ul li a:hover {
   cursor: pointer;
   color: #fff;
 }

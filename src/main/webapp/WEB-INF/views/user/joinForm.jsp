@@ -13,18 +13,18 @@
 <body>
     <div class="container">
         <form action="/join" method="post" class="form" id="form">
-            <h2>Register With Us</h2>
+            <h2>Sign Up</h2>
             <hr/>
             <div class="form-control">
                 <label for="username">Username</label>
                 <input name="username" type="text" id="username" placeholder="Enter Username">
-                <input type="button" value="Username 중복체크" class="btn btn-default col-sm-2" id="checkUsername" >
+                <input type="button" value="Username Check" class="btn btn-default col-sm-2" id="checkUsername" >
                 <small>Error Message</small>
             </div>
             <div class="form-control">
                 <label for="email">Email</label>
                 <input name="email" type="text" id="email" placeholder="Enter Email">
-				<input type="button" value="Email 중복체크" class="btn btn-default col-sm-2" id="checkEmail" >
+				<input type="button" value="Email Check" class="btn btn-default col-sm-2" id="checkEmail" >
                 <small>Error Message</small>
             </div>
             <div class="form-control">
@@ -44,6 +44,7 @@
                   <option>미국</option>
                   <option>일본</option>
                   <option>중국</option>
+                  <option>캐나다</option>
                   <option>호주</option>
                   <option>유럽</option>
                 </select>

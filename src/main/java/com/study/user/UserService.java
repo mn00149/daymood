@@ -16,7 +16,13 @@ public interface UserService {
 
   boolean userEmailCheck(String userEmail, String userName);
 
+  boolean checkPassword(String username, String password);
+  
   int updateUserPassword(UserDTO user);
+
+  int deleteUser(String username);
+
+  int updatePassword(UserDTO user);
 
 
 }

@@ -17,7 +17,7 @@
 <body>
 <div class="ink_member">
       <h1>
-        회원페이지
+        마이페이지
       </h1>
 
     </div>

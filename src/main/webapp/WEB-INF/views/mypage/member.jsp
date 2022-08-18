@@ -37,7 +37,7 @@
 /*     padding: 15px;
     font-size: 120%;
     width: 300px; */
-    color: #fff;
+    color: black;
     cursor: pointer;
     transition: 0.3s;
     -webkit-transition: 0.3s;
@@ -48,10 +48,13 @@
 
 .req-btn:hover{
     opacity: 0.6;
+    color:#FFFFFF;
 }
+
+
 .liborder {
-    border : 1px solid rgb(6, 210, 224);
-    border-radius: 5px;
+    border : 2px solid #E2E2E8;
+    border-radius: 10px;
     padding: 2px;
 }
 
@@ -112,9 +115,9 @@
           </tr>
           <tr>
             <th>
-            
+            프로필 사진<br>
             <button type="button" class="req-btn" style="width:auto">
-              <span><img src="/images/upload.png" style="width: 30px; height: 30px"/></span>
+              <span></span>수정
               </button>
             </th>
             <td id="preivew"><img class="user_image" name="user_image" src="${dto.user_image }" style="width: 50px; height: 50px"></td>

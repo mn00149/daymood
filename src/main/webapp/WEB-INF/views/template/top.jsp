@@ -118,7 +118,7 @@ font-family: 'Jua', sans-serif;
 
 #menu>li>a:hover {
 	transition: color 0.3s;
-	color: #18AFE3;
+	color: #958CC3;
 }
 
 #menu > li > a {
@@ -147,7 +147,11 @@ font-family: 'Jua', sans-serif;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+<<<<<<< HEAD
 	margin: 5px 10px 0 10px;
+=======
+	margin: 0.5px 0px 0px 0px;
+>>>>>>> 6eb0454c20a8535dcf3325a82090619262696c66
 }
 
 .logo {

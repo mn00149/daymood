@@ -26,7 +26,13 @@ section, summary, time, mark, audio, video {
 /* Basic */
 
 	a{
-	color : #958CC3;
+		text-decoration : none;
+	}
+	
+	a:hover{
+		transition: color 0.3s;
+		text-decoration : none;
+		color: #958CC3;
 	}
 	
 	@-ms-viewport {
@@ -75,7 +81,7 @@ section, summary, time, mark, audio, video {
 		@media screen and (max-width: 1680px) {
 
 			.container {
-				width: 1200px;
+				width: 1400px;
 			}
 
 		}
@@ -494,7 +500,7 @@ section, summary, time, mark, audio, video {
 				}
 					
 				.box.feature .inner3 {
-					padding: 0px 0px 40px 0px;
+					padding: 0px 0px 20px 0px;
 				}
 					
 				.box.feature .inner4 {
@@ -540,6 +546,13 @@ section, summary, time, mark, audio, video {
 			/* list-style:none; li 태그 점 */
 			margin-bottom: 10px;
 			}
+			
+			.libox2{
+			dlsplay: block;
+			margin: 10px 0 0 -35px;
+			list-style:none;
+			
+			}
 			li.title{
 			color:#968CC3;
 			}
@@ -562,12 +575,23 @@ section, summary, time, mark, audio, video {
 			}
 			
 			.img3{
-			margin: 30px 20px -60px 10px;
-			width: 90px !important;
-			height: 120px !important;
+			margin: 0px 20px -60px 10px;
+			width: 100px !important;
+			height: 185px !important;
 			}
 			
 			.text_img_tool{
+			max-width: 100%;
+    		text-overflow: ellipsis;
+    		white-space: nowrap;
+    		word-wrap: normal;
+    		width: auto;
+    		overflow: hidden;
+    		display: flex;
+    		margin-right: 5px;
+			}
+			
+			.text_img_tool2{
 			max-width: 100%;
     		text-overflow: ellipsis;
     		white-space: nowrap;
@@ -583,9 +607,15 @@ section, summary, time, mark, audio, video {
 			font-size: 17px;
 			}
 			
+
 			.tit2{
 			 color: #222222;
-    		font-size: 17px;
+    		font-size: 19px;
+    		padding: 50px 0px 0px 10px;
+    		}
+
+			.tit:hover{
+			color:#958CC3;
 			}
 			
 			.thisweek{
@@ -640,27 +670,29 @@ section, summary, time, mark, audio, video {
     		box-shadow: 0.1px 4px 11px 0 rgb(0 0 0 / 15%);
     		background: #fff;
     		font-size:20px;
+    		color:black;
 		}
+		
+
 		.popupimg{
 			    position: absolute;
     			top: 50%;
     			right: 14px;
     			transform: translateY(-50%);
-    			width: 42px;
-    			height: 42px;
+    			width: 44px;
+    			height: 44px;
 		}
 		.popupimg2{
 			    position: absolute;
     			top: 50%;
-    			right: 16px;
+    			right: 20px;
     			transform: translateY(-50%);
-    			width: 37px;
-    			height: 37px;
+    			width: 33px;
+    			height: 33px;
 		}
 		.popimg{
 				width: 100%;
 				height: 100%;
 				margin: 0;
 		}
-		
 		

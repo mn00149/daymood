@@ -30,10 +30,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{password}
 		where user_no = #{user_no}
 	</update>
+	<update id="updatePassword" parameterType="com.study.user.UserDTO">
+		update User
+		set password =
+		#{password}
+		where user_no = #{user_no}
+	</update>
 	<select id="duplicatedUsername" parameterType="String"
 		resultType="int">
 		SELECT COUNT(username)
 		FROM User
 		WHERE username=#{username}
 	</select>
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM User
+		WHERE username=#{username}
+	</delete>
 </mapper>

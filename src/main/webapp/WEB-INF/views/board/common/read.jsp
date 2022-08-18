@@ -93,50 +93,50 @@ body {
 					<div class="title_info">
 						<div class="title">
 							<p id="list_title_category">
-							
-							<c:choose>
-								<c:when test="${dto.weather_category eq '맑음'}">
+
+								<c:choose>
+									<c:when test="${dto.weather_category eq '맑음'}">
 									[Mood][etc]
 								</c:when>
-								<c:when test="${dto.weather_category eq '흐림'}">
+									<c:when test="${dto.weather_category eq '흐림'}">
 									[Mood][etc]
 								</c:when>
-								<c:when test="${dto.weather_category eq '비'}">
+									<c:when test="${dto.weather_category eq '비'}">
 									[Mood][etc]
 								</c:when>
-								<c:when test="${dto.info_category eq '미국'}">
+									<c:when test="${dto.info_category eq '미국'}">
 									[Info][U.S.A]
 								</c:when>
-								<c:when test="${dto.info_category eq '캐나다'}">
+									<c:when test="${dto.info_category eq '캐나다'}">
 									[Info][Canada]
 								</c:when>
-								<c:when test="${dto.info_category eq '중국'}">
+									<c:when test="${dto.info_category eq '중국'}">
 									[Info][China]
 								</c:when>
-								<c:when test="${dto.info_category eq '호주'}">
+									<c:when test="${dto.info_category eq '호주'}">
 									[Info][Australia]
 								</c:when>
-								<c:when test="${dto.info_category eq '유럽'}">
+									<c:when test="${dto.info_category eq '유럽'}">
 									[Info][Europe]
 								</c:when>
-								<c:when test="${dto.info_category eq '일본'}">
+									<c:when test="${dto.info_category eq '일본'}">
 									[Mood][Japan]
 								</c:when>
-								<c:when test="${dto.info_category eq '기타'}">
+									<c:when test="${dto.info_category eq '기타'}">
 									[Info][etc]
 								</c:when>
-								<c:when test="${dto.recommend_category eq '영화'}">
+									<c:when test="${dto.recommend_category eq '영화'}">
 									[Recommend][Movie]
 								</c:when>
-								<c:when test="${dto.recommend_category eq '도서'}">
+									<c:when test="${dto.recommend_category eq '도서'}">
 									[Recommend][Book]
 								</c:when>
-								<c:when test="${dto.recommend_category eq '음악'}">
+									<c:when test="${dto.recommend_category eq '음악'}">
 									[Recommend][Music]
 								</c:when>
-							</c:choose>
+								</c:choose>
 							</p>
-							
+
 							<p id="list_title">${dto.title }</p>
 						</div>
 						<div class="info">
@@ -211,8 +211,7 @@ body {
 							<div class="panel panel-default">
 
 								<div class="panel-heading">
-									<img src="/images/comment2.png" width="50" height="50"
-										alt="comment">
+									<img src="/images/comment2.png" width="50" height="50" alt="comment">
 									<button id='addReplyBtn'
 										class='btn btn-light btn-2x pull-right'>댓글 쓰기</button>
 								</div>
@@ -228,7 +227,6 @@ body {
 									<!-- ul end  -->
 								</div>
 
-								<div class="panel-footer"></div>
 
 							</div>
 							<!-- panel end-->
@@ -263,11 +261,9 @@ body {
 					<button id='modalRemoveBtn' type="button" class="btn btn-light">삭제하기</button>
 					<button id='modalRegisterBtn' type="button" class="btn btn-light">등록하기</button>
 					
-					 
 					<button id='modalRecommentBtn' type="button" class="btn btn-light">답글쓰기</button>
-					
-					<button id='modalRecoRegisterBtn' type="button" class="btn btn-light">답글등록</button>
 
+					<button id='modalRecoRegisterBtn' type="button" class="btn btn-light">답글등록</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -281,13 +277,12 @@ body {
 		 let board_no = "${dto.board_no}"; 
 		 let sno = "${sno}";
 		 let eno = "${eno}";
+		<!-- 댓글용 paging, 게시판 검색 -->
 		 let nPage = "${nPage}";
 		 let nowPage = "${param.nowPage}";
 		 let colx = "${param.col}";
 		 let wordx = "${param.word}";
 		 let indent;
-		 
-		 let ansnum = "${ansnum}";
 		 
 		 let user_no ="${user_no}";  
 		 let username ="${username}"; 

@@ -3,6 +3,9 @@ package com.study.user;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import java.security.Principal;
 
 
@@ -59,8 +62,10 @@ public class UserController {
   @PostMapping("/join")
   public String join(UserDTO user) {
     System.out.println(user);
-    user.setRole("ROLE_ADMIN");
-    user.setUser_image("/images/daymood.png");
+
+    user.setRole("ROLE_USER");
+    user.setUser_image("/images/avatar.png");
+
     String rawPassword = user.getPassword();
     String encPassword = bCryptPasswordEncoder.encode(rawPassword);
     user.setPassword(encPassword);
@@ -147,6 +152,63 @@ public class UserController {
     MailDTO dto = eservice.createMailAndChangePassword(email, username);
     eservice.mailSend(dto);
 
+  }
+  //회원 탈퇴 컨트롤러
+  @GetMapping("/user/deleteUser")
+  public String deleteUserForm(@AuthenticationPrincipal PrincipalDetails userDetails, Model model) {
+    model.addAttribute("username", userDetails.getUsername());
+    
+    return "user/deleteUser";
+  }
+  
+  @PostMapping("/user/deleteUser")
+  public @ResponseBody Map<String, String> deleteUser(@AuthenticationPrincipal PrincipalDetails userDetails, HttpServletRequest request) {
+    String username = userDetails.getUsername();
+    String password = request.getParameter("password");
+    String encPassword = bCryptPasswordEncoder.encode(password);
+    
+    boolean passwordIsChecked = service.checkPassword(username, password);
+   
+    Map<String, String> map = new HashMap<String, String>();
+    if(passwordIsChecked) {
+      service.deleteUser(username);
+      map.put("str", "회원 탈퇴에 성공 하셨습니다 그동안 이용해 주셔서 감사합니다");
+      map.put("result", "ok");
+    }else {
+      map.put("str", "입력 해주신 password가 다릅니다");
+      map.put("result", "no");
+    }
+    return map;
+  }
+  
+  //password 변경 컨트롤러
+  @GetMapping("/user/updatePassword")
+  public String updatePasswordForm(@AuthenticationPrincipal PrincipalDetails userDetails, Model model) {
+    model.addAttribute("username", userDetails.getUsername());
+    
+    return "user/updatePassword";
+  }
+  
+  @PostMapping("/user/updatePassword")
+  public @ResponseBody Map<String, String> updatePassword(@AuthenticationPrincipal PrincipalDetails userDetails, HttpServletRequest request) {
+    String oldPassword = request.getParameter("oldPassword");
+    String newPassword = request.getParameter("updatePassword");
+    boolean passwordExixt = bCryptPasswordEncoder.matches(oldPassword, userDetails.getPassword());
+    String username = userDetails.getUsername();
+    UserDTO user = service.findByUsername(username);
+    Map<String, String> map = new HashMap<String, String>();
+    if(passwordExixt) {
+      String encPassword = bCryptPasswordEncoder.encode(newPassword);
+      user.setPassword(encPassword);
+      service.updatePassword(user);
+      
+      map.put("str", "비밀번호 변경 성공 ");
+      map.put("result", "ok");
+    }else {
+      map.put("str", "존제하지 않는 password 입니다");
+      map.put("result", "no");
+    }
+    return map;
   }
 
   @GetMapping("/test/login")

@@ -38,6 +38,8 @@
 		<div id="features-wrapper">
 			<div class="container">
 				<div class="row">
+				
+						<!-- 인기게시글 시작 -->
 						<div class="col-4 col-12-medium">
 						<!-- Box -->
 						<div class="box feature">
@@ -135,9 +137,11 @@
 					</c:choose>
 						</div>
 					</div><!-- box end -->
-				</div>
+				</div><!-- 인기게시글 끝 -->
+				
+				
+				<!-- 최근게시글 시작 -->
 					<div class="col-4 col-12-medium">
-
 						<!-- Box -->
 						<div class="box feature">
 							<a href="#" class="featured"></a>
@@ -234,14 +238,13 @@
 					</c:choose>
 						</div>
 					</div><!-- box end -->
-				</div>
+				</div><!-- 최근게시글 끝 -->
 				
 				
 				
 				
-				
+				<!-- 도서 시작 -->
 				<div class="col-4 col-12-medium">
-
 						<!-- Box -->
 						<div class="box feature">
 							<a href="#" class="featured"></a>
@@ -272,14 +275,13 @@
 					</c:choose>
 						</div>
 					</div><!-- box end -->
-				</div>
+				</div><!-- 도서 끝 -->
 				
 				
 				
 				
-				
+				<!-- 영화 시작 -->
 				<div class="col-4 col-12-medium">
-
 						<!-- Box -->
 						<div class="box feature">
 							<a href="#" class="featured"></a>
@@ -309,8 +311,8 @@
 					</c:otherwise>
 					</c:choose>
 						</div>
-					</div><!-- box end -->
-				</div>
+					</div><!-- box 끝 -->
+				</div><!-- 영화끝  -->
 				
 				
 			</div>

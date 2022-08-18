@@ -48,7 +48,7 @@ $("#update").click(function(e){
 	console.log(data);
 	update(data)
 		.then(result =>{
-			alert("수정 성공!");
+			alert("프로필이 수정되었습니다.");
 			window.location.replace("/mypage/member");
 		})
 });
