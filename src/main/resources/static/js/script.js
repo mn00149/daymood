@@ -153,7 +153,7 @@ form.addEventListener('submit', (e) => {
 	checkLength(password, 6, 15)
 	checkEmail(email)
 	checkPasswordMatch(password, confirmpassword)
-	if (errorExist || !availableUsername || !availableUsername ) { 
+	if (errorExist || !availableUsername || !availableEmail ) { 
 		errorExist = false
 		availableUsername = false }
 	else { form.submit() }

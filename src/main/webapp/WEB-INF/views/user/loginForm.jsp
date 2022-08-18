@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="stylesheet" href="/css/style.css">
     <title>Form Validator</title>
 </head>
@@ -30,7 +31,12 @@
             </div>
             
             <button>Login</button>
-            <a href="/oauth2/authorization/google">구글로그인</a>
+            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
+            <a href="/oauth2/authorization/google"><img src="../image/btn_google_signin_light_pressed_web@2x.png" alt=""></a>
+            </div>
+            <div id="my-signin2"></div>
+            <a href="/joinForm">회원가입창으로 이동</a>
+              
             <!-- <a href="#"><img src="../image/kakao_login_large_wide.png" alt=""></a> -->
         </form>
     </div>

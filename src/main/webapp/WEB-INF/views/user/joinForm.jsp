@@ -50,7 +50,9 @@
                 </select>
               </div>
             <button>Register</button>
+            <a href="/loginForm">로그인창으로 이동</a>
         </form>
+        
     </div>
  <script src="/js/script.js"></script>
 </body>
