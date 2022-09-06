@@ -6,8 +6,8 @@ function getList() {
 		.catch(console.log)
 }
 
-function remove(f_no) {
-        return fetch(`/mypage/my_friends/${f_no}`,{method: 'delete'})
+function remove(friends_no) {
+        return fetch(`/mypage/my_friends/${friends_no}`,{method: 'delete'})
                .then(response => response.text())
                .catch(console.log);
 }

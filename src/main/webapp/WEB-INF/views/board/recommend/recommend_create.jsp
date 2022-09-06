@@ -80,7 +80,13 @@ body {
 	padding: 74px 0;
 	line-height: 23px;
 	cursor: pointer;
+	overflow-y: scroll;
 }
+
+.modal_content::-webkit-scrollbar {
+	display:none;
+}
+
 </style>
 
 </head>

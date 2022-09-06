@@ -12,7 +12,7 @@ public interface MemberService {
 
 	int ptotal(Map map);
 
-	int delete(int f_no);
+	int delete(Map map);
 
 	List<UserDTO> rlist(Map map);
 
@@ -49,5 +49,6 @@ public interface MemberService {
 	Integer scrap(Map map);
 
 	Integer checkscrap(Map map);
+
 
 }

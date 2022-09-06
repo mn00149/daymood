@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<delete id="delete" parameterType="int">
 		delete from friend
-		where f_no = #{f_no}
+		where (user_no = #{user_no} and friends_no = #{friends_no}) or (user_no = #{friends_no} and friends_no = #{user_no})
 	</delete>
 
 	<!-- 친구 요청 리스트 -->

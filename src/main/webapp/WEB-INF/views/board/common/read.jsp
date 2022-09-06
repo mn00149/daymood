@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="util" uri="/ELFunctions"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -71,6 +71,12 @@
          		  })
                .catch(console.log);
     }
+    
+    $(function(){
+    	$('#del').click(function(){
+    		if(!confirm('삭제하시겠습니까?')) return false;
+    	})
+    })
 </script>
 
 <style>
@@ -96,13 +102,13 @@ body {
 
 								<c:choose>
 									<c:when test="${dto.weather_category eq '맑음'}">
-									[Mood][etc]
+									[Mood][Sunny]
 								</c:when>
 									<c:when test="${dto.weather_category eq '흐림'}">
-									[Mood][etc]
+									[Mood][Cloudy]
 								</c:when>
 									<c:when test="${dto.weather_category eq '비'}">
-									[Mood][etc]
+									[Mood][Rainy]
 								</c:when>
 									<c:when test="${dto.info_category eq '미국'}">
 									[Info][U.S.A]
@@ -120,7 +126,7 @@ body {
 									[Info][Europe]
 								</c:when>
 									<c:when test="${dto.info_category eq '일본'}">
-									[Mood][Japan]
+									[Info][Japan]
 								</c:when>
 									<c:when test="${dto.info_category eq '기타'}">
 									[Info][etc]
@@ -175,16 +181,17 @@ body {
 					<c:choose>
 						<%-- 글쓴이(dto.username)와 로그인 된 닉네임(session_username) 일치 시 수정 및 삭제 가능 --%>
 						<c:when test="${dto.username eq session_username }">
-							<button class="btn" style="float:right">삭제</button>
+							<button class="btn" id="del" style="float:right">삭제</button>
 							<button type="button" class="btn" onclick="update2()" style="float:right">수정</button>
 							<button type="button" class="btn" onclick="history.back()">목록</button>
 						</c:when>
 						<c:otherwise>
 							<%-- 본인 게시글에는 좋아요 불가능 --%>
+							<sec:authorize access="isAuthenticated()">
 							<button type="button" class="btn"
 								onclick="scrap(${dto.board_no})" style="float:right">스크랩</button>
 							<button type="button" class="btn" id="like_btn"
-								onclick="updateLike2()" style="float:right">좋아요 &nbsp;${dto.like_cnt }</button>
+								onclick="updateLike2()" style="float:right">좋아요 &nbsp;${dto.like_cnt }</button></sec:authorize>
 							<button type="button" class="btn" onclick="history.back()">목록</button>
 						</c:otherwise>
 					</c:choose>

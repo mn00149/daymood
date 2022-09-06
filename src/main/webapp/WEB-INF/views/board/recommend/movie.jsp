@@ -156,10 +156,10 @@ body {
 
 
 											<div class=top_description>
-												<a href="${dto.recommend_src }"
-													onclick="window.open(this.href, '_blank'); return false;"
-													style="text-decoration: none"> ${dto.recommend_name }</a>
-											</div>
+                                                <a href="${dto.recommend_src }"
+                                                    onclick="return !window.open(this.href)"
+                                                    style="text-decoration: none"> ${dto.recommend_name }</a>
+                                            </div>
 
 
 											<div class="top_title">

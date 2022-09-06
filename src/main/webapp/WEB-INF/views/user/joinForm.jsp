@@ -50,7 +50,9 @@
                 </select>
               </div>
             <button>Register</button>
-            <a href="/loginForm">로그인창으로 이동</a>
+            <button type="button" onclick="location.href='/loginForm';"> Login </button>
+
+            
         </form>
         
     </div>

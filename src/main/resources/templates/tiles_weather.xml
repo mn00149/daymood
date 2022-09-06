@@ -33,9 +33,9 @@
     	<put-attribute name="title" value="rain"></put-attribute>
     	<put-attribute name="body" value="/WEB-INF/views/board/weather/rainy.jsp" />
   </definition>
-  
-  <definition name="/board/common/test123" extends="main">
-    	<put-attribute name="title" value="rain"></put-attribute>
-    	<put-attribute name="body" value="/WEB-INF/views/board/common/test123.jsp" />
-  </definition>
+ 
+ <definition name="/board/common/update" extends="main">
+    	<put-attribute name="title" value="all"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/board/common/update.jsp" />
+  	</definition>
 </tiles-definitions>

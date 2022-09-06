@@ -70,10 +70,10 @@
                                 <form class="munyihagitool">
                                    <select id="msg">
                                    		<option>DayMood란?</option>
-                                   		<option>비밀번호를 까먹었어요</option>
+                                   		<option>비밀번호를 잃어버렸습니다..</option>
                                    		<option>회원탈퇴를 하고싶어요</option>
-                                   		<option>소셜로그인 시 회원탈퇴 하는법은?</option>
-                                   		<option>커뮤니티 운영자한테 메일을 보내고 싶어요</option>
+                                   		<option>소셜로그인 시 회원탈퇴 하는법이 궁금합니다!</option>
+                                   		<option>DayMood 운영자에게 메일을 보내고 싶습니다</option>
                                    </select>
                                    <button type="button" id="send"></button>
                                 </form>

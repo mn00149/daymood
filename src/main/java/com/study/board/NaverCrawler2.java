@@ -17,7 +17,7 @@ import org.json.simple.parser.JSONParser;
 
 public class NaverCrawler2 {
   // 베이스 URL
-  final String baseUrl = "https://openapi.naver.com/v1/search/book.json?query=";
+  final String baseUrl = "https://openapi.naver.com/v1/search/book.json?display=100&query=";
 
   // 검색 메소드
   public String search(String clientId, String secret, String _url) {

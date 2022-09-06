@@ -14,7 +14,8 @@ okBtn.addEventListener('click',() => {
     popupBox.classList.remove('active2')
 	//document.querySelector('.mb_table').getElementsByTagName('tr')[4].getElementsByTagName('td')[0].innerText = 123;
 	$(".user_image").attr("src", imgsrc);
-	$("#user_image").attr("value", imgsrc.substring(21));
+	let findsrc = imgsrc.indexOf('/images');
+	$("#user_image").attr("value", imgsrc.substring(findsrc));
 	$(".user_image").attr("style", "width: 50px; height: 50px");
 })
 

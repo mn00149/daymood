@@ -18,7 +18,7 @@ public interface MemberMapper {
 	
 	List<ReplyDTO> replylist(Map map);
 
-	int delete(int f_no);
+	int delete(Map map);
 
 	List<UserDTO> rlist(Map map);
 
@@ -49,4 +49,5 @@ public interface MemberMapper {
 	Integer scrap(Map map);
 	
 	Integer checkscrap(Map map);
+
 }

@@ -47,8 +47,8 @@ public class Utility {
 
         long curTime = System.currentTimeMillis();
         long regTime = to.getTime();
-        long diffTime = (curTime - regTime) / 1000;
-
+        long diffTime = (curTime - regTime + 32400000) / 1000;
+        
         if (diffTime < TIME_MAXIMUM.SEC) {
           msg.add(Long.toString(diffTime) + "초 전");
         } else if ((diffTime /= TIME_MAXIMUM.SEC) < TIME_MAXIMUM.MIN) {
